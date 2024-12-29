@@ -1,0 +1,51 @@
+Type captial "C" to get into the create
+When you are asked more, if you want to create another special type y<enter>
+if you're done type n<enter>
+
+What must be set
+This is the variable flag (from 1 to 100) that must be set in order for the
+special to be acted out when clicked upon in the view 
+0 for nothing needs to be set
+
+What can't be set
+This is the variable flag (from 1 to 100) that if set, the special will
+NOT be acted out.
+0 for nothing that needs to be set.
+
+What gets set
+This is the variable flag (from 1 to 100) that will will become set if
+the special is acted out
+
+What is displayed
+This is what is displayed on the screen if the special is acted out. If
+you get a "redo from start" you either -
+1. Have a " or a , in the message (type it again without it)
+2. Are not on What is displayed!
+
+What key pressed
+This asks what the cursor needs to be if the special is to be acted out.
+l= the eye (look cursor) 
+g= the arrow (get cursor)
+a= the hand (action cursor)
+u= the gun (use cursor)
+
+What is extra/picture transfer
+This is for any extra information
+If clicking in that location will transport you to a different screen, type
+the name of the file WITHOUT .pic transported to and <n> if the character
+walks north <s> south <l> left <r> right
+
+PLACING THE SPECIALS
+
+Tap <enter> then type the number of the special to place it
+
+Hit <t> to turn on trail, which will drop a special whereever you move, and
+hit <t> again to turn it off. When you turn trail on you will have to type
+the number of the special to trail.
+
+Hit <d> then type the number of the special to display the message for
+that special (Useful to remember which special is which number)
+
+Hit <s> to save the specials
+
+Hit <e> to exit create
