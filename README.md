@@ -21,7 +21,10 @@ CREATE4 is a pixel art and game screen editor with special interaction points ("
 - **b**: Change brush color (prompts for number)
 - **0**: Change cursor step size (1, 3, or 6 pixels)
 - **i**: Pick color under cursor
-- **f**: Toggle fill mode
+- **f**: Toggle color replace mode
+    - Use **t** to sample color to replace
+    - Use **y** to sample replacement color
+    - When active, replaces colors in a 5x5 area around cursor
 - **l**: Draw line between two points (use z/x to set points)
 - **o**: Select new color
 - **c**: Toggle canvas clear
