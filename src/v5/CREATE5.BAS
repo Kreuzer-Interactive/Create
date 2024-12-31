@@ -2,6 +2,7 @@ DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
+DECLARE SUB LoadPalette ()
 
 pallet$ = "house2.pal"
 SCREEN 13, 0
@@ -47,7 +48,7 @@ SCREEN 13, 0
   e$ = "n"
   s = 1: c = 0
   COLOR 42
-  GOSUB 120
+  LoadPalette
   DrawCanvasBorder
   'PALETTE 15, 50 + 50 * 65536 + 50 * 256
 
@@ -101,7 +102,11 @@ SCREEN 13, 0
     END SELECT
   END IF
   If a$ = "[" THEN DrawCanvasBorder
- 
+
+IF a$ = "i" THEN
+  d = POINT(B, a)
+END IF
+
 12
   IF a$ = "." THEN
     IF SIZ = 0 THEN
@@ -111,48 +116,6 @@ SCREEN 13, 0
       f = d: DRAW "c=" + VARPTR$(f)
       a$ = "5"
       GOTO 61
-    END IF
-  END IF
-
-15
-  IF a$ = "6" THEN
-    IF f <> 0 OR e$ = "y" THEN
-      DRAW "r=" + VARPTR$(s)
-      B = B + s
-    ELSE
-      B = B + s
-    END IF
-  END IF
-
-  IF a$ = "i" THEN
-    d = POINT(B, a)
-  END IF
-
-20
-  IF a$ = "8" THEN
-    IF f <> 0 OR e$ = "y" THEN
-      DRAW "u=" + VARPTR$(s): a = a - s
-    ELSE
-      a = a - s
-    END IF
-  END IF
-
-25 
-  IF a$ = "2" THEN
-    IF f <> 0 OR e$ = "y" THEN
-      DRAW "d=" + VARPTR$(s)
-      a = a + s
-    ELSE
-      a = a + s
-    END IF
-  END IF
-
-30
-  IF a$ = "4" THEN
-    IF f <> 0 OR e$ = "y" THEN
-      DRAW "l=" + VARPTR$(s)
-      B = B - s
-    ELSE B = B - s
     END IF
   END IF
 
@@ -264,23 +227,29 @@ IF a$ = ")" THEN GOSUB 242
 97 IF f = 0 AND e$ = "n" AND SIZ = 0 THEN PUT (B, a), a, XOR
 99 IF a$ = "/" AND SIZ = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
 100 GOTO 10
-49 FOR i = 1 TO 256: col(i) = 0
-NEXT i
-FOR i = 1 TO 301
-FOR d = 11 TO 199
-col(POINT(i, d)) = 1
-NEXT d
-NEXT i
-tc = 0
-FOR i = 0 TO 256
-IF col(i) = 1 THEN tc = tc + 1
-NEXT i: LOCATE 17, 1: PRINT tc
+49
+  FOR i = 1 TO 256: col(i) = 0
+  NEXT i
+  FOR i = 1 TO 301
+    FOR d = 11 TO 199
+      col(POINT(i, d)) = 1
+    NEXT d
+  NEXT i
+  tc = 0
+  FOR i = 0 TO 256
+    IF col(i) = 1 THEN tc = tc + 1
+  NEXT i
+  LOCATE 17, 1: PRINT tc
 RETURN
+
 101 RETURN: LOCATE 1, 1: PRINT "What color   "
 INPUT cl
-204 DRAW "c=" + VARPTR$(cl): f = cl
-LOCATE 15, 1: PRINT "             ": LOCATE 16, 1: PRINT "      "
+
+204
+  DRAW "c=" + VARPTR$(cl): f = cl
+  LOCATE 15, 1: PRINT "             ": LOCATE 16, 1: PRINT "      "
 RETURN
+
 102 LOCATE 15, 1: INPUT f
 105 IF f > 250 THEN 102
 108 DRAW "c=" + VARPTR$(f)
@@ -307,50 +276,70 @@ IF a$ = "s" GOTO 778 ELSE GOTO 777
 165 OPEN q$ + ".pac" FOR OUTPUT AS #1
 175 CLOSE
 180 END
-182 LOCATE 10, 30: INPUT mel
-LINE (1, 110)-(320, 200), 0, BF
-FOR axc = mx TO nx STEP 1
-FOR ixc = mz TO nz STEP 1
-IF gk = 2 THEN LINE (180 - (axc - mx) * mel, 181 - (ixc - mz) * mel)-(180 - (axc - mx) * mel - (mel - .9), 181 - (ixc - mz) * mel - (mel - .9)), POINT(ixc, axc), BF
-IF gk = 3 THEN LINE (1 + (ixc - mz) * mel, 180 - (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 180 - (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-IF gk = 1 THEN LINE (1 + (ixc - mz) * mel, 120 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-IF gk = 4 THEN LINE (181 - (ixc - mz) * mel, 120 + (axc - mx) * mel)-(181 - (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-IF 120 + (axc - mx) * mel > 200 THEN RETURN
-NEXT ixc: NEXT axc
+
+182 
+  LOCATE 10, 30: INPUT mel
+  LINE (1, 110)-(320, 200), 0, BF
+  FOR axc = mx TO nx STEP 1
+    FOR ixc = mz TO nz STEP 1
+      IF gk = 2 THEN LINE (180 - (axc - mx) * mel, 181 - (ixc - mz) * mel)-(180 - (axc - mx) * mel - (mel - .9), 181 - (ixc - mz) * mel - (mel - .9)), POINT(ixc, axc), BF
+      IF gk = 3 THEN LINE (1 + (ixc - mz) * mel, 180 - (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 180 - (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
+      IF gk = 1 THEN LINE (1 + (ixc - mz) * mel, 120 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
+      IF gk = 4 THEN LINE (181 - (ixc - mz) * mel, 120 + (axc - mx) * mel)-(181 - (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
+      IF 120 + (axc - mx) * mel > 200 THEN RETURN
+    NEXT ixc
+NEXT axc
 RETURN
-183 mel = 1.8: mx = 100: nx = 1: mz = 1: nz = 320
-FOR axc = 100 TO 1 STEP -1
-FOR ixc = 1 TO 320 STEP 1
-LINE (1 + (ixc - mz) * mel, 200 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 200 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-NEXT ixc: NEXT axc
+
+183
+  mel = 1.8: mx = 100: nx = 1: mz = 1: nz = 320
+  FOR axc = 100 TO 1 STEP -1
+    FOR ixc = 1 TO 320 STEP 1
+      LINE (1 + (ixc - mz) * mel, 200 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 200 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
+    NEXT ixc
+  NEXT axc
 RETURN
-232 FOR i = mx TO nx STEP 1
-FOR d = mz TO nz STEP 1
-IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) + 1
-NEXT d
-NEXT i
+
+232
+  FOR i = mx TO nx STEP 1
+    FOR d = mz TO nz STEP 1
+      IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) + 1
+    NEXT d
+  NEXT i
 RETURN
-242 FOR i = mx TO nx STEP 1
-FOR d = mz TO nz STEP 1
-IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) - 1
-NEXT d
-NEXT i
+
+242
+  FOR i = mx TO nx STEP 1
+    FOR d = mz TO nz STEP 1
+      IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) - 1
+    NEXT d
+  NEXT i
 RETURN
-243 FOR i = mx TO nx STEP 1
-FOR d = mz TO nz STEP 1
-IF POINT(d, i) <> 0 THEN PSET (d, i), 15
-NEXT d
-NEXT i: RETURN
-184 FOR mel = .1 TO 4 STEP .15
-FOR axc = mx TO nx STEP 1
-FOR ixc = mz TO nz STEP 1
-LINE (1 + (ixc - mz) * mel, 120 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-NEXT ixc: NEXT axc
-NEXT mel
-LINE (1, 110)-(320, 200), 0, BF: RETURN
-185 LOCATE 15, 1: PRINT "Which box?": INPUT i
-x(i) = B: y(i) = a
+
+243
+  FOR i = mx TO nx STEP 1
+    FOR d = mz TO nz STEP 1
+      IF POINT(d, i) <> 0 THEN PSET (d, i), 15
+    NEXT d
+  NEXT i
 RETURN
+
+184 
+  FOR mel = .1 TO 4 STEP .15
+    FOR axc = mx TO nx STEP 1
+      FOR ixc = mz TO nz STEP 1
+        LINE (1 + (ixc - mz) * mel, 120 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
+      NEXT ixc
+    NEXT axc
+  NEXT mel
+  LINE (1, 110)-(320, 200), 0, BF
+RETURN
+
+185
+  LOCATE 15, 1: PRINT "Which box?": INPUT i
+  x(i) = B: y(i) = a
+RETURN
+
 200 IF B > 319 THEN B = 319
 201 IF B < 1 THEN B = 1
 205 IF a < 1 THEN a = 1
@@ -368,10 +357,15 @@ RETURN
 245 IF a$ = "`" THEN RETURN
 250 LOCATE pa, pb: PRINT a$
 252 a$ = "6": GOTO 235
-260 CLS
-275 FILES "*.pic"
-280 CLOSE : INPUT q$
-    IF a$ = "r" THEN GOTO 780 ELSE GOTO 781
+260
+  CLS
+  FILES "*.pic"        ' Shows available .pic files
+  CLOSE : INPUT q$     ' Get filename from user
+  IF a$ = "r" THEN
+    GOTO LoadPictureFullscreen
+  ELSE
+    GOTO LoadPicturePositioned
+  END IF
 284 CLS
 285 'DEF SEG = &HB800
 290 'BLOAD q$ + ".pic", 0: GOTO 10
@@ -386,7 +380,7 @@ LINE (0, 10)-(321, 10), f, B
 360 PAINT (B, a), tile$, f
 370 tile$ = ""
 375 RETURN
-120 GOSUB 121
+
 FOR i = 1 TO 120
 LINE (i + 30, 1)-(i + 30, 2), i
 NEXT i
@@ -404,7 +398,7 @@ click:
   REM  GOSUB 709 'load specials
 453 CLOSE
 454 CLS : B = 50: dd = 50: GOTO 500
-455 GOSUB 781
+455 GOSUB LoadPicturePositioned
 RETURN
 462 LOCATE 1, 1: PRINT "                                       "
 464 LOCATE 2, 1: PRINT "                                       "
@@ -428,7 +422,7 @@ GOSUB 462: LOCATE 2, 1: PRINT "What is displayed?"
 523 GOSUB 462: LOCATE 2, 1: PRINT "What key activates?": INPUT ky$(CQ)
 524 GOSUB 462: LOCATE 2, 1: PRINT "Extra info?/Transfer": INPUT df$(CQ): GOTO 500
 525 CLS
-GOSUB 781
+GOSUB LoadPicturePositioned
 565 DRAW "c51bm1,1r3d3l3u2r1d1r1u1"
 570 GET (1, 1)-(4, 4), a
 571 DRAW "bm200,6c2r75"
@@ -540,41 +534,39 @@ GOTO 621
   DEF SEG
   'GOSUB 895
   RETURN
-780 CLS
-'------- LOADING OF THE PICTURE -------
-GET (2, 10)-(310, 199), c
-DEF SEG = VARSEG(c(1))
-BLOAD q$ + ".pic", VARPTR(c(1))
-DEF SEG = 0
-c = 0
-882 PUT (2, 10), c, PSET'places picture in certain postion
-GOTO 883
-RETURN
-781 CLS
-'------- LOADING OF THE PICTURE -------
-GET (2, 10)-(310, 199), c
-DEF SEG = VARSEG(c(1))
-BLOAD q$ + ".pic", VARPTR(c(1))
-DEF SEG = 0
-c = 0
-PUT (c(1), c(2)), c(3), PSET 'places picture in certain postion
 
-'-------- END OF LOAD -------------
-883 ON ERROR GOTO 900
-'IF fca$ <> "c" THEN GOSUB 709
-884 GOSUB 120
-ON ERROR GOTO 200
+LoadPictureFullscreen:
+    CLS
+    '------- LOADING OF THE PICTURE -------
+    GET (2, 10)-(310, 199), c
+    DEF SEG = VARSEG(c(1))
+    BLOAD q$ + ".pic", VARPTR(c(1))  ' Actually loads the file
+    DEF SEG = 0
+    c = 0
+    PUT (2, 10), c, PSET         ' Displays the loaded image
+    GOTO 883
 RETURN
+
+LoadPicturePositioned:
+    CLS
+    '------- LOADING OF THE PICTURE -------
+    GET (2, 10)-(310, 199), c
+    DEF SEG = VARSEG(c(1))
+    BLOAD q$ + ".pic", VARPTR(c(1))
+    DEF SEG = 0
+    c = 0
+    PUT (c(1), c(2)), c(3), PSET 'places picture in certain position
+    '-------- END OF LOAD -------------
+883
+  ON ERROR GOTO 900
+    'IF fca$ <> "c" THEN GOSUB 709
+884
+  LoadPalette
+  ON ERROR GOTO 200
+RETURN
+
 900 RESUME 884
 
-121
-  OPEN pallet$ FOR INPUT AS #1
-  FOR i = 1 TO 255 STEP 1
-    INPUT #1, pl(i)
-  NEXT i
-  PALETTE USING pl(0)
-  CLOSE
-RETURN
 '----------------------All about guy------------------------
 2
   x = 165: y = 145: g = 178: f = 167: j = -120: fh = 3: bob = 0
@@ -858,4 +850,23 @@ SUB DrawCanvasBorder ()
   
   ' Right
   LINE (right + 1, midY - markLength)-(right + 1, midY + markLength), grayColor
+END SUB
+
+SUB LoadPalette ()
+    SHARED pl() AS LONG, pallet$
+    
+    OPEN pallet$ FOR INPUT AS #1     ' Opens the palette file
+    FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
+        INPUT #1, pl(i)              ' Reads each color value
+    NEXT i
+    PALETTE USING pl(0)              ' Applies the loaded palette
+    CLOSE
+    
+    ' Draw the palette display with 3x2 pixel rectangles
+    FOR i = 1 TO 120
+        LINE (i * 3, 1)-(i * 3 + 2, 2), i, BF      ' Draw top row of colors
+    NEXT i
+    FOR i = 121 TO 255
+        LINE ((i - 120) * 3, 4)-((i - 120) * 3 + 2, 5), i, BF      ' Draw bottom row of colors
+    NEXT i
 END SUB
