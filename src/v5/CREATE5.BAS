@@ -7,6 +7,9 @@ DECLARE SUB LoadPalette ()
 DIM SHARED palettes$(10, 1)  ' Up to 10 palettes, with name and type
 DIM SHARED activePalette AS INTEGER
 DIM SHARED basicPal(255) AS LONG
+CONST PALV1 = 1 ' Dream Giver
+CONST PALV2 = 2 ' Space 2
+CONST PALV3 = 3 ' Dark visions 2
 
 initPalettes
 SCREEN 13, 0
@@ -183,7 +186,7 @@ END IF
   END IF
 42 IF a$ = "`" THEN GOSUB 220
 IF a$ = "p" OR a$ = "P" THEN 
-    activePalette = (activePalette + 1) MOD 3  ' Cycles through palettes 0-2
+    activePalette = (activePalette + 1) MOD 4  ' Cycles through palettes 0-3
     LoadPalette
     DrawCanvasBorder
 END IF
@@ -889,22 +892,44 @@ SUB LoadPalette ()
     
     OPEN pallet$ FOR INPUT AS #1     ' Opens the palette file
     
-    IF palType = 1 THEN
-        'type 1 - loads with offset and early exit on zero
-        FOR i = 1 TO 255 STEP 1
-            INPUT #1, pl(i)              ' Reads each color value
-            IF pl(i) = 0 AND i > 10 THEN i = 255
-            PALETTE i + 16, pl(i)
-        NEXT i
+    IF palType = PALV1 THEN
+      'type 1 - loads with offset and early exit on zero
+      FOR i = 1 TO 255 STEP 1
+          INPUT #1, pl(i)              ' Reads each color value
+          IF pl(i) = 0 AND i > 10 THEN i = 255
+          PALETTE i + 16, pl(i)
+      NEXT i
+    ELSEIF palType = PALV3 THEN
+      CLOSE #1
+      bright = 3  ' Brightness multiplier (1 = normal, 2 = twice as bright, etc.)
+      OPEN pallet$ FOR BINARY AS #1
+      'type 3 - loads RGB bytes individually
+      FOR i = 1 TO 255
+        IF EOF(1) THEN EXIT FOR
+          red = (ASC(INPUT$(1, #1)) * bright) \ 4     ' Apply brightness before scaling
+          IF red > 63 THEN red = 63                    ' Clamp to max brightness
+          green = (ASC(INPUT$(1, #1)) * bright) \ 4
+          IF green > 63 THEN green = 63
+          blue = (ASC(INPUT$(1, #1)) * bright) \ 4
+          IF blue > 63 THEN blue = 63
+          pl(i) = (blue * 65536) + (green * 256) + red
+      NEXT i
+      PALETTE USING pl(0)
+      ' Write palette to ASCII file, 4 colors per row
+      'OPEN "dv2.pal" FOR OUTPUT AS #2
+      'FOR i = 1 TO 255 STEP 4
+      '    PRINT #2, pl(i); ","; pl(i + 1); ","; pl(i + 2); ","; pl(i + 3)
+      'NEXT i
+      'CLOSE #2
     ELSE
-        'type 2 - loads all colors and applies at once
-        FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
-            INPUT #1, pl(i)              ' Reads each color value
-        NEXT i
-        PALETTE USING pl(0)              ' Applies the loaded palette
+      'type 2 - loads all colors and applies at once
+      FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
+          INPUT #1, pl(i)              ' Reads each color value
+      NEXT i
+      PALETTE USING pl(0)              ' Applies the loaded palette
     END IF
     
-    CLOSE
+    CLOSE #1
     
     ' Clear the palette display area first (black box over old palette)
     LINE (0, 1)-(360, 6), 0, BF
@@ -930,8 +955,9 @@ SUB InitPalettes()
         basicPal(i) = red + (green * 256) + (blue * 65536)
     NEXT i
     ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
-    palettes$(0, 0) = "house2.pal"  : palettes$(0, 1) = "2"
-    palettes$(1, 0) = "SHIP2.pal"  : palettes$(1, 1) = "2"
-    palettes$(2, 0) = "256colo.pal"  : palettes$(2, 1) = "1"
+    palettes$(0, 0) = "house2.pal"  : palettes$(0, 1) = STR$(PALv2)
+    palettes$(1, 0) = "SHIP2.pal"  : palettes$(1, 1) = STR$(PALV2)
+    palettes$(2, 0) = "256colo.pal"  : palettes$(2, 1) = STR$(PALV1)
+    palettes$(3, 0) = "DARK.pal"  : palettes$(3, 1) = STR$(PALV3)
     activePalette = 0
 END SUB
