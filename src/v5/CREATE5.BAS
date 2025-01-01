@@ -4,7 +4,11 @@ DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB LoadPalette ()
 
-pallet$ = "house2.pal"
+DIM SHARED palettes$(10, 1)  ' Up to 10 palettes, with name and type
+DIM SHARED activePalette AS INTEGER
+DIM SHARED basicPal(255) AS LONG
+
+initPalettes
 SCREEN 13, 0
 0 ' Must include this to load
   g = 32000
@@ -178,6 +182,11 @@ END IF
     END IF
   END IF
 42 IF a$ = "`" THEN GOSUB 220
+IF a$ = "p" OR a$ = "P" THEN 
+    activePalette = (activePalette + 1) MOD 3  ' Cycles through palettes 0-2
+    LoadPalette
+    DrawCanvasBorder
+END IF
 IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
 IF a$ = "?" THEN GOSUB 184
 45 IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
@@ -537,6 +546,14 @@ GOTO 621
 
 LoadPictureFullscreen:
     CLS
+    '------- Dream giver loader ---------
+    'GET (2, 2)-(180, 100), c
+    'DEF SEG = VARSEG(c(1))
+    'BLOAD q$ + ".pic", VARPTR(c(1))
+    'GET (184, 3)-(206, 106), h
+    'PUT (5, 5), b, PSET
+    ' GET (5, 5)-(183, 103), c
+    'GOTO 883  
     '------- LOADING OF THE PICTURE -------
     GET (2, 10)-(310, 199), c
     DEF SEG = VARSEG(c(1))
@@ -548,6 +565,7 @@ LoadPictureFullscreen:
 RETURN
 
 LoadPicturePositioned:
+    print "LoadPicturePositioned"
     CLS
     '------- LOADING OF THE PICTURE -------
     GET (2, 10)-(310, 199), c
@@ -771,34 +789,42 @@ SUB SaveSpecialData (filename$)
 END SUB
 
 SUB FindNeutralGray (closestColor AS INTEGER)
-    SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
-    
-    ' Target values for 50% gray (all RGB components = 32)
-    targetGray = 32
-    
-    closestDiff = 999  ' Start with large number
-    closestColor = 0   ' Default to black
-    
-    ' Loop through palette colors 1-255 (skip 0 which is usually black)
-    FOR i = 1 TO 255
-        ' Extract RGB values from long
-        blue = pl(i) \ 65536        ' Get blue component
-        green = (pl(i) \ 256) MOD 256  ' Get green component
-        red = pl(i) MOD 256        ' Get red component
-        
-        ' Calculate how far this color is from neutral gray
-        ' by averaging the differences of each component from target
-        colorDiff = ABS(red - targetGray) 
-        colorDiff = colorDiff + ABS(green - targetGray)
-        colorDiff = colorDiff + ABS(blue - targetGray)
-        colorDiff = colorDiff / 3   ' Average difference
-        
-        ' If this is closest match so far, save it
-        IF colorDiff < closestDiff THEN
-            closestDiff = colorDiff
-            closestColor = i
-        END IF
-    NEXT i
+  SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
+  
+  ' Target values for 50% gray (all RGB components = 32)
+  targetGray = 32
+  
+  closestDiff = 999  ' Start with large number
+  closestColor = 0   ' Default to black
+  
+  ' Loop through palette colors 1-255 (skip 0 which is usually black)
+  FOR i = 1 TO 255
+      ' Extract RGB values from long
+      blue = pl(i) \ 65536        ' Get blue component
+      green = (pl(i) \ 256) MOD 256  ' Get green component
+      red = pl(i) MOD 256        ' Get red component
+      
+      ' Calculate luminance difference using standard weights
+      colorDiff = ABS(red - targetGray) * .299    ' Red contributes 30%
+      colorDiff = colorDiff + ABS(green - targetGray) * .587  ' Green contributes 59%
+      colorDiff = colorDiff + ABS(blue - targetGray) * .114   ' Blue contributes 11%
+      
+      ' Add penalty for colors where R,G,B are very different from each other
+      rgDiff = ABS(red - green)
+      gbDiff = ABS(green - blue)
+      rbDiff = ABS(red - blue)
+      colorDiff = colorDiff + (rgDiff + gbDiff + rbDiff) / 3  ' Increased penalty
+      
+      ' If this is closest match so far, save it
+      IF colorDiff < closestDiff THEN
+          closestDiff = colorDiff
+          closestColor = i
+      END IF
+  NEXT i
+  ' If active palette type is 2, add 16 to closest color
+  IF activePalette = 2 THEN
+    closestColor = closestColor + 16
+  END IF
 END SUB
 
 SUB DrawCanvasBorder ()
@@ -853,14 +879,35 @@ SUB DrawCanvasBorder ()
 END SUB
 
 SUB LoadPalette ()
-    SHARED pl() AS LONG, pallet$
+    SHARED pl() AS LONG, palettes$(), activePalette AS INTEGER, basicPal() AS LONG
+    ' Reset palette to default values
+    FOR i = 1 TO 255
+        PALETTE i, basicPal(i)
+    NEXT i
+    pallet$ = palettes$(activePalette, 0)
+    palType = VAL(palettes$(activePalette, 1))
     
     OPEN pallet$ FOR INPUT AS #1     ' Opens the palette file
-    FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
-        INPUT #1, pl(i)              ' Reads each color value
-    NEXT i
-    PALETTE USING pl(0)              ' Applies the loaded palette
+    
+    IF palType = 1 THEN
+        'type 1 - loads with offset and early exit on zero
+        FOR i = 1 TO 255 STEP 1
+            INPUT #1, pl(i)              ' Reads each color value
+            IF pl(i) = 0 AND i > 10 THEN i = 255
+            PALETTE i + 16, pl(i)
+        NEXT i
+    ELSE
+        'type 2 - loads all colors and applies at once
+        FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
+            INPUT #1, pl(i)              ' Reads each color value
+        NEXT i
+        PALETTE USING pl(0)              ' Applies the loaded palette
+    END IF
+    
     CLOSE
+    
+    ' Clear the palette display area first (black box over old palette)
+    LINE (0, 1)-(360, 6), 0, BF
     
     ' Draw the palette display with 3x2 pixel rectangles
     FOR i = 1 TO 120
@@ -869,4 +916,22 @@ SUB LoadPalette ()
     FOR i = 121 TO 255
         LINE ((i - 120) * 3, 4)-((i - 120) * 3 + 2, 5), i, BF      ' Draw bottom row of colors
     NEXT i
+END SUB
+
+' Initialize palette configurations
+SUB InitPalettes()
+    SHARED palettes$(), activePalette AS INTEGER, basicPal() AS LONG
+    ' Save current palette values before loading new ones
+    FOR i = 0 TO 255
+        OUT &H3C7, i          ' Tell VGA we want to read color i
+        red = INP(&H3C9)      ' Read red component
+        green = INP(&H3C9)    ' Read green component
+        blue = INP(&H3C9)     ' Read blue component
+        basicPal(i) = red + (green * 256) + (blue * 65536)
+    NEXT i
+    ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
+    palettes$(0, 0) = "house2.pal"  : palettes$(0, 1) = "2"
+    palettes$(1, 0) = "SHIP2.pal"  : palettes$(1, 1) = "2"
+    palettes$(2, 0) = "256colo.pal"  : palettes$(2, 1) = "1"
+    activePalette = 0
 END SUB
