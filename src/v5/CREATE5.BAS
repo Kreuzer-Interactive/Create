@@ -11,6 +11,7 @@ DEFINT B-C
 DIM SHARED palettes$(10, 1)  ' Up to 10 palettes, with name and type
 DIM SHARED activePalette AS INTEGER
 DIM SHARED basicPal(255) AS LONG
+DIM SHARED pl(255) AS LONG
 
 ' Mouse tracking
 DIM SHARED lastB, lastA   ' Previous mouse X,Y coordinates
@@ -21,7 +22,11 @@ DIM SHARED inary(7) AS INTEGER, outary(7) AS INTEGER
 
 g = 32000
 DIM SHARED stampBuffer(1 TO g) AS INTEGER  ' New array for stamp data
-DIM SHARED c(1 TO 32000) AS INTEGER
+DIM SHARED c() AS INTEGER
+DIM SHARED fca AS STRING
+DIM SHARED fit AS INTEGER
+DIM SHARED qa() AS INTEGER, qb() AS INTEGER
+DIM SHARED x() AS INTEGER, y() AS INTEGER
 
 ' Mouse interrupt constants and variables
 CONST BOUSE = 51 ' Mouse interrupt number
@@ -35,8 +40,9 @@ CONST PALV3 = 3 ' Dark visions 2
 
 initPalettes
 SCREEN 13, 0
+REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 0 ' Must include this to load
-  DIM pl(256) AS LONG
+  
   SCREEN 13
   ' End of including
   fe$ = "n" 
@@ -44,7 +50,7 @@ SCREEN 13, 0
   stampSet = 0    ' Flag to track if stamp data exists
   CLS
 1
-  DIM h(500): DIM i(500): DIM g(500)
+  DIM h(500): DIM i(500)
   DIM su(100): DIM sm(100)
   DIM si(100): DIM col(300)
   DIM cl(5): DIM a(15)
@@ -76,7 +82,7 @@ SCREEN 13, 0
   CLS
   a = 100
   B = 160
-  gk = 1: fca$ = "z"
+  gk = 1: fca = "z"
   q$ = "Type in name"
   f = 0
   e$ = "n"
@@ -617,7 +623,7 @@ RETURN
 400 '-------------Click starts----------------
 click:
 401 tr$ = "n"
-    fca$ = "c"
+    fca = "c"
 440 SCREEN 13
     FILES "*.pic"
 450 INPUT q$
@@ -789,7 +795,7 @@ LoadPicturePositioned:
     '-------- END OF LOAD -------------
 883
   ON ERROR GOTO 900
-    'IF fca$ <> "c" THEN GOSUB 709
+    'IF fca <> "c" THEN GOSUB 709
 884
   LoadPalette
   ON ERROR GOTO 200
@@ -948,7 +954,7 @@ GOTO 510
 
 
 SUB SavePicture (filename$)
-    SHARED c() AS  INTEGER, fca$, fit, qa(), qb(), x(), y()
+    SHARED c() AS INTEGER, fca AS STRING, fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
     SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
     
     ' Calculate image size
@@ -977,13 +983,13 @@ SUB SavePicture (filename$)
     DEF SEG
     
     'Save special data if needed
-    IF fca$ = "c" THEN SaveSpecialData filename$
+    IF fca = "c" THEN SaveSpecialData filename$
     
     CLOSE
 END SUB
 
 SUB SaveSpecialData (filename$)
-    SHARED fit, qa(), qb(), x(), y()
+    SHARED fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
     SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
     
     CLOSE
