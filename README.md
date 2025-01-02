@@ -28,6 +28,7 @@ CREATE4 is a pixel art and game screen editor with special interaction points ("
 - **l**: Draw line between two points (use z/x to set points)
 - **o**: Select new color
 - **c**: Toggle canvas clear
+- **\***: Flood fill from cursor position with current color
 
 ### File Operations
 - **s/S**: Save current work

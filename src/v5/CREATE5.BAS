@@ -148,16 +148,15 @@ SCREEN 13, 0
   ' Draw cursor in new position
   IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
 
-If a$ = "[" THEN DrawCanvasBorder
+  If a$ = "[" THEN DrawCanvasBorder
 
-IF a$ = "i" THEN
-  d = POINT(B, a)
-END IF
+  IF a$ = "i" THEN
+    d = POINT(B, a)
+  END IF
 
-12
   IF a$ = "." THEN
     IF SIZ = 0 THEN
-      GOTO 300
+      GOTO EnterLargeCursorMode
     ELSE 
       SIZ = 0
       f = d: DRAW "c=" + VARPTR$(f)
@@ -166,7 +165,6 @@ END IF
     END IF
   END IF
 
-32
   IF a$ = "c" THEN
     IF c = 0 THEN
       c = 1
@@ -176,10 +174,11 @@ END IF
       PUT (2, 10), c, PSET
     END IF
   END IF
+
   IF a$ = "C" THEN
     GOTO click
   END IF
-35
+
   IF a$ = "1" THEN
     IF f <> 0 OR e$ = "y" THEN
       DRAW "g=" + VARPTR$(s)
@@ -193,7 +192,7 @@ END IF
   IF a$ = "v" THEN GOSUB 2
   IF a$ = "j" THEN GOSUB 14
 
-37 IF a$ = "n" THEN
+  IF a$ = "n" THEN
     LOCATE 25, 1
     PRINT "New?";
     DO
@@ -207,13 +206,11 @@ END IF
     END IF
   END IF
 
-39
   IF a$ = "\" THEN
     GET (2, 2)-(200, 100), c
     GOSUB 350
   END IF
 
-40 
   IF a$ = "9" THEN
     IF f <> 0 OR e$ = "y" THEN
       DRAW "e=" + VARPTR$(s)
@@ -224,22 +221,33 @@ END IF
       B = B + s
     END IF
   END IF
-42 IF a$ = "`" THEN GOSUB 220
-IF a$ = "p" OR a$ = "P" THEN 
+
+  IF a$ = "`" THEN GOSUB TextInputMode
+  
+  IF a$ = "p" OR a$ = "P" THEN 
     activePalette = (activePalette + 1) MOD 4  ' Cycles through palettes 0-3
     LoadPalette
     DrawCanvasBorder
-END IF
-IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
-IF a$ = "?" THEN GOSUB 184
-45 IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
-50 IF a$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
-IF fr$ = "y" AND stampSet THEN PUT (B, a), stampBuffer, PSET
-IF a$ = "t" THEN ft = POINT(B, a)
-IF a$ = "y" THEN fy = POINT(B, a)
-IF a$ = "]" THEN 
+  END IF
+
+  IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
+  
+  IF a$ = "?" THEN GOSUB ZoomAnimation
+  
+  IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
+  
+  IF a$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
+  
+  IF fr$ = "y" AND stampSet THEN PUT (B, a), stampBuffer, PSET
+  
+  IF a$ = "t" THEN ft = POINT(B, a)
+  
+  IF a$ = "y" THEN fy = POINT(B, a)
+  
+  IF a$ = "]" THEN 
     IF stampSet = 0 THEN
-        PRINT "Please capture stamp data with 'g' key first"
+        LOCATE 25, 1
+        PRINT "Capture stamp first with 'g' key";
         fr$ = "n"
     ELSE
         IF fr$ = "n" THEN 
@@ -248,61 +256,128 @@ IF a$ = "]" THEN
             fr$ = "n"
         END IF
     END IF
-END IF
-IF fe$ = "n" THEN 57
-FOR gf = 0 TO 4
-FOR g = 0 TO 4
-IF POINT(B + gf, a + g) = ft THEN PSET (B + gf, a + g), fy
-NEXT g
-NEXT gf
-57 IF a$ = "<" THEN LOCATE 25, 1: PRINT "Restore image?"; : cc$ = INKEY$: IF cc$ = "" THEN 57 ELSE IF cc$ = "y" THEN PUT (1, 10), c, PSET:  ELSE LOCATE 25, 1: PRINT "                    ";
-55 IF a$ = "g" THEN GOSUB 320
-56 IF a$ = "d" THEN GOSUB 325
-IF a$ = "e" THEN GOSUB 182
-IF a$ = "%" THEN LOCATE 15, 1: INPUT gk: LOCATE 15, 1: PRINT "             "
-58 IF a$ = "s" OR a$ = "S" THEN 
-    SavePicture q$
-END IF
-59 IF a$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
-60 IF SIZ = 1 THEN 70
-61 IF a$ = "5" AND f <> 0 THEN DRAW "c0": IF SIZ = 0 THEN d = f: f = 0: a$ = "" ELSE f = 0: a$ = ""
-65 IF a$ = "5" AND f = 0 THEN DRAW "c=" + VARPTR$(d): f = d: GOTO 100
-70 ON ERROR GOTO 200
-IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
-72 IF f = 0 AND e$ = "y" AND SIZ = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
-75 IF a$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
-IF a$ = "$" THEN GOSUB 49
-76 IF a$ = "z" THEN mz = B: mx = a
-IF a$ = "{" THEN GOSUB 183
-77 IF a$ = "x" THEN nz = B: nx = a
-78 IF a$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), d
-80 IF a$ = "u" THEN DRAW "c1": f = 1
-83 IF a$ = "o" THEN GOSUB 101
-IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
-85 IF a$ = CHR$(13) THEN 115
-88 IF a$ = "r" OR a$ = "R" THEN GOSUB 260
-IF a$ = "(" THEN GOSUB 232
-IF a$ = ")" THEN GOSUB 242
-91 IF a$ = "k" THEN GOSUB 800
-93 IF a$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
-95 IF a$ = "*" THEN GET (1, 10)-(319, 199), c: LINE (0, 10)-(321, 10), d: GOTO 140
-96 IF a$ = "q" THEN LOCATE 25, 1: PRINT "Really quit?"; : ad$ = INKEY$: IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
-97 IF f = 0 AND e$ = "n" AND SIZ = 0 THEN PUT (B, a), a, XOR
-99 IF a$ = "/" AND SIZ = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
+  END IF
+
+  ' Fill effect: Replace colors in a 5x5 grid around cursor
+  ' Replaces any pixels that match source color (ft) with target color (fy)
+  IF fe$ = "y" THEN
+    FOR gf = 0 TO 4
+      FOR g = 0 TO 4
+        IF POINT(B + gf, a + g) = ft THEN PSET (B + gf, a + g), fy
+      NEXT g
+    NEXT gf
+  END IF
+
+57
+  ' Handle image restore functionality ("<" key)
+  IF a$ = "<" THEN
+    ' Prompt user to restore image
+    LOCATE 25, 1
+    PRINT "Restore image?";
+    
+    ' Wait for Y/N response
+    cc$ = INKEY$
+    IF cc$ = "" THEN 57
+    
+    IF cc$ = "y" THEN
+      ' Restore saved image from buffer
+      PUT (1, 10), c, PSET
+    ELSE
+      ' Clear prompt if not restoring
+      LOCATE 25, 1
+      PRINT "                    "
+    END IF
+  END IF
+
+  IF a$ = "g" THEN GOSUB CaptureStampData
+  
+  IF a$ = "d" THEN GOSUB PasteStampWithOR
+  
+  IF a$ = "e" THEN GOSUB ScaleAndDrawRegion
+  
+  IF a$ = "%" THEN LOCATE 15, 1: INPUT gk: LOCATE 15, 1: PRINT "             ";
+  
+  IF a$ = "s" OR a$ = "S" THEN SavePicture q$
+  
+  IF a$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
+  
+  IF SIZ = 1 THEN 70
+  
+  61
+  ' Handle toggling drawing mode with '5' key
+  IF a$ = "5" THEN
+    IF f <> 0 THEN
+      ' Turn off drawing mode
+      DRAW "c0"
+      IF SIZ = 0 THEN
+        d = f  ' Save current color
+        f = 0  ' Turn off drawing
+        a$ = ""
+      ELSE
+        f = 0  ' Just turn off drawing
+        a$ = ""
+      END IF
+    ELSE
+      ' Turn on drawing mode
+      DRAW "c=" + VARPTR$(d)  ' Restore saved color
+      f = d                    ' Enable drawing
+      GOTO 100
+    END IF
+  END IF
+
+70
+  ON ERROR GOTO 200
+  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+  IF f = 0 AND e$ = "y" AND SIZ = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
+  IF a$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
+  IF a$ = "$" THEN GOSUB CountUniqueColors
+  IF a$ = "z" THEN mz = B: mx = a
+  IF a$ = "{" THEN GOSUB 183
+  IF a$ = "x" THEN nz = B: nx = a
+  IF a$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), d
+  IF a$ = "u" THEN DRAW "c1": f = 1
+  IF a$ = "o" THEN GOSUB 101
+  IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
+  IF a$ = CHR$(13) THEN 115
+  IF a$ = "r" OR a$ = "R" THEN GOSUB 260
+  IF a$ = "(" THEN GOSUB 232
+  IF a$ = ")" THEN GOSUB 242
+  IF a$ = "k" THEN GOSUB 800
+  IF a$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
+  IF a$ = "*" THEN GET (1, 10)-(319, 199), c: LINE (0, 10)-(321, 10), d: GOTO 140
+96
+  IF a$ = "q" THEN
+    LOCATE 25, 1
+    PRINT "Really quit?";
+    ad$ = INKEY$
+    IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
+  END IF
+  IF f = 0 AND e$ = "n" AND SIZ = 0 THEN PUT (B, a), a, XOR
+  IF a$ = "/" AND SIZ = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
 100 GOTO 10
-49
-  FOR i = 1 TO 256: col(i) = 0
+
+CountUniqueColors:
+  ' This subroutine counts the number of unique colors used in the drawing area
+  ' Initialize array to track which colors are used
+  FOR i = 1 TO 256
+    col(i) = 0
   NEXT i
+
+  ' Scan the drawing area (301x189 pixels) and mark each color found
   FOR i = 1 TO 301
     FOR d = 11 TO 199
-      col(POINT(i, d)) = 1
+      col(POINT(i, d)) = 1  ' Mark color as used
     NEXT d
   NEXT i
+
+  ' Count total number of unique colors used
   tc = 0
   FOR i = 0 TO 256
     IF col(i) = 1 THEN tc = tc + 1
   NEXT i
-  LOCATE 17, 1: PRINT tc
+
+  ' Display count at line 17
+  LOCATE 25, 1: PRINT tc;
 RETURN
 
 101 RETURN: LOCATE 1, 1: PRINT "What color   "
@@ -340,18 +415,68 @@ IF a$ = "s" GOTO 778 ELSE GOTO 777
 175 CLOSE
 180 END
 
-182 
+ScaleAndDrawRegion:
+  ' This subroutine scales and draws a selected region of pixels
+  ' Gets a scale factor (mel) from user
+  ' Clears the drawing area (110-200 pixels from top)
+  ' For each pixel in source region (mx,mz to nx,nz):
+  '   - Gets the pixel color
+  '   - Calculates new coordinates based on scale and orientation (gk)
+  '   - Draws scaled pixel as filled box at new position
+  ' Orientations (gk):
+  '   1 = Normal
+  '   2 = Flipped horizontally and vertically  
+  '   3 = Flipped vertically
+  '   4 = Flipped horizontally
+  ' Returns if drawing goes past bottom edge (y>200)
+  
+  ' Get scale factor from user
   LOCATE 10, 30: INPUT mel
+  
+  ' Clear drawing area
   LINE (1, 110)-(320, 200), 0, BF
+  
+  ' Loop through source region pixels
   FOR axc = mx TO nx STEP 1
     FOR ixc = mz TO nz STEP 1
-      IF gk = 2 THEN LINE (180 - (axc - mx) * mel, 181 - (ixc - mz) * mel)-(180 - (axc - mx) * mel - (mel - .9), 181 - (ixc - mz) * mel - (mel - .9)), POINT(ixc, axc), BF
-      IF gk = 3 THEN LINE (1 + (ixc - mz) * mel, 180 - (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 180 - (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-      IF gk = 1 THEN LINE (1 + (ixc - mz) * mel, 120 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-      IF gk = 4 THEN LINE (181 - (ixc - mz) * mel, 120 + (axc - mx) * mel)-(181 - (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-      IF 120 + (axc - mx) * mel > 200 THEN RETURN
+      ' Get color of current pixel
+      pixelColor = POINT(ixc, axc)
+      
+      ' Calculate scaled coordinates based on orientation (gk)
+      SELECT CASE gk
+        CASE 2 ' Flipped horizontally and vertically
+          x1 = 180 - (axc - mx) * mel
+          y1 = 181 - (ixc - mz) * mel
+          x2 = x1 - (mel - .9)
+          y2 = y1 - (mel - .9)
+          
+        CASE 3 ' Flipped vertically
+          x1 = 1 + (ixc - mz) * mel  
+          y1 = 180 - (axc - mx) * mel
+          x2 = x1 - (mel - .9)
+          y2 = y1 - (mel - .9)
+          
+        CASE 1 ' Normal orientation
+          x1 = 1 + (ixc - mz) * mel
+          y1 = 120 + (axc - mx) * mel
+          x2 = x1 - (mel - .9) 
+          y2 = y1 - (mel - .9)
+          
+        CASE 4 ' Flipped horizontally
+          x1 = 181 - (ixc - mz) * mel
+          y1 = 120 + (axc - mx) * mel
+          x2 = x1 - (mel - .9)
+          y2 = y1 - (mel - .9)
+      END SELECT
+      
+      ' Draw scaled pixel as filled box
+      LINE (x1, y1)-(x2, y2), pixelColor, BF
+      
+      ' Check if we've gone past bottom edge
+      IF y1 > 200 THEN RETURN
+      
     NEXT ixc
-NEXT axc
+  NEXT axc
 RETURN
 
 183
@@ -387,7 +512,17 @@ RETURN
   NEXT i
 RETURN
 
-184 
+ZoomAnimation:
+  ' This subroutine creates a zoom animation effect by:
+  ' 1. Taking a rectangular region defined by points (mz,mx) to (nz,nx)
+  ' 2. Gradually scaling it up from 0.1x to 4x size in 0.15 increments
+  ' 3. For each scale factor (mel):
+  '    - Copies each pixel from the source region
+  '    - Draws it as a filled box scaled by mel
+  '    - Box position is offset by (1,120) pixels
+  '    - Box size is mel-0.9 pixels
+  ' 4. Finally clears the animation area by drawing a black rectangle
+  '    from (1,110) to (320,200)
   FOR mel = .1 TO 4 STEP .15
     FOR axc = mx TO nx STEP 1
       FOR ixc = mz TO nz STEP 1
@@ -403,23 +538,53 @@ RETURN
   x(i) = B: y(i) = a
 RETURN
 
-200 IF B > 319 THEN B = 319
-201 IF B < 1 THEN B = 1
-205 IF a < 1 THEN a = 1
-210 IF a > 199 THEN a = 199
-211 SOUND 400, 1: SOUND 200, .5
-215 RESUME 10
-220 pa = a \ 8: pb = B \ 8
-221 LOCATE pa, pb: PRINT ".": a$ = INKEY$: IF a$ = "" THEN 221
-222 LOCATE pa, pb: PRINT " "
-223 IF a$ = CHR$(8) THEN a$ = "4"
-225 IF a$ = "8" THEN pa = pa - 1: GOTO 221
-230 IF a$ = "4" THEN pb = pb - 1: GOTO 221
-235 IF a$ = "6" THEN pb = pb + 1: GOTO 221
-240 IF a$ = "2" THEN pa = pa + 1: GOTO 221
-245 IF a$ = "`" THEN RETURN
-250 LOCATE pa, pb: PRINT a$
-252 a$ = "6": GOTO 235
+200 
+  IF B > 319 THEN B = 319
+  IF B < 1 THEN B = 1
+  IF a < 1 THEN a = 1
+  IF a > 199 THEN a = 199
+  SOUND 400, 1: SOUND 200, .5
+RESUME 10
+
+TextInputMode:
+  ' This subroutine implements a text input mode where the user can:
+  ' - Move a cursor around the screen using arrow keys (8,4,6,2)
+  ' - Type characters at the cursor position
+  ' - Exit with the ` key
+  '
+  ' The cursor position is converted from pixel coordinates (a,B) 
+  ' to character coordinates by dividing by 8 since each character
+  ' cell is 8x8 pixels. The cursor is shown as a "." that gets
+  ' replaced by typed characters.
+  '
+  ' Controls:
+  ' 8 - Move cursor up
+  ' 4 - Move cursor left 
+  ' 6 - Move cursor right
+  ' 2 - Move cursor down
+  ' ` - Exit text input mode
+  ' Any other key - Print that character at cursor
+  
+  ' Convert pixel coords to character coords
+  pa = a \ 8  ' Y position in characters
+  pb = B \ 8  ' X position in characters
+221
+  LOCATE pa, pb: PRINT "."  ' Show cursor
+  a$ = INKEY$               ' Get keypress
+  IF a$ = "" THEN 221       ' Wait for key
+  LOCATE pa, pb: PRINT " "  ' Clear cursor
+  IF a$ = CHR$(8) THEN a$ = "4"  ' Map backspace to left
+  IF a$ = "8" THEN pa = pa - 1: GOTO 221  ' Up
+  IF a$ = "4" THEN pb = pb - 1: GOTO 221  ' Left
+235
+  IF a$ = "6" THEN pb = pb + 1: GOTO 221  ' Right
+  IF a$ = "2" THEN pa = pa + 1: GOTO 221  ' Down
+  IF a$ = "`" THEN RETURN                 ' Exit
+  LOCATE pa, pb: PRINT a$   ' Print typed character
+  a$ = "6"                  ' Move right after typing
+GOTO 235
+'-------------END OF TEXTINPUTMODE-------------
+
 260
   CLS
   FILES "*.pic"        ' Shows available .pic files
@@ -429,23 +594,41 @@ RETURN
   ELSE
     GOTO LoadPicturePositioned
   END IF
-284 CLS
-285 'DEF SEG = &HB800
-290 'BLOAD q$ + ".pic", 0: GOTO 10
-300  SIZ = 1: DRAW "c0": IF f <> 0 THEN d = f: f = 4: GOTO 10:  ELSE f = 4: a$ = "": GOTO 10
-320
+  CLS
+  'DEF SEG = &HB800
+  'BLOAD q$ + ".pic", 0: GOTO 10
+
+EnterLargeCursorMode:
+  SIZ = 1 ' Set SIZ flag to 1 to indicate we're in "large cursor" mode
+  DRAW "c0" ' Set drawing color to black (0) to erase previous cursor
+  
+  IF f <> 0 THEN d = f  ' Save current color if drawing was active
+  f = 4                 ' Set new color to 4
+  a$ = ""              ' Clear key input
+GOTO 10
+
+CaptureStampData:
+' Sets stampSet flag and copies pixels from mz,mx to nz,nx into stampBuffer
   stampSet = -1
   GET (mz, mx)-(nz, nx), stampBuffer
 RETURN
-325 PUT (B, a), stampBuffer, OR: RETURN
-350 tile$ = ""
-352 FOR i = ft TO fy
-354 tile$ = tile$ + CHR$(i)
-356 NEXT i
-LINE (0, 10)-(321, 10), f, B
-360 PAINT (B, a), tile$, f
-370 tile$ = ""
-375 RETURN
+
+PasteStampWithOR:
+  ' Paste the stamp buffer at current cursor position (B,a) using OR mode
+  ' OR mode combines the stamp with existing pixels rather than overwriting
+  PUT (B, a), stampBuffer, OR
+RETURN
+
+350
+  tile$ = ""
+  FOR i = ft TO fy
+    tile$ = tile$ + CHR$(i)
+  NEXT i
+
+  LINE (0, 10)-(321, 10), f, B
+  PAINT (B, a), tile$, f
+  tile$ = ""
+RETURN
 
 FOR i = 1 TO 120
 LINE (i + 30, 1)-(i + 30, 2), i
@@ -784,6 +967,8 @@ GOTO 505
   IF j > 0 THEN vg = 1
   IF j < -120 OR x < 34 THEN WINDOW SCREEN (1, 1)-(320, 200): RETURN
 GOTO 510
+
+
 
 SUB SavePicture (filename$)
     SHARED c() AS  INTEGER, fca$, fit, qa(), qb(), x(), y()
