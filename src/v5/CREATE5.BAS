@@ -52,7 +52,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   stampSet = 0    ' Flag to track if stamp data exists
   CLS
 1
-  DIM h(500): DIM i(500)
+  DIM h(500): DIM I(500)
   DIM su(100): DIM sm(100)
   DIM si(100): DIM col(300)
   DIM cl(5): DIM a(15)
@@ -61,9 +61,9 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   DIM ky$(31): DIM df$(31)
   DIM st(31): DIM vh$(50)
   
-  FOR i = 1 TO 50
-    vh$(i) = "                                                                               "
-  NEXT i
+  FOR I = 1 TO 50
+    vh$(I) = "                                                                               "
+  NEXT I
   
   RANDOMIZE TIMER    ' Initialize random number generator using system timer
   DEF SEG = 0        ' Set the current segment to the BIOS data area
@@ -86,7 +86,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   B = 160
   gk = 1: fca = "z"
   q$ = "Type in name"
-  f = 0
+  F = 0
   e$ = "n"
   s = 1: c = 0
   COLOR 42
@@ -104,33 +104,39 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
-     xb = lastB
-     ya = lastA
-     IF f <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), f
+     xb = oldB
+     ya = oldA
+     IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
   END IF
   ' Handle keyboard input if any
   IF a$ <> "" THEN GOTO 16
   GOTO 10
 16
   ' Process keyboard/mouse input
-  IF a$ = "-" THEN d = d - 1: IF f <> 0 THEN f = f - 1: DRAW "c=" + VARPTR$(d)
-  IF a$ = "=" THEN d = d + 1: IF f <> 0 THEN f = f + 1: DRAW "c=" + VARPTR$(d)
-  IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
+  IF a$ = "[" THEN
+    d = d - 1
+    IF F <> 0 THEN F = d
+    DRAW "c=" + VARPTR$(d)
+  END IF
+
+  IF a$ = "]" THEN
+    d = d + 1
+    IF F <> 0 THEN F = d
+    DRAW "c=" + VARPTR$(d)
+  END IF
+
   IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   IF a$ <> "" THEN  'Process keyboard input
     IF ASC(a$) = 0 THEN  'Extended key (arrow keys)
         ' Always erase cursor before moving
-        IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
         SELECT CASE ASC(RIGHT$(a$, 1))
             CASE 72: a$ = "8"  'Up arrow
             CASE 80: a$ = "2"  'Down arrow
             CASE 75: a$ = "4"  'Left arrow
             CASE 77: a$ = "6"  'Right arrow
         END SELECT
-        ' Always draw cursor after moving
-        IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
     END IF
   END IF
 
@@ -141,7 +147,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   IF a$ = "6" THEN B = B + s  ' Right
 
   ' Draw lines if in drawing mode
-  IF (f <> 0 OR e$ = "y") AND (a$ = "8" OR a$ = "2" OR a$ = "4" OR a$ = "6") THEN
+  IF (F <> 0 OR e$ = "y") AND (a$ = "8" OR a$ = "2" OR a$ = "4" OR a$ = "6") THEN
     SELECT CASE a$
         CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
         CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
@@ -152,28 +158,34 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 
   IF oldB <> B OR oldA <> a THEN
 
+    IF F = 0 AND e$ = "n" THEN
+      PUT (oldB, oldA), a, XOR
+      ' Always draw cursor after moving
+      PUT (B, a), a, XOR
+    END IF
+
+
     ' SetMousePosition B, INT(a)
-
-    ' Erase old cursor first if needed
-    'PUT (oldB, oldA), a, XOR
-
-
-    ' Draw cursor in new position
-    'PUT (B, a), a, XOR
   END IF
 
-  IF a$ = "[" THEN DrawCanvasBorder
+  IF a$ = "-" THEN DrawCanvasBorder
 
   IF a$ = "i" THEN
+    PUT (B, a), a, XOR
     d = POINT(B, a)
+    PUT (B, a), a, XOR
   END IF
+
+  ' Update currenet color display box
+  IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
+
 
   IF a$ = "." THEN
     IF SIZ = 0 THEN
       GOTO EnterLargeCursorMode
     ELSE
       SIZ = 0
-      f = d: DRAW "c=" + VARPTR$(f)
+      F = d: DRAW "c=" + VARPTR$(F)
       a$ = "5"
       GOTO 61
     END IF
@@ -194,7 +206,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   END IF
 
   IF a$ = "1" THEN
-    IF f <> 0 OR e$ = "y" THEN
+    IF F <> 0 OR e$ = "y" THEN
       DRAW "g=" + VARPTR$(s)
       a = a + s
       B = B - s
@@ -226,7 +238,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   END IF
 
   IF a$ = "9" THEN
-    IF f <> 0 OR e$ = "y" THEN
+    IF F <> 0 OR e$ = "y" THEN
       DRAW "e=" + VARPTR$(s)
       a = a - s
       B = B + s
@@ -246,9 +258,9 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 
   IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
   
-  IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
+  IF a$ = "7" THEN IF F <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
   
-  IF a$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
+  IF a$ = "3" THEN IF F <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
   
   IF fr$ = "y" AND stampSet THEN PUT (B, a), stampBuffer, PSET
   
@@ -256,7 +268,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   
   IF a$ = "y" THEN fy = POINT(B, a)
   
-  IF a$ = "]" THEN
+  IF a$ = "=" THEN
     IF stampSet = 0 THEN
         LOCATE 25, 1
         PRINT "Capture stamp first with 'g' key";
@@ -318,36 +330,36 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 61
   ' Handle toggling drawing mode with '5' key
   IF a$ = "5" THEN
-    IF f <> 0 THEN
+    IF F <> 0 THEN
       ' Turn off drawing mode
       DRAW "c0"
       IF SIZ = 0 THEN
-        d = f  ' Save current color
-        f = 0  ' Turn off drawing
+        d = F  ' Save current color
+        F = 0  ' Turn off drawing
         a$ = ""
       ELSE
-        f = 0  ' Just turn off drawing
+        F = 0  ' Just turn off drawing
         a$ = ""
       END IF
     ELSE
       ' Turn on drawing mode
       DRAW "c=" + VARPTR$(d)  ' Restore saved color
-      f = d                    ' Enable drawing
+      F = d                    ' Enable drawing
       GOTO 100
     END IF
   END IF
 
 70
   ON ERROR GOTO 200
-  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
-  IF f = 0 AND e$ = "y" AND SIZ = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
+  IF F = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+  IF F = 0 AND e$ = "y" AND SIZ = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
   IF a$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
   IF a$ = "$" THEN GOSUB CountUniqueColors
   IF a$ = "z" THEN mz = B: mx = a
   IF a$ = "{" THEN GOSUB 183
   IF a$ = "x" THEN nz = B: nx = a
-  IF a$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), d
-  IF a$ = "u" THEN DRAW "c1": f = 1
+  IF a$ = "l" THEN IF F <> 0 THEN LINE (mz, mx)-(nz, nx), F ELSE LINE (mz, mx)-(nz, nx), d
+  IF a$ = "u" THEN DRAW "c1": F = 1
   IF a$ = "o" THEN GOSUB 101
   IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
   IF a$ = CHR$(13) THEN 115
@@ -364,29 +376,29 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
     ad$ = INKEY$
     IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
   END IF
-  IF f = 0 AND e$ = "n" AND SIZ = 0 THEN PUT (B, a), a, XOR
+  IF F = 0 AND e$ = "n" AND SIZ = 0 THEN PUT (B, a), a, XOR
   IF a$ = "/" AND SIZ = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
 100 GOTO 10
 
 CountUniqueColors:
   ' This subroutine counts the number of unique colors used in the drawing area
   ' Initialize array to track which colors are used
-  FOR i = 1 TO 256
-    col(i) = 0
-  NEXT i
+  FOR I = 1 TO 256
+    col(I) = 0
+  NEXT I
 
   ' Scan the drawing area (301x189 pixels) and mark each color found
-  FOR i = 1 TO 301
+  FOR I = 1 TO 301
     FOR d = 11 TO 199
-      col(POINT(i, d)) = 1  ' Mark color as used
+      col(POINT(I, d)) = 1  ' Mark color as used
     NEXT d
-  NEXT i
+  NEXT I
 
   ' Count total number of unique colors used
   tc = 0
-  FOR i = 0 TO 256
-    IF col(i) = 1 THEN tc = tc + 1
-  NEXT i
+  FOR I = 0 TO 256
+    IF col(I) = 1 THEN tc = tc + 1
+  NEXT I
 
   ' Display count at line 17
   LOCATE 25, 1: PRINT tc;
@@ -396,23 +408,23 @@ RETURN
 INPUT cl
 
 204
-  DRAW "c=" + VARPTR$(cl): f = cl
+  DRAW "c=" + VARPTR$(cl): F = cl
   LOCATE 15, 1: PRINT "             ": LOCATE 16, 1: PRINT "      "
 RETURN
 
-102 LOCATE 15, 1: INPUT f
-105 IF f > 250 THEN 102
-108 DRAW "c=" + VARPTR$(f)
+102 LOCATE 15, 1: INPUT F
+105 IF F > 250 THEN 102
+108 DRAW "c=" + VARPTR$(F)
 110 GOTO 10
 115 LOCATE 15, 1: INPUT q
-125 CIRCLE (B, a), q, f
+125 CIRCLE (B, a), q, F
 130 GOTO 100
 140 LINE (B, a)-(B, a), 0
-141 PAINT (B, a), f, f
+141 PAINT (B, a), F, F
 145 GOTO 100
-150 LOCATE 1, 1: PRINT q$; : INPUT f$
-IF f$ = "a" OR f$ = "A" THEN RETURN
-IF f$ <> "" THEN q$ = f$
+150 LOCATE 1, 1: PRINT q$; : INPUT F$
+IF F$ = "a" OR F$ = "A" THEN RETURN
+IF F$ <> "" THEN q$ = F$
 IF a$ = "s" GOTO 778 ELSE GOTO 777
     ON ERROR GOTO 700
     OPEN q$ + ".pac" FOR INPUT AS #1
@@ -501,32 +513,32 @@ RETURN
 RETURN
 
 232
-  FOR i = mx TO nx STEP 1
+  FOR I = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
-      IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) + 1
+      IF POINT(d, I) <> 0 THEN PSET (d, I), POINT(d, I) + 1
     NEXT d
-  NEXT i
+  NEXT I
 RETURN
 
 242
-  FOR i = mx TO nx STEP 1
+  FOR I = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
-      IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) - 1
+      IF POINT(d, I) <> 0 THEN PSET (d, I), POINT(d, I) - 1
     NEXT d
-  NEXT i
+  NEXT I
 RETURN
 
 243
-  FOR i = mx TO nx STEP 1
+  FOR I = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
-      IF POINT(d, i) <> 0 THEN PSET (d, i), 15
+      IF POINT(d, I) <> 0 THEN PSET (d, I), 15
     NEXT d
-  NEXT i
+  NEXT I
 RETURN
 
 185
-  LOCATE 15, 1: PRINT "Which box?": INPUT i
-  x(i) = B: y(i) = a
+  LOCATE 15, 1: PRINT "Which box?": INPUT I
+  x(I) = B: y(I) = a
 RETURN
 
 200
@@ -593,8 +605,8 @@ EnterLargeCursorMode:
   SIZ = 1 ' Set SIZ flag to 1 to indicate we're in "large cursor" mode
   DRAW "c0" ' Set drawing color to black (0) to erase previous cursor
   
-  IF f <> 0 THEN d = f  ' Save current color if drawing was active
-  f = 4                 ' Set new color to 4
+  IF F <> 0 THEN d = F  ' Save current color if drawing was active
+  F = 4                 ' Set new color to 4
   a$ = ""              ' Clear key input
 GOTO 10
 
@@ -612,21 +624,21 @@ RETURN
 
 350
   tile$ = ""
-  FOR i = ft TO fy
-    tile$ = tile$ + CHR$(i)
-  NEXT i
+  FOR I = ft TO fy
+    tile$ = tile$ + CHR$(I)
+  NEXT I
 
-  LINE (0, 10)-(321, 10), f, B
-  PAINT (B, a), tile$, f
+  LINE (0, 10)-(321, 10), F, B
+  PAINT (B, a), tile$, F
   tile$ = ""
 RETURN
 
-FOR i = 1 TO 120
-LINE (i + 30, 1)-(i + 30, 2), i
-NEXT i
-FOR i = 121 TO 255
-LINE (i - 95, 3)-(i - 95, 4), i
-NEXT i
+FOR I = 1 TO 120
+LINE (I + 30, 1)-(I + 30, 2), I
+NEXT I
+FOR I = 121 TO 255
+LINE (I - 95, 3)-(I - 95, 4), I
+NEXT I
 RETURN
 400 '-------------Click starts----------------
 click:
@@ -681,7 +693,7 @@ ON ERROR GOTO 820
     IF a$ = "f" THEN GOSUB 810
     IF a$ = "t" THEN IF tar$ = "n" THEN tar$ = "y": INPUT ap$ ELSE tar$ = "n"
 592 IF a$ = "s" THEN GOSUB 890
-    IF a$ = "d" THEN GOSUB 789: LOCATE 1, 1: ip = 1: INPUT gp$: FOR i = 1 TO 30: GOSUB 790: NEXT i
+    IF a$ = "d" THEN GOSUB 789: LOCATE 1, 1: ip = 1: INPUT gp$: FOR I = 1 TO 30: GOSUB 790: NEXT I
 593 IF a$ = "e" THEN LOCATE 16, 1: PRINT "Exit click?": a$ = INKEY$: IF a$ = "" THEN a$ = "e": GOTO 593 ELSE IF a$ = "y" THEN RUN
 595 IF a$ = "6" THEN B = B + 4
 596 IF a$ = CHR$(13) THEN IF gs < 75 THEN GOSUB 610 ELSE BEEP
@@ -692,7 +704,7 @@ ON ERROR GOTO 820
 621 MID$(vh$(dd \ 4 + 1), B \ 4 + 1, 1) = ap$: GOTO 625
 635 IF si(gs) <> 0 THEN GOTO 635
 622 si(gs) = B: su(gs) = dd
-624 sm(gs) = i: gs = gs + 1
+624 sm(gs) = I: gs = gs + 1
 625 LOCATE 1, 1: PRINT "       "
 DRAW "bm275,6c0l=" + VARPTR$(gs)
 630 RETURN
@@ -710,23 +722,23 @@ DRAW "bm275,6c0l=" + VARPTR$(gs)
 CLOSE
 OPEN q$ + ".dat" FOR INPUT AS #1
 INPUT #1, fit
-FOR i = 1 TO 5
-INPUT #1, qa(i), qb(i), x(i), y(i)
-NEXT i
+FOR I = 1 TO 5
+INPUT #1, qa(I), qb(I), x(I), y(I)
+NEXT I
 INPUT #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
-FOR i = 1 TO 50
-INPUT #1, vh$(i)
-NEXT i
-FOR i = 1 TO 30
- INPUT #1, mess$(i), ky$(i), bs(i), CS(i), st(i), df$(i)
- NEXT i
+FOR I = 1 TO 50
+INPUT #1, vh$(I)
+NEXT I
+FOR I = 1 TO 30
+ INPUT #1, mess$(I), ky$(I), bs(I), CS(I), st(I), df$(I)
+ NEXT I
 RETURN
 789 LOCATE 1, 1: PRINT "                                                                "
 LOCATE 2, 1: PRINT "                                                                "
 RETURN
-790 IF LEFT$(df$(i), 1) <> gp$ THEN RETURN
+790 IF LEFT$(df$(I), 1) <> gp$ THEN RETURN
 ip = ip + 1
-    LOCATE ip, 1: PRINT mess$(i)
+    LOCATE ip, 1: PRINT mess$(I)
     RETURN
 
 700 ON ERROR GOTO 200
@@ -747,16 +759,16 @@ RETURN
 CLOSE
 OPEN q$ + ".dat" FOR OUTPUT AS #1
 WRITE #1, fit
-FOR i = 1 TO 5
-WRITE #1, qa(i), qb(i), x(i), y(i)
-NEXT i
+FOR I = 1 TO 5
+WRITE #1, qa(I), qb(I), x(I), y(I)
+NEXT I
 WRITE #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
-FOR i = 1 TO 50
-WRITE #1, vh$(i)
-NEXT i
- FOR i = 1 TO 30
- WRITE #1, mess$(i), ky$(i), bs(i), CS(i), st(i), df$(i)
- NEXT i
+FOR I = 1 TO 50
+WRITE #1, vh$(I)
+NEXT I
+ FOR I = 1 TO 30
+ WRITE #1, mess$(I), ky$(I), bs(I), CS(I), st(I), df$(I)
+ NEXT I
 RETURN
 891 RETURN
 815 SOUND 100, .1
@@ -813,68 +825,68 @@ RETURN
 
 '----------------------All about guy------------------------
 2
-  x = 165: y = 145: g = 178: f = 167: j = -120: fh = 3: bob = 0
+  x = 165: y = 145: g = 178: F = 167: j = -120: fh = 3: bob = 0
   CS = 180: CS = 33: cp = 32: cp = 204: ch = 175: ch = 24: cf = 120: cf = 150
   WINDOW SCREEN (1 + j * 3, 1 + j * 2)-(320 - j * 3, 200 - j * 2)
   vg = 0
 310
   GET (x - 22, y - 36)-(x + 11, g + 10), c
   bob = bob + fh: IF bob = 6 THEN fh = -3 ELSE IF bob < -5 THEN fh = 3
-  FOR i = 0 TO 5
-    LINE (x + i, y)-(f + i - 1, g + bob), cp - i * 1.5
-    LINE (x - i, y)-(f - i + 1, g + bob), cp - i * 1.5
-  NEXT i
-  FOR i = 0 TO 4
-    LINE (x + i - 9, y)-(f + i - 1 - 9, g - bob), cp - i * 1.5
-    LINE (x - i - 9, y)-(f - i + 1 - 9, g - bob), cp - i * 1.5
-  NEXT i
+  FOR I = 0 TO 5
+    LINE (x + I, y)-(F + I - 1, g + bob), cp - I * 1.5
+    LINE (x - I, y)-(F - I + 1, g + bob), cp - I * 1.5
+  NEXT I
+  FOR I = 0 TO 4
+    LINE (x + I - 9, y)-(F + I - 1 - 9, g - bob), cp - I * 1.5
+    LINE (x - I - 9, y)-(F - I + 1 - 9, g - bob), cp - I * 1.5
+  NEXT I
   IF vg = 0 THEN GOSUB 420
 GOTO 421
 
 420
   x = x - 5
-  FOR i = 0 TO 5
-    LINE (x + i - 2, y - 2)-(x + i, y - 20 + i / 2), CS - i
-    LINE (x - i + 2, y - 2)-(x - i, y - 20 + i / 2), CS - i
-  NEXT i
+  FOR I = 0 TO 5
+    LINE (x + I - 2, y - 2)-(x + I, y - 20 + I / 2), CS - I
+    LINE (x - I + 2, y - 2)-(x - I, y - 20 + I / 2), CS - I
+  NEXT I
   x = x + 5
   LINE (x - 13, y)-(x + 4, y), 4
   LINE (x - 13, y - 1)-(x + 4, y - 1), 12
 RETURN
 
 421
-  FOR i = 0 TO 3
-    LINE (x + 4 + i, y - 17 + i)-(x + 7 + i, y + 5 - bob / 1.5), CS - 2 - i
-    LINE (x + 4 - i, y - 17 + i)-(x + 9 - i, y + 5 - bob / 1.5), CS - 2 - i
-    LINE (x - 15 + i, y - 17 + i)-(x - 20 + i, y + 5 + bob / 1.5), CS - i
-    LINE (x - 15 - i, y - 17 + i)-(x - 18 - i, y + 5 + bob / 1.5), CS - i
-  NEXT i
-  FOR i = 0 TO 2
-    LINE (x + 9, y + 6 + i - bob / 1.5)-(x + 5 + i, y + 6 + i - bob / 1.5), cf
-    LINE (x - 17 - i, y + 6 + i + bob / 1.5)-(x - 20, y + 6 + i + bob / 1.5), cf
-    LINE (f + 4 + i, g + 1 + i + bob)-(f - 1, g + 1 + i + bob), cf - i * 2
-    LINE (f - 12 - i, g + 1 + i - bob)-(f - 8, g + 1 + i - bob), cf - i * 2
-  NEXT i
+  FOR I = 0 TO 3
+    LINE (x + 4 + I, y - 17 + I)-(x + 7 + I, y + 5 - bob / 1.5), CS - 2 - I
+    LINE (x + 4 - I, y - 17 + I)-(x + 9 - I, y + 5 - bob / 1.5), CS - 2 - I
+    LINE (x - 15 + I, y - 17 + I)-(x - 20 + I, y + 5 + bob / 1.5), CS - I
+    LINE (x - 15 - I, y - 17 + I)-(x - 18 - I, y + 5 + bob / 1.5), CS - I
+  NEXT I
+  FOR I = 0 TO 2
+    LINE (x + 9, y + 6 + I - bob / 1.5)-(x + 5 + I, y + 6 + I - bob / 1.5), cf
+    LINE (x - 17 - I, y + 6 + I + bob / 1.5)-(x - 20, y + 6 + I + bob / 1.5), cf
+    LINE (F + 4 + I, g + 1 + I + bob)-(F - 1, g + 1 + I + bob), cf - I * 2
+    LINE (F - 12 - I, g + 1 + I - bob)-(F - 8, g + 1 + I - bob), cf - I * 2
+  NEXT I
   IF vg = 1 THEN GOSUB 420
   IF vg = 0 THEN 415
   CIRCLE (x - 5, y - 25), 6, ch, , , 1.5
   PAINT (x - 5, y - 25), ch, ch
-  FOR i = 0 TO 3
-    CIRCLE (x - 5, y - 25 - i), 6, ch + 1, .5 - (i / 5), 2.5 + (i / 5), 1.5
-  NEXT i
+  FOR I = 0 TO 3
+    CIRCLE (x - 5, y - 25 - I), 6, ch + 1, .5 - (I / 5), 2.5 + (I / 5), 1.5
+  NEXT I
 GOTO 405
 
 415
   CIRCLE (x - 5, y - 25), 6, cf, , , 1.5
   PAINT (x - 5, y - 25), cf, cf
-  FOR i = 0 TO 3
-    CIRCLE (x - 5, y - 25 - i), 6, ch, .5 - (i / 5), 2.5 + (i / 5), 1.5
-  NEXT i
+  FOR I = 0 TO 3
+    CIRCLE (x - 5, y - 25 - I), 6, ch, .5 - (I / 5), 2.5 + (I / 5), 1.5
+  NEXT I
   PSET (x - 8, y - 26), 0: PSET (x - 2, y - 26), 0
 GOTO 405
 
 405
-  FOR i = 1 TO 6400: NEXT i: a$ = "8"
+  FOR I = 1 TO 6400: NEXT I: a$ = "8"
   IF vg = 0 THEN j = j + 3 ELSE j = j - 3
   PUT (x - 22, y - 36), c, PSET
   WINDOW SCREEN (1 + j * 3, 1 + j * 2)-(320 - j * 3, 200 - j * 2)
@@ -884,7 +896,7 @@ GOTO 310
 
 '-------------------Sideways guy----------------------
 14
-  x = 165: y = 145: g = 178: f = 167: j = 0: fh = 4: dg = 0: bob = 0
+  x = 165: y = 145: g = 178: F = 167: j = 0: fh = 4: dg = 0: bob = 0
   CS = 180: CS = 33: cp = 32: cp = 204: ch = 175: ch = 24: cf = 120: cf = 150
   IF dg = 1 THEN lk = 1: pk = 0 ELSE pk = 1: lk = 0
   WINDOW SCREEN (1 + j * 3, 1 + j * 2)-(320 - j * 3, 200 - j * 2)
@@ -892,67 +904,67 @@ GOTO 310
 510
   GET (x - 30, y - 36)-(x + 18, g + 10), c
   bob = bob + fh: IF bob > 7 THEN fh = -4 ELSE IF bob < -5 THEN fh = 4
-  FOR i = 0 TO 3
-    LINE (x - 13 + i, y - 17 + i)-(x - 18 + i + bob, y + 5), CS - i
-    LINE (x - 13 - i, y - 17 + i)-(x - 16 - i + bob, y + 5), CS - i
-  NEXT i
-  FOR i = 0 TO 2
-    LINE (x - 15 - i + bob, y + 6 + i)-(x - 18 + bob, y + 6 + i), cf
-    LINE (f - 12 - i * pk - bob, g + 1 + i)-(f - 8 - bob + i * lk, g + 1 + i), cf - i * 2
-  NEXT i
-  FOR i = 0 TO 4
-    LINE (x + i - 9, y)-(f + i - 1 - 9 - bob, g), cp - i * 1.5
-    LINE (x - i - 9, y)-(f - i + 1 - 9 - bob, g), cp - i * 1.5
-  NEXT i
-  FOR i = 0 TO 5
-    LINE (x - 8 + i, y)-(f - 8 + i - 1 + bob, g + 2), cp - i * 1.5
-    LINE (x - 8 - i, y)-(f - 8 - i + 1 + bob, g + 2), cp - i * 1.5
-  NEXT i
+  FOR I = 0 TO 3
+    LINE (x - 13 + I, y - 17 + I)-(x - 18 + I + bob, y + 5), CS - I
+    LINE (x - 13 - I, y - 17 + I)-(x - 16 - I + bob, y + 5), CS - I
+  NEXT I
+  FOR I = 0 TO 2
+    LINE (x - 15 - I + bob, y + 6 + I)-(x - 18 + bob, y + 6 + I), cf
+    LINE (F - 12 - I * pk - bob, g + 1 + I)-(F - 8 - bob + I * lk, g + 1 + I), cf - I * 2
+  NEXT I
+  FOR I = 0 TO 4
+    LINE (x + I - 9, y)-(F + I - 1 - 9 - bob, g), cp - I * 1.5
+    LINE (x - I - 9, y)-(F - I + 1 - 9 - bob, g), cp - I * 1.5
+  NEXT I
+  FOR I = 0 TO 5
+    LINE (x - 8 + I, y)-(F - 8 + I - 1 + bob, g + 2), cp - I * 1.5
+    LINE (x - 8 - I, y)-(F - 8 - I + 1 + bob, g + 2), cp - I * 1.5
+  NEXT I
   IF vg = 0 THEN GOSUB 520
 GOTO 521
 
 520
   x = x - 5
-  FOR i = 0 TO 5
-    LINE (x + i - 6, y - 2)-(x + i - 4, y - 20 + i), CS - i
-    LINE (x - i - 2, y - 2)-(x - i - 4, y - 20 + i), CS - i
-  NEXT i
+  FOR I = 0 TO 5
+    LINE (x + I - 6, y - 2)-(x + I - 4, y - 20 + I), CS - I
+    LINE (x - I - 2, y - 2)-(x - I - 4, y - 20 + I), CS - I
+  NEXT I
   x = x + 5
   LINE (x - 13, y)-(x - 4, y), 4
   LINE (x - 13, y - 1)-(x - 4, y - 1), 12
 RETURN
 
 521
-  FOR i = 0 TO 3
-    LINE (x - 6 + i, y - 17 + i)-(x - 3 + i - bob, y + 5), CS - 2 - i
-    LINE (x - 6 - i, y - 17 + i)-(x - 4 - i - bob, y + 5), CS - 2 - i
-  NEXT i
-  FOR i = 0 TO 2
-    LINE (x - 3 - bob, y + 6 + i)-(x - 6 + i - bob, y + 6 + i), cf
-    LINE (f - 11 - i * pk + bob, g + 3 + i)-(f - 6 + bob + i * lk, g + 3 + i), cf - i * 2
-  NEXT i
+  FOR I = 0 TO 3
+    LINE (x - 6 + I, y - 17 + I)-(x - 3 + I - bob, y + 5), CS - 2 - I
+    LINE (x - 6 - I, y - 17 + I)-(x - 4 - I - bob, y + 5), CS - 2 - I
+  NEXT I
+  FOR I = 0 TO 2
+    LINE (x - 3 - bob, y + 6 + I)-(x - 6 + I - bob, y + 6 + I), cf
+    LINE (F - 11 - I * pk + bob, g + 3 + I)-(F - 6 + bob + I * lk, g + 3 + I), cf - I * 2
+  NEXT I
   IF vg = 1 THEN GOSUB 520
   IF dg = 0 THEN 515
   CIRCLE (x - 8, y - 25), 6, ch, , , 1.5
   PAINT (x - 8, y - 25), ch, ch
-  FOR i = 0 TO 2
-    CIRCLE (x - 9 + i, y - 25), 6, cf, 5, 1, 1.5
-  NEXT i
+  FOR I = 0 TO 2
+    CIRCLE (x - 9 + I, y - 25), 6, cf, 5, 1, 1.5
+  NEXT I
   PSET (x - 3, y - 26), 0
 GOTO 505
 
 515 CIRCLE (x - 9, y - 25), 6, ch, , , 1.5
   PAINT (x - 9, y - 25), ch, ch
-  FOR i = 0 TO 3
-    CIRCLE (x - 9 + i, y - 25), 6, cf, 2.5, 4.5, 1.5
-  NEXT i
+  FOR I = 0 TO 3
+    CIRCLE (x - 9 + I, y - 25), 6, cf, 2.5, 4.5, 1.5
+  NEXT I
   PSET (x - 12, y - 26), 0
 GOTO 505
 
 505
-  FOR i = 1 TO 6200: NEXT i: a$ = "8"
+  FOR I = 1 TO 6200: NEXT I: a$ = "8"
   PUT (x - 30, y - 36), c, PSET
-  IF dg = 1 THEN x = x + 4: f = f + 4 ELSE x = x - 4: f = f - 4
+  IF dg = 1 THEN x = x + 4: F = F + 4 ELSE x = x - 4: F = F - 4
   IF vg = 0 THEN j = j + 0 ELSE j = j - 0
   WINDOW SCREEN (320 - j * 3, 1 + j * 2)-(j * 3, 200 - j * 2)
   IF j > 0 THEN vg = 1
@@ -1087,11 +1099,11 @@ SUB FindNeutralGray (closestColor AS INTEGER)
   closestColor = 0   ' Default to black
   
   ' Loop through palette colors 1-255 (skip 0 which is usually black)
-  FOR i = 1 TO 255
+  FOR I = 1 TO 255
       ' Extract RGB values from long
-      blue = pl(i) \ 65536        ' Get blue component
-      green = (pl(i) \ 256) MOD 256  ' Get green component
-      red = pl(i) MOD 256        ' Get red component
+      blue = pl(I) \ 65536        ' Get blue component
+      green = (pl(I) \ 256) MOD 256  ' Get green component
+      red = pl(I) MOD 256        ' Get red component
       
       ' Calculate luminance difference using standard weights
       colorDiff = ABS(red - targetGray) * .299    ' Red contributes 30%
@@ -1107,9 +1119,9 @@ SUB FindNeutralGray (closestColor AS INTEGER)
       ' If this is closest match so far, save it
       IF colorDiff < closestDiff THEN
           closestDiff = colorDiff
-          closestColor = i
+          closestColor = I
       END IF
-  NEXT i
+  NEXT I
   ' If active palette type is 2, add 16 to closest color
   IF activePalette = 2 THEN
     closestColor = closestColor + 16
@@ -1120,13 +1132,13 @@ END SUB
 SUB InitPalettes ()
     SHARED palettes$(), activePalette AS INTEGER, basicPal() AS LONG
     ' Save current palette values before loading new ones
-    FOR i = 0 TO 255
-        OUT &H3C7, i          ' Tell VGA we want to read color i
+    FOR I = 0 TO 255
+        OUT &H3C7, I          ' Tell VGA we want to read color i
         red = INP(&H3C9)      ' Read red component
         green = INP(&H3C9)    ' Read green component
         blue = INP(&H3C9)     ' Read blue component
-        basicPal(i) = red + (green * 256) + (blue * 65536)
-    NEXT i
+        basicPal(I) = red + (green * 256) + (blue * 65536)
+    NEXT I
     ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
     palettes$(0, 0) = "house2.pal": palettes$(0, 1) = STR$(PALV2)
     palettes$(1, 0) = "SHIP2.pal": palettes$(1, 1) = STR$(PALV2)
@@ -1138,9 +1150,9 @@ END SUB
 SUB LoadPalette ()
     SHARED pl() AS LONG, palettes$(), activePalette AS INTEGER, basicPal() AS LONG
     ' Reset palette to default values
-    FOR i = 1 TO 255
-        PALETTE i, basicPal(i)
-    NEXT i
+    FOR I = 1 TO 255
+        PALETTE I, basicPal(I)
+    NEXT I
     pallet$ = palettes$(activePalette, 0)
     palType = VAL(palettes$(activePalette, 1))
     
@@ -1148,17 +1160,17 @@ SUB LoadPalette ()
     
     IF palType = PALV1 THEN
       'type 1 - loads with offset and early exit on zero
-      FOR i = 1 TO 255 STEP 1
-          INPUT #1, pl(i)              ' Reads each color value
-          IF pl(i) = 0 AND i > 10 THEN i = 255
-          PALETTE i + 16, pl(i)
-      NEXT i
+      FOR I = 1 TO 255 STEP 1
+          INPUT #1, pl(I)              ' Reads each color value
+          IF pl(I) = 0 AND I > 10 THEN I = 255
+          PALETTE I + 16, pl(I)
+      NEXT I
     ELSEIF palType = PALV3 THEN
       CLOSE #1
       bright = 3  ' Brightness multiplier (1 = normal, 2 = twice as bright, etc.)
       OPEN pallet$ FOR BINARY AS #1
       'type 3 - loads RGB bytes individually
-      FOR i = 1 TO 255
+      FOR I = 1 TO 255
         IF EOF(1) THEN EXIT FOR
           red = (ASC(INPUT$(1, #1)) * bright) \ 4     ' Apply brightness before scaling
           IF red > 63 THEN red = 63                    ' Clamp to max brightness
@@ -1166,14 +1178,14 @@ SUB LoadPalette ()
           IF green > 63 THEN green = 63
           blue = (ASC(INPUT$(1, #1)) * bright) \ 4
           IF blue > 63 THEN blue = 63
-          pl(i) = (blue * 65536) + (green * 256) + red
-      NEXT i
+          pl(I) = (blue * 65536) + (green * 256) + red
+      NEXT I
       PALETTE USING pl(0)
     ELSE
       'type 2 - loads all colors and applies at once
-      FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
-          INPUT #1, pl(i)              ' Reads each color value
-      NEXT i
+      FOR I = 1 TO 255 STEP 1          ' Loops through all possible colors
+          INPUT #1, pl(I)              ' Reads each color value
+      NEXT I
       PALETTE USING pl(0)              ' Applies the loaded palette
     END IF
     
@@ -1183,12 +1195,12 @@ SUB LoadPalette ()
     LINE (0, 1)-(360, 6), 0, BF
     
     ' Draw the palette display with 3x2 pixel rectangles
-    FOR i = 1 TO 120
-        LINE (i * 3, 1)-(i * 3 + 2, 2), i, BF      ' Draw top row of colors
-    NEXT i
-    FOR i = 121 TO 255
-        LINE ((i - 120) * 3, 4)-((i - 120) * 3 + 2, 5), i, BF      ' Draw bottom row of colors
-    NEXT i
+    FOR I = 1 TO 120
+        LINE (I * 3, 1)-(I * 3 + 2, 2), I, BF      ' Draw top row of colors
+    NEXT I
+    FOR I = 121 TO 255
+        LINE ((I - 120) * 3, 4)-((I - 120) * 3 + 2, 5), I, BF      ' Draw bottom row of colors
+    NEXT I
 END SUB
 
 SUB Mouse ()
@@ -1196,13 +1208,16 @@ SUB Mouse ()
   SHARED buttons AS INTEGER  ' Current mouse button state
   SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
   SHARED inary() AS INTEGER, outary() AS INTEGER
-  SHARED B, a, f, e$, a() ' Add cursor array and drawing flags
+  SHARED B, a, F, e$, a() ' Add cursor array and drawing flags
   STATIC cursorVisible AS INTEGER  ' Track cursor visibility state
   
   ' Get current mouse position
   inary(ax) = 3
   CALL INT86OLD(BOUSE, inary(), outary())
-  
+
+  ' Button handling with debounce
+  newButtons = outary(bx)
+
   ' Calculate new position
   newB = outary(cx) \ 2
   newA = outary(dx)
@@ -1210,7 +1225,7 @@ SUB Mouse ()
   ' Only update position if mouse has moved
   IF newB <> lastB OR newA <> lastA THEN
     ' Always erase cursor at OLD position if it was visible
-    IF f = 0 AND e$ = "n" AND cursorVisible THEN
+    IF buttons <> 1 AND F = 0 AND e$ = "n" AND cursorVisible THEN
       PUT (B, a), a, XOR
       cursorVisible = 0
     END IF
@@ -1226,7 +1241,7 @@ SUB Mouse ()
     IF a > 199 THEN a = 199
     
     ' Draw cursor at new position
-    IF f = 0 AND e$ = "n" THEN
+    IF buttons <> 1 AND F = 0 AND e$ = "n" THEN
       PUT (B, a), a, XOR
       cursorVisible = -1
     END IF
@@ -1235,13 +1250,13 @@ SUB Mouse ()
     lastB = B
     lastA = a
   END IF
+
+  IF buttons = 1 AND newButtons <> 1 THEN
+    PUT (B, a), a, XOR
+  END IF
+
+  buttons = newButtons
   
-  ' Button handling with debounce
-  bbb = outary(bx)
-  buttons = 0
-  IF bbb = 1 AND blt = 1 THEN buttons = 1: blt = 0  ' Left click
-  IF bbb = 2 AND blt = 1 THEN buttons = 2: blt = 0  ' Right click
-  IF bbb = 0 THEN blt = 1  ' Released
 END SUB
 
 SUB SavePicture (filename$)
@@ -1257,14 +1272,14 @@ SUB SavePicture (filename$)
 
     LOCATE 1, 1
     PRINT filename$;
-    INPUT f$
+    INPUT F$
     
-    IF f$ = "a" OR f$ = "A" THEN
+    IF F$ = "a" OR F$ = "A" THEN
         EXIT SUB
     END IF
     
-    IF f$ <> "" THEN
-        filename$ = f$
+    IF F$ <> "" THEN
+        filename$ = F$
     END IF
     
     'Save screen data
@@ -1286,16 +1301,16 @@ SUB SaveSpecialData (filename$)
     CLOSE
     OPEN filename$ + ".dat" FOR OUTPUT AS #1
     WRITE #1, fit
-    FOR i = 1 TO 5
-        WRITE #1, qa(i), qb(i), x(i), y(i)
-    NEXT i
+    FOR I = 1 TO 5
+        WRITE #1, qa(I), qb(I), x(I), y(I)
+    NEXT I
     WRITE #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
-    FOR i = 1 TO 50
-        WRITE #1, vh$(i)
-    NEXT i
-    FOR i = 1 TO 30
-        WRITE #1, mess$(i), ky$(i), bs(i), CS(i), st(i), df$(i)
-    NEXT i
+    FOR I = 1 TO 50
+        WRITE #1, vh$(I)
+    NEXT I
+    FOR I = 1 TO 30
+        WRITE #1, mess$(I), ky$(I), bs(I), CS(I), st(I), df$(I)
+    NEXT I
     CLOSE
 END SUB
 
