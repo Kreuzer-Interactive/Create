@@ -3,10 +3,32 @@ DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB LoadPalette ()
+DECLARE SUB Mouse()
 
+DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
+
+DEFINT B-C
 DIM SHARED palettes$(10, 1)  ' Up to 10 palettes, with name and type
 DIM SHARED activePalette AS INTEGER
 DIM SHARED basicPal(255) AS LONG
+
+' Mouse tracking
+DIM SHARED lastB, lastA   ' Previous mouse X,Y coordinates
+DIM SHARED buttons AS INTEGER  ' Current mouse button state
+DIM SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
+
+DIM SHARED inary(7) AS INTEGER, outary(7) AS INTEGER
+
+g = 32000
+DIM SHARED stampBuffer(1 TO g) AS INTEGER  ' New array for stamp data
+DIM SHARED c(1 TO 32000) AS INTEGER
+
+' Mouse interrupt constants and variables
+CONST BOUSE = 51 ' Mouse interrupt number
+CONST ax = 0     ' Register indices for INT86
+CONST bx = 1
+CONST cx = 2
+CONST dx = 3
 CONST PALV1 = 1 ' Dream Giver
 CONST PALV2 = 2 ' Space 2
 CONST PALV3 = 3 ' Dark visions 2
@@ -14,16 +36,14 @@ CONST PALV3 = 3 ' Dark visions 2
 initPalettes
 SCREEN 13, 0
 0 ' Must include this to load
-  g = 32000
-  DEFINT B-C
-  DIM c(1 TO g)
   DIM pl(256) AS LONG
   SCREEN 13
   ' End of including
-  fe$ = "n"
+  fe$ = "n" 
+  fr$ = "n"       ' Flag to track if stamp tool is active
+  stampSet = 0    ' Flag to track if stamp data exists
   CLS
 1
-  DIM B(1 TO g)
   DIM h(500): DIM i(500): DIM g(500)
   DIM su(100): DIM sm(100)
   DIM si(100): DIM col(300)
@@ -38,8 +58,15 @@ SCREEN 13, 0
   NEXT i
   
   RANDOMIZE TIMER    ' Initialize random number generator using system timer
-  DEF SEG = 0       ' Set the current segment to the BIOS data area
-  POKE 1047, 32     ' Turns CAPS LOCK ON
+  DEF SEG = 0        ' Set the current segment to the BIOS data area
+  POKE 1047, 32      ' Turns CAPS LOCK ON
+  
+  inary(ax) = 2  ' Initialize mouse
+  CALL INT86OLD(BOUSE, inary(), outary())
+  IF outary(ax) = 0 THEN
+    PRINT "Mouse not available"
+    END
+  END IF
 
 3
   DRAW "bm1,1c50r1"
@@ -60,18 +87,27 @@ SCREEN 13, 0
   'PALETTE 15, 50 + 50 * 65536 + 50 * 256
 
 10
+  oldB = B
+  oldA = a
+  
+  ' Erase old cursor first if needed
+  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+  
   a$ = INKEY$
-  IF a$ <> "" THEN GOTO 16  'Process keyboard input first
-  PEN ON
-  g = PEN(3)
-  IF g = 0 THEN 16
-  xb = B
-  ya = a
-  B = PEN(4)
-  a = PEN(5)
-  IF f <> 0 THEN LINE (xb, ya)-(B, a), f
-
+  ' Get mouse state first
+  CALL Mouse
+  
+  ' Handle mouse movement and buttons
+  IF buttons <> 0 THEN  ' Mouse button pressed
+    xb = lastB
+    ya = lastA
+    IF f <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), f
+  END IF
+  ' Handle keyboard input if any
+  IF a$ <> "" THEN GOTO 16
+  GOTO 10
 16 
+  ' Process keyboard/mouse input
   IF a$ = "-" THEN d = d - 1: IF f <> 0 THEN f = f - 1: DRAW "c=" + VARPTR$(d)
   IF a$ = "=" THEN d = d + 1: IF f <> 0 THEN f = f + 1: DRAW "c=" + VARPTR$(d)
   IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
@@ -80,35 +116,39 @@ SCREEN 13, 0
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   IF a$ <> "" THEN  'Process keyboard input
     IF ASC(a$) = 0 THEN  'Extended key (arrow keys)
+        ' Always erase cursor before moving
+        IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
         SELECT CASE ASC(RIGHT$(a$, 1))
-            CASE 72: a$ = "8"  'Up arrow -> Numpad 8
-            CASE 80: a$ = "2"  'Down arrow -> Numpad 2
-            CASE 75: a$ = "4"  'Left arrow -> Numpad 4
-            CASE 77: a$ = "6"  'Right arrow -> Numpad 6
+            CASE 72: a = a - s  'Up arrow
+            CASE 80: a = a + s  'Down arrow
+            CASE 75: B = B - s  'Left arrow
+            CASE 77: B = B + s  'Right arrow
         END SELECT
+        ' Always draw cursor after moving
+        IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
     END IF
   END IF
 
-  IF a$ = "8" OR a$ = "2" OR a$ = "4" OR a$ = "6" THEN
-    ' Draw line if drawing mode is active
-    IF f <> 0 OR e$ = "y" THEN
-        SELECT CASE a$
-            CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
-            CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
-            CASE "4": DRAW "l=" + VARPTR$(s)  ' Left
-            CASE "6": DRAW "r=" + VARPTR$(s)  ' Right
-        END SELECT
-    END IF
-    
-    ' Move cursor
+  ' Process numpad movement
+  IF a$ = "8" THEN a = a - s  ' Up
+  IF a$ = "2" THEN a = a + s  ' Down
+  IF a$ = "4" THEN B = B - s  ' Left
+  IF a$ = "6" THEN B = B + s  ' Right
+
+  ' Draw lines if in drawing mode
+  IF (f <> 0 OR e$ = "y") AND (a$ = "8" OR a$ = "2" OR a$ = "4" OR a$ = "6") THEN
     SELECT CASE a$
-        CASE "8": a = a - s  ' Up
-        CASE "2": a = a + s  ' Down
-        CASE "4": B = B - s  ' Left
-        CASE "6": B = B + s  ' Right
+        CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
+        CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
+        CASE "4": DRAW "l=" + VARPTR$(s)  ' Left
+        CASE "6": DRAW "r=" + VARPTR$(s)  ' Right
     END SELECT
   END IF
-  If a$ = "[" THEN DrawCanvasBorder
+
+  ' Draw cursor in new position
+  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+
+If a$ = "[" THEN DrawCanvasBorder
 
 IF a$ = "i" THEN
   d = POINT(B, a)
@@ -194,17 +234,28 @@ IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
 IF a$ = "?" THEN GOSUB 184
 45 IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
 50 IF a$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
-IF fr$ = "y" THEN PUT (B, a), B, PSET
+IF fr$ = "y" AND stampSet THEN PUT (B, a), stampBuffer, PSET
 IF a$ = "t" THEN ft = POINT(B, a)
 IF a$ = "y" THEN fy = POINT(B, a)
-IF a$ = "]" THEN IF fr$ = "" THEN fr$ = "y" ELSE fr$ = ""
+IF a$ = "]" THEN 
+    IF stampSet = 0 THEN
+        PRINT "Please capture stamp data with 'g' key first"
+        fr$ = "n"
+    ELSE
+        IF fr$ = "n" THEN 
+            fr$ = "y" 
+        ELSE 
+            fr$ = "n"
+        END IF
+    END IF
+END IF
 IF fe$ = "n" THEN 57
 FOR gf = 0 TO 4
 FOR g = 0 TO 4
 IF POINT(B + gf, a + g) = ft THEN PSET (B + gf, a + g), fy
 NEXT g
 NEXT gf
-57 IF a$ = "<" THEN LOCATE 25, 1: PRINT "Restore image?"; : c$ = INKEY$: IF c$ = "" THEN 57 ELSE IF c$ = "y" THEN PUT (1, 10), c, PSET:  ELSE LOCATE 25, 1: PRINT "                    ";
+57 IF a$ = "<" THEN LOCATE 25, 1: PRINT "Restore image?"; : cc$ = INKEY$: IF cc$ = "" THEN 57 ELSE IF cc$ = "y" THEN PUT (1, 10), c, PSET:  ELSE LOCATE 25, 1: PRINT "                    ";
 55 IF a$ = "g" THEN GOSUB 320
 56 IF a$ = "d" THEN GOSUB 325
 IF a$ = "e" THEN GOSUB 182
@@ -227,7 +278,7 @@ IF a$ = "{" THEN GOSUB 183
 78 IF a$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), d
 80 IF a$ = "u" THEN DRAW "c1": f = 1
 83 IF a$ = "o" THEN GOSUB 101
-IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), B
+IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
 85 IF a$ = CHR$(13) THEN 115
 88 IF a$ = "r" OR a$ = "R" THEN GOSUB 260
 IF a$ = "(" THEN GOSUB 232
@@ -382,8 +433,11 @@ RETURN
 285 'DEF SEG = &HB800
 290 'BLOAD q$ + ".pic", 0: GOTO 10
 300  SIZ = 1: DRAW "c0": IF f <> 0 THEN d = f: f = 4: GOTO 10:  ELSE f = 4: a$ = "": GOTO 10
-320 GET (mz, mx)-(nz, nx), B: RETURN
-325 PUT (B, a), B, OR: RETURN
+320
+  stampSet = -1
+  GET (mz, mx)-(nz, nx), stampBuffer
+RETURN
+325 PUT (B, a), stampBuffer, OR: RETURN
 350 tile$ = ""
 352 FOR i = ft TO fy
 354 tile$ = tile$ + CHR$(i)
@@ -549,21 +603,16 @@ GOTO 621
 
 LoadPictureFullscreen:
     CLS
-    '------- Dream giver loader ---------
-    'GET (2, 2)-(180, 100), c
-    'DEF SEG = VARSEG(c(1))
-    'BLOAD q$ + ".pic", VARPTR(c(1))
-    'GET (184, 3)-(206, 106), h
-    'PUT (5, 5), b, PSET
-    ' GET (5, 5)-(183, 103), c
-    'GOTO 883  
     '------- LOADING OF THE PICTURE -------
     GET (2, 10)-(310, 199), c
     DEF SEG = VARSEG(c(1))
     BLOAD q$ + ".pic", VARPTR(c(1))  ' Actually loads the file
+    
     DEF SEG = 0
     c = 0
     PUT (2, 10), c, PSET         ' Displays the loaded image
+    'PUT (62 + 40 * 0, 173), c(1 + 510 * 2), PSET
+    DisplayImageArray c(), 2, 10
     GOTO 883
 RETURN
 
@@ -737,7 +786,7 @@ GOTO 505
 GOTO 510
 
 SUB SavePicture (filename$)
-    SHARED c(), fca$, fit, qa(), qb(), x(), y()
+    SHARED c() AS  INTEGER, fca$, fit, qa(), qb(), x(), y()
     SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
     
     ' Calculate image size
@@ -915,12 +964,6 @@ SUB LoadPalette ()
           pl(i) = (blue * 65536) + (green * 256) + red
       NEXT i
       PALETTE USING pl(0)
-      ' Write palette to ASCII file, 4 colors per row
-      'OPEN "dv2.pal" FOR OUTPUT AS #2
-      'FOR i = 1 TO 255 STEP 4
-      '    PRINT #2, pl(i); ","; pl(i + 1); ","; pl(i + 2); ","; pl(i + 3)
-      'NEXT i
-      'CLOSE #2
     ELSE
       'type 2 - loads all colors and applies at once
       FOR i = 1 TO 255 STEP 1          ' Loops through all possible colors
@@ -960,4 +1003,125 @@ SUB InitPalettes()
     palettes$(2, 0) = "256colo.pal"  : palettes$(2, 1) = STR$(PALV1)
     palettes$(3, 0) = "DARK.pal"  : palettes$(3, 1) = STR$(PALV3)
     activePalette = 0
+END SUB
+
+SUB Mouse()
+  SHARED lastB, lastA   ' Previous mouse X,Y coordinates
+  SHARED buttons AS INTEGER  ' Current mouse button state
+  SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
+  SHARED inary() AS INTEGER, outary() AS INTEGER
+  SHARED B, a, f, e$, a() ' Add cursor array and drawing flags
+  STATIC cursorVisible AS INTEGER  ' Track cursor visibility state
+  
+  ' Get current mouse position
+  inary(ax) = 3
+  CALL INT86OLD(BOUSE, inary(), outary())
+  
+  ' Calculate new position
+  newB = outary(cx) \ 2
+  newA = outary(dx)
+  
+  ' Only update position if mouse has moved
+  IF newB <> lastB OR newA <> lastA THEN
+    ' Always erase cursor at OLD position if it was visible
+    IF f = 0 AND e$ = "n" AND cursorVisible THEN 
+      PUT (lastB, lastA), a, XOR
+      cursorVisible = 0
+    END IF
+    
+    ' Update to new position
+    B = newB
+    a = newA
+    
+    ' Constrain to screen boundaries
+    IF B < 1 THEN B = 1
+    IF B > 319 THEN B = 319
+    IF a < 1 THEN a = 1
+    IF a > 199 THEN a = 199
+    
+    ' Draw cursor at new position
+    IF f = 0 AND e$ = "n" THEN 
+      PUT (B, a), a, XOR
+      cursorVisible = -1
+    END IF
+    
+    ' Save position for next time
+    lastB = B
+    lastA = a
+  END IF
+  
+  ' Button handling with debounce
+  bbb = outary(bx)
+  buttons = 0
+  IF bbb = 1 AND blt = 1 THEN buttons = 1: blt = 0  ' Left click
+  IF bbb = 2 AND blt = 1 THEN buttons = 2: blt = 0  ' Right click
+  IF bbb = 0 THEN blt = 1  ' Released
+END SUB
+
+
+SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
+  '=============================================================================
+  ' Constants for screen dimensions and layout
+  '=============================================================================
+  CONST SPACING = 4        ' Pixels between displayed images
+  CONST SCREEN_WIDTH = 320 ' Mode 13h screen width in pixels
+  CONST SCREEN_HEIGHT = 200 ' Mode 13h screen height in pixels
+  
+  '=============================================================================
+  ' Initialize position tracking variables
+  '=============================================================================
+  currentX = startX        ' Current X position for image placement
+  currentY = startY        ' Current Y position for image placement 
+  maxHeightInRow = 0       ' Tracks tallest image in current row
+  imageIndex = 1           ' Index into image array
+  
+  '=============================================================================
+  ' Main image display loop
+  '=============================================================================
+  DO WHILE imageIndex < UBOUND(imageArray)
+    ' Get image width from header (stored as bytes, convert to pixels)
+    pixelWidth = imageArray(imageIndex) \ 8
+    
+    ' Skip invalid images
+    IF pixelWidth = 0 THEN
+      imageIndex = imageIndex + 1
+      GOTO LoopEnd
+    END IF
+    
+    ' Read remaining header info
+    height = imageArray(imageIndex + 1)     ' Image height in pixels
+    dataStart = imageArray(imageIndex + 3)   ' Offset to image data
+    
+    ' Move to next row if current image won't fit
+    IF currentX + pixelWidth > SCREEN_WIDTH THEN
+      currentX = startX
+      currentY = currentY + maxHeightInRow + SPACING
+      maxHeightInRow = 0
+    END IF
+    
+    ' Stop if we've run out of vertical space
+    IF currentY + height > SCREEN_HEIGHT THEN EXIT DO
+    
+    ' Display the image and draw border
+    PUT (currentX, currentY), imageArray(imageIndex), PSET
+    LINE (currentX - 1, currentY - 1)-(currentX + pixelWidth, currentY + height), 15, B
+    
+    ' Update position and row height tracking
+    currentX = currentX + pixelWidth + SPACING
+    IF height > maxHeightInRow THEN maxHeightInRow = height
+    
+    ' Calculate next image position in array:
+    ' Skip header (3 words) plus image data size in words
+    imageSize = 3 + ((pixelWidth * height + 1) \ 2)
+    imageIndex = imageIndex + imageSize
+    
+    ' Position debug output
+    LOCATE 10, 1
+      'PRINT "Found image: "; pixelWidth; "x"; height; " at index "; imageIndex; "   "
+LoopEnd:
+  LOOP
+  
+  ' Display final count
+  ' LOCATE 2, 1
+  'PRINT "Total images displayed: "; imageIndex; "   "
 END SUB
