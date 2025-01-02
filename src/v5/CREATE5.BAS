@@ -5,7 +5,6 @@ DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB LoadPalette ()
 DECLARE SUB Mouse ()
-DECLARE SUB SetMousePosition (x AS INTEGER, y AS INTEGER)
 
 DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
 
@@ -23,7 +22,7 @@ DIM SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
 DIM SHARED inary(7) AS INTEGER, outary(7) AS INTEGER
 
 g = 32000
-DIM SHARED stampBuffer(1 TO g) AS INTEGER  ' New array for stamp data
+DIM SHARED stampBuffer() AS INTEGER  ' New array for stamp data
 DIM SHARED c() AS INTEGER
 DIM SHARED fca AS STRING
 DIM SHARED fit AS INTEGER
@@ -42,7 +41,8 @@ CONST PALV3 = 3 ' Dark visions 2
 
 InitPalettes
 SCREEN 13, 0
-REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
+REDIM c(1 TO g) AS INTEGER
+REDIM stampBuffer(1 TO g) AS INTEGER
 0 ' Must include this to load
   
   SCREEN 13
@@ -163,9 +163,6 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
       ' Always draw cursor after moving
       PUT (B, a), a, XOR
     END IF
-
-
-    ' SetMousePosition B, INT(a)
   END IF
 
   IF a$ = "-" THEN DrawCanvasBorder
@@ -1327,13 +1324,3 @@ SUB SaveSpecialData (filename$)
     NEXT I
     CLOSE
 END SUB
-
-SUB SetMousePosition (x AS INTEGER, y AS INTEGER)
-    SHARED inary() AS INTEGER, outary() AS INTEGER
-    ' Set current mouse position
-    inary(ax) = 4
-    inary(cx) = x
-    inary(dx) = y
-    CALL INT86OLD(BOUSE, inary(), outary())
-END SUB
-
