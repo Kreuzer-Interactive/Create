@@ -115,8 +115,8 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   ' Process keyboard/mouse input
   IF a$ = "-" THEN d = d - 1: IF f <> 0 THEN f = f - 1: DRAW "c=" + VARPTR$(d)
   IF a$ = "=" THEN d = d + 1: IF f <> 0 THEN f = f + 1: DRAW "c=" + VARPTR$(d)
-  'IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
-  'IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
+  IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
+  IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   IF a$ <> "" THEN  'Process keyboard input
@@ -124,10 +124,10 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
         ' Always erase cursor before moving
         IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
         SELECT CASE ASC(RIGHT$(a$, 1))
-            CASE 72: a = a - s  'Up arrow
-            CASE 80: a = a + s  'Down arrow
-            CASE 75: B = B - s  'Left arrow
-            CASE 77: B = B + s  'Right arrow
+            CASE 72: a$ = "8"  'Up arrow
+            CASE 80: a$ = "2"  'Down arrow
+            CASE 75: a$ = "4"  'Left arrow
+            CASE 77: a$ = "6"  'Right arrow
         END SELECT
         ' Always draw cursor after moving
         IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
