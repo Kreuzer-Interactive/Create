@@ -232,8 +232,6 @@ SCREEN 13, 0
 
   IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
   
-  IF a$ = "?" THEN GOSUB ZoomAnimation
-  
   IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
   
   IF a$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
@@ -510,27 +508,6 @@ RETURN
       IF POINT(d, i) <> 0 THEN PSET (d, i), 15
     NEXT d
   NEXT i
-RETURN
-
-ZoomAnimation:
-  ' This subroutine creates a zoom animation effect by:
-  ' 1. Taking a rectangular region defined by points (mz,mx) to (nz,nx)
-  ' 2. Gradually scaling it up from 0.1x to 4x size in 0.15 increments
-  ' 3. For each scale factor (mel):
-  '    - Copies each pixel from the source region
-  '    - Draws it as a filled box scaled by mel
-  '    - Box position is offset by (1,120) pixels
-  '    - Box size is mel-0.9 pixels
-  ' 4. Finally clears the animation area by drawing a black rectangle
-  '    from (1,110) to (320,200)
-  FOR mel = .1 TO 4 STEP .15
-    FOR axc = mx TO nx STEP 1
-      FOR ixc = mz TO nz STEP 1
-        LINE (1 + (ixc - mz) * mel, 120 + (axc - mx) * mel)-(1 + (ixc - mz) * mel - (mel - .9), 120 + (axc - mx) * mel - (mel - .9)), POINT(ixc, axc), BF
-      NEXT ixc
-    NEXT axc
-  NEXT mel
-  LINE (1, 110)-(320, 200), 0, BF
 RETURN
 
 185
