@@ -1,9 +1,11 @@
+DECLARE SUB InitPalettes ()
 DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB LoadPalette ()
-DECLARE SUB Mouse()
+DECLARE SUB Mouse ()
+DECLARE SUB SetMousePosition (x AS INTEGER, y AS INTEGER)
 
 DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
 
@@ -38,14 +40,14 @@ CONST PALV1 = 1 ' Dream Giver
 CONST PALV2 = 2 ' Space 2
 CONST PALV3 = 3 ' Dark visions 2
 
-initPalettes
+InitPalettes
 SCREEN 13, 0
 REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 0 ' Must include this to load
   
   SCREEN 13
   ' End of including
-  fe$ = "n" 
+  fe$ = "n"
   fr$ = "n"       ' Flag to track if stamp tool is active
   stampSet = 0    ' Flag to track if stamp data exists
   CLS
@@ -95,29 +97,26 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 10
   oldB = B
   oldA = a
-  
-  ' Erase old cursor first if needed
-  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
-  
+
   a$ = INKEY$
   ' Get mouse state first
   CALL Mouse
   
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
-    xb = lastB
-    ya = lastA
-    IF f <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), f
+     xb = lastB
+     ya = lastA
+     IF f <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), f
   END IF
   ' Handle keyboard input if any
   IF a$ <> "" THEN GOTO 16
   GOTO 10
-16 
+16
   ' Process keyboard/mouse input
   IF a$ = "-" THEN d = d - 1: IF f <> 0 THEN f = f - 1: DRAW "c=" + VARPTR$(d)
   IF a$ = "=" THEN d = d + 1: IF f <> 0 THEN f = f + 1: DRAW "c=" + VARPTR$(d)
-  IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
-  IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
+  'IF fd <> d THEN LINE (206, 1)-(209, 3), d, BF: fd = d: LINE (B, a)-(B, a), POINT(B, a)
+  'IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   IF a$ <> "" THEN  'Process keyboard input
@@ -151,10 +150,19 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
     END SELECT
   END IF
 
-  ' Draw cursor in new position
-  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+  IF oldB <> B OR oldA <> a THEN
 
-  If a$ = "[" THEN DrawCanvasBorder
+    ' SetMousePosition B, INT(a)
+
+    ' Erase old cursor first if needed
+    'PUT (oldB, oldA), a, XOR
+
+
+    ' Draw cursor in new position
+    'PUT (B, a), a, XOR
+  END IF
+
+  IF a$ = "[" THEN DrawCanvasBorder
 
   IF a$ = "i" THEN
     d = POINT(B, a)
@@ -163,7 +171,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   IF a$ = "." THEN
     IF SIZ = 0 THEN
       GOTO EnterLargeCursorMode
-    ELSE 
+    ELSE
       SIZ = 0
       f = d: DRAW "c=" + VARPTR$(f)
       a$ = "5"
@@ -230,7 +238,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
 
   IF a$ = "`" THEN GOSUB TextInputMode
   
-  IF a$ = "p" OR a$ = "P" THEN 
+  IF a$ = "p" OR a$ = "P" THEN
     activePalette = (activePalette + 1) MOD 4  ' Cycles through palettes 0-3
     LoadPalette
     DrawCanvasBorder
@@ -248,15 +256,15 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   
   IF a$ = "y" THEN fy = POINT(B, a)
   
-  IF a$ = "]" THEN 
+  IF a$ = "]" THEN
     IF stampSet = 0 THEN
         LOCATE 25, 1
         PRINT "Capture stamp first with 'g' key";
         fr$ = "n"
     ELSE
-        IF fr$ = "n" THEN 
-            fr$ = "y" 
-        ELSE 
+        IF fr$ = "n" THEN
+            fr$ = "y"
+        ELSE
             fr$ = "n"
         END IF
     END IF
@@ -307,7 +315,7 @@ REDIM c(1 TO g) AS INTEGER  ' Allocate when needed
   
   IF SIZ = 1 THEN 70
   
-  61
+61
   ' Handle toggling drawing mode with '5' key
   IF a$ = "5" THEN
     IF f <> 0 THEN
@@ -429,7 +437,7 @@ ScaleAndDrawRegion:
   '   - Draws scaled pixel as filled box at new position
   ' Orientations (gk):
   '   1 = Normal
-  '   2 = Flipped horizontally and vertically  
+  '   2 = Flipped horizontally and vertically
   '   3 = Flipped vertically
   '   4 = Flipped horizontally
   ' Returns if drawing goes past bottom edge (y>200)
@@ -455,7 +463,7 @@ ScaleAndDrawRegion:
           y2 = y1 - (mel - .9)
           
         CASE 3 ' Flipped vertically
-          x1 = 1 + (ixc - mz) * mel  
+          x1 = 1 + (ixc - mz) * mel
           y1 = 180 - (axc - mx) * mel
           x2 = x1 - (mel - .9)
           y2 = y1 - (mel - .9)
@@ -463,7 +471,7 @@ ScaleAndDrawRegion:
         CASE 1 ' Normal orientation
           x1 = 1 + (ixc - mz) * mel
           y1 = 120 + (axc - mx) * mel
-          x2 = x1 - (mel - .9) 
+          x2 = x1 - (mel - .9)
           y2 = y1 - (mel - .9)
           
         CASE 4 ' Flipped horizontally
@@ -521,7 +529,7 @@ RETURN
   x(i) = B: y(i) = a
 RETURN
 
-200 
+200
   IF B > 319 THEN B = 319
   IF B < 1 THEN B = 1
   IF a < 1 THEN a = 1
@@ -535,14 +543,14 @@ TextInputMode:
   ' - Type characters at the cursor position
   ' - Exit with the ` key
   '
-  ' The cursor position is converted from pixel coordinates (a,B) 
+  ' The cursor position is converted from pixel coordinates (a,B)
   ' to character coordinates by dividing by 8 since each character
   ' cell is 8x8 pixels. The cursor is shown as a "." that gets
   ' replaced by typed characters.
   '
   ' Controls:
   ' 8 - Move cursor up
-  ' 4 - Move cursor left 
+  ' 4 - Move cursor left
   ' 6 - Move cursor right
   ' 2 - Move cursor down
   ' ` - Exit text input mode
@@ -783,7 +791,7 @@ LoadPictureFullscreen:
 RETURN
 
 LoadPicturePositioned:
-    print "LoadPicturePositioned"
+    PRINT "LoadPicturePositioned"
     CLS
     '------- LOADING OF THE PICTURE -------
     GET (2, 10)-(310, 199), c
@@ -856,7 +864,7 @@ RETURN
   NEXT i
 GOTO 405
 
-415 
+415
   CIRCLE (x - 5, y - 25), 6, cf, , , 1.5
   PAINT (x - 5, y - 25), cf, cf
   FOR i = 0 TO 3
@@ -951,100 +959,71 @@ GOTO 505
   IF j < -120 OR x < 34 THEN WINDOW SCREEN (1, 1)-(320, 200): RETURN
 GOTO 510
 
-
-
-SUB SavePicture (filename$)
-    SHARED c() AS INTEGER, fca AS STRING, fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
-    SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
+SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
+  '=============================================================================
+  ' Constants for screen dimensions and layout
+  '=============================================================================
+  CONST SPACING = 4        ' Pixels between displayed images
+  CONST SCREEN_WIDTH = 320 ' Mode 13h screen width in pixels
+  CONST SCREEN_HEIGHT = 200 ' Mode 13h screen height in pixels
+  
+  '=============================================================================
+  ' Initialize position tracking variables
+  '=============================================================================
+  currentX = startX        ' Current X position for image placement
+  currentY = startY        ' Current Y position for image placement
+  maxHeightInRow = 0       ' Tracks tallest image in current row
+  imageIndex = 1           ' Index into image array
+  
+  '=============================================================================
+  ' Main image display loop
+  '=============================================================================
+  DO WHILE imageIndex < UBOUND(imageArray)
+    ' Get image width from header (stored as bytes, convert to pixels)
+    pixelWidth = imageArray(imageIndex) \ 8
     
-    ' Calculate image size
-    ' Add 1 to include both start and end coordinates
-    imageWidth = 309    ' (310 - 2 + 1) pixels wide
-    imageHeight = 189   ' (198 - 10 + 1) pixels high
-    headerSize = 8      ' GET/PUT overhead bytes
-    imageBytes = (imageWidth * imageHeight) + headerSize
-
-    LOCATE 1, 1
-    PRINT filename$;
-    INPUT f$
-    
-    IF f$ = "a" OR f$ = "A" THEN 
-        EXIT SUB
+    ' Skip invalid images
+    IF pixelWidth = 0 THEN
+      imageIndex = imageIndex + 1
+      GOTO LoopEnd
     END IF
     
-    IF f$ <> "" THEN 
-        filename$ = f$
+    ' Read remaining header info
+    height = imageArray(imageIndex + 1)     ' Image height in pixels
+    dataStart = imageArray(imageIndex + 3)   ' Offset to image data
+    
+    ' Move to next row if current image won't fit
+    IF currentX + pixelWidth > SCREEN_WIDTH THEN
+      currentX = startX
+      currentY = currentY + maxHeightInRow + SPACING
+      maxHeightInRow = 0
     END IF
     
-    'Save screen data
-    GET (2, 10)-(310, 198), c
-    DEF SEG = VARSEG(c(1))
-    BSAVE filename$ + ".pic", VARPTR(c(1)), imageBytes
-    DEF SEG
+    ' Stop if we've run out of vertical space
+    IF currentY + height > SCREEN_HEIGHT THEN EXIT DO
     
-    'Save special data if needed
-    IF fca = "c" THEN SaveSpecialData filename$
+    ' Display the image and draw border
+    PUT (currentX, currentY), imageArray(imageIndex), PSET
+    LINE (currentX - 1, currentY - 1)-(currentX + pixelWidth, currentY + height), 15, B
     
-    CLOSE
-END SUB
-
-SUB SaveSpecialData (filename$)
-    SHARED fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
-    SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
+    ' Update position and row height tracking
+    currentX = currentX + pixelWidth + SPACING
+    IF height > maxHeightInRow THEN maxHeightInRow = height
     
-    CLOSE
-    OPEN filename$ + ".dat" FOR OUTPUT AS #1
-    WRITE #1, fit
-    FOR i = 1 TO 5
-        WRITE #1, qa(i), qb(i), x(i), y(i)
-    NEXT i
-    WRITE #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
-    FOR i = 1 TO 50
-        WRITE #1, vh$(i)
-    NEXT i
-    FOR i = 1 TO 30
-        WRITE #1, mess$(i), ky$(i), bs(i), CS(i), st(i), df$(i)
-    NEXT i
-    CLOSE
-END SUB
-
-SUB FindNeutralGray (closestColor AS INTEGER)
-  SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
+    ' Calculate next image position in array:
+    ' Skip header (3 words) plus image data size in words
+    imageSize = 3 + ((pixelWidth * height + 1) \ 2)
+    imageIndex = imageIndex + imageSize
+    
+    ' Position debug output
+    LOCATE 10, 1
+      'PRINT "Found image: "; pixelWidth; "x"; height; " at index "; imageIndex; "   "
+LoopEnd:
+  LOOP
   
-  ' Target values for 50% gray (all RGB components = 32)
-  targetGray = 32
-  
-  closestDiff = 999  ' Start with large number
-  closestColor = 0   ' Default to black
-  
-  ' Loop through palette colors 1-255 (skip 0 which is usually black)
-  FOR i = 1 TO 255
-      ' Extract RGB values from long
-      blue = pl(i) \ 65536        ' Get blue component
-      green = (pl(i) \ 256) MOD 256  ' Get green component
-      red = pl(i) MOD 256        ' Get red component
-      
-      ' Calculate luminance difference using standard weights
-      colorDiff = ABS(red - targetGray) * .299    ' Red contributes 30%
-      colorDiff = colorDiff + ABS(green - targetGray) * .587  ' Green contributes 59%
-      colorDiff = colorDiff + ABS(blue - targetGray) * .114   ' Blue contributes 11%
-      
-      ' Add penalty for colors where R,G,B are very different from each other
-      rgDiff = ABS(red - green)
-      gbDiff = ABS(green - blue)
-      rbDiff = ABS(red - blue)
-      colorDiff = colorDiff + (rgDiff + gbDiff + rbDiff) / 3  ' Increased penalty
-      
-      ' If this is closest match so far, save it
-      IF colorDiff < closestDiff THEN
-          closestDiff = colorDiff
-          closestColor = i
-      END IF
-  NEXT i
-  ' If active palette type is 2, add 16 to closest color
-  IF activePalette = 2 THEN
-    closestColor = closestColor + 16
-  END IF
+  ' Display final count
+  ' LOCATE 2, 1
+  'PRINT "Total images displayed: "; imageIndex; "   "
 END SUB
 
 SUB DrawCanvasBorder ()
@@ -1096,6 +1075,64 @@ SUB DrawCanvasBorder ()
   
   ' Right
   LINE (right + 1, midY - markLength)-(right + 1, midY + markLength), grayColor
+END SUB
+
+SUB FindNeutralGray (closestColor AS INTEGER)
+  SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
+  
+  ' Target values for 50% gray (all RGB components = 32)
+  targetGray = 32
+  
+  closestDiff = 999  ' Start with large number
+  closestColor = 0   ' Default to black
+  
+  ' Loop through palette colors 1-255 (skip 0 which is usually black)
+  FOR i = 1 TO 255
+      ' Extract RGB values from long
+      blue = pl(i) \ 65536        ' Get blue component
+      green = (pl(i) \ 256) MOD 256  ' Get green component
+      red = pl(i) MOD 256        ' Get red component
+      
+      ' Calculate luminance difference using standard weights
+      colorDiff = ABS(red - targetGray) * .299    ' Red contributes 30%
+      colorDiff = colorDiff + ABS(green - targetGray) * .587  ' Green contributes 59%
+      colorDiff = colorDiff + ABS(blue - targetGray) * .114   ' Blue contributes 11%
+      
+      ' Add penalty for colors where R,G,B are very different from each other
+      rgDiff = ABS(red - green)
+      gbDiff = ABS(green - blue)
+      rbDiff = ABS(red - blue)
+      colorDiff = colorDiff + (rgDiff + gbDiff + rbDiff) / 3  ' Increased penalty
+      
+      ' If this is closest match so far, save it
+      IF colorDiff < closestDiff THEN
+          closestDiff = colorDiff
+          closestColor = i
+      END IF
+  NEXT i
+  ' If active palette type is 2, add 16 to closest color
+  IF activePalette = 2 THEN
+    closestColor = closestColor + 16
+  END IF
+END SUB
+
+' Initialize palette configurations
+SUB InitPalettes ()
+    SHARED palettes$(), activePalette AS INTEGER, basicPal() AS LONG
+    ' Save current palette values before loading new ones
+    FOR i = 0 TO 255
+        OUT &H3C7, i          ' Tell VGA we want to read color i
+        red = INP(&H3C9)      ' Read red component
+        green = INP(&H3C9)    ' Read green component
+        blue = INP(&H3C9)     ' Read blue component
+        basicPal(i) = red + (green * 256) + (blue * 65536)
+    NEXT i
+    ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
+    palettes$(0, 0) = "house2.pal": palettes$(0, 1) = STR$(PALV2)
+    palettes$(1, 0) = "SHIP2.pal": palettes$(1, 1) = STR$(PALV2)
+    palettes$(2, 0) = "256colo.pal": palettes$(2, 1) = STR$(PALV1)
+    palettes$(3, 0) = "DARK.pal": palettes$(3, 1) = STR$(PALV3)
+    activePalette = 0
 END SUB
 
 SUB LoadPalette ()
@@ -1154,26 +1191,7 @@ SUB LoadPalette ()
     NEXT i
 END SUB
 
-' Initialize palette configurations
-SUB InitPalettes()
-    SHARED palettes$(), activePalette AS INTEGER, basicPal() AS LONG
-    ' Save current palette values before loading new ones
-    FOR i = 0 TO 255
-        OUT &H3C7, i          ' Tell VGA we want to read color i
-        red = INP(&H3C9)      ' Read red component
-        green = INP(&H3C9)    ' Read green component
-        blue = INP(&H3C9)     ' Read blue component
-        basicPal(i) = red + (green * 256) + (blue * 65536)
-    NEXT i
-    ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
-    palettes$(0, 0) = "house2.pal"  : palettes$(0, 1) = STR$(PALv2)
-    palettes$(1, 0) = "SHIP2.pal"  : palettes$(1, 1) = STR$(PALV2)
-    palettes$(2, 0) = "256colo.pal"  : palettes$(2, 1) = STR$(PALV1)
-    palettes$(3, 0) = "DARK.pal"  : palettes$(3, 1) = STR$(PALV3)
-    activePalette = 0
-END SUB
-
-SUB Mouse()
+SUB Mouse ()
   SHARED lastB, lastA   ' Previous mouse X,Y coordinates
   SHARED buttons AS INTEGER  ' Current mouse button state
   SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
@@ -1192,8 +1210,8 @@ SUB Mouse()
   ' Only update position if mouse has moved
   IF newB <> lastB OR newA <> lastA THEN
     ' Always erase cursor at OLD position if it was visible
-    IF f = 0 AND e$ = "n" AND cursorVisible THEN 
-      PUT (lastB, lastA), a, XOR
+    IF f = 0 AND e$ = "n" AND cursorVisible THEN
+      PUT (B, a), a, XOR
       cursorVisible = 0
     END IF
     
@@ -1208,7 +1226,7 @@ SUB Mouse()
     IF a > 199 THEN a = 199
     
     ' Draw cursor at new position
-    IF f = 0 AND e$ = "n" THEN 
+    IF f = 0 AND e$ = "n" THEN
       PUT (B, a), a, XOR
       cursorVisible = -1
     END IF
@@ -1226,70 +1244,67 @@ SUB Mouse()
   IF bbb = 0 THEN blt = 1  ' Released
 END SUB
 
+SUB SavePicture (filename$)
+    SHARED c() AS INTEGER, fca AS STRING, fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
+    SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
+    
+    ' Calculate image size
+    ' Add 1 to include both start and end coordinates
+    imageWidth = 309    ' (310 - 2 + 1) pixels wide
+    imageHeight = 189   ' (198 - 10 + 1) pixels high
+    headerSize = 8      ' GET/PUT overhead bytes
+    imageBytes = (imageWidth * imageHeight) + headerSize
 
-SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
-  '=============================================================================
-  ' Constants for screen dimensions and layout
-  '=============================================================================
-  CONST SPACING = 4        ' Pixels between displayed images
-  CONST SCREEN_WIDTH = 320 ' Mode 13h screen width in pixels
-  CONST SCREEN_HEIGHT = 200 ' Mode 13h screen height in pixels
-  
-  '=============================================================================
-  ' Initialize position tracking variables
-  '=============================================================================
-  currentX = startX        ' Current X position for image placement
-  currentY = startY        ' Current Y position for image placement 
-  maxHeightInRow = 0       ' Tracks tallest image in current row
-  imageIndex = 1           ' Index into image array
-  
-  '=============================================================================
-  ' Main image display loop
-  '=============================================================================
-  DO WHILE imageIndex < UBOUND(imageArray)
-    ' Get image width from header (stored as bytes, convert to pixels)
-    pixelWidth = imageArray(imageIndex) \ 8
+    LOCATE 1, 1
+    PRINT filename$;
+    INPUT f$
     
-    ' Skip invalid images
-    IF pixelWidth = 0 THEN
-      imageIndex = imageIndex + 1
-      GOTO LoopEnd
+    IF f$ = "a" OR f$ = "A" THEN
+        EXIT SUB
     END IF
     
-    ' Read remaining header info
-    height = imageArray(imageIndex + 1)     ' Image height in pixels
-    dataStart = imageArray(imageIndex + 3)   ' Offset to image data
-    
-    ' Move to next row if current image won't fit
-    IF currentX + pixelWidth > SCREEN_WIDTH THEN
-      currentX = startX
-      currentY = currentY + maxHeightInRow + SPACING
-      maxHeightInRow = 0
+    IF f$ <> "" THEN
+        filename$ = f$
     END IF
     
-    ' Stop if we've run out of vertical space
-    IF currentY + height > SCREEN_HEIGHT THEN EXIT DO
+    'Save screen data
+    GET (2, 10)-(310, 198), c
+    DEF SEG = VARSEG(c(1))
+    BSAVE filename$ + ".pic", VARPTR(c(1)), imageBytes
+    DEF SEG
     
-    ' Display the image and draw border
-    PUT (currentX, currentY), imageArray(imageIndex), PSET
-    LINE (currentX - 1, currentY - 1)-(currentX + pixelWidth, currentY + height), 15, B
+    'Save special data if needed
+    IF fca = "c" THEN SaveSpecialData filename$
     
-    ' Update position and row height tracking
-    currentX = currentX + pixelWidth + SPACING
-    IF height > maxHeightInRow THEN maxHeightInRow = height
-    
-    ' Calculate next image position in array:
-    ' Skip header (3 words) plus image data size in words
-    imageSize = 3 + ((pixelWidth * height + 1) \ 2)
-    imageIndex = imageIndex + imageSize
-    
-    ' Position debug output
-    LOCATE 10, 1
-      'PRINT "Found image: "; pixelWidth; "x"; height; " at index "; imageIndex; "   "
-LoopEnd:
-  LOOP
-  
-  ' Display final count
-  ' LOCATE 2, 1
-  'PRINT "Total images displayed: "; imageIndex; "   "
+    CLOSE
 END SUB
+
+SUB SaveSpecialData (filename$)
+    SHARED fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
+    SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
+    
+    CLOSE
+    OPEN filename$ + ".dat" FOR OUTPUT AS #1
+    WRITE #1, fit
+    FOR i = 1 TO 5
+        WRITE #1, qa(i), qb(i), x(i), y(i)
+    NEXT i
+    WRITE #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
+    FOR i = 1 TO 50
+        WRITE #1, vh$(i)
+    NEXT i
+    FOR i = 1 TO 30
+        WRITE #1, mess$(i), ky$(i), bs(i), CS(i), st(i), df$(i)
+    NEXT i
+    CLOSE
+END SUB
+
+SUB SetMousePosition (x AS INTEGER, y AS INTEGER)
+    SHARED inary() AS INTEGER, outary() AS INTEGER
+    ' Set current mouse position
+    inary(ax) = 4
+    inary(cx) = x
+    inary(dx) = y
+    CALL INT86OLD(BOUSE, inary(), outary())
+END SUB
+
