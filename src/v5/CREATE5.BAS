@@ -39,7 +39,6 @@ CONST PALV1 = 1 ' Dream Giver
 CONST PALV2 = 2 ' Space 2
 CONST PALV3 = 3 ' Dark visions 2
 
-InitPalettes
 SCREEN 13, 0
 REDIM c(1 TO g) AS INTEGER
 REDIM stampBuffer(1 TO g) AS INTEGER
@@ -60,6 +59,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   DIM CS(31): DIM bs(31): DIM mess$(31)
   DIM ky$(31): DIM df$(31)
   DIM st(31): DIM vh$(50)
+  InitPalettes
   
   FOR I = 1 TO 50
     vh$(I) = "                                                                               "
@@ -185,6 +185,24 @@ REDIM stampBuffer(1 TO g) AS INTEGER
     LINE (B, a)-(B, a), POINT(B, a)
 
     DRAW "c=" + VARPTR$(d)
+  END IF
+
+  IF a$ = ";" THEN
+    PUT (B, a), a, XOR
+    ' Get color at current cursor position
+    colorAtCursor = POINT(B, a)
+    ' Calculate palette position (row and column)
+    IF colorAtCursor <= 120 THEN
+      row = 1
+      column = colorAtCursor
+    ELSE
+      row = 2
+      column = colorAtCursor - 120
+    END IF
+    ' Display color information
+    LOCATE 25, 1
+    PRINT USING "Color ###/255 (Row #, Column ##)"; colorAtCursor; row; column; 
+    PUT (B, a), a, XOR
   END IF
 
   IF a$ = "." THEN
@@ -805,7 +823,10 @@ LoadPictureFullscreen:
     c = 0
     PUT (2, 10), c, PSET         ' Displays the loaded image
     'PUT (62 + 40 * 0, 173), c(1 + 510 * 2), PSET
-    DisplayImageArray c(), 2, 10
+    ' Only call DisplayImageArray for non-type 3 palettes
+    IF VAL(palettes$(activePalette, 1)) = PALV3 THEN
+      DisplayImageArray c(), 2, 10
+    END IF
     GOTO 883
 RETURN
 
@@ -1139,13 +1160,15 @@ END SUB
 SUB InitPalettes ()
     SHARED palettes$(), activePalette AS INTEGER, basicPal() AS LONG
     ' Save current palette values before loading new ones
-    FOR I = 0 TO 255
-        OUT &H3C7, I          ' Tell VGA we want to read color i
-        red = INP(&H3C9)      ' Read red component
-        green = INP(&H3C9)    ' Read green component
-        blue = INP(&H3C9)     ' Read blue component
-        basicPal(I) = red + (green * 256) + (blue * 65536)
-    NEXT I
+    FOR i = 0 TO 255
+      OUT &H3C7, I          ' Tell VGA we want to read color i
+      ' Add a small delay to allow VGA to prepare data
+      FOR delay = 1 TO 10: NEXT delay
+      red = INP(&H3C9)      ' Read red component
+      green = INP(&H3C9)    ' Read green component
+      blue = INP(&H3C9)     ' Read blue component
+      basicPal(i) = red + (green * 256) + (blue * 65536)
+    NEXT i
     ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
     palettes$(0, 0) = "house2.pal": palettes$(0, 1) = STR$(PALV2)
     palettes$(1, 0) = "SHIP2.pal": palettes$(1, 1) = STR$(PALV2)
@@ -1157,21 +1180,23 @@ END SUB
 SUB LoadPalette ()
     SHARED pl() AS LONG, palettes$(), activePalette AS INTEGER, basicPal() AS LONG
     ' Reset palette to default values
-    FOR I = 1 TO 255
-        PALETTE I, basicPal(I)
-    NEXT I
+    FOR i = 1 TO 255
+      PALETTE i, basicPal(i)
+    NEXT i
     pallet$ = palettes$(activePalette, 0)
     palType = VAL(palettes$(activePalette, 1))
     
     OPEN pallet$ FOR INPUT AS #1     ' Opens the palette file
     
     IF palType = PALV1 THEN
+      dim tmp as LONG
       'type 1 - loads with offset and early exit on zero
-      FOR I = 1 TO 255 STEP 1
-          INPUT #1, pl(I)              ' Reads each color value
-          IF pl(I) = 0 AND I > 10 THEN I = 255
-          PALETTE I + 16, pl(I)
-      NEXT I
+      FOR i = 1 TO 255 STEP 1
+        INPUT #1, tmp
+        pl(i) = tmp            ' Reads each color value
+        IF tmp = 0 AND i > 10 THEN i = 255
+        PALETTE i + 16, tmp
+      NEXT i
     ELSEIF palType = PALV3 THEN
       CLOSE #1
       bright = 3  ' Brightness multiplier (1 = normal, 2 = twice as bright, etc.)
