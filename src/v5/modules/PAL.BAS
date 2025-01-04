@@ -128,3 +128,43 @@ FUNCTION GetPaletteFile$(list$, index%)
     IF commaPos% = 0 THEN commaPos% = LEN(list$)
     GetPaletteFile$ = LEFT$(list$, commaPos% - 1)
 END FUNCTION
+
+SUB FindNeutralGray (closestColor AS INTEGER)
+  SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
+  
+  ' Target values for 50% gray (all RGB components = 32)
+  targetGray = 32
+  
+  closestDiff = 999  ' Start with large number
+  closestColor = 0   ' Default to black
+  
+  ' Loop through palette colors 1-255 (skip 0 which is usually black)
+  FOR I = 1 TO 255
+    ' Extract RGB values from long
+    blue = pl(I) \ 65536        ' Get blue component
+    green = (pl(I) \ 256) MOD 256  ' Get green component
+    red = pl(I) MOD 256        ' Get red component
+    
+    ' Calculate luminance difference using standard weights
+    colorDiff = ABS(red - targetGray) * .299    ' Red contributes 30%
+    colorDiff = colorDiff + ABS(green - targetGray) * .587  ' Green contributes 59%
+    colorDiff = colorDiff + ABS(blue - targetGray) * .114   ' Blue contributes 11%
+    
+    ' Add penalty for colors where R,G,B are very different from each other
+    rgDiff = ABS(red - green)
+    gbDiff = ABS(green - blue)
+    rbDiff = ABS(red - blue)
+    colorDiff = colorDiff + (rgDiff + gbDiff + rbDiff) / 3  ' Increased penalty
+    
+    ' If this is closest match so far, save it
+    IF colorDiff < closestDiff THEN
+      closestDiff = colorDiff
+      closestColor = I
+    END IF
+  NEXT I
+
+  ' If active palette type is 1, add 16 to closest color
+  IF games(activeGame).palette.ptype = PALV1 THEN
+    closestColor = closestColor + 16
+  END IF
+END SUB

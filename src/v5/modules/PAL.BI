@@ -1,3 +1,6 @@
+DECLARE SUB LoadPalette ()
+DECLARE SUB InitPalettes ()
+DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 CONST PALV1 = 1 ' Dream Giver
 CONST PALV2 = 2 ' Space 2
 CONST PALV3 = 3 ' Dark visions 2

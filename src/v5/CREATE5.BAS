@@ -1,11 +1,8 @@
 '$INCLUDE: 'modules\CONFIG.BI'
 '$INCLUDE: 'modules\PAL.BI'
-DECLARE SUB InitPalettes ()
 DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
-DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
-DECLARE SUB LoadPalette ()
 DECLARE SUB Mouse ()
 DECLARE SUB LoadINI (filename$)
 DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
@@ -66,9 +63,9 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   LoadGameINI "CFG.INI"
   InitPalettes
   
-  FOR I = 1 TO 50
-    vh$(I) = "                                                                               "
-  NEXT I
+  FOR i = 1 TO 50
+    vh$(i) = "                                                                               "
+  NEXT i
   
   RANDOMIZE TIMER    ' Initialize random number generator using system timer
   DEF SEG = 0        ' Set the current segment to the BIOS data area
@@ -77,7 +74,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   inary(ax) = 2  ' Initialize mouse
   CALL INT86OLD(BOUSE, inary(), outary())
   IF outary(ax) = 0 THEN
-    PRINT "Mouse not available"
+    LOCATE 25, 1: PRINT "Mouse not available";
     END
   END IF
 
@@ -100,8 +97,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   'PALETTE 15, 50 + 50 * 65536 + 50 * 256
 
 10
-  oldB = B
-  oldA = a
+  oldB = B: oldA = a
 
   a$ = INKEY$
   ' Get mouse state first
@@ -109,9 +105,8 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
-     xb = oldB
-     ya = oldA
-     IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
+    xb = oldB: ya = oldA
+    IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
   END IF
   ' Handle keyboard input if any
   IF a$ <> "" THEN GOTO 16
@@ -135,13 +130,13 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   IF a$ <> "" THEN  'Process keyboard input
     IF ASC(a$) = 0 THEN  'Extended key (arrow keys)
-        ' Always erase cursor before moving
-        SELECT CASE ASC(RIGHT$(a$, 1))
-            CASE 72: a$ = "8"  'Up arrow
-            CASE 80: a$ = "2"  'Down arrow
-            CASE 75: a$ = "4"  'Left arrow
-            CASE 77: a$ = "6"  'Right arrow
-        END SELECT
+      ' Always erase cursor before moving
+      SELECT CASE ASC(RIGHT$(a$, 1))
+        CASE 72: a$ = "8"  'Up arrow
+        CASE 80: a$ = "2"  'Down arrow
+        CASE 75: a$ = "4"  'Left arrow
+        CASE 77: a$ = "6"  'Right arrow
+      END SELECT
     END IF
   END IF
 
@@ -154,15 +149,14 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   ' Draw lines if in drawing mode
   IF (f <> 0 OR e$ = "y") AND (a$ = "8" OR a$ = "2" OR a$ = "4" OR a$ = "6") THEN
     SELECT CASE a$
-        CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
-        CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
-        CASE "4": DRAW "l=" + VARPTR$(s)  ' Left
-        CASE "6": DRAW "r=" + VARPTR$(s)  ' Right
+      CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
+      CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
+      CASE "4": DRAW "l=" + VARPTR$(s)  ' Left
+      CASE "6": DRAW "r=" + VARPTR$(s)  ' Right
     END SELECT
   END IF
 
   IF oldB <> B OR oldA <> a THEN
-
     IF f = 0 AND e$ = "n" THEN
       PUT (oldB, oldA), a, XOR
       ' Always draw cursor after moving
@@ -260,13 +254,13 @@ REDIM stampBuffer(1 TO g) AS INTEGER
     LOCATE 25, 1
     PRINT "New?";
     DO
-        zx$ = INKEY$
+      zx$ = INKEY$
     LOOP UNTIL zx$ <> ""
     IF zx$ = "y" THEN
-        GOSUB 5
+      GOSUB 5
     ELSE
-        LOCATE 25, 1
-        PRINT "    ";
+      LOCATE 25, 1
+      PRINT "    ";
     END IF
   END IF
 
@@ -306,8 +300,8 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   
   IF a$ = "=" THEN
     IF stampSet = 0 THEN
-        LOCATE 25, 1
-        PRINT "Capture stamp first with 'g' key";
+      LOCATE 25, 1
+      PRINT "Capture stamp first with 'g' key";
     ELSE
       PUT (B, a), stampBuffer, PSET
     END IF
@@ -1019,19 +1013,6 @@ GOTO 505
   IF j < -120 OR x < 34 THEN WINDOW SCREEN (1, 1)-(320, 200): RETURN
 GOTO 510
 
-FUNCTION NormalizeExtension$ (ext$)
-  ' Ensures file extension starts with a dot
-  ' Input: ext$ - file extension (with or without dot)
-  ' Returns: extension with leading dot
-  
-  ext$ = RTRIM$(ext$)
-  IF LEFT$(ext$, 1) <> "." THEN
-    NormalizeExtension$ = "." + ext$
-  ELSE
-    NormalizeExtension$ = ext$
-  END IF
-END FUNCTION
-
 SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
   '=============================================================================
   ' Constants for screen dimensions and layout
@@ -1148,46 +1129,6 @@ SUB DrawCanvasBorder ()
   
   ' Right
   LINE (right + 1, midY - markLength)-(right + 1, midY + markLength), grayColor
-END SUB
-
-SUB FindNeutralGray (closestColor AS INTEGER)
-  SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
-  
-  ' Target values for 50% gray (all RGB components = 32)
-  targetGray = 32
-  
-  closestDiff = 999  ' Start with large number
-  closestColor = 0   ' Default to black
-  
-  ' Loop through palette colors 1-255 (skip 0 which is usually black)
-  FOR I = 1 TO 255
-      ' Extract RGB values from long
-      blue = pl(I) \ 65536        ' Get blue component
-      green = (pl(I) \ 256) MOD 256  ' Get green component
-      red = pl(I) MOD 256        ' Get red component
-      
-      ' Calculate luminance difference using standard weights
-      colorDiff = ABS(red - targetGray) * .299    ' Red contributes 30%
-      colorDiff = colorDiff + ABS(green - targetGray) * .587  ' Green contributes 59%
-      colorDiff = colorDiff + ABS(blue - targetGray) * .114   ' Blue contributes 11%
-      
-      ' Add penalty for colors where R,G,B are very different from each other
-      rgDiff = ABS(red - green)
-      gbDiff = ABS(green - blue)
-      rbDiff = ABS(red - blue)
-      colorDiff = colorDiff + (rgDiff + gbDiff + rbDiff) / 3  ' Increased penalty
-      
-      ' If this is closest match so far, save it
-      IF colorDiff < closestDiff THEN
-          closestDiff = colorDiff
-          closestColor = I
-      END IF
-  NEXT I
-
-  ' If active palette type is 1, add 16 to closest color
-  IF games(activeGame).palette.ptype = PALV1 THEN
-    closestColor = closestColor + 16
-  END IF
 END SUB
 
 SUB Mouse ()

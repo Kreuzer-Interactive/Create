@@ -1,3 +1,4 @@
+DECLARE FUNCTION NormalizeExtension$ (ext AS STRING)
 ' Game Configuration Type Definitions
 TYPE SCREENCONFIG
     mode AS INTEGER        ' Screen mode (13)

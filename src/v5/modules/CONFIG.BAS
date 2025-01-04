@@ -79,6 +79,23 @@ SUB LoadGameINI (filename$)
   'Call WriteGameNames("games.txt")
 END SUB
 
+' print a list of all the games
+SUB PrintGames()
+  FOR i = 1 TO gameCount
+    PRINT games(i).name
+  NEXT i
+END SUB
+
+' New function to write game names to file
+SUB WriteGameNames (filename AS STRING)
+  OPEN filename FOR OUTPUT AS #1
+  FOR i = 1 TO gameCount
+    PRINT #1, games(i).name
+  NEXT i
+  CLOSE #1
+END SUB
+
+
 ' In the loading routine:
 FUNCTION FindOrCreateSection%(sectionName$)
     FOR i = 1 TO MAX_SECTIONS
@@ -118,18 +135,16 @@ FUNCTION GetSetting(sectionName AS STRING, keyName AS STRING) AS STRING
   END IF
 END FUNCTION
 
-' print a list of all the games
-SUB PrintGames()
-  FOR i = 1 TO gameCount
-    PRINT games(i).name
-  NEXT i
-END SUB
+FUNCTION NormalizeExtension$ (ext$)
+  ' Ensures file extension starts with a dot
+  ' Input: ext$ - file extension (with or without dot)
+  ' Returns: extension with leading dot
+  
+  ext$ = RTRIM$(ext$)
+  IF LEFT$(ext$, 1) <> "." THEN
+    NormalizeExtension$ = "." + ext$
+  ELSE
+    NormalizeExtension$ = ext$
+  END IF
+END FUNCTION
 
-' New function to write game names to file
-SUB WriteGameNames (filename AS STRING)
-  OPEN filename FOR OUTPUT AS #1
-  FOR i = 1 TO gameCount
-    PRINT #1, games(i).name
-  NEXT i
-  CLOSE #1
-END SUB
