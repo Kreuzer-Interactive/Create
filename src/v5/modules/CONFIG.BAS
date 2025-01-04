@@ -95,7 +95,6 @@ SUB WriteGameNames (filename AS STRING)
   CLOSE #1
 END SUB
 
-
 ' In the loading routine:
 FUNCTION FindOrCreateSection%(sectionName$)
     FOR i = 1 TO MAX_SECTIONS
@@ -112,17 +111,17 @@ FUNCTION FindOrCreateSection%(sectionName$)
 END FUNCTION
 
 FUNCTION FindOrCreateKey%(sectionIndex%, keyName$)
-    FOR i = 1 TO MAX_KEYS
-        IF keyNames(sectionIndex%, i) = keyName$ THEN
-            FindOrCreateKey% = i
-            EXIT FUNCTION
-        ELSEIF keyNames(sectionIndex%, i) = "" THEN
-            keyNames(sectionIndex%, i) = keyName$
-            FindOrCreateKey% = i
-            EXIT FUNCTION
-        END IF
-    NEXT i
-    FindOrCreateKey% = 0  ' Key list full
+  FOR i = 1 TO MAX_KEYS
+    IF keyNames(sectionIndex%, i) = keyName$ THEN
+      FindOrCreateKey% = i
+      EXIT FUNCTION
+    ELSEIF keyNames(sectionIndex%, i) = "" THEN
+      keyNames(sectionIndex%, i) = keyName$
+      FindOrCreateKey% = i
+      EXIT FUNCTION
+    END IF
+  NEXT i
+  FindOrCreateKey% = 0  ' Key list full
 END FUNCTION
 
 FUNCTION GetSetting(sectionName AS STRING, keyName AS STRING) AS STRING

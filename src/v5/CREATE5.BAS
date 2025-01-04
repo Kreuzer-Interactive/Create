@@ -4,7 +4,6 @@ DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB Mouse ()
-DECLARE SUB LoadINI (filename$)
 DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
 
 DEFINT B-C
@@ -165,14 +164,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   END IF
 
   IF a$ = "-" THEN DrawCanvasBorder
-  If a$ = "'" THEN
-    ' change active game
-    activeGame = activeGame + 1
-    IF activeGame > gameCount THEN activeGame = 1
-    activePalette = 1
-    LoadPalette
-    DrawCanvasBorder
-  END If
+  If a$ = "'" THEN changeActiveGame
 
   IF a$ = "i" THEN
     PUT (B, a), a, XOR
@@ -213,13 +205,13 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   END IF
 
   IF a$ = "." THEN
-    IF SIZ = 0 THEN
+    IF isBigCurMode = 0 THEN
       GOTO EnterLargeCursorMode
     ELSE
-      SIZ = 0
+      isBigCurMode = 0
       f = d: DRAW "c=" + VARPTR$(f)
       a$ = "5"
-      GOTO 61
+      GOTO toggleDrawMode
     END IF
   END IF
 
@@ -339,9 +331,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   END IF
 
   IF a$ = "g" THEN GOSUB CaptureStampData
-  
   IF a$ = "d" THEN GOSUB PasteStampWithOR
-  
   IF a$ = "e" THEN GOSUB ScaleAndDrawRegion
   
   IF a$ = "%" THEN LOCATE 15, 1: INPUT gk: LOCATE 15, 1: PRINT "             ";
@@ -350,34 +340,15 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   
   IF a$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
   
-  IF SIZ = 1 THEN 70
+  IF isBigCurMode = 1 THEN 70
   
-61
-  ' Handle toggling drawing mode with '5' key
-  IF a$ = "5" THEN
-    IF f <> 0 THEN
-      ' Turn off drawing mode
-      DRAW "c0"
-      IF SIZ = 0 THEN
-        d = f  ' Save current color
-        f = 0  ' Turn off drawing
-        a$ = ""
-      ELSE
-        f = 0  ' Just turn off drawing
-        a$ = ""
-      END IF
-    ELSE
-      ' Turn on drawing mode
-      DRAW "c=" + VARPTR$(d)  ' Restore saved color
-      f = d                    ' Enable drawing
-      GOTO 100
-    END IF
-  END IF
+  IF a$ = "5" THEN toggleDrawMode ' Handle toggling drawing mode with '5' key
+    
 
 70
   ON ERROR GOTO 200
   IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
-  IF f = 0 AND e$ = "y" AND SIZ = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
+  IF f = 0 AND e$ = "y" AND isBigCurMode = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
   IF a$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
   IF a$ = "$" THEN GOSUB CountUniqueColors
   IF a$ = "z" THEN mz = B: mx = a
@@ -401,8 +372,8 @@ REDIM stampBuffer(1 TO g) AS INTEGER
     ad$ = INKEY$
     IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
   END IF
-  IF f = 0 AND e$ = "n" AND SIZ = 0 THEN PUT (B, a), a, XOR
-  IF a$ = "/" AND SIZ = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
+  IF f = 0 AND e$ = "n" AND isBigCurMode = 0 THEN PUT (B, a), a, XOR
+  IF a$ = "/" AND isBigCurMode = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
 100 GOTO 10
 
 CountUniqueColors:
@@ -470,6 +441,35 @@ IF a$ = "s" GOTO 778 ELSE GOTO 777
 165 OPEN q$ + ".pac" FOR OUTPUT AS #1
 175 CLOSE
 180 END
+
+toggleDrawMode:
+  IF f <> 0 THEN
+    ' Turn off drawing mode
+    DRAW "c0"
+    IF isBigCurMode = 0 THEN
+      d = f  ' Save current color
+      f = 0  ' Turn off drawing
+      a$ = ""
+    ELSE
+      f = 0  ' Just turn off drawing
+      a$ = ""
+    END IF
+  ELSE
+    ' Turn on drawing mode
+    DRAW "c=" + VARPTR$(d)  ' Restore saved color
+    f = d                    ' Enable drawing
+    GOTO 100
+  END IF
+RETURN
+
+changeActiveGame:
+  ' change active game
+  activeGame = activeGame + 1
+  IF activeGame > gameCount THEN activeGame = 1
+  activePalette = 1
+  LoadPalette
+  DrawCanvasBorder
+RETURN
 
 ScaleAndDrawRegion:
   ' This subroutine scales and draws a selected region of pixels
@@ -637,7 +637,7 @@ LoadPictureMenu:
   'BLOAD q$ + ".pic", 0: GOTO 10
 
 EnterLargeCursorMode:
-  SIZ = 1 ' Set SIZ flag to 1 to indicate we're in "large cursor" mode
+  isBigCurMode = 1 ' Set isBigCurMode flag to 1 to indicate we're in "large cursor" mode
   DRAW "c0" ' Set drawing color to black (0) to erase previous cursor
   
   IF f <> 0 THEN d = f  ' Save current color if drawing was active

@@ -1,3 +1,4 @@
+DECLARE SUB LoadINI (filename$)
 DECLARE FUNCTION NormalizeExtension$ (ext AS STRING)
 ' Game Configuration Type Definitions
 TYPE SCREENCONFIG
