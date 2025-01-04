@@ -1,3 +1,5 @@
+'$INCLUDE: 'modules\CONFIG.BI'
+'$INCLUDE: 'modules\PAL.BI'
 DECLARE SUB InitPalettes ()
 DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
@@ -5,14 +7,11 @@ DECLARE SUB FindNeutralGray (closestColor AS INTEGER)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB LoadPalette ()
 DECLARE SUB Mouse ()
-
+DECLARE SUB LoadINI (filename$)
 DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
 
 DEFINT B-C
 DIM SHARED palettes$(10, 1)  ' Up to 10 palettes, with name and type
-DIM SHARED activePalette AS INTEGER
-DIM SHARED basicPal(255) AS LONG
-DIM SHARED pl(255) AS LONG
 
 ' Mouse tracking
 DIM SHARED lastB, lastA   ' Previous mouse X,Y coordinates
@@ -28,6 +27,7 @@ DIM SHARED fca AS STRING
 DIM SHARED fit AS INTEGER
 DIM SHARED qa() AS INTEGER, qb() AS INTEGER
 DIM SHARED x() AS INTEGER, y() AS INTEGER
+DIM SHARED settings(10, 10) AS STRING
 
 ' Mouse interrupt constants and variables
 CONST BOUSE = 51 ' Mouse interrupt number
@@ -49,6 +49,13 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   fe$ = "n"
   fr$ = "n"       ' Flag to track if stamp tool is active
   stampSet = 0    ' Flag to track if stamp data exists
+  activeGame = 0
+  activePalette = 0
+  DIM basicPal(255) AS LONG
+  DIM pl(255) AS LONG
+  DIM games(10) AS GAMECONFIG   ' Allow for up to 10 games
+  gameCount = 0                 ' No games loaded yet
+  activeGame = 1               ' Start with first game
   CLS
 1
   DIM h(500): DIM I(500)
@@ -59,6 +66,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   DIM CS(31): DIM bs(31): DIM mess$(31)
   DIM ky$(31): DIM df$(31)
   DIM st(31): DIM vh$(50)
+  LoadGameINI "CFG.INI"
   InitPalettes
   
   FOR I = 1 TO 50
@@ -1154,85 +1162,6 @@ SUB FindNeutralGray (closestColor AS INTEGER)
   IF activePalette = 2 THEN
     closestColor = closestColor + 16
   END IF
-END SUB
-
-' Initialize palette configurations
-SUB InitPalettes ()
-    SHARED palettes$(), activePalette AS INTEGER, basicPal() AS LONG
-    ' Save current palette values before loading new ones
-    FOR i = 0 TO 255
-      OUT &H3C7, I          ' Tell VGA we want to read color i
-      ' Add a small delay to allow VGA to prepare data
-      FOR delay = 1 TO 10: NEXT delay
-      red = INP(&H3C9)      ' Read red component
-      green = INP(&H3C9)    ' Read green component
-      blue = INP(&H3C9)     ' Read blue component
-      basicPal(i) = red + (green * 256) + (blue * 65536)
-    NEXT i
-    ' Format: palettes$(index, 0) = filename, palettes$(index, 1) = type
-    palettes$(0, 0) = "house2.pal": palettes$(0, 1) = STR$(PALV2)
-    palettes$(1, 0) = "SHIP2.pal": palettes$(1, 1) = STR$(PALV2)
-    palettes$(2, 0) = "256colo.pal": palettes$(2, 1) = STR$(PALV1)
-    palettes$(3, 0) = "DARK.pal": palettes$(3, 1) = STR$(PALV3)
-    activePalette = 0
-END SUB
-
-SUB LoadPalette ()
-    SHARED pl() AS LONG, palettes$(), activePalette AS INTEGER, basicPal() AS LONG
-    ' Reset palette to default values
-    FOR i = 1 TO 255
-      PALETTE i, basicPal(i)
-    NEXT i
-    pallet$ = palettes$(activePalette, 0)
-    palType = VAL(palettes$(activePalette, 1))
-    
-    OPEN pallet$ FOR INPUT AS #1     ' Opens the palette file
-    
-    IF palType = PALV1 THEN
-      dim tmp as LONG
-      'type 1 - loads with offset and early exit on zero
-      FOR i = 1 TO 255 STEP 1
-        INPUT #1, tmp
-        pl(i) = tmp            ' Reads each color value
-        IF tmp = 0 AND i > 10 THEN i = 255
-        PALETTE i + 16, tmp
-      NEXT i
-    ELSEIF palType = PALV3 THEN
-      CLOSE #1
-      bright = 3  ' Brightness multiplier (1 = normal, 2 = twice as bright, etc.)
-      OPEN pallet$ FOR BINARY AS #1
-      'type 3 - loads RGB bytes individually
-      FOR I = 1 TO 255
-        IF EOF(1) THEN EXIT FOR
-          red = (ASC(INPUT$(1, #1)) * bright) \ 4     ' Apply brightness before scaling
-          IF red > 63 THEN red = 63                    ' Clamp to max brightness
-          green = (ASC(INPUT$(1, #1)) * bright) \ 4
-          IF green > 63 THEN green = 63
-          blue = (ASC(INPUT$(1, #1)) * bright) \ 4
-          IF blue > 63 THEN blue = 63
-          pl(I) = (blue * 65536) + (green * 256) + red
-      NEXT I
-      PALETTE USING pl(0)
-    ELSE
-      'type 2 - loads all colors and applies at once
-      FOR I = 1 TO 255 STEP 1          ' Loops through all possible colors
-          INPUT #1, pl(I)              ' Reads each color value
-      NEXT I
-      PALETTE USING pl(0)              ' Applies the loaded palette
-    END IF
-    
-    CLOSE #1
-    
-    ' Clear the palette display area first (black box over old palette)
-    LINE (0, 1)-(360, 6), 0, BF
-    
-    ' Draw the palette display with 3x2 pixel rectangles
-    FOR I = 1 TO 120
-        LINE (I * 2, 1)-(I * 2 + 2, 2), I, BF      ' Draw top row of colors
-    NEXT I
-    FOR I = 121 TO 255
-        LINE ((I - 120) * 2, 4)-((I - 120) * 2 + 2, 5), I, BF      ' Draw bottom row of colors
-    NEXT I
 END SUB
 
 SUB Mouse ()

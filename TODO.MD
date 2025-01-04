@@ -22,6 +22,11 @@
 - [ ] Store frame positions in array/table
 - [ ] Implement quick frame access function
 
+### Load config from ini file
+- [ ] Load config from ini file
+- [ ] Load palette config
+- [ ] Load avalible games list
+
 ## Bugs
 
 ### Screen Text Area Management
