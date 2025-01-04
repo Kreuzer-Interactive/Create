@@ -248,10 +248,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
     END IF
   END IF
 
-  IF a$ = "\" THEN
-    GET (2, 2)-(200, 100), c
-    GOSUB 350
-  END IF
+  IF a$ = "\" THEN GOSUB FillWithColorPattern
 
   IF a$ = "9" THEN
     IF f <> 0 OR e$ = "y" THEN
@@ -339,7 +336,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   IF a$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
   IF a$ = "$" THEN GOSUB CountUniqueColors
   IF a$ = "z" THEN mz = B: mx = a
-  IF a$ = "{" THEN GOSUB 183
+  IF a$ = "{" THEN GOSUB DrawScaledMirrorImage
   IF a$ = "x" THEN nz = B: nx = a
   IF a$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), d
   IF a$ = "u" THEN DRAW "c1": f = 1
@@ -347,7 +344,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
   IF a$ = CHR$(13) THEN 115
   IF a$ = "r" OR a$ = "R" THEN GOSUB LoadPictureMenu
-  IF a$ = "(" THEN GOSUB 232
+  IF a$ = "(" THEN GOSUB IncrementColors
   IF a$ = ")" THEN GOSUB 242
   IF a$ = "k" THEN GOSUB 800
   IF a$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
@@ -522,7 +519,7 @@ ScaleAndDrawRegion:
   NEXT axc
 RETURN
 
-183
+DrawScaledMirrorImage:
   mel = 1.8: mx = 100: nx = 1: mz = 1: nz = 320
   FOR axc = 100 TO 1 STEP -1
     FOR ixc = 1 TO 320 STEP 1
@@ -531,7 +528,7 @@ RETURN
   NEXT axc
 RETURN
 
-232
+IncrementColors:
   FOR I = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
       IF POINT(d, I) <> 0 THEN PSET (d, I), POINT(d, I) + 1
@@ -622,6 +619,7 @@ LoadPictureMenu:
   CLS
   'DEF SEG = &HB800
   'BLOAD q$ + ".pic", 0: GOTO 10
+RETURN
 
 EnterLargeCursorMode:
   isBigCurMode = 1 ' Set isBigCurMode flag to 1 to indicate we're in "large cursor" mode
@@ -644,7 +642,8 @@ PasteStampWithOR:
   PUT (B, a), stampBuffer, OR
 RETURN
 
-350
+FillWithColorPattern:
+  GET (2, 2)-(200, 100), c
   tile$ = ""
   FOR I = ft TO fy
     tile$ = tile$ + CHR$(I)
