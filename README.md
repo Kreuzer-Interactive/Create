@@ -17,7 +17,11 @@ CREATE4 is a pixel art and game screen editor with special interaction points ("
 ### Drawing Tools
 - **5**: Toggle drawing mode on/off
 - **Space/Enter**: Place pixel/element
-- **-/=**: Decrease/Increase color
+- **[/]**: Decrease/Increase color
+- **-**: Redraw border
+- **+**: drop stamp
+- **'**: Cycles each game r will display selected game pics, p will cycle selected game palettes
+- **;**: displays color at cursor palette location
 - **b**: Change brush color (prompts for number)
 - **0**: Change cursor step size (1, 3, or 6 pixels)
 - **i**: Pick color under cursor
@@ -182,3 +186,36 @@ Key: u
    - Sequential events (one special sets flag for another)
 
 This system allows for creating complex adventure game-style interactions through a combination of conditions, messages, and screen transitions.
+
+## Asset Structure
+
+### File Organization
+```
+assets/
+├── game1/
+│   ├── room1.pic      # picture files
+│   ├── room1.dat      # Special interaction data
+│   ├── hallway.pic
+│   └── hallway.dat
+│
+├── game2/
+│   ├── room2.pic
+│   ├── room2.dat
+│   ├── hallway.pic
+│   └── hallway.dat
+│
+├── game3/
+│   ├── room3.DV      # picture files
+│   ├── room3.DVT     # Special interaction data
+│   ├── hallway.DV
+│   └── hallway.DVT
+│
+modules/
+│   ├── config.bas
+│   ├── config.bi
+│   ├── pal.bas
+│   ├── pal.bi
+│   └── create.bas
+├── CFG.INI
+└── CREATE5.BAS
+```
