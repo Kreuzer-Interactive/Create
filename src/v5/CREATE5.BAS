@@ -386,7 +386,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   IF a$ = "o" THEN GOSUB 101
   IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
   IF a$ = CHR$(13) THEN 115
-  IF a$ = "r" OR a$ = "R" THEN GOSUB 260
+  IF a$ = "r" OR a$ = "R" THEN GOSUB LoadPictureMenu
   IF a$ = "(" THEN GOSUB 232
   IF a$ = ")" THEN GOSUB 242
   IF a$ = "k" THEN GOSUB 800
@@ -618,13 +618,11 @@ TextInputMode:
 GOTO 235
 '-------------END OF TEXTINPUTMODE-------------
 
-260
+LoadPictureMenu:
   CLS
   gamePath$ = RTRIM$(games(activeGame).path) + "\"
-  picExt$ = RTRIM$(games(activeGame).files.picExt)
-  IF LEFT$(picExt$, 1) <> "." THEN
-    picExt$ = "." + picExt$
-  END IF
+  picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
+
   FILES gamePath$ + "*" + picExt$        ' Shows available .pic files
   CLOSE : INPUT q$     ' Get filename from user
   IF a$ = "r" THEN
@@ -824,10 +822,12 @@ GOTO 621
 
 LoadPictureFullscreen:
     CLS
+    gamePath$ = RTRIM$(games(activeGame).path) + "\"
+    picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
     '------- LOADING OF THE PICTURE -------
     GET (2, 10)-(310, 199), c
     DEF SEG = VARSEG(c(1))
-    BLOAD q$ + ".pic", VARPTR(c(1))  ' Actually loads the file
+    BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))    ' Actually loads the file
     
     DEF SEG = 0
     c = 0
@@ -843,10 +843,12 @@ RETURN
 LoadPicturePositioned:
     PRINT "LoadPicturePositioned"
     CLS
+    gamePath$ = RTRIM$(games(activeGame).path) + "\"
+    picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
     '------- LOADING OF THE PICTURE -------
     GET (2, 10)-(310, 199), c
     DEF SEG = VARSEG(c(1))
-    BLOAD q$ + ".pic", VARPTR(c(1))
+    BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))
     DEF SEG = 0
     c = 0
     PUT (c(1), c(2)), c(3), PSET 'places picture in certain position
@@ -1008,6 +1010,19 @@ GOTO 505
   IF j > 0 THEN vg = 1
   IF j < -120 OR x < 34 THEN WINDOW SCREEN (1, 1)-(320, 200): RETURN
 GOTO 510
+
+FUNCTION NormalizeExtension$ (ext$)
+  ' Ensures file extension starts with a dot
+  ' Input: ext$ - file extension (with or without dot)
+  ' Returns: extension with leading dot
+  
+  ext$ = RTRIM$(ext$)
+  IF LEFT$(ext$, 1) <> "." THEN
+    NormalizeExtension$ = "." + ext$
+  ELSE
+    NormalizeExtension$ = ext$
+  END IF
+END FUNCTION
 
 SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
   '=============================================================================
