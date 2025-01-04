@@ -1,5 +1,5 @@
 # Create
-Graphic certation tool for Kreuzer interactive games
+Graphic creation tool for Kreuzer interactive games
 
 Here's an improved documentation for CREATE4, formatted as a user guide:
 
