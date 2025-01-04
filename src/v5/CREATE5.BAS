@@ -47,7 +47,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   fr$ = "n"       ' Flag to track if stamp tool is active
   stampSet = 0    ' Flag to track if stamp data exists
   activeGame = 0
-  activePalette = 0
+  activePalette = 1
   DIM basicPal(255) AS LONG
   DIM pl(255) AS LONG
   DIM games(10) AS GAMECONFIG   ' Allow for up to 10 games
@@ -171,6 +171,14 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   END IF
 
   IF a$ = "-" THEN DrawCanvasBorder
+  If a$ = "'" THEN
+    ' change active game
+    activeGame = activeGame + 1
+    IF activeGame > gameCount THEN activeGame = 1
+    activePalette = 1
+    LoadPalette
+    DrawCanvasBorder
+  END If
 
   IF a$ = "i" THEN
     PUT (B, a), a, XOR
@@ -1175,10 +1183,6 @@ SUB FindNeutralGray (closestColor AS INTEGER)
           closestColor = I
       END IF
   NEXT I
-  ' If active palette type is 2, add 16 to closest color
-  IF activePalette = 2 THEN
-    closestColor = closestColor + 16
-  END IF
 END SUB
 
 SUB Mouse ()

@@ -83,7 +83,7 @@ END SUB
 
 SUB DrawPaletteDisplay ()
   ' Clear the palette display area first (black box over old palette)
-  LINE (0, 1)-(360, 6), 0, BF
+  LINE (0, 0)-(360, 6), 0, BF
   
   ' Draw the palette display with 3x2 pixel rectangles
   FOR I = 1 TO 120
