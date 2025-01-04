@@ -1183,6 +1183,11 @@ SUB FindNeutralGray (closestColor AS INTEGER)
           closestColor = I
       END IF
   NEXT I
+
+  ' If active palette type is 1, add 16 to closest color
+  IF games(activeGame).palette.ptype = PALV1 THEN
+    closestColor = closestColor + 16
+  END IF
 END SUB
 
 SUB Mouse ()
