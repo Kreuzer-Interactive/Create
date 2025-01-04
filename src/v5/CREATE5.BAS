@@ -43,7 +43,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   fe$ = "n"
   fr$ = "n"       ' Flag to track if stamp tool is active
   stampSet = 0    ' Flag to track if stamp data exists
-  activeGame = 0
+  activeGame = 1
   activePalette = 1
   DIM basicPal(255) AS LONG
   DIM pl(255) AS LONG
@@ -836,7 +836,7 @@ LoadPictureFullscreen:
     PUT (2, 10), c, PSET         ' Displays the loaded image
     'PUT (62 + 40 * 0, 173), c(1 + 510 * 2), PSET
     ' Only call DisplayImageArray for non-type 3 palettes
-    IF VAL(palettes$(activePalette, 1)) = PALV3 THEN
+    IF VAL(palettes$(activePalette, 1)) = PAL_TYPE_3 THEN
       DisplayImageArray c(), 2, 10
     END IF
     GOTO 883

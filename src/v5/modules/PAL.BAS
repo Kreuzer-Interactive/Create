@@ -43,7 +43,7 @@ SUB LoadPalette ()
   
   OPEN fullPath$ FOR INPUT AS #1     ' Opens the palette file
   
-  IF palType = PALV1 THEN
+  IF palType = PAL_TYPE_1 THEN
     dim tmp as LONG
     'type 1 - loads with offset and early exit on zero
     FOR i = 1 TO 255 STEP 1
@@ -52,7 +52,7 @@ SUB LoadPalette ()
       IF tmp = 0 AND i > 10 THEN i = 255
       PALETTE i + 16, tmp
     NEXT i
-  ELSEIF palType = PALV3 THEN
+  ELSEIF palType = PAL_TYPE_3 THEN
     CLOSE #1
     bright = 3  ' Brightness multiplier (1 = normal, 2 = twice as bright, etc.)
     OPEN fullPath$ FOR BINARY AS #1
@@ -164,7 +164,7 @@ SUB FindNeutralGray (closestColor AS INTEGER)
   NEXT I
 
   ' If active palette type is 1, add 16 to closest color
-  IF games(activeGame).palette.ptype = PALV1 THEN
+  IF games(activeGame).palette.ptype = PAL_TYPE_1 THEN
     closestColor = closestColor + 16
   END IF
 END SUB
