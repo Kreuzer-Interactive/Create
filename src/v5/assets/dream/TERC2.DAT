@@ -1,0 +1,138 @@
+2
+.6,1.5,139,76
+.3,.9,139,76
+1.2,1.8,139,76
+2.1,2.8,98,82
+2.4,2.4,98,82
+"The secret lab is in awful shape; It looksas if a strong       tornado hit in here. ","3terc6","7terc4","","","",""
+"                                              "
+"                                              "
+"            c        jjjjj                    "
+"            c                                 "
+"            c                                 "
+"            c            h||                  "
+"            c            h||                  "
+"ppppppp     c            h||                  "
+"ppppppp    cc   pppppp   h||                  "
+"ppppppp  ccccc  pppppp   h|| kkk              "
+"ppppppp cc   cc pp       h|| kkk              "
+"pppppppcc  bbbcc  dddd   h|| kkklll   wwwwwww "
+"       c   bb   dddd     h|| kkk ll    wwwwww "
+"ddddddd    yyyy    sssss h||            wwww  "
+"ddddd       yy sssss s s h||         vvvvvvvv "
+"tttttttt     y s s   s s } |       mm     vvv "
+"ttttttttt    y s s }}} s  }}}}     mm         "
+"tttttttt     y   s}}  q qq }}}}         zz    "
+"t            nnnns  q qq                zz    "
+"t                                 }f          "
+"t                                  ff         "
+" }}}}         aaaaaaaaaaaaaaa  }}}  ff}}}}}   "
+"}}}}}}}}}  }  aaaaaaaaaaaaaaa  }}}    }}}}}}} "
+"}}}}}}}}}}  }        aaaaaaaa         }}}}}}} "
+"}}}}}}}}}}}}                            }}}}} "
+74,90,5
+78,90,5
+82,90,5
+86,90,5
+90,90,5
+94,90,5
+98,90,5
+102,90,5
+106,90,5
+106,94,5
+110,94,5
+106,86,5
+66,90,5
+66,86,5
+62,86,5
+2,54,7
+6,54,7
+10,54,7
+14,54,7
+18,54,7
+22,54,7
+26,54,7
+66,50,8
+70,50,8
+74,50,8
+78,46,8
+82,46,8
+86,46,8
+102,22,9
+102,26,9
+102,30,9
+102,34,9
+102,38,9
+102,42,9
+102,46,9
+102,50,9
+102,54,9
+102,58,9
+98,10,10
+58,74,15
+62,74,15
+66,74,15
+102,70,18
+98,70,18
+94,74,18
+90,74,18
+90,70,18
+82,74,18
+102,58,21
+102,54,21
+102,50,21
+102,46,21
+102,42,21
+102,38,21
+102,34,21
+102,30,21
+102,26,21
+102,22,21
+154,58,24
+158,58,24
+162,58,24
+166,58,24
+170,58,24
+174,58,24
+178,58,24
+178,62,24
+174,62,24
+162,70,27
+162,74,27
+166,74,27
+166,70,27
+6,90,29
+18,90,29
+0,0,0
+0,0,0
+"","Alas the    scientist isnow dead.","l",0,0,0,""
+"","The sign    displays    instructionsthat tell   how to best operate the chemical    disposal    unit below.","l",0,0,0,""
+"","The purple  pipe carriesall the     valuable    chemicals   into the    storage     units.","l",0,0,0,""
+"","The units   above the   table       contain     chemicals   and other   agents that can be      accessed by pressing thebuttons.","l",0,0,0,""
+"","You search  the         scientists  body and    find what   appears to  be a car    remote. ","pg",0,101,101,"i20invend"
+"","The wire    jumps back  and forth   spraying    sparks into the air and water.       ","l",0,0,0,""
+"","You`ll have to get      closer to   push the    buttons. ","p",0,0,0,""
+"","There looks to be a     blaster     nozzle in   one of the  coats.             ","l",0,0,0,""
+"","You need a  powered up  blaster to  attach the  nozzle to.","l",0,133,0,""
+"","The         emergency   light does  not give    quite enoughlight to    work and    read easily.","l",0,0,0,""
+"","The small   printing    says to put the object  you wish to test inside then close  it.         Everything  else is     automatic.","l",0,0,0,""
+"","There is a  small       compartment in the side wall. ","l",0,0,0,""
+"","The purple  pipe allows you to enterstuff into  the machine.Since you donot know    what it doesyou just    leave it    alone. ","l",0,0,0,""
+"","Some        chemicals   have spilledout of the  wire and    onto the    ground. ","l",0,0,0,""
+"","You woudn't even        consider    getting thatmix of      chemicals ina vial let  alone in    your hands!","g",0,0,0,""
+"","The monitorsshow        advanced    models that can be      manipulated with an     input devicethat has    been        destroyed.","l",0,0,0,""
+"","All of the  vials and   the cleanserhave fallen off the     table and   onto the    floor.","l",0,0,0,""
+"","Why don't   you just usethe other   table       instead of  fumbling    with this   one. ","g",0,0,0,""
+"","The table   has been    cleaned off of any and  all         scientific  equipment.","l",0,0,0,""
+"","This table  is          completely  intact and  fully       functional.","l",0,0,0,""
+"l","You attach  the nozzle  to the main part of the partical    blaster. It is now      complete.","u",133,0,138,"i01invend"
+"","Numerous    buttons are placed in   various     postions on the top of  this        powerful    machine. ","l",0,0,0,""
+"","The screen  display     remains the same.","l",0,0,0,""
+"","You depress a few randombuttons but all that    happens is  that it     displays    `Enter      access      code.' ","p",0,0,0,""
+"","The chemicaldisposal    presumably  breaks the  chemicals   down into   harmless    substances  then dumps  them into   the ocean.","l",0,0,0,""
+"","The handles allow a     trained     technician  to open the machine for repair. ","l",0,0,0,""
+"","You are not a trained   technician  and you havea feeling   the machine isn't       getting     enough powerto operate  anyway. ","o",0,0,0,""
+"","You search  the right   coat        thoroughly  but there isnothing at  all inside.","l",0,0,0,""
+"","It looks to you as if   the TERC    building is not as      waterproof  as the      builders    thought it  was. ","l",0,0,0,""
+"","","",0,0,0,""
+

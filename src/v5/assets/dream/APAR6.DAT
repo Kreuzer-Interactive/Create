@@ -1,0 +1,138 @@
+-1
+-1,-1,24,18
+-1,-1,23,35
+-1,-1,23,53
+-1,-1,58,55
+-1,-1,34,2
+"The apartment is     considerably more    elegant and stylish  than you would have  expected. ","1apar5","","","","",""
+"                                              "
+"                                              "
+"qqqqqqqqs               bbbbbbbbbbbbbbb       "
+"qqqqqqqqd               bbbbbbbbbbbbbbb    mm "
+"qqqqrr  d       ii      bbbbbbbbbbbbbbb   mmm "
+"qqqqrrood       ii      bbbbbbbbbbbbbbb   mmm "
+"qqqqrrood       ii      bbbbbbbbbbbbbbb   mmm "
+"qqqqrrood       i       bbbbbbbbbbbbbbb    m  "
+"qqqqrrood       i                          l  "
+"qqqqrrood                                  l  "
+"qqqqrrood            wwwwwwwwwwwwwwwwwwwt  l  "
+"qqqqrrood            wwwwwwwwwwwwwwwwwwtt  l  "
+"qqqqrr  d            wwwwwwwwwwwwwwwwwwtt  l  "
+"qqqqrr  d     aa      wwwwwwwwwwwwwwwwwt ttl  "
+"qqqqrrjjd    xxxx   uuuvuuuuuuuwwwwww  t ttl  "
+"qqqqrrk d    xxxx wuuuuuuuuuuuuuuuuuuw  tttl  "
+"qqqqrr  d    xxxx wwwwwwwwwwwwwwww   w   ttl  "
+"qqqq qqq     xxxx wwwwwwwwwwwwwwwwwwww   ttl  "
+"qqqqq      ff     wwwwwwwwwwwwwwwwwwww     l  "
+"qqhhhhhhhfffffghhhhhhhwwwwwwwwwwwwwwwwhhhhlll "
+"hhhhhhhhhhhhhfeeeeeehhhhhhhhhhwwwwwwwwhhhhhll "
+"hhhhhhhheeeeeeeeeeeeeeeeeeeeeehhhhhhhhhhhhhhh "
+"hhhhhhheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeehhhh "
+"hhheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeehhh "
+"hheeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeehh "
+58,54,3
+54,82,7
+54,78,7
+50,78,7
+46,78,7
+46,74,7
+42,78,7
+38,78,7
+66,26,9
+34,58,10
+26,58,11
+30,58,11
+174,30,14
+174,26,14
+174,22,14
+26,22,16
+26,26,16
+26,30,16
+26,34,16
+26,38,16
+26,42,16
+26,46,16
+30,42,16
+30,38,16
+30,34,16
+30,30,16
+30,26,16
+30,22,16
+6,14,17
+6,18,17
+34,66,19
+34,62,19
+34,58,19
+34,54,19
+34,50,19
+34,46,19
+34,42,19
+34,38,19
+34,34,19
+34,30,19
+34,26,19
+34,22,19
+34,18,19
+34,14,19
+166,66,20
+146,62,22
+142,62,22
+138,62,22
+134,62,22
+130,62,22
+126,62,22
+122,62,22
+118,62,22
+114,62,22
+110,62,22
+106,62,22
+102,62,22
+98,62,22
+98,58,22
+158,46,23
+158,50,23
+158,54,23
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","There is    nothing in  the wallet  except for  an old car  key.         ","l",0,107,0,""
+"","A painting  of a        wilderness  scene hangs above the   couch. It issigned      `Johnson'. ","l",0,0,0,""
+"","You remove  the key fromthe wallet.","g",0,107,107,"i12invenc"
+"","When you    open the    closet      further a   light comes on. ","o",0,0,0,"s12"
+"","The fancy   rug is      losing its  color with  age. ","l",0,0,0,""
+"","A vase lies shattered onthe floor   near the    table it    fell off of.","l",0,0,0,""
+"","The chunks  are too     small or    brittle to  help you.","g",0,0,0,""
+"","The same    shiny blue  floor in thehall makes  up the      ground here.","l",0,0,0,""
+"","Without a   bulb the    light will  not respond.","p",0,0,0,""
+"","You take theblanket fromthe bottom  shelf. ","g",0,121,121,"i20invenb"
+"","A purple anda green     blanket are on the      bottom shelfof the      wardrobe. ","l",0,121,0,""
+"","The light issupported bythe metal   stem. ","l",0,0,0,""
+"","A bulb hidesbehind the  shade       covering thetop of the  lamp. ","l",0,0,0,""
+"","Its dark    enough      already     without     removing thebulb. ","g",0,0,0,""
+"","Some shirts hang in the closet. ","l",0,0,0,""
+"","Your shirt  is just     fine.        ","g",0,0,0,""
+"","A tall      wardrobe    stands      against the plain       apartment   wall. ","l",0,0,0,""
+"","That side ofthe wardrobeseems to be stuck.      Which is    just as wellconsidering all you can see in it isa few pairs of pants.","o",0,0,0,""
+"","The door to the wardrobeis only     partly open.","l",0,0,0,""
+"","The light   glistens on the arm of  the couch.","l",0,0,0,""
+"","A couple of plush       cushions    give comfortto whoever  uses the    sofa. ","l",0,0,0,""
+"","You check   for dirt    under the   cushions andsuprisingly find none.","p",0,0,0,""
+"","The sofa    gives a     person a    place to    relax. ","l",0,0,0,""
+"","An endtable is          conviently  placed      against the far arm of  the couch.","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

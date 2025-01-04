@@ -1,0 +1,138 @@
+20
+10,19.6,126,56
+10.4,19.4,126,56
+10.6,19.2,126,56
+10.8,19,126,56
+11,11,126,56
+"While you walk along the side road a smalltravel agency catchesyour eye.","6cty2","7cty13","","","",""
+"tttttt tt tttttttttqqqqqpppppppp     mmmmmmmm "
+"tttttt tt tttttttttqqq  pppppppp     mmmmmmmm "
+"tttttt tt tttttttttqqq xxxxxxxxxxxxx mmmmmmmm "
+"tttttt tt tttttttttqqq  xxxxxxxxxxxx mmmmmmmm "
+"tttttt tt tttttttttqqq  xxxxxxxxxxxxxmmmmmmmm "
+"ttttttttt tttttttttqqq              xmmmmmmmm "
+"wwwwwwwwwwtttttlllllllllllllll   xxxxmmmmmmmm "
+"wwwwwwwww tttttlllllllllllllll  ooooommmmmmmm "
+"wwwwwwwww ttttt llllllllllllllloooooommmmmmmm "
+"wwwwwwwww ttttt    qqq         oooooommmmmmmm "
+"wwwwwwwww ttt                     oo mmmmmmmm "
+"wwwwwwwww ttt                      o mmmmmmmm "
+"ttttttttt ttt                      o mmmmmmmm "
+"ttttttttttttt                      o mmmmmmmm "
+"t    tttttttt                  hh    mmmmmmmm "
+"tvvvvtuuuuttt        aaa       hh    mmmmmmmm "
+"tvvvvtuuuuttt       aaaa rrrr  bbbb  mmmmmmmm "
+"tvvvvtuuuuttt   sss aaaa rrrrr gggg  mmmmmmmm "
+"tvvvvtuuuuttt   sss aaaa rrrrr ggggnnmmmmmmmm "
+"tvvvvtttttttt       aaaa rrrr  ggggnnmmmmmmmm "
+" vvv       t        aaaa       ggg nnmmmmmmmm "
+"                    aaaa                iii   "
+"k   kk   k     k   k         k         iiii   "
+"                                       iiii   "
+"                                              "
+130,66,3
+134,66,3
+138,66,3
+138,66,4
+134,66,4
+130,66,4
+126,66,4
+138,66,5
+134,66,5
+130,66,5
+126,66,5
+126,66,6
+130,66,6
+134,66,6
+138,66,6
+162,86,10
+166,86,10
+166,90,10
+162,90,10
+158,90,10
+162,94,10
+166,94,10
+170,90,10
+142,34,15
+98,2,17
+78,2,20
+78,6,20
+78,10,20
+130,66,25
+134,66,25
+138,66,25
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"8east","The door    cracked     slightly    open. ","lo",0,0,84,""
+"","There is    only rotten food and    dirty cloth at the top  of the      garbage. ","l",0,85,0,""
+"","You push    around in   the garbage unearthing  an          interesting item. ","p",0,85,85,""
+"","There is an empty pistolat the top  of the      garbage. ","l",85,86,0,""
+"","You scoop upthe pistol  and put it  in your     pocket. ","g",85,86,86,"i30invenc"
+"","You push    around in   the garbage some more   but find    nothing     else. ","p",85,0,0,""
+"","A green     trash       dispenser   sits in an  alleyway    beside a    small       building.","l",0,0,0,""
+"","The lid doesnot look    particularlystable.","l",0,0,0,""
+"","A suitcase  lies on the side of the street. ","l",0,0,0,""
+"","It is       completely  empty. ","o",0,0,0,""
+"","A few drops of blood    have        splattered  on the      pavement    here.","l",0,0,0,""
+"","The lighted sign says   `Travel #1'","l",0,0,0,""
+"","A tall brickbuilding    sits at the side of the road.","l",0,0,0,""
+"","The alley isdark and    forebodeing but has     nothing of  interest    anywhere in it. ","l",0,0,0,""
+"","The         firescape onthe side of the buildingis too high for you to  reach. ","l",0,0,0,""
+"","A small     amount of   pink sky    peeks out   from behind the         buildings.","l",0,0,0,""
+"","You can see a white     building in the         background. ","l",0,0,0,""
+"","When you    peer throughthe window  you think   you can see a few peopleinside the  building. ","l",0,0,0,""
+"","The sign    gives the   hours the   travel      agency is   open. ","l",0,0,0,""
+"","A           luminescent purple      building    looks       absolutely  awful.","l",0,0,0,""
+"","The sign    proclaims it`The GlowingWedding     Chapel' and gives pricesand hours.","l",0,0,0,""
+"","The door is reinforced  steel and islocked      thoroughly.","o",0,0,0,""
+"","A large     tinted      window      provides a  view of the street.","l",0,0,0,""
+"","You can makeout large   windows on  the         building. ","l",0,0,0,""
+"","You open    back up the trash can.","o",0,0,0,"s1"
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

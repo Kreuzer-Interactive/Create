@@ -1,0 +1,138 @@
+.7:
+.3,-1,73,53
+.4,-1,48,32
+.5,-1,95,28
+.3,-1,144,82
+.4,-1,144,63
+"Something about the  disturbing scene     before you fills you with a dark          foreboding.","3dremdrk","","","","",""
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                        dd                    "
+"                        dd                    "
+"                         d                    "
+"      b                  d                    "
+"      b     q  ww      ddod                ee "
+"      b     qqq ww      dd        g g     eee "
+"      b       ww w      gggggg g g      bbeee "
+"      b      ww ww  rr  g               bbeee "
+"             w  w w rr gg       ffff    bbeee "
+"             wwwwww rrrgg          f     b    "
+"         hh  w  wwwrrrr            f     b    "
+"         h    qq w r                ff   b    "
+"    j    h     qq                   xxx  b    "
+"   jjj                              xc        "
+"   jj mm                            cccc      "
+"    j mm                                      "
+"                                              "
+"          kk       a              k  llmmm    "
+" iiii      k       aaaaaa         k lll mmm   "
+"iiiiip p        k  aaaaa           tlll       "
+"ppp  ii        k                    l     k   "
+162,90,14
+166,90,1
+166,90,14
+166,86,14
+162,86,14
+150,94,26
+146,94,26
+150,90,26
+30,74,14
+30,78,14
+26,78,14
+26,74,14
+106,34,15
+98,34,15
+102,30,15
+102,26,15
+102,22,15
+14,94,16
+10,94,16
+6,94,16
+6,90,16
+10,90,16
+18,94,16
+146,74,17
+150,74,17
+154,74,17
+146,94,19
+146,98,19
+150,90,19
+150,90,19
+146,94,20
+146,98,20
+150,94,20
+162,90,21
+166,90,21
+150,94,21
+146,94,21
+26,74,22
+26,78,22
+30,78,22
+30,74,22
+70,62,23
+154,66,24
+150,70,24
+82,90,25
+86,90,25
+90,90,25
+94,90,25
+98,90,25
+90,94,25
+86,94,25
+94,94,25
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","An oddly    formed pool of dried    blood rests on the stonefloor.","l",0,0,0,""
+"","A skull is  set on a    stick that  is strangelyunaffected  by the lava it potrudes from. ","l",0,0,0,""
+"","A long greenworm        slithers    from the loginto the    red-hot     lava. ","l",0,0,0,""
+"","A decayed   head held upby a rope   swings back and forth.","l",0,0,0,""
+"","There is a  cavernous   door to the northeast.","l",0,0,0,""
+"","The bloody  letters formthe phrase  'TURN BACK'.","l",0,0,0,""
+"","These sharp spikes      appear to bemade of somekind of     bone. ","l",0,2,0,""
+"","The blade isdripping    blood. ","l",0,0,0,""
+"","There is a  peculiarly  heavy skull hidden amongthe bones.","l",0,0,0,""
+"","You have no idea what   kind of     skull it    is-nor wouldwant to     know. ","l",0,0,0,""
+"","Some moss   sticks to   the old log.","l",0,0,0,""
+"","A hideous   sucking     sound comes from the    fungus-like growth with the severed arm. ","l",0,0,0,""
+"","A fungus is attached to the old log.","l",0,0,0,""
+"","Judging fromthe arm it  would not besmart to geta fungus    with your   bare hands.","g",0,0,0,""
+"","Even if you could       unattach it you have no need for a  head on a   rope. ","g",0,0,0,""
+"","You grab theskull from  its hiding  place       beneath the bones. ","g",0,2,2,"i22invenw"
+"","You would   prefer not  to touch theworm.","p",0,0,0,""
+"","A rotting   body is     impaled  on the spike.","l",0,0,0,""
+"","You hold theskull bowl  under the   fungus. Now you have to get the     blood into  the bowl.","u",8,0,9,""
+"","You pull on the arm and the bowl    half fills  with blood. ","p",9,10,10,""
+"","That        particular  fungus      doesn't biteonto the    bone. ","u",5,0,0,""
+"","The fungus  closes      itself over the bone andyou are ableto pull it  off the log.","u",5,0,11,"i20invenw"
+"","Lava rushes from        something inthe vauge   shape of a  head made ofa fleshy    substance.   ","l",0,0,0,""
+"","The blood   swirls on   top of the  lava. ","l",0,0,0,""
+"","You fish    around in   the blood   and find a  key.","gp",0,7,7,"i11invenw"
+"","When you    pull on the arm a       plentiful   quantity of blood oozes out.","pg",0,9,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

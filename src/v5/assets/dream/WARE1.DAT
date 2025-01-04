@@ -1,0 +1,138 @@
+3.8
+.1,0,21,81
+2.3,3.5,123,26
+2.6,3.1,123,26
+2.9,3.3,123,26
+1.9,1.9,3,48
+"A gaping warehouse   full of boxes and    crates stretches     endlessly in front ofyou. ","6cty4","8ware4","","","",""
+"aa   a                                        "
+"aa  aaa  aa   bb bbbbbbbb                     "
+"    aaa  aa a bbbbbbbbbbb  aa aa  aa aa aa    "
+"              bbbaa aa  c  aa aa  aa aa aa    "
+"              bbbb      c                     "
+"              bbbb    ddcd                    "
+"              bbbb    dddd     jj             "
+"            eebbbb    ddd      jj             "
+"           ffffffffffff   ffff jj             "
+"           ffffffffffff   fffff               "
+"        nn ffffffffffffffffffff               "
+"    pp  nn fffffffffff   ffffff        hh     "
+"uuu pp  nn ffffffff   xxxx             hhh    "
+" uu     nn ffffffff ggxxxxiii          h      "
+"    q   nn ffffff ggg     ii                  "
+"    q   nn        ggg     i                   "
+"    qss n                 ii  iii             "
+"    sss           kkkkkk  ii  iii             "
+"    s           kkkkkkkkk ii  iii             "
+"               kkkkkkkkkkk i  iii        hh   "
+"              kkkkkkkkkkkkk   iii         h   "
+"      l      kkkkkkkkkkkkkkk  iii        hh   "
+"     l      kkkkkkkkkkkkkkkkk  ii             "
+"           kkkkkkkkkkkkkkkkkkkk               "
+"0"
+66,10,2
+70,10,2
+98,22,4
+42,98,11
+46,98,11
+50,98,11
+54,98,11
+58,98,11
+62,98,11
+66,98,11
+70,98,11
+74,98,11
+78,98,11
+82,98,11
+86,98,11
+90,98,11
+94,98,11
+98,98,11
+102,98,11
+106,98,11
+110,98,11
+114,98,11
+118,98,11
+122,98,11
+126,98,11
+22,90,13
+26,86,13
+34,50,15
+18,62,20
+18,58,20
+2,50,22
+6,50,22
+6,54,22
+10,54,22
+10,50,22
+126,34,23
+126,30,23
+126,26,23
+130,26,23
+130,30,23
+2,50,25
+6,50,25
+6,54,25
+10,54,25
+10,50,25
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","Windows     line the topof the      warehouse   letting in  the twilight ","l",0,0,0,""
+"","A loading   crane is    down on the otherend of the         warehouse.","l",0,0,0,""
+"","The thick   chain is    used to     suspend     heavy       crates. ","l",0,0,0,""
+"","One crate   still hangs from the    crane.  ","l",0,0,0,""
+"","You can     bearly see  an opening  behind thosecrates.","l",0,0,0,""
+"","How odd?    Crates and  boxes in a  warehouse. ","l",0,0,0,""
+"","An oblong   box sits in the middle  of the      concrete    floor.","l",0,0,0,""
+"","A green X   adorns this box as well as a few    others.","l",0,0,0,""
+"","The green   government  seal on     these boxes means they  are of the  utmost      importance. ","l",0,0,0,""
+"","There is    something   Alive in    this crate.","l",0,0,0,""
+"","The light   races acrossthe floor   from the    wide open   door. ","l",0,0,0,""
+"","A           screwdriver rests on thefloor. ","l",0,54,0,""
+"","Figuring no one will    miss the    screwdriver you borrow  it. ","g",0,54,54,"i32invena"
+"","It is the   powerbox forthe         warehouse.","l",0,0,0,""
+"","Unfortunetlyit has been locked. ","op",0,0,0,""
+"","Foreman     Office is   written on  the window  of this     door. ","l",0,0,0,""
+"","It is       probably a  doorknob    used to opendoors. ","l",0,0,0,""
+"","It is       probably a  doorknob    used to opendoors. ","l",0,0,0,""
+"","A           ventalation grate allowsfor air     circulation into the    office.","l",0,0,0,""
+"4ware2","You turn theknob and thedoor slides open. You   wonder if   they lock   anything    around here.","po",0,0,0,""
+"","A red light beeps on thetwo-way     intercom    showing     there is a  message.","l",0,0,0,""
+"com","You press   the intercombutton to   start the   message. ","p",0,55,55,"com"
+"","You wouldn'tdare open   that crate.","op",0,0,0,""
+"","Its the     shadow from the         suspended   box. ","l",0,0,0,""
+"","You set the intercom to transmit andstart       talking.","p",100,96,96,"com2"
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+

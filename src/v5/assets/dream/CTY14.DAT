@@ -1,0 +1,138 @@
+2.6
+.2,1.4,44,2
+1,2.2,44,2
+.6,1.8,44,2
+-1,-1,125,35
+-1,-1,126,41
+"A large official     building stands      before you on a      elevated platform.","3cty16","","","","",""
+"dddddddddddaaaddddccccccccccccccccddddddddddd "
+"ddddddddddddaaadddccccccccccccccccddbbddddddd "
+"dddddddddddaaaadddccccccccccccccccddbdddddddd "
+"ddddddd}}}}}}}}}}}}}}}}}}}}}}}}|||}}}yydddddd "
+"ddddddd}oooooo}}pppppppppppppp}|||}}}yydddddd "
+"zzzzzzz}oooooo}}pppppppppppppp}|||}}}yyyddddd "
+"zzzzzzz}oooooo}}ppppppppppppp}}|||}}}yyydddee "
+"zzzzzzz}oooooo}}}}}}}}}}}}}}}}}|||}}}yyydddee "
+"zzzzzzz}oooooo}}}}}}}}}}}}}}}}}|||}}}yyydddee "
+"zzzzzzz}oooooo}}}}qqqqqqqqqqq}}|||}}}yyydddee "
+"zzzzzzz}oooooo}}}}qqqqqqqqqqq}}|||}}}yyydddee "
+"zzzzzzz}oooooo}}}}qqqqqqqqqqq}}|||}}}yyydddee "
+" zzzzzz}oooooo}}}}}qqqqqqqqqq}}|||}}}yyydddee "
+"hhhhhhh}oooooo}}}}}}}}}}}}}}}}}|||}}}yythhhee "
+"hhhhhhh}oooooo}}}}}rr}}}rrr}}}}||}}}}ytthhhee "
+"hhhhhhh}oooooo}}}}rrrr}}rrrr}}uww}}}}ytthhhee "
+"hhhhhhh}oooooo}}}}rrrr}}rrrr}}uww}}}}ttthhhee "
+"hhhhhh}}ooooo}}}}}rrrr}}rrrr}}}ww}}}}tthhhhee "
+"hhhhhhfffffffffffffffffffffffffffffffffffhhee "
+"hhhhhllllimiiffffffffffffffffiffffffffffffhhe "
+"hhhhhllllimmifjjffiifffiiffffffiiiiffffffffhh "
+"hhhhfffffififffjffffffiifffffffffffffffffffff "
+"hhhhgffffffffffffffffffffffffffffffffffffffff "
+"hhhhggfffffffffffffffffffffffffffffffffffffff "
+"hhhhgghhhhhhhhhhhhhhhhhhhhhhhhhhhgggfffffffff "
+58,82,11
+62,86,11
+62,82,11
+34,74,12
+30,74,12
+26,74,12
+42,78,14
+42,82,14
+46,82,14
+110,66,19
+98,66,19
+86,66,19
+74,66,19
+122,62,22
+122,66,22
+126,66,24
+118,58,29
+118,62,29
+66,26,29
+62,26,29
+26,66,29
+26,62,29
+26,58,29
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","Thick dark  smoke flows out of the  smokestack.","l",0,0,0,""
+"","You wonder  if they get the ESP     channel withthat dish.","l",0,0,0,""
+"","This part ofthe Terc    building    extends a   few floors  higher than the rest of the         building. ","l",0,0,0,""
+"","The pastel  sunset stilldominates   the sky.","l",0,0,0,""
+"","An abandon  building    lies        helplessly  in the      water.","l",0,0,0,""
+"","The elevatedroad projecthas saved   parts of thecity. ","l",0,0,0,""
+"","The long    pires       supporting  the road arecovered withmoss and    lichens.","l",0,0,0,""
+"","The water   seems to be everywhere.","l",0,0,0,""
+"","Fragments ofwood are    scattered   across the  elevated    road. ","l",0,0,0,""
+"","A metal     crowbar lieson the      concrete. Itwas probablyused to     smash the   crate.","l",0,0,0,""
+"","Don't mess  with the    evidence.   You don't   want your   fingerprintson the      crowbar.","gp",0,0,0,""
+"","This crate  has been    undisturbed.Your notice the address of a down-  town ware-  house on a  side with noauthoriza-  tion number. ","l",0,0,0,""
+"","A blaster   section liesin the      bottom of   the smashed crate.","l",0,104,0,""
+"","You take theblaster     figuring    they will   blame       whoever     smashed the crate.      Breaking thelaw is cool.","g",0,104,104,"i00invend"
+"","Three large pipes extendfrom the    platform    into the    side of the TERC        building.","l",0,0,0,""
+"","TERC is     proudly     displayed onthe         buildings   front wall.","l",0,0,0,""
+"","`We are     watching    over Topeka'is the firstline of the politically motivated   poster.","l",0,0,0,""
+"","The doors   are a heavy alloy as to not allow   break ins.","l",0,0,0,""
+"8terc1","You open thedoor to the Terc        offices. ","o",0,0,0,""
+"","Vines grow  up from the water and   cover the   side of the basement in the TERC    building.","l",0,0,0,""
+"","A small     panel with afew buttons controls thetranslucent elavator.","l",0,0,0,""
+"","You press   the button  and the     elevator    silently    rolls down.","p",0,0,0,"s45"
+"","It is the   door to the elevator.","l",0,0,0,""
+"","The door hasbeen locked.","op",0,0,0,""
+"","The wall of the TERC    building is covered withwindows.","l",0,0,0,""
+"","A large     three floor passageway  extends out of the TERC building.","l",0,0,0,""
+"","The windows cover almosta whole     floor. ","l",0,0,0,""
+"","A           translucent elevator    potrudes    from the    front of thebuilding.","l",0,0,0,""
+"","It is the   TERC officesand the     development center.","l",0,0,0,""
+"","","0",0,0,0,""
+

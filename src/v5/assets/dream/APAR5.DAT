@@ -1,0 +1,138 @@
+2
+.2,1,108,59
+.6,1.4,108,59
+1.5,1.5,113,76
+1.7,1.7,113,76
+1.9,1.9,113,76
+"The hallway looks    identical to the one downstairs. ","3apar4","","","","",""
+"aaaaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeggggaa "
+"aaaaeeeeeeeeeeeeeeeeeeeeeegggggggggggggggggaa "
+"aaaaeeeeeeeeeeeeeggggggggggggggggggggggggggaa "
+"aaaadggeegggggffffgggggggggggggggggggggggggaa "
+"aaaadgeeedggggggggggggggggggggggggggghhhhggaa "
+"aaaadggggdgggggggggggggggggggggggggggghhhggaa "
+"aaaadggggdgggggggggggggggggggggggggggggggggaa "
+"aaaadggggdggggiiigggggiiiiggggggggiiiggggggaa "
+"bbbadggggdgggggiggggggiiiggggggggiiiiggggggaa "
+"bbbadlllldggggllggggglllllggggggllllllgggggaa "
+"bbbadlllldgggglllgggglllllggggggllllllgggggaa "
+"bbbadlllldgggglllgggglllllggggggllllllgggggaa "
+"bbbadlllldgggglllgggglllllggggggllllllgggggaa "
+"bbbadlllldgggglllnngglllllggggggllllllgggggaa "
+"bbbadlllldgrrglllgngglllllgoggggllllllgggggaa "
+"bbbadlllldgrrglllgnjglllllooggggllllllgggggaa "
+"aaaadlllldgrrglllgjjglllllooggggllllllgnnggaa "
+"aaaacccccccrrglllgjjglllllrrrrggllllllnnnggaa "
+"aaaaccccckkccccclgggglllllrrrrrgllllllngnggaa "
+"aaaacccccvkccccccccgglllllrrsrrgllllllgggggaa "
+"aaaacccccccccccccccccclglggrrrggllllllgggggaa "
+"aaaaccuuccccccccccccccccccgrrrggllllllgggggaa "
+"aaaacccccccccccccccccccccccrrccgllllllgggggaa "
+"aaaaccccccccccccccccccccccccccccccllllgggggaa "
+"aaaacccccccccccccccccccccccccccccccclggggggaa "
+14,58,2
+138,98,3
+38,18,5
+158,34,7
+158,38,7
+66,58,13
+34,54,13
+102,62,13
+102,66,13
+150,70,13
+150,74,13
+158,74,14
+74,58,16
+74,54,16
+158,66,16
+158,70,16
+158,74,16
+110,62,17
+110,66,17
+114,78,20
+38,74,22
+42,74,22
+42,78,22
+30,86,23
+26,86,23
+150,18,24
+154,18,24
+158,18,24
+162,18,24
+162,22,24
+158,22,24
+154,22,24
+110,62,25
+110,66,25
+110,62,26
+110,66,26
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The wall    opens into asmall       hallway.","l",0,0,0,""
+"","They call   this art?","l",0,0,0,""
+"","The section of the floorare much    larger in   this        hallway. ","l",0,0,0,""
+"","The is on   door at the far wall.","l",0,0,0,""
+"","Two lights  hang from   the ceiling.","l",0,0,0,""
+"","The bulb in this light  is not      working.","l",0,0,0,""
+"","Three large doors run   along the   dingy wall.","l",0,0,0,""
+"","You suspect that the    small wall  hanging     hides a     security    camera.","l",0,0,0,""
+"","The name on the plate isunpronounce-able.","l",0,0,0,""
+"","A hole has  been smashedinto the    wall.","l",0,0,0,""
+"","A bloody raglies on the floor.","l",0,0,127,""
+"","It is a     relitively  old door    especially  for the age of the      building. ","l",0,0,0,""
+"","The door    will not    come open   that way.   You must usethe securitymechanism   next to the door.","op",0,0,0,""
+"","The securitymechanism   are used to open the    door.","l",0,0,0,""
+"","The buttons on this     security    lock are    flashing.    ","l",0,0,0,""
+"","The lock    does not    give. ","p",0,0,0,""
+"9apar6","You press   the button  and the doorlatch breaksloose. ","p",155,0,128,""
+"","Two large   potted      plants standon the      floor.","l",0,0,0,""
+"","There is a  shiny objectlying in thepot. ","l",0,126,0,""
+"","You remove  the object  to find out that it is  an apartmentkeycard.","g",0,126,126,"i32invend"
+"","The keychainhas been    broken and  bears the   name Leo    Altima.","l",0,0,125,""
+"","You don't   dare touch abloody      cloth. What about the   plague?","gp",0,0,0,""
+"","You don't   need the    keychain.","g",0,0,0,""
+"","You don't   know who is watching youso don't    play with   the wall    hanging.","pg",0,0,0,""
+"","You cannot  open the    door withoutunlocking   it.","op",0,155,0,""
+"l","You unlock  the securitypanel.","u",126,155,155,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

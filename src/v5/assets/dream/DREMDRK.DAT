@@ -1,0 +1,138 @@
+1.5
+-1,-1,35,69
+-1,-1,54,67
+-1,-1,70,60
+.5,-1,141,38
+1,-1,141,46
+"You are in a small   walled in room on thebottom of an         extremely deep pit.","","","","","",""
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                    fff       "
+"                                    ff        "
+"                                   ffff       "
+"                          ss       fff        "
+"              k            es       f         "
+"         k    k  k       usuee      f         "
+"         k    k  k       eueu ee    f         "
+"         k    k  kk      see    e   f         "
+"         kk  kkk kk                 f         "
+"      gg kk   kk kk hd              f h       "
+"    gggg kk   k       dd            f         "
+"                  aa  ddd  hh       f         "
+"              a  j aa dddd                    "
+"              aaa                             "
+"          aa   a                              "
+"          aa                     ccic         "
+" l                      b          cic  mn    "
+" a                      bbbb         `        "
+"                                              "
+86,62,8
+134,86,9
+134,86,9
+138,86,9
+142,90,9
+78,74,10
+78,70,10
+74,70,10
+62,78,10
+58,78,10
+62,82,10
+58,74,10
+42,82,10
+46,82,10
+46,86,10
+42,86,10
+162,90,13
+162,90,14
+6,90,14
+6,94,14
+6,90,15
+6,94,15
+162,90,15
+166,90,15
+82,62,16
+86,62,16
+110,70,17
+114,70,17
+154,62,18
+106,54,19
+110,50,19
+110,42,19
+118,46,19
+122,50,19
+134,86,10
+138,86,10
+142,86,10
+142,90,10
+146,90,20
+150,90,20
+142,86,20
+106,54,21
+114,42,21
+110,42,21
+118,46,21
+106,38,21
+102,50,21
+126,50,21
+130,54,21
+138,86,22
+142,86,22
+146,90,22
+150,90,22
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The skull isfirmly      wedged in.","g",0,0,0,""
+"","You have a  feeling you shouldn't   take the    bony arm.","gl",0,0,0,""
+"","The blood   slips       through yourfingers.","g",0,0,0,""
+"","You do not  want to     carry those cracked and brittle     bones       around. ","g",0,0,0,""
+"","The weapon  it much too heavy too   carry for   even a      minute or   two. ","g",0,0,0,""
+"","Blood drips slowly from the animal  head. ","l",0,0,0,""
+"","A letter andthree       numbers are written in  blood on thewall. ","l",0,0,0,""
+"","A small     bloody X    adorns the  wall. ","l",0,0,0,""
+"","A small poolof blood    gathers     slowly on   the floor.","l",0,0,0,""
+"","Three skullsare set in  indentationson this     strange     device. ","l",0,0,0,""
+"","You have no idea what   the hideous metal       contraption is supposed to do.","l",0,0,0,""
+"7dremdrk2","When you    pull on the handle a    door opens  leading     northwest.","po",1,0,0,"5"
+"9dremdrk5","You pull    open the    trap door   that leads  northeast.","po",1,0,0,"6"
+"","The handle  will not    open. ","op",0,1,0,""
+"","A small     handle is   set in the  wall.","l",0,0,0,""
+"","You push theX on the    wall.","p",0,0,0,"x1"
+"","You push theX on the    wall.","p",0,0,0,"x2"
+"","You push theX on the    wall. ","p",0,0,0,"x3"
+"l","You gather  the dust    that pours  out of the  skull when  you crack   it. ","u",2,3,3,"i21invenw"
+"","You use the top half of the skull toscoop up    half a bowl of blood.","u",8,4,4,""
+"","It looks as if the      weapon had  been used tocrack bones.","l",0,0,0,""
+"","You can't   get any moreblood from  the pool.","u",8,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

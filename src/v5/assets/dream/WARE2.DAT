@@ -1,0 +1,137 @@
+1.2
+.5,.5,79,57
+.2,.2,159,79
+.4,.4,157,80
+.6,.6,157,80
+.8,.8,157,80
+"The office looks likeit was once part of the warehouse floor.","6ware1","","","","",""
+"                                              "
+"                                              "
+"                                              "
+"                             bb               "
+"     bbb     bb      bbb    bbb               "
+"     bbb     bbb     bb     bbb               "
+"      bb                                      "
+"                                              "
+"                                              "
+"                 l                            "
+"        mmmmm    l           d                "
+"        mmmmmm  ll   kkkk    dd ccc           "
+"        mmmmmm  ll   kkkk    d  cccc  aaa     "
+"       mmmmooo  ll  kkkkk   eee cccc  aaaa    "
+"         nnonnnnll  tttkk p eeeeccccf aaaa gg "
+"         nnnnnnnll  tttrrrp eeee    ffaaaaggg "
+"         nnnnnnnllppt ppppppeeee    ffaaaaggg "
+"         nnnnnnnllppps q  p eeee    ffaaaaggg "
+"         nnnnnnnllpppssq  ||eeee     faaaaggg "
+"      l  nnnnnnnllpppss               aaaahh  "
+"     ll  nnnnnnnll   ss    jjj            h   "
+"     ll  nnnnnn~        jjjjjj            hh  "
+"     ll                 jjjjjj            hh  "
+"                                         iii  "
+"                                          ii  "
+54,58,15
+90,66,20
+122,70,21
+122,66,21
+122,62,21
+122,58,21
+122,54,21
+118,54,21
+118,58,21
+118,62,21
+118,66,21
+90,74,22
+46,54,23
+50,54,23
+54,54,23
+50,58,23
+170,78,24
+174,78,24
+90,74,25
+90,78,25
+90,78,26
+90,74,26
+94,62,27
+98,62,27
+102,62,27
+110,74,29
+106,74,29
+106,66,30
+110,66,30
+82,70,30
+82,74,30
+82,78,30
+58,86,30
+54,86,30
+50,86,30
+46,86,30
+146,70,30
+146,66,30
+146,62,30
+150,62,30
+150,66,30
+150,70,30
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","It is the   door that   you came in.","l",0,0,0,""
+"","The windows are far to  high for youto see out  of. ","l",0,0,0,""
+"","It is a map showing all the loading areas of thewarehouse.  You notice asmall room  has been    penciled in on the far  wall. ","l",0,0,0,""
+"","The plant isfake.","l",0,0,0,""
+"","A file      cabinet     rests       against the wall.","l",0,0,0,""
+"","Heat        emanates    from the    portable    register.","l",0,0,0,""
+"","A large     water coolerstands by   the wall.","l",0,0,0,""
+"","The faucet  drips       slowly.","l",0,0,0,""
+"","A small poolof water hascollected onthe floor   from the    leak in the water       cooler. ","l",0,0,0,""
+"","A wooden    chair lies  on the      floor.      Someone musthave been ina hurry.","l",0,0,0,""
+"","The poster  displays allthe needed  commands forthe         computer.","l",0,0,0,""
+"","Large pipes run from thefloor into  the wall.","l",0,0,0,""
+"","The blaster on the      poster      reminds you of the      xyz-1000    model set tocome out    this year.","l",0,0,0,""
+"","The shelves hold many   boxes of    disks and   books on    computer    opperation.","l",0,0,0,""
+"","On top of   the shelves is another  disk box butthis one wasleft open.","l",0,0,0,""
+"","On top of   the desk is a old almostobsolete    desktop     computer.","l",0,0,0,""
+"","The computeris plugged  in behind   the desk.","l",0,0,0,""
+"","A modern    style       keyboard    rests on thedesk. If youhad some    disks you   could use   it. ","l",0,0,0,""
+"","The disk    drives      accept only cd-roms and mini-roms.","l",0,0,0,""
+"","The last    message     displayed onthe screen  is `Disk    erase       complete'.","l",0,0,0,""
+"","You open thefile cabinetand see a   myriad of   torn and    destroyed   files. ","o",0,0,0,""
+"","The disk    drive eitheraccepts     mini-roms orthe older   cd-roms.","l",0,0,0,""
+"","You remove  the         mini-roms   from their  box. ","g",0,56,56,"i01invenb"
+"","You decide  not to add  to the      puddle      by turning  on the      faucet.","op",0,0,0,""
+"l","You insert  the         mini-roms   into the    drive.      `Disks      erased as ofMay 8/2066' is displayedon the      screen.","u",56,57,57,""
+"l","You insert  the cd. The screen now  displays theshipping    records.    There are   few that    lack auth-  orization   numbers all of which aretechnical   equipment   and all     going to thesame address","u",58,59,59,""
+"","You do not  want to messup the      computer.","pg",0,0,0,""
+"","In the      bottom      drawer you  find a largekey.","ol",0,60,0,""
+"","You remove  the key fromthe drawer.","g",0,60,60,"i00invenb"
+"","It will not open no     matter how  hard you    pull. So youassume it isprobaly     locked.","op",0,0,0,""

@@ -1,0 +1,223 @@
+(dge.
+Do you have buisness in this court? At  this time of night?
+You should not waste this court's time.
+A
+Could I report a burning house?
+No.*
+A
+I've got you a book.
+Really? Edgar Allan Poe, I hope. Hand it over.@
+A
+My name was on the schedule outside.
+If it was, you wrote it there.*
+(one.
+Hello, Mayor's Office.
+You again, huh?
+A
+Will you answer a few questions?
+Sorry, I make a policy of saying nothingon the phone.B
+AB
+Can I come inside?
+Check with my secretary. She'll let you in if it's okay.C
+C
+Did you know your secretary is dead?
+You're not getting in this office with  that attitude!D
+CD
+Never mind, then.
+Suit yourself.*
+CD
+I think you should let me in now.
+Why's that?E
+E
+I'm a good friend of yours.
+You don't really sound like anyone I    know. What did you say your name was?F
+E
+You're in trouble with the law.
+I know the law, buddy, and your not it.*
+E
+I'll tell you when I get inside.
+I'm not that curious, buddy. Why don't  you just stop harrasing me.*
+F
+I'm your uncle. Don't you remember me?
+If you were you'd be dead. Now scram.*
+F
+I'm the nephew of Dr. Maller.
+And I'm the nephew of Ted Flanders. Who cares?*
+F
+ Wishop Doppleganger. Gonna let me in?
+Wishop? That's you? Well come right in!@
+(bum.
+How's ya doin?
+Back again? It's because I'm so inter-  esting I bet.
+A
+Who are you?
+The name's Wishop Doppleganger. And     who're you?E
+A
+Why are you sitting by that box?
+'Cause I likes it here. Don't think for an instant I don't hav'a house.B
+A
+Have you seen anyone skulk by lately?
+Actually I seen someone sneak into the  townhall. Up to no good, I tell you.*No one's snuck into the townhall. If    they did, I'd know it. I've got a sharp eye.*
+B
+Which house might that be?
+I can't tell you which one it is, seeinghow you might be trying to rob me an'   all. In fact, that must be what you're  trying to do.*
+B
+What was your line of work?
+Y'know, I'm glad ya asked. I was in Her Majesty's Service for thirty years. The finest captain, I was. Not one of them  enemies went by without saying 'That    there's Captain Doppleganger. We betta  stay away from him.'C
+C
+Thanks, but I have to leave now.
+Too bad, the story was jes gettin' good.*
+C
+How long have you been in this town?
+Been here? Why I've been here fer three years. The mayor and I, we's good       friends you see. I knew him 'for I came.So whens I get here, I jes talk to him, and get set up in the town. The mayor's office is in the townhall.@
+C
+(Let him continue)
+Well, one day I'm out on the ocean, com-ing 'round France and one of Wilhelm's  vessels comes straight at me. Seeing howmy crew died of the plague and all, I   slips into the water an hack up his     ol' hull while he's busy with my ship.D
+D
+Do you know anything about Dr. Maller?
+Dr. Maller? He's that guy a ten miles   upstream from the mill with a house of  crazies. One last word, I would stay    away from that place.*
+D
+Well, I'll just let you sit there.
+Been nice talkin' to you.*
+D
+Is there anything I can do for you?
+Well, I could use a few thousand        dollars, a green snake, maybe some waterfor my parched throat. And throw in a   match while you at it.*
+E
+Frederick Maller
+Pleased to be meeting you, Mr. MallerA
+E
+Abraham Lincoln
+Pleased to be meeting you, Mr. LincolnA
+(you.
+Trying to steal my books, hah?
+I'll shoot. Don't stop it and I'll shoot!
+A
+May I have this book?
+I'll tell you what. If you can guess theauthor, I'll give it to you. If not,    I'll shoot you.C
+A
+I'll give you something for this book.
+No you won't. Hah ah.*
+A
+Can you tell me how to get a car towed?
+Hah. You know, I found a hook. You do   something for me, and I'll give it to   you.B
+B
+Do what?
+Anything. HAha.*
+B
+Will you throw in the gun?
+Sure... Ly not. A hah.*
+C
+Okay, I'll take a guess.
+Guess away.D
+C
+I'd rather pass on that offer.
+Hah. Hah.*
+D
+Edgar Allan Poe
+Book's yours.@
+D
+Lord Alfred Tennyson
+You're incorrect! Now I'll shoot you!*
+D
+Robert Frost
+You're incorrect! Now I'll shoot you!*
+(cho.
+Stay away! I'm warning you!
+I'll shoot if you don't get out of here!
+A
+Give me the gun...
+I know what your doing. You're trying todisarm me. Hah.D
+A
+Don't worry, I'm a friend.
+If you're a friend you'll get out of    here. I can take care of myself with    this. Hah.B
+A
+Don't make me take that gun from you!
+Don't make me kill you. Hah.*
+B
+What can I do to make you believe that?
+Hah! You can get out of here.C
+B
+I'm a friend, now hand me the gun.
+I need it for protection.D
+C
+So, how's your day been going?
+Not very good. My wife went to go talk  to the mayor two hours ago, and she     still hasn't come back. How about you   doing the same?E
+D
+How about just giving me the other gun?
+So you can shoot me? HAH. Ha. Ha...*
+DC
+Okay I'll leave now. For good.
+Hah, hah.*
+E
+I'll find her for you.
+You do that. Then maybe I'll give you a gun.G
+E
+She's probably fine. Why the gun?
+There's a crazy person out there. Sneak-ing around town. Believe me?*
+E
+So, what else has been happening.
+Someone in a blue shirt and brown pants has been bugging me.F
+F
+Okay, if you feel that way I'll leave.
+Good. Ahah. Hah.*
+F
+Give me the gun. I'll take care of him.
+Hah, HAh, ahah!*
+G
+Okay.
+Hah, Hah.*
+G
+ù(Use psycho babble from uncle's book)
+You can have it. Just make sure you don't shoot yourself.@
+(yor.
+Hey, you're not Wishop.
+What is it this time?
+A
+Have you ever met Dr. Maller?
+Him and his troop of doctors seem awful strange. They're holed up in that house of his, 'testing' patients. Got a book  of his in the libraryB
+A
+Can I get a car towed around here?
+Nope. Sorry.D
+A
+Is there anything I should know?
+What field are you interested in?D
+B
+His house burned down just an hour ago.
+Not surprised. Probably one of their    experiments that did it. We're too smallto have a fire department though, so    there's nothing we can do.C
+BC
+Well, he's been killed by his patients.
+And his patients burned up I guess. I'llsend someone over in the morning.*
+B
+I'm his nephew.
+Out for a visit then?C
+C
+Yeah, but my car slipped of the road.
+That's too bad. But I can't help you.*
+CE
+A serum has leaked into the tap water.
+And what makes you think that?F
+D
+The mill is locked. Do you have a key?
+Why?E
+D
+Where's the nearest town?
+A hundred and twenty miles north of     here. You can't miss it.*
+D
+Is there anyplace to visit?
+Not in this town.*
+E
+I was just asking.
+Stop wasting my time then.*
+F
+Your dead secretary had a water glass.
+Okay. That's good, but I'm going to needsomething more before I open up the     mill.G
+G
+That's all I have so far.
+Check it out then. Tell me when you get your results.*
+FG
+úI gave Wishop water and he died.
+You killed Wishop?! Okay, I'll open up  the mill. Don't touch anything while I  go to get the key.@
+F
+You're downstream from Maller's house.
+So what?*
+(

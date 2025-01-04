@@ -1,0 +1,138 @@
+3
+2.7,2.7,91,81
+2.7,2.7,108,81
+2.4,2.4,51,66
+-1,-1,157,45
+-1,-1,157,45
+"A pictoresque view   from the dock and thewarm ocean air calm  your nerves for an   instant. ","6ware4","","","","",""
+"mmmmmmmmmmmmmmaaaaaaaaaaaaaaaaammmmmmmmmmmmmm "
+"lllmmmmmmmmaaaaaaaaaaaaaaaaaaaaammmmmmlllllll "
+"llllllllmmaaaaaaaaaaaaaaaaaaaaaaaaammllllllll "
+"llllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaalllllllll "
+"llllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaalllllllll "
+"llllllllccccaaaaaaaaaaaaaaaaaaaaaaaalllllllll "
+"llllllllcccccaaaaaaaaaaaaaaaaaaaaaaalllllllll "
+"llllllllccccccaaaaaaaaaaaaaaaaaaaaaalllllllll "
+"llllllllcccccccdddbbbddbddddddddddddlllllllll "
+"llllllllcccccccdddbbbdbbbdddddddddddlllllllll "
+"llllllllddddddd`ddbbbbbbddddddddddddlllslllll "
+"llllllllddddddddddddddddddddddddddddlllnsllll "
+"lllllllleeedddddddddddddddddddddddddlllnnolll "
+"lllllllleeffddddddddddddddddddddddddlllnnooll "
+"llllllliegggfddddddddddddddddddddgiiillnnooll "
+"llllliiiiiggfddddddddddddddddddddgiiiiilnllll "
+"llllliiiigggdfdddddddddddddddddddggiiiiilllll "
+"llliiiiigggdddddddddddddddddddddddggiiiilllll "
+"lliiiiiiggdddddddddddddddddddddddddggiiiillll "
+"liiiiiiggg ddddddddddddddddddddddddggiiiiilll "
+"iiiiiiighhhhdddddddddddkkkdkkkdddddgggiiiiill "
+"iiiiiiggghhddddddddddddpdddddddddddgggiiiiiil "
+"iiiiiiiiiddddddddddddddddddddddddddiiiiiiiiii "
+"iiiiiiiiiiiiiidddddddddddddddddiiiiiiiiiiiiii "
+"iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii "
+162,54,24
+162,58,24
+158,54,24
+158,50,24
+54,74,25
+54,70,25
+34,58,9
+2,98,9
+6,98,9
+10,98,9
+14,98,9
+18,98,9
+22,98,9
+26,98,9
+30,98,9
+34,98,9
+38,98,9
+42,98,9
+46,98,9
+50,98,9
+154,98,10
+150,98,10
+150,94,1
+146,94,1
+154,94,1
+150,90,1
+6,6,13
+10,6,13
+30,6,13
+142,10,13
+118,82,16
+114,82,16
+110,82,16
+102,82,16
+98,82,16
+54,66,17
+50,62,17
+50,58,17
+46,54,17
+42,54,17
+38,82,18
+42,82,18
+46,82,18
+46,86,18
+42,86,18
+38,86,18
+158,54,19
+158,50,19
+158,46,19
+162,50,19
+162,54,19
+162,58,19
+170,54,20
+170,58,21
+170,58,21
+170,54,21
+158,50,23
+158,54,23
+162,58,23
+162,54,23
+162,54,24
+162,58,24
+170,58,22
+170,58,22
+170,54,22
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The sunset  seems to    last forevernowadays.","l",0,0,0,""
+"","You can see the remains of the old  city drownedin the waterof the fifthocean. ","l",0,0,0,""
+"","A last ditcheffort to   build up theshore has   saved a     handful of  buildings.","l",0,0,0,""
+"","The influx  of the oceanhas at leastbrought riseto the watershipping    industry.","l",0,0,0,""
+"","A large ironposts servesto tie down the smaller shipping    vessels as  they        areunloaded.","l",0,0,0,""
+"","The rope hasbeen flung  carelessly  into the    water were  it sways    with the    current.","l",0,0,0,""
+"","The concretedocks are   covered withthick moss.","l",0,0,0,""
+"","A small pipespews green slime into  the river.  Pollution iseverywhere.","l",0,0,0,""
+"","A thin wood floor coversthe docking area. ","l",0,0,0,""
+"","A small     trail of    blood leads to the edge of the dock.","l",0,0,0,""
+"","Two         unidentifi- able objectsfloat in thedock cutout for the     boats. ","l",0,0,0,""
+"","The brick   walls       extends intothe         boathouse.","l",0,0,0,""
+"","A slanted   metal roof  covers the  boathouse.","l",0,0,0,""
+"","A conveyor  belt built  into the    wall shows  marks of    recent use.","l",0,67,0,""
+"","The button  to start theconveyor    belt is     currently   locked.","l",0,0,0,""
+"","They are to far off     shore to    reach.","pg",0,0,0,""
+"","The rope is useless to  you because it is       permanently attached to the post.","pg",0,0,0,""
+"","You wouldn'tdare touch  the waste orthe pipe it is coming   from. ","pg",0,0,0,""
+"","The convey  belt is     already     open. ","o",0,0,0,""
+"","The button  is locked inthe off     position. Ifyou could   just pry it free. ","p",0,66,0,""
+"","You use the screwdriver to pry the  lock off thebutton. ","u",54,66,66,""
+"","You turn theconveyor    belt on     reverse.","p",66,0,67,"crate"
+"","A large box full of     pipes now   sits on the belt. ","l",67,0,0,""
+"","You remove  one of the  pipes. ","g",67,68,68,"i10invenb"
+"","You can see a part of   the rope    under the   water. ","l",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+

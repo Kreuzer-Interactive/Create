@@ -1,0 +1,138 @@
+2.3
+.4,.8,88,72
+.6,1,87,73
+1.3,2,89,72
+1.5,1.5,87,76
+.7,.7,18,66
+"The horrible stench  from the body invadesyour nostrils and    makes you a little   dizzy. ","1sub2","","","","",""
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"         jjj    jjjjj               x         "
+"        jjjjjjjjjjjjj               x         "
+"        jjjjjjjjjjjjj        x      x         "
+"         jjjjjjjjjjjj                         "
+"         x jjjjjjjj  x                        "
+"         x        x  x      yy                "
+"         x qqq       x       y                "
+"          qsqqqpp    x       y                "
+"         qss  qqp                             "
+"     ff qssvvt qp                             "
+"     fffqsvt vvvq  {{{{{{ m yy                "
+"    fff  q vvvw z {{{{ {lll  yy               "
+"          q vwwzz{{{{{ lll{{{{      |||||     "
+"           qzzz    a  llll{{{{{   ||||||||    "
+"            {z{{{{ aaa {{{{{{    ||||||||||   "
+"        uu {{{{{{{aaaa  d d{  |||||||||||||   "
+"  nnnn   u {{{{{{{{{a dddcd  |||||||||||||||| "
+"           {{{{{{{{{{{  ccd ||||||||||||||||| "
+74,90,2
+78,90,2
+82,94,2
+82,90,2
+86,86,2
+82,86,2
+102,94,4
+102,98,4
+98,98,4
+102,98,4
+98,98,4
+102,94,4
+102,94,5
+102,98,5
+98,98,5
+30,70,7
+26,70,7
+22,70,7
+22,74,7
+26,74,7
+30,70,8
+26,70,8
+22,70,8
+18,74,8
+22,74,8
+26,74,8
+26,70,9
+26,74,9
+22,74,9
+22,70,9
+82,42,11
+82,38,11
+82,34,11
+82,30,11
+38,42,11
+38,38,11
+38,34,11
+38,30,11
+34,34,11
+90,82,13
+94,82,13
+98,82,13
+102,82,13
+102,78,13
+98,78,13
+94,78,13
+98,74,13
+102,74,13
+106,74,13
+22,94,15
+18,94,15
+14,94,15
+10,94,15
+66,70,18
+62,66,18
+62,62,18
+58,62,18
+58,58,18
+54,58,18
+50,58,18
+50,54,18
+46,54,18
+42,58,18
+38,62,18
+34,66,18
+34,70,18
+38,74,18
+42,78,18
+78,82,30
+106,86,27
+102,86,27
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","You think   you can see something inthe blood   that was    once in a   coat pocket.","l",0,61,0,""
+"","You reach   into the    body and    pull out a  bloody      security    pass. ","g",0,61,61,"i32invenb"
+"","You can see a ring on   one of the  fingers of  the mangled hand. ","l",0,62,0,""
+"","It is a     mangled handmissing partof one      finger. ","l",62,0,0,""
+"","When you tryto pull off the ring thetip of the  finger comesoff instead.Oh well it  might come  in handy. ","g",0,62,62,"i21invenb"
+"","A rat eyes  you from itshole in the wall. ","l",0,64,0,""
+"","When you    reach into  the hole    that rat    nibbles yourhand and youquickly     withdraw it in pain.","p",0,64,0,""
+"l","By some     miracle you manage to   shove the   stomach intothe hole.   You hear therat munchingon it.","u",63,0,64,"s5"
+"","You reach   your hand   into the    hole and    pull out a  few ten     dollar      bills. ","pg",64,65,65,"i31invenb"
+"","A pipe runs from one    wall to     another.","l",0,0,0,""
+"","You bang on the pipe butnothing     happens.","p",0,0,0,""
+"","A small rat nibbles     disgustinglyat the body.","l",0,0,0,""
+"","Even though you'd like  to have a   rat in your pocket you  have a      feeling it  wouldn't be a good idea.","g",0,0,0,""
+"","A clump of  sand rests  on the      floor. ","l",0,0,0,""
+"","The sand    will not    help you.","g",0,0,0,""
+"","The head of the body    rests on a  rock. ","l",0,0,0,""
+"","A brown hoodcovers some of the      body's face.","l",0,0,0,""
+"","Moving the  brown hood  wouldn't    help you.","p",0,0,0,""
+"","You have a  feeling the hair wasn't a brownish  gray when   the person  was healthy.","l",0,0,0,""
+"","The eyes    have rolled back into   the head.","l",0,0,0,""
+"","Part of a   bone        protrudes   from the    body's      shoulder.","l",0,0,0,""
+"","Even though it looks as if the deathwas a only aday ago the skin has a  yellowish   tint to it.","l",0,0,0,""
+"","A small bit of blood    oozes from  the mouth.","l",0,0,0,""
+"","Some slime  grows on thebrick wall.","l",0,0,0,""
+"","A small     amount of   blood is    splattered  on the wall.","l",0,0,0,""
+"","Except for  the greenishcolor there is nothing  wrong with  the neck.","l",0,0,0,""
+"","The dead    figure is   clad in a   brown coat.","l",0,0,0,""
+"","The person'stwo legs    stick out ofthe alcove  he died in.","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

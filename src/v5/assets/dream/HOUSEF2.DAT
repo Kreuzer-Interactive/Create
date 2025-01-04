@@ -1,0 +1,138 @@
+9.2
+-1,-1,161,37
+8,8,11,41
+6.5,8.8,28,37
+6.7,8.4,28,37
+6.9,6.9,28,37
+"You are awed by the  size of the first    room inside the      house. ","8housef3","7housef4","2housef","","",""
+"                                              "
+"             ddd}                             "
+"             dddd    bbbbbbbbb        a eee   "
+"       aaa   dddd   abbbbbbbbb a      aaeee   "
+"       aaa   dddd   abbbbbbbbbaa        eee   "
+" a     aa    dddd   abbbbbbbbb          eee   "
+" aa                  bbbbbbbb           eee   "
+" aa                                           "
+" aa          gggg                             "
+" aa    fff   gcggmm           mm      a kkk   "
+"  qqq  fff    h  mm           mm   j `a vkk   "
+"  qqq  fff iiiii mm    llllll mm   a    vkk   "
+"  qrq  fff       mm  llllllll mm        vkk   "
+"  sr   ff        mm  lllllllllmm        kkt   "
+"  sss            mm llllllllllm               "
+"  sss            nnnllllllllllnn        oooo  "
+"  sss            nnnllllllllllnn        ooooo "
+"  sss                                    oooo "
+"  sss             ppppppppppppp               "
+"                  ppppppppppppp               "
+"                  pppppppppppppp              "
+"                 pppppppppppppppp             "
+"                ppppppppppppppppp             "
+"                pppppppppppppppppp            "
+"               ppppppppppppppppppp            "
+162,50,20
+162,38,20
+166,38,20
+166,42,20
+166,46,20
+166,50,20
+166,54,20
+162,54,20
+170,50,20
+170,46,20
+170,42,20
+170,38,20
+162,46,21
+162,42,21
+162,42,22
+162,46,22
+58,46,23
+54,46,23
+62,46,23
+58,46,24
+54,46,24
+62,46,24
+10,50,25
+10,46,25
+10,42,25
+14,42,25
+14,46,25
+14,50,25
+18,50,25
+18,46,25
+162,50,26
+162,46,26
+162,42,26
+162,38,26
+166,38,26
+166,42,26
+166,46,26
+166,50,26
+170,50,26
+170,46,26
+170,42,26
+170,38,27
+166,38,27
+54,38,28
+54,34,28
+58,34,28
+62,34,28
+62,38,28
+66,38,28
+54,22,29
+54,18,29
+54,14,29
+54,10,29
+54,6,29
+58,6,29
+58,10,29
+58,14,29
+58,18,29
+58,22,29
+62,22,29
+62,18,29
+62,14,29
+62,10,29
+62,6,29
+66,10,29
+66,14,29
+66,18,29
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The myriad  of candles  provides    light for   the entrancehall. ","l",0,0,0,""
+"","An oddly    familar     painting    adorns the  wall above  the landing.","l",0,0,0,""
+"","The flames  do not causewax to drip.","l",0,0,0,""
+"","A religious symbol      graces the  terry cloth banner. ","l",0,0,0,""
+"","A door leadsinto anotherroom on the second      floor.","l",0,0,0,""
+"","Cold chills roll in fromthe         adjoining   room.","l",0,0,0,""
+"","The mirror  reflects a  stunning    dopplegangerof yourself.","l",0,0,0,""
+"","A small     candleabra  rests on thesmall desk.","l",0,0,0,""
+"","One drawer  portrudes   from the    front of thedesk. ","l",0,0,0,""
+"","The metallicletter is   embedded    into the    walls. ","l",0,0,0,""
+"","A wooden    door hides  in the      shadows     below the   stairs. ","l",0,39,0,""
+"","Perfeclty   crafted     stairs lead to another  door. ","l",0,0,0,""
+"","The         bannister isfree from   all signs ofabuse. ","l",0,0,0,""
+"","Fanciful    carvings    attach the  bannister tothe         staircase.   ","l",0,0,0,""
+"","A circulaur carpet      covers the  jagged floorboards.      ","l",0,0,0,""
+"","Quite a     difference  is noticablebetween the elaborate   carpet      inside and  the outside appearance  of the      house. ","l",0,0,0,""
+"","Under the   glass case  rests a     distorted   white       sphere.","l",0,0,0,""
+"","A gold name plate       identifies  the contentsas an IndianFortunetel- ler ball. ","l",0,0,0,""
+"","A solid greymarble standsupports theglass case.","l",0,0,0,""
+"","The door    will not    budge and   you can see no keyhole.","po",0,39,0,""
+"","You slide   the wire gapunder the   door knob   and the doorweakly      opens. ","u",38,0,39,"s1"
+"","You find a  very small  gap below   the door    knob. ","l",0,39,0,""
+"","There is a  small piece of wire in  the drawer.","o",0,38,0,""
+"","You take thewire. ","g",0,38,38,"i10invena"
+"","As your     hands touch the case a  murky visionof a candle lighting in a white     flame       appears in  the sphere.","op",0,0,40,""
+"","On the top  shelf you   notice a    tattered    page.","l",39,0,0,""
+"","You remove  the tatteredpage only tofind it tornin half.","g",39,41,41,"i11invena"
+"","The         reflected   page says:  Your escape is hidden   under the   bottom  of  the third   board to theleft of the carving.","u",45,0,42,""
+"","The tapestryfills you   with peace  as you touchit. ","gp",0,0,0,""
+"","","",0,0,0,""
+

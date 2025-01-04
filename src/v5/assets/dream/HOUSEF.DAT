@@ -1,0 +1,138 @@
+3
+.1,.3,119,10
+.2,-1,119,10
+.4,-1,119,10
+.1,-1,60,9
+.2,-1,60,9
+"A rather large house stands before you.   Everything else just appears fuzzy and    nondescript. ","","","","","",""
+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  "
+" aaa    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa   "
+"   bbb                                        "
+"    bb                                        "
+"                                              "
+"                      eee                     "
+"    dddddddddddddddd  eee  dddddddddddd       "
+"                      eee                     "
+"                                              "
+"      f   f    f            fff ff            "
+"      ff  ff   ff           fff ff            "
+"       f  ff   ff           ff ff             "
+"                                              "
+"                      gg                      "
+"c                    gggg                  cc "
+"c                   ggggggg                cc "
+"c    ffff  ffff      hmmhh    fff     ffff cc "
+"c    fff   ffff      hmhhh    ffff    ffff cc "
+"c    fff   ffff      hmhhh    ffff    ffff  c "
+"     lll   llll     hhhhhh    lll     lll     "
+"                   iiiiiiiii                  "
+"            nn   n iiiiiiiiinn             n  "
+"jjjjjjjjjjjjjjjjjjiiiiiiiiiiijjjjjjjjjjjjjjj  "
+"jjjjjjjjjjjjjjjjjjniiiiiiiiiijjjjjjjjjjjjjjjj "
+"jjjjjjjjjjjjjjjjj kkkkkkkkkk jjjjjjjjjjjjjjjj "
+86,78,13
+90,78,13
+94,78,13
+98,78,13
+102,78,13
+102,74,13
+98,74,13
+94,74,13
+86,74,13
+86,70,13
+94,70,13
+98,70,13
+102,70,13
+102,66,13
+98,66,13
+70,94,14
+114,94,14
+126,90,14
+126,98,14
+22,90,14
+86,66,15
+86,70,15
+86,74,15
+86,78,15
+90,78,15
+94,78,15
+98,78,15
+102,78,15
+102,74,15
+98,74,15
+94,74,15
+90,74,15
+90,70,15
+90,66,15
+94,66,15
+98,66,15
+102,66,15
+102,70,15
+98,70,15
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","Thick cloudsblanket the sky. ","l",0,0,0,""
+"","The moon    reaches     under the   clouds.","l",0,0,0,""
+"","Dark shadowsengulf the  house.","l",0,0,0,""
+"","The         moonlight   reflects offthe roof.","l",0,0,0,""
+"","An eerie    light can beseen in the window.","l",0,0,0,""
+"","The windows give forth aforeboding  sense of theinterior of the house.","l",0,0,0,""
+"","The pointed awning is   the only    sign of     eccentricityon a        otherwise   plain       mansion.","l",0,0,0,""
+"","Dust covers the doors.","l",0,0,0,""
+"","Decay is    evident on  the wooden  stairs. ","l",0,0,0,""
+"","Weeds       dominate thesparse      ground.","l",0,0,0,""
+"","The path    leads only  forwards.","l",0,0,0,""
+"","The windows are painted shut. ","po",0,0,0,""
+"","You push    with the    might of    twelve men  but alas    without     turning the handle the  door doesn'topen. ","p",0,0,0,""
+"","You sift    through     grass but   find nothing.","p",0,0,0,""
+"8housef2","You turn theknob and thedoor swings easily open.","o",0,0,18,""
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,"0"
+"","","",0,0,0,""
+

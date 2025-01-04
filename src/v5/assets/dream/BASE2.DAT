@@ -1,0 +1,138 @@
+.5
+.1,.1,147,50
+.3,.3,33,52
+-1,-1,30,54
+.3,.3,86,48
+-1,-1,86,48
+"You have a feeling   that the traps you   see will do more thanscare off uninvited  guests. ","","","","2base1","",""
+"                                              "
+"                                              "
+"             jjjj                             "
+"             jjjj                             "
+"             jjjj                             "
+"l             jj                         bbbb "
+"ll                                      b     "
+"lll                                    b      "
+" lll                                   b      "
+" lll                                          "
+" lll            iiii                          "
+" lll            iiii                          "
+" lll  hg    l   iiii      g            g      "
+" lll    p oo          eep            nn       "
+" lll  oooo            ee             nnaaa    "
+" lll                  ee                 aaa  "
+" lll                rreerr                 aa "
+" lll      rrrrmmmmmmmmmmmmmmmmmm rr           "
+" lll  mmmmmmmmmmmmmmmmmmmmmmmmmmm rrrr        "
+" lll mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm    "
+" lllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm   "
+" lllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm "
+"mlllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm "
+"mlllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm "
+"mmllmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm "
+158,30,3
+162,26,3
+166,22,3
+170,22,3
+174,22,3
+178,22,3
+158,34,3
+158,30,4
+162,26,4
+166,22,4
+170,22,4
+174,22,4
+178,22,4
+90,66,19
+90,62,19
+90,58,19
+90,54,19
+94,54,19
+94,58,19
+94,62,19
+94,66,19
+30,50,8
+106,50,8
+158,50,8
+66,18,11
+66,14,11
+66,10,11
+62,10,11
+62,14,11
+62,18,11
+62,22,11
+58,22,11
+58,18,11
+58,14,11
+58,10,11
+54,10,11
+54,14,11
+54,18,11
+150,54,16
+150,58,16
+30,58,17
+34,58,17
+38,58,17
+42,54,17
+46,54,17
+50,74,18
+46,74,18
+82,70,18
+158,58,20
+162,58,20
+166,62,20
+170,62,20
+174,62,20
+158,34,20
+158,30,20
+162,26,20
+166,22,20
+170,22,20
+174,22,20
+178,22,20
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"l","You manage  to cut      through the wire but notbefore      shattering  the glass   shard. ","u",92,0,139,""
+"","The wire is too high to get a good  hack at.    Maybe you   should try  the lower   wire. ","u",92,0,0,""
+"","Cutting the top wire    won't help  without     cutting the bottom wire first. ","u",111,139,0,""
+"l","You manage  to slash    through the top wire andthe sparks  shooting outof the knob cease. ","u",111,145,145,"s1"
+"l","You toss theblanket ontothe fire andhope that   when they   say flame   retardent   they mean   it. ","u",121,146,146,"s5"
+"","A flame     rises from  the floor   mat in frontof the door baring      entry.         they mean","l",0,146,0,""
+"","The buttons by the doorsdeactivate  the traps.","l",0,0,0,""
+"","Few people  have the    proper ID todeactivate  the trap andyou are not one of them.Maybe you   should try  something   else. ","p",0,0,0,""
+"","A blank     metal plaqueis on the   wall. ","l",0,0,0,""
+"","You are     willing to  bet that    there is a  camera      behind that mirror. ","l",0,0,0,""
+"","The mirror  is too high to reach.","pg",0,0,0,""
+"","The only    reason to   have a pipe in here thatyou can     think of is to add to   the         atmosphere.","l",0,0,0,""
+"","Luminescent wires run   along the   floor under a thin glasscovering.","l",0,0,0,""
+"","Sparks fly  from the    handle of   the door    making it   impossible  to open     without a   fatal shock.","l",0,145,0,""
+"","The laser   beam will   prove fatal to any      foolish     enough to   try the     knob. ","l",0,147,0,""
+"","Your last   thought as  your hand   touches the knob is `BoyI'm stupid!'","po",0,0,0,"die"
+"","The mirror  reflects thebeam of     light       shorting it out. ","u",148,147,147,"s3"
+"","Mats are    permanently placed on   the floor   area in     front of    each door.","l",0,0,0,""
+"","The fire    dances back and forth   ready to    burn whoeverdares to    reach for   the knob.","l",0,146,0,""
+"","The two     wires       probably    provide     electricity for the     knob.","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

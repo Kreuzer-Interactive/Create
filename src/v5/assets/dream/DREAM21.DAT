@@ -1,0 +1,137 @@
+1
+.5,-1,32,56
+.2,-1,27,11
+.4,-1,152,74
+.5,-1,54,13
+.6,-1,114,44
+"You are standing on  the eastern coast of a small jungle       island. ","4dream22","2blood","","","",""
+" dddddd                   hhhhhhhhhhhhhhhhhh  "
+"mmmm  dd                   hhhhhhhhhhhhhhhhhh "
+"m   m d dddddddddd          hhhhhhhhhhhhhhhhh "
+" m  m  ddd    dddddd         hhhhhhhhhhhhhhhh "
+"  m  mmm  dddd dd d dd        hhhhhhhhhhhhhhh "
+"f  m    mmm   mmm  dd d        hhhhhhhhhhhhhh "
+"f   m      m mmmm    d dd       hhhhhhhhhhhhh "
+"ff   m      m mmm     d ddd      hhhhhhhhhhhh "
+"fff   m        mmmmmmm d  dd      hhhhhhhhhhh "
+"fff    mmm  e mmmmmmmm eeeeddd     hhhhhhhhhh "
+"fff       mee mmmmmmm       dddd    hhhhhhhhh "
+"fff    m m mm mmmmmmmmmmmmmm  d dd   hhhhhhhh "
+"fff    mmmmmm    mmmmmmmmmmm   d  ddd hhhhhhh "
+"fff   m         mmmmmmmmmmmmm   dd   d hhhhhh "
+"fff   m   bbbc       mmmmmmmmm    ddd d hhhhh "
+"fff   m bbbicc      mmmmmmmmmmmm  dddd dh hhh "
+"fff    m                    mmmmm   dddd h hh "
+"fff     m    mm            mmmmmmmm    d  h   "
+"fff      mmmm                mmmmmmm   dd  h  "
+"fff a         a               mmmmmmmmdd d  h "
+"fffaaa a      aa                mmmmmmmdd d   "
+"ffaaaaaa    aaaaa              mmmmmmmmmdd d  "
+"ffaaaaa     aaaaa                    mmmmdd d "
+"fff aa       aaa                     mmm  ddd "
+"                                              "
+42,58,3
+46,58,3
+50,58,3
+178,98,4
+158,70,4
+102,30,4
+98,30,4
+10,98,6
+10,90,6
+10,86,6
+6,98,6
+2,98,6
+34,62,7
+38,62,7
+42,62,7
+50,62,9
+54,58,9
+42,58,9
+38,62,9
+50,58,9
+46,58,9
+42,58,10
+46,58,10
+50,58,10
+54,58,10
+50,62,10
+42,62,11
+38,62,11
+34,62,11
+46,62,11
+34,62,12
+38,62,12
+42,62,12
+106,38,14
+102,38,14
+98,38,14
+94,38,14
+50,38,14
+170,98,13
+166,98,13
+162,98,13
+58,70,13
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","Small trees grow on the beach. ","l",0,0,0,""
+"","Caught underthe rock is a strong    flexible    rope like   substance.   ","l",0,0,0,""
+"","The rock is caked into ahard patch  of sand on  the beach.","p",0,19,0,""
+"","Waves lap atthe shore.","l",0,0,0,""
+"","A few       strands of  seaweed havewashed up onthe shore.","l",0,0,0,""
+"","The trees   get taller  and denser  further intothe island.","l",0,0,0,""
+"","The strand  is stuck    firmly underthe rock.","g",0,19,0,""
+"","The water   gets deeper and swifter further out.","l",0,0,0,""
+"","You use the spear to    loosen the  dirt around the rock.","u",27,19,19,""
+"","You push therock so you can get at  the rope.","p",19,20,20,""
+"","The rock is still on topof the rope.","g",0,20,0,""
+"","You get a   small piece of the rope and fashion it into a   snare. ","g",20,21,21,"i01invenw"
+"","Many small  grains of   baked sand  make up the coast of theisland.      ","l",0,0,0,""
+"","The seaweed is of no useto you.","g",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""

@@ -1,0 +1,137 @@
+3
+2.4,2.4,154,21
+3.3,4.2,36,49
+3.7,4.5,36,49
+.7,.7,15,50
+1.6,.8,24,81
+"You are in an        impressive hi-tech   robotics lab.","1base2","","","","",""
+"bbbbbbbbcccccccccccccccccccccccccc  bbbbbbbbb "
+"bbbbbbbbbbbb   ccc a    a  bbbbbbbbbb  bbbbbb "
+"     bbbbbbbbbbbbbbaaaaaaabb                  "
+"                   aaaaaaa                    "
+"                   aaaaaaa                    "
+"                   aaaaaaa             ddd    "
+"                   aaaa                ddd    "
+"                                     eed eee  "
+"       q                             eeeeeee  "
+" hhhh   q   mmlll        u           eeeeeee  "
+"        q   mmlll uuuvv vu           eeeeeee  "
+" jjjj   q   mmlll uuuuuuu            eeeeeee  "
+" jjjjs  q ffmmllk vuuuuuu            eeeeeee  "
+" jjjji  q ff      uuuuuuu            eeeeeeee "
+" jjjji  q ff       v       pppppp     eeeeee  "
+"     i qqffff             wtppppp     eeeee   "
+"   q i  ffffff            ww   ww     eeeee   "
+"    rq fffffffgggggggggggg            eeeee   "
+"       fffffffgggggggggggg       nn   eeeee   "
+"       fffffffgggggggggggg         n  eeeee   "
+"       fffffffggggggggggggggggggggg           "
+"       fffffffggggggggggggggggggggg           "
+"ggggg  fffffffggggggggggggggggggggggggggggggg "
+"ggggg  fffffffggggggggggggggggggggggggggggggg "
+"ggggg  fffffffggggggggggggggggggggggggggggggg "
+158,30,5
+162,34,5
+142,78,15
+138,74,15
+134,74,15
+14,66,18
+22,70,18
+30,62,18
+34,62,18
+34,58,18
+34,54,18
+34,50,18
+34,46,18
+22,66,19
+22,62,19
+22,58,19
+22,54,19
+110,58,20
+114,58,20
+114,62,20
+118,62,20
+118,58,20
+122,58,20
+122,62,20
+126,62,20
+126,58,20
+130,58,20
+130,62,20
+102,38,22
+98,46,22
+94,50,22
+94,54,22
+90,50,22
+90,46,22
+86,46,22
+86,50,22
+86,54,22
+82,54,22
+82,50,22
+82,46,22
+82,42,22
+78,42,22
+78,46,22
+78,50,22
+78,54,22
+74,54,22
+74,46,22
+74,42,22
+110,62,23
+130,66,24
+126,66,24
+110,66,24
+106,66,24
+106,62,24
+110,62,24
+6,58,25
+6,54,25
+6,50,25
+6,46,25
+10,46,25
+10,50,25
+10,54,25
+10,58,25
+14,58,25
+14,54,25
+14,50,25
+14,46,25
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The monitor hanging fromthe ceiling of the room is currentlyblank. ","l",0,0,0,""
+"","The trim    around the  top of the  chamber     isn't that  bad. ","l",0,0,0,""
+"","The metal   ceilings    looms over  your head.","l",0,0,0,""
+"","The visor ofthe robot   sometimes   lights with red         luminescence. ","l",0,0,0,""
+"","A robot is  contained ina           cylindrical container   made from a super strongglass alloy.","l",0,0,0,""
+"","It's Robert Goher one ofthe missing scientists. He has      nothing moreto say at   the moment.","l",0,0,0,""
+"","The lines onthe surface of the floorgive the    illusion of a slight    depression  where there is none.","l",0,0,0,""
+"","The sign    contains    instructionson using thedevice belowbeyond your ability to  decipher.","l",0,0,0,""
+"","A half      finished    fully       functional  robotic handalong with  some        mechanical  parts sits  atop the    table. ","l",0,0,0,""
+"","`That's the replicator. To try it   out just    push the    button in   the lower   right corneron the      control     unit.'","l",0,0,0,"tab"
+"","When you    push the    button a    mirror with golden trim materalizes in the      replicator. You retrieveit. ","p",0,148,148,"i12invenb"
+"","You depress a button butto your     disapointmentnothing     happens.","p",0,0,0,""
+"","`Noah       Abrahms     graduate of science and technology.'the article tells more  of the man  who was a   poor        scientist.","l",0,0,151,""
+"","A wire runs from the    wall and themech box    into the    cylinder.","l",0,0,0,""
+"","The robot   won't be    doing       anything    soon so     pulling the plug on it  would only  be a waste  of time.","p",0,0,0,""
+"","The mech boxcontrols    some limitedmovements ofthe robot   next to it.","l",0,0,0,""
+"","Some machineparts and   gears plus  an antenna  are all     occupying   the table.","l",0,0,0,""
+"","None of the trinkets    will be of  any use to  you. ","g",0,0,0,""
+"","You're      likely to   break the   arm if you  handle it.","gp",0,0,0,""
+"","`Please     don't touch that! There still might be a chance that your   presence is not known.'","p",0,0,0,"tab"
+"","Four        different   multi-      purpose     tools stick to the fake wood surfacefor easy    access. ","l",0,0,0,""
+"","You are not above       stealing    Goher's     tools but   you can't   get them    loose from  the wall andGoher offersno help.","g",0,0,0,""
+"","A large     button sits on either   side of the mech box.","l",0,0,0,""
+"","The         cybernetic  arm across  the room    opens but   the robot   does not    respond.","p",0,0,0,"s4"
+"","Reaching    around in   the         replicator  might have  some nasty  side        effects. ","pg",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""

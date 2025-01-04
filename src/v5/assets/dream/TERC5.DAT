@@ -1,0 +1,138 @@
+1
+.4,.8,102,30
+.6,.6,102,30
+.7,.7,63,81
+.9,.9,63,81
+.8,.8,154,57
+"The hall ends at the a smashed wall.","6terc1","","","","",""
+"                     ee  eee  eeee            "
+"    dddddddddddddddddeee eeed eeee dd         "
+"    dddddddddddddddddeeedeeeddeeeeddddddddddd "
+" bbbdddddddddddddddddeeedeeeddeeeeddddddddddd "
+"   bdddddddddddddddddeeedeeeddeeeeddddddddddd "
+"   bddggggggggggdddddeeedeeeddeeeedd mmmmmmmd "
+"   bddggggggggggdddddeeedee ddeeeedd mmmmmmmd "
+"   bddggggggggggdddddeeedfffddeeeedd mmmmmmmd "
+"   bddggggggggggdddddeeedpffddeeeedd mmmmmmmd "
+"   bddggggggggggdddddeeedeeeddeeeedd mmmmmmmd "
+"abbbhhggggggggggdddddeeedeeeddeeeedd mmmmmmmd "
+"abbbhhhhhhggggg dddddeeedeeeddeeeedd mmmmmm d "
+"aaabhhhhhhdd ddddddddeeedeeeddeeeedd mmmm n d "
+"aaabhhhhhhdd ddddddddeeedeeeddeeeedd mmmmmo d "
+"aaabhhhhhhdddddddddddeeedeeeddeeeedd mllllmmd "
+"aaabhhhhhhh dddddddddeeedeeeddeeeedd mllllmmd "
+"aaabhhhhhhh dddddddd eeedeeeddeeeedd mlll mmd "
+" a bhhhhhhhhccccccccceeeceeecceeeedd mmmmmm   "
+" a   hhhhhhhccccccccceeecceecceeecccccccccccc "
+"      hhhhhhccccccccccccccccccccccccccccccccc "
+"   ccccccccccccccjjjjjjjjjccccccccccccccccccc "
+"ccccccccccccccccciiiccccccccccccccccccccccccc "
+"cccccccccccccccciiiiccccccccccccccccccccccccc "
+"cccccccccccccccciiiqccccccccccccccccccccccccc "
+"ccccccccccccccccccccccccccccccccccccccccccccc "
+66,54,4
+66,22,7
+66,26,7
+38,42,8
+42,42,8
+42,46,8
+42,50,8
+42,54,8
+42,58,8
+70,82,11
+74,82,11
+78,82,11
+82,82,11
+86,82,11
+90,82,11
+94,82,11
+98,82,11
+158,54,13
+162,54,13
+170,50,15
+106,34,16
+110,34,16
+110,30,16
+106,30,16
+74,86,17
+70,86,17
+66,90,17
+70,90,17
+74,90,17
+78,90,17
+74,94,17
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","There is a  large hole  in the wall with severalcracks. ","l",0,0,0,""
+"","There is a  faint       outline of adoor        extending   down the    wall. ","l",0,0,0,""
+"","A putrid    marble floorcovers the  ground. ","l",0,0,0,""
+"","Some kind ofHi-tech     insulation  serves as   the walls.","l",0,0,0,""
+"","Large pipes run from thefloor to theceiling.","l",0,0,0,""
+"","The gauge   fluctuates  violently.","l",0,0,0,""
+"","Another     window showsyou a       glimpse of  the outside.","l",0,0,0,""
+"","The chair   seems out ofplace in thehi-tech Terccenter.","l",0,0,0,""
+"","A large red beaker restson the      floor.","l",0,0,0,""
+"","A discarded stick lies  on the      floor.","l",0,0,0,""
+"","You don't   want the    stick. ","l",0,0,0,""
+"","The vent    spews a     small amountof gas into the air.","l",0,0,0,""
+"","The door is rather      official    looking. ","l",0,0,0,""
+"","There are   smudges on  the         doorknob.","l",0,0,0,""
+"8terc3","You are     surprised tofind the    door        unlocked.","op",0,0,0,""
+"","The gauge isindistructable.","pg",0,0,0,""
+"","You scoop   out a small quantity of the liquid.","g",0,140,140,"i22invenc"
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

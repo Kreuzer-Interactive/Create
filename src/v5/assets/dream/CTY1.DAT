@@ -1,0 +1,137 @@
+1
+.5,-1,2,73
+.9,-1,2,73
+.3,.8,161,9
+.5,-1,161,9
+.7,-1,2,73
+"You emerge from the  subway into a wide   city street. Oddly   you see no cars or   signs of life. ","8cty2","3sub2","","","",""
+"                              rr              "
+"                              rr              "
+"                              rr              "
+"                              rr       llvvvv "
+"                              rr       lll    "
+"                  xx          rr       lll    "
+"          k       xx          rr       lll    "
+"         k        xx          rr       lll    "
+"        k         xx          rr       lll    "
+"      jk        mmxx       qqqqqqqq    lll    "
+"   jjjj       mmm xx        qq     qqqq ll    "
+"             m    xx           qqqqqqqqq      "
+"        hh    mmmmxx   s                  mm  "
+"        hhg   m o xee  spp nnn   ddd d    mm  "
+"       gggg     o eeee fpp   nddddddd d       "
+"       ggi    m ofeeeeefpp odd dddd dd        "
+"              m feeeeeeeff d dddd dd          "
+" ttt    ooo    f eeeeeeeeffcccd    dd         "
+"ttt     ooo  ff eeeeeeeeee ccccccc            "
+"tt      ooo ff eeeeeeeeeee ccccccccccccccccc  "
+" u      oooaafeeeeeeeeeeeeeccccccccccccccccc  "
+" u      oofffeeeeeeeeeeeeeecccccccccccccccccc "
+"                           cccccccccccccccccc "
+"                           cccccccccccccccccc "
+"                                              "
+110,98,3
+114,98,3
+118,98,3
+122,98,3
+126,98,3
+130,98,3
+134,98,3
+138,98,3
+142,98,3
+146,98,3
+150,98,3
+154,98,3
+158,98,3
+162,98,3
+166,98,3
+170,98,3
+174,98,3
+178,98,3
+142,58,4
+146,58,4
+30,58,9
+30,62,9
+34,62,9
+34,58,9
+38,58,9
+42,58,9
+42,54,9
+70,38,13
+110,66,15
+102,66,16
+6,78,21
+2,78,21
+46,82,2
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The paper   says `This  is your lastsweep over  the city.   Make sure   you         eliminate   any evidence(Written or living).' ","g",0,0,69,""
+"","A note has  been droppedon the      sidewalk.","l",0,0,0,""
+"","You are     looking at  the side    wall of a   tunnel      leading downto the      subway      station.","l",0,0,0,""
+"","What little sun there isleft in the day glistenson the      subway roof.","l",0,0,0,""
+"","The road    leads       further     north. ","l",0,0,0,""
+"","There are   sidewalks onthe sides ofthe roads   for         pedestrians.","l",0,0,0,""
+"","A balcony   overlooks   the dead endroad. ","l",0,0,0,""
+"","The short   glass door  is too high to be used  as an       entrance.    ","l",0,0,0,""
+"","The balcony is too high for you to  reach. ","p",0,0,0,""
+"","The wire    runs into   the hole in the roof of the         building.       ","l",0,0,0,""
+"","A wire runs between two buildings. ","l",0,0,0,""
+"","The obelisk on top of   the buildingis used to  generate    electricity.    ","l",0,0,0,""
+"","A few       windows     adorn the   side of the building. ","l",0,0,0,""
+"","Blue letterson the side of the shop proclaim it a laundry   mat. ","l",0,0,0,""
+"","The door is locked and  barred and  will not    open. ","o",0,0,0,""
+"","You don't   stand a     chance of   getting     those lockedsteel doors open. ","o",0,0,0,""
+"","Judging fromthe railing people must sometimes   stand on theroof of the building.","l",0,0,0,""
+"","An elevator on the side of the      building    gives peoplea good view while they  travel      between     levels. ","l",0,0,0,""
+"","The red     poster is   just a      caution     sign. ","l",0,0,0,""
+"","A chute is  attached to the side of the         building. ","l",0,0,0,""
+"","Purple ooze flows out ofthe chute inintervals.   ","l",0,0,0,""
+"","Electricy   shoots from one obelisk to another.","l",0,0,0,""
+"","You wouln't even want togo near thatglop.        ","g",0,0,0,""
+"","A factory   can be seen in the      background.         ","l",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""

@@ -1,0 +1,138 @@
+2.4
+1.5,1.5,159,7
+-1,-1,83,80
+.8,1.7,140,10
+1.8,1.8,152,66
+1.6,2.1,152,66
+"You are in the       Mountain Crest       district. The subway you entered from is  to the northwest. ","6cty11","7sub4","","","",""
+"                                              "
+"          d                          aaa kk   "
+"         dd                        aaaaaakk   "
+"         dd                aaaa   aabbbbbb    "
+"       dddd                      aaabbbbbb    "
+"        ddddd                   a             "
+"           dd                   a    oooooooo "
+"            d   n           nnnna     ooooooo "
+"                n       mm  nnn a             "
+"  gggg g        n       mm  nnn a ooooooooooo "
+"gg    gggggg    n                 o         o "
+"g g   ggggggg   n                             "
+" ggggg       gg n onno nnn  nnnn              "
+"gggg ggggggggg  n nnno nnn  nnnn              "
+"gg  ggg      gggn nnn  nnn   nn               "
+"gg gggg      gggn                             "
+"ggggggg       ggn      ee             fff     "
+"gg tggghhhhhh ggn nnn eeee uuu        fff     "
+"  ttggg      hggn nnnneeee uuu        fff     "
+"ttttggg       gg  nnnneeee            fff     "
+"tttt gg        g     jjeee     cc      cccc   "
+"tttt                 iii       cc       ccc   "
+"ttttttttt                                     "
+"tttttttt                                      "
+"tttttttt                                      "
+86,86,10
+90,86,10
+78,50,15
+82,50,15
+82,54,15
+78,54,15
+74,54,15
+74,58,15
+78,58,15
+82,58,15
+98,38,16
+98,34,16
+102,34,16
+102,38,16
+102,38,17
+98,38,17
+98,34,17
+102,34,17
+102,34,18
+98,34,18
+98,38,18
+102,38,18
+126,86,19
+130,86,19
+130,82,19
+126,82,19
+162,86,19
+166,86,19
+170,86,19
+166,82,19
+162,82,19
+158,82,19
+86,82,10
+90,82,10
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","You can see a small     mountain    rise above  the         buildings inthe         background. ","l",0,0,0,""
+"","Glowing     letters     forming the word `shop' seemingly   hover above a building.","l",0,0,0,""
+"","A chunk of  the buildinghas fallen  into the    street.","l",0,0,0,""
+"","A large     section of  wall is     missing fromthe purple  building.","l",0,0,0,""
+"","The door    will not    open. ","o",0,0,0,""
+"","There is    nothing in  the buildingbut rubble.","o",0,0,0,""
+"","Its the     subway      tunnel. ","l",0,0,0,""
+"","A railing   leads back  into the    tunnel and  down the    steps. ","l",0,0,0,""
+"","A rubber    tire was    left in the middle of   the street.","l",0,0,0,""
+"","You push thetire into a position    under the   window.      ","p",0,0,110,"s2"
+"","Oddly an oldAmerican    flags flaps in the wind on top of a building. ","l",0,0,0,""
+"","","",0,111,0,""
+"","Something isin the      broken      window on   the third   story. ","l",0,111,0,""
+"","A cracked   window lets light into  the         building.","l",0,0,0,""
+"","This        particular  window has  survived thewide-spread destruction.","l",0,0,0,""
+"","Shooting it down is     probably a  good idea   but it will probably    break or    bend on the ground. ","u",112,110,0,""
+"l","Your shot   sends the   item        hurtling outand down    onto the    tire where  you retrieveit. ","u",112,111,111,"i02invend"
+"","You cannot  reach the   object so   you will    have to try something   else. ","g",0,111,0,""
+"","The piece ofthe buildingwon't help  you in your quest.","l",0,0,0,""
+"","There isn't much left ofthe tiny    brick       building.","l",0,0,0,""
+"","The sign    informs you that Hola   Inc. is     closed.","l",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+

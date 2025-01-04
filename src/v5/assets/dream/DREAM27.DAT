@@ -1,0 +1,138 @@
+12
+.8,6.8,54,18
+3.2,11.2,52,2
+1.6,5.6,51,13
+4.4,9.6,58,7
+7.6,10.4,52,6
+"You are near the     middle of the island at the beginning of aworn dirt path.","4dream23","3dream22","8dream24","9dream25","2blood",""
+"    ooo                                       "
+"    oooo      a                               "
+"    oooo     aaa                              "
+"    oooo     aaa                              "
+"    oooo     ala                   p          "
+"    oooo     aaaa                  pp         "
+"    oooo   p                       pp         "
+"  n oooo  pp                       pp         "
+"  n oooo  pp                       pp         "
+"  n oooo  pp                       pp         "
+"  n oooo  pp                       pp         "
+"  n oooo  pp                       pp         "
+"  n oooo  pp                       pp         "
+"  n oooo  pp                       pp         "
+"  o oooo  pp                       pp         "
+"    oooo  pp                       pp         "
+"    oooo  pp                       pp         "
+"    oooo  pp                       pp         "
+"    oooo  pp         g bbbbbbbbb   pp         "
+"    oooo  pp iiiiii   bbbbbbbbb    pp         "
+"    oooo  pp    g   bbbbbbbbbbgg   pp         "
+"    oooo  pp     g bbbbbbbbbbb  g gpp         "
+"    oooo  p ggggg  cccbbbbbbbbb ggg           "
+" eeeoooo e ggggg  ccccbbbbbbbbbb geeee        "
+"    oooo   ggggg bbbbbbbbbbbbbbbb  eee        "
+78,90,4
+82,90,4
+86,90,4
+86,94,4
+82,94,4
+78,94,4
+142,94,6
+146,94,6
+150,94,6
+150,98,6
+146,98,6
+142,98,6
+38,94,6
+14,94,6
+10,94,6
+6,94,6
+50,90,8
+54,90,8
+58,90,8
+62,90,8
+62,94,8
+58,94,8
+54,94,8
+50,94,8
+46,94,8
+46,98,8
+50,98,8
+54,98,8
+58,98,8
+62,98,8
+62,94,8
+54,78,10
+58,78,10
+62,78,10
+66,78,10
+70,78,10
+74,78,10
+74,78,11
+70,78,11
+66,78,11
+62,78,11
+58,78,11
+54,78,11
+58,10,12
+54,10,12
+54,14,12
+58,14,12
+54,18,12
+62,18,12
+62,22,12
+58,10,13
+54,10,13
+54,14,13
+58,14,13
+62,14,13
+10,54,15
+10,50,15
+10,46,15
+10,42,15
+54,10,17
+58,10,17
+62,10,17
+62,14,17
+58,14,17
+54,14,17
+54,18,17
+58,18,17
+62,18,17
+66,22,17
+62,22,17
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","A rather    small monkeylike        creature    sits in the tree.","l",0,0,0,""
+"","A path      starts here and         continues   forwards andnorthwest.","l",0,0,0,""
+"","A small     leaved stickhas         apparently  fallen from the tree    branch      above. ","l",0,0,0,""
+"","As much as  you'd like  to get the  branch it isof no use toyou and     never will  be. ","g",0,0,0,""
+"","A leafy     plant grows from the    ground in   this        particular  location. ","l",0,0,0,""
+"","Let the     plant live.","g",0,0,0,""
+"","A bush growson the side of the path.","l",0,0,0,""
+"","You fish    around in   the bush butfind        nothing.","pg",0,0,0,""
+"","A log lies  further to  the north.","l",0,0,0,""
+"","It is too   heavy to    carry       around. ","g",0,0,0,""
+"","You fish    around      inside of   the log but there is    nothing of  interest    inside. ","op",0,0,0,""
+"","The creatureis too high to snare.","u",21,0,0,""
+"","Luckily for the animal  it is out ofyour reach.","po",0,0,0,""
+"","A vine hangsdown from   the tree.","l",0,0,0,""
+"","The vine is to flimsy tobe of any   use to you.","gp",0,0,0,""
+"","You are     staring at atree trunk.","l",0,0,0,""
+"l","You throw   the plant upto the      creature andwhen it     grabs it a  paper falls into your   hands. ","u",37,22,22,"i00invena"
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

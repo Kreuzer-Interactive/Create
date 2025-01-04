@@ -1,0 +1,138 @@
+7
+1,6,18,10
+3,5,18,10
+1,1,62,22
+4,4,62,22
+2,4,19,12
+"The roadway continuesto rise until it     levels of a good way further ahead of you.","2cty15","7cty14","9cty8","","",""
+"                                              "
+"                                              "
+"    uu                                        "
+"     uu                                       "
+"     u                                        "
+"rr         t   ooo  ppp                       "
+"rrrrr ssss t   ooo  pppp     xxx    zzzzzzzz  "
+"rrrrrrr    t   ooo           xxx    zzzzzzzz  "
+"rqrrrrr    t   ooo j  j    yy       zzzzzzzz  "
+"rq rrqr    t       jjj     yy nn    zzzzzzzz  "
+"rq rrqr    t    n        k yy nn    zzzzzzzz  "
+"rq rrqr         n       nk nn       zzzzzzzz  "
+"r  rrrr     iiiin   n   nkm         zzzzzzzz  "
+"r  rrrr     iiiii   n   nkkiigiii   zzzzzzzz  "
+"r  rr r    iiiiiiiiiiiiiiiiiigi  w  zzzzzzzz  "
+"rq rrqr    w iiiiiiiiiiiiiiiig  vw  zzzzzzzz  "
+"rq rrqr    w iiiiiiiiiiiiiiiig  vw            "
+"rq rr r  nnw   iiiiiiiiiiiiii  vvw vvvvvvvvvv "
+"r  rrrr  nnw                   vvvv aaaaa vvv "
+"r  rrrr  nn {{{{{{{{{{{{{{{{{{{{{ aaeeeeee    "
+"r   n r  nn{{{{{{{{{{{{{{{{{{{{{{eeedfffffff  "
+"r  nnqr   {{{{{{{{{{{{{{{{{{{{{{{ effdfffffd  "
+"rq nnqr  {{{{{{{{{{{{{{{{{{{{{{{{{ffffffffff  "
+"rq nn r {{{{{{{{{{{{{{{{{{{{{{{{{{{           "
+" q nn {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{vvvvvvvvw "
+158,74,2
+154,74,2
+150,74,2
+146,74,2
+142,78,2
+138,78,2
+138,78,3
+142,78,3
+146,74,3
+150,74,3
+154,74,3
+158,74,3
+162,74,3
+162,74,4
+158,74,4
+154,74,4
+150,74,4
+146,74,4
+142,78,4
+138,78,4
+138,86,6
+138,82,4
+142,82,4
+150,82,4
+154,82,4
+158,82,4
+162,82,4
+166,82,4
+170,82,4
+170,86,4
+166,86,4
+162,86,4
+158,86,4
+154,86,4
+154,90,4
+158,90,4
+162,90,4
+166,90,4
+154,78,4
+158,78,4
+162,78,4
+158,78,4
+118,66,8
+118,62,8
+118,58,8
+118,54,8
+118,54,9
+102,46,12
+102,50,12
+102,54,12
+106,54,12
+102,46,13
+102,50,13
+102,54,13
+6,34,17
+6,34,18
+134,74,23
+82,50,14
+82,54,14
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"l","The car key fits into   the lock andthe car doorpops open.","u",107,108,108,""
+"","You search  the car and find an ID  card. ","ol",108,109,109,"i11invenc"
+"","It's a blackLeo Ultima.","l",0,0,0,""
+"","The car dooris locked   tight. ","o",0,108,0,""
+"","A blue      Swordfish isparked in   the middle  of two othercars. ","l",0,0,0,""
+"","A red       Cippera is  the first ofthree cars.","l",0,0,0,""
+"","The street  sign gives  directions  for the     strange     intersection.","l",0,0,0,""
+"","The sign    resists yourbest        efforts. ","pg",0,0,0,""
+"","The road    branches twodifferent   directions  up ahead.","l",0,0,0,""
+"","A boat hangsin the frontof the      building.","l",0,0,0,""
+"","There is a  wood boat   leaning     against the side of the building.","l",0,0,0,""
+"","The boat is too heavy   for you to  carry and   still be    able to movearound. ","g",0,0,0,""
+"","There is    nothing     inside of   the boat.","p",0,0,0,""
+"","The door is locked. ","o",0,0,0,""
+"","A billboard displays    different   products foryour        approval.","l",0,0,0,""
+"","A fire      escape leadspart way    down the    side of the building. ","l",0,0,0,""
+"","The window  merely      displays a  reflection  of yourself.","l",0,0,0,""
+"","The buildingis made of  some kind ofnew-age     material.    ","l",0,0,0,""
+"","The letters `TERC' are  planted intothe front ofthe         building. ","l",0,0,0,""
+"","An elevator runs up the side of the building.   ","l",0,0,0,""
+"","The         smokestack  spouts smokeinto the    air. ","l",0,0,0,""
+"","The water   has risen   quite a bit during the  last few    months. ","l",0,0,0,""
+"","The support holds up thepathway. ","l",0,0,0,""
+"","You can't   quite make  out the nameon the      building    from here   but it isn'timportant. ","l",0,0,0,""
+"","A tiny      bright      building is nestled     between two others.","l",0,0,0,""
+"","Some of the windows on  the side of the buildingare         shattered. ","l",0,0,0,""
+"","The road    still rises before      leveling    off. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

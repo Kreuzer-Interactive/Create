@@ -1,0 +1,138 @@
+5
+4,4,29,5
+4.2,4.2,29,5
+4.4,4.4,29,5
+4.6,4.6,29,5
+4.8,4.8,29,5
+"You are in the south end of the Town      District of Topeka.","3cty9","8cty12","7cty4","","",""
+"uuuuuuutttttttttttttttttttttttttttttttttttttt "
+"uuuuuuutptttttttttttttttttttttttttttttttttttt "
+"uuuuuuu p                           ttttttttt "
+"uuuuuuutptttttttttttttttttt  ttt    tttttttt  "
+"uuuuuuu p   oooo  tttttttttt ttt    tttttttt  "
+"uuuuuuuop oooooooo ttttttttttttt    tttttttt  "
+"uuuuuuo pooooooooo  ttttt    ttt    tttttttt  "
+"uuuuuuuopoooooooooslltttt ssssss              "
+"uuuuuuuopoooooooooslltttllssssss              "
+"uuuuuuuopoooooooooslllllllsssss q q q qq q    "
+"uuuuuuuo oo  ooooosll   lls       q q qq q    "
+"uuuuuuuooo mm oooosll   lls                   "
+"uuuuuuuooommmmmooosll    ls  rr q q q qq      "
+"uuuuuuuoo mmmmm ooj       j  rr qqq q qq q    "
+"uuuuuuu o mmmmm ojjh     hj  rr   q q qq q    "
+"uuuuuuuoo mmmmm ojh       h jrr iiiii vvvvv   "
+"uuuuuuuh  nmmmmmojh        hjrj iiiiivvvvvv   "
+"uuuuuuu hh mmmmmoh          hrj q q q qqqj    "
+"uuuuuuug   mmn hhh           hj q q q qqqjj   "
+"uuuuuuu    mm                 h   q q qqqjj   "
+"uuuuuuu    mm  g               hhhhhhh   jj   "
+"uuuuuuwww  mm         gg             hhhhhhhh "
+"uuuuuwwwww mm                   g             "
+"uuuuwwwww aaaaa                 g       g     "
+"uu wwwwww aaaaa www                           "
+42,98,2
+46,98,2
+50,98,2
+54,98,2
+58,98,2
+58,94,2
+54,94,2
+50,94,2
+46,94,2
+42,94,3
+42,98,3
+46,98,3
+50,98,3
+54,98,3
+58,98,3
+58,94,3
+54,94,3
+50,94,3
+46,94,3
+42,94,4
+42,98,4
+46,98,4
+50,98,4
+54,98,4
+58,98,4
+58,94,4
+54,94,4
+50,94,4
+58,98,5
+58,94,5
+54,94,5
+50,94,5
+46,94,5
+42,94,5
+42,98,5
+46,98,5
+50,98,5
+54,98,5
+50,94,13
+46,46,13
+58,70,14
+54,70,14
+50,74,14
+50,78,14
+50,82,14
+50,86,14
+50,90,14
+46,70,14
+30,66,15
+74,54,19
+74,58,19
+34,6,20
+34,14,20
+102,18,20
+102,22,20
+26,26,21
+38,90,23
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"l","You dig in  the soil at the base of the tree andunearth a   small watch.","u",95,99,99,""
+"","The watch iscovered withblood and   has the name`Rick Oslo' stenciled onits band.","lg",99,0,100,""
+"","The dirt at the base of the tree    shows some  evidence of tampering. ","l",0,99,0,""
+"","You'll need some kind oftool to pushaway the    compact     dirt.","p",0,99,0,""
+"","You try     bashing the ground with the pipe butthe dirt    stands firm.","u",68,0,0,""
+"","","",95,0,99,""
+"","Tiny pools  of blood    rest on the city street.","l",0,0,0,""
+"","Sidewalks   run along   side the    road's to   provide easyacess for   buildings.   ","l",0,0,0,""
+"","The hotel   was once a  fine place  to stay for a night or  two in      Topeka but  now it is   run-down. ","l",0,0,0,""
+"","The door    will not    open no     matter what you do to   it. ","o",0,0,0,""
+"","A tall      building    rises above the others  in the      background.","l",0,0,0,""
+"","You think   you can see some kind ofhospital offin the      distance.","l",0,0,0,""
+"","A tree      flourishes  despite its location    beside the  road. ","l",0,0,0,""
+"","Climbing in the tree    will get younowhere.     ","p",0,0,0,""
+"","A small     simple      factory     building    stretches   along the   road        northwest.","l",0,0,0,""
+"","Smoke shootsout from thepipe        periodical- ly.","l",0,0,0,""
+"","Most of the windows are smashed and broken. You can see     nothing     inside of   the         building.","l",0,0,0,""
+"","The small   building wasapperently acard shop ofsome kind.","l",0,0,0,""
+"","A few       buildings   stand at thecorner of   the road.","l",0,0,0,""
+"","The ever    present dusksky looms   overhead. ","l",0,0,0,""
+"","Its a large office      building    associated  with phones.","l",0,0,0,""
+"","The green   awning helpsprovide an  old         fashioned   look to the hotle.","l",0,0,0,""
+"","The gray    cement is a parking lot for the     green       building it borders. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

@@ -1,0 +1,138 @@
+1.2
+.5,.5,88,17
+.3,.7,88,17
+-1,-1,29,50
+.4,.4,161,56
+.8,.8,162,56
+"A very orderly officelies behind the door.","2terc5","","","","",""
+"abbbbboooaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "
+"abbbbboooddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "
+"abbbbboooddfaaaaaxxxxxxxxxxxxaaaaaedaaaaaaaaa "
+"abbbbboooddfaaaaaxxxxyyyyyxxxaaaaaedaajjaaaaa "
+"abbbbboooddffaaaaxxxyyyyyyxxxaaaaeedaajjaaaaa "
+"abbbbboooddffaaaaxxxyyyyxxxxxaaaaeedaajjaaaaa "
+"abbbbboooddffaaaaxxxxxxxxxxxxaaaaeedaajjjkkkk "
+"abbbbbwooddffahhaxxxxxxxxxxxxaaaaeedaaajjkkkk "
+"abbbbbqppddffahhaxxiiiiixxxxxaaaaeedaaaaakkkk "
+"abbbbbpppddffahhaxxiiiiixxxxxaaaaeedaaaaakkkk "
+"abbbbbpprddffahhaaaiiiiiaaannnnaaeedaaaaakkkk "
+"abbbbbprradffahhaaaiiiiiaannnnnaaeedaaaaakkkk "
+"abbbbbrrrgggggggggggggggggggggggggadaaaaakkkk "
+"abbbbbrraagggggggggggggggggggggggeadaaaaakkkk "
+"abbbbbraaagggggggaaiiiiiiagggggggaadaaaaaakkk "
+"abbbbbabbagggggggaaiiaaiiagggggggaadaaaaaaakk "
+"abbbbbbbbdgggggggzziizziizgggggggddddaaaaaaak "
+"abbbbbbbbzgggggggzziizziizzggggggzzzzzzzallaa "
+"abbbbbbbzzggggggzzzizzzzzzzzgggggzcccccclllla "
+"abbbbbbbzzzzzzzzzzzzzzzzzzzzzzzzzzcccccclllla "
+"abbbbbbzcccccccccccccccccccccccccccccccclllla "
+"abbbbbzcccccccccccccccccccccccccccccccczlllla "
+"azzzzzccccccccccccmmmmmmmmmmccccccccccczzzzzz "
+"cccccccccccccccccmmmmmmmmmmmmcccccccccccccccc "
+"cccccccccccccccmmmmmmmmmmmmmmmccccccccccccccc "
+150,6,1
+70,86,3
+142,66,4
+134,50,7
+130,50,7
+66,54,7
+66,46,8
+82,58,9
+94,42,9
+94,38,9
+154,18,10
+162,22,10
+162,18,10
+162,70,12
+126,46,14
+126,42,14
+22,2,15
+22,6,15
+22,10,15
+22,14,15
+22,18,15
+22,22,15
+22,26,15
+26,38,17
+26,42,17
+26,46,17
+30,42,17
+30,38,17
+30,34,17
+34,34,17
+34,38,17
+30,50,18
+30,50,19
+30,54,19
+30,66,20
+30,70,20
+26,70,20
+106,46,21
+110,46,21
+114,46,21
+118,46,21
+122,46,21
+122,42,21
+118,42,21
+114,42,21
+110,42,21
+110,42,22
+114,42,22
+118,42,22
+122,42,22
+126,42,22
+126,46,22
+122,46,22
+118,46,22
+114,46,22
+110,46,22
+78,18,24
+78,22,24
+26,10,23
+26,14,23
+22,26,23
+26,26,23
+30,26,23
+34,26,23
+34,30,23
+30,30,23
+22,2,23
+26,2,23
+26,6,23
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The walls   are ordinarydull plastergrey. ","l",0,0,0,""
+"","A deep wood finish has  been appliedto the      cabinet. ","l",0,0,0,""
+"","Another uglycarpet is inthe office.","l",0,0,0,""
+"","Gold        flagposts   stand       noblely     behind the  desk. ","l",0,0,0,""
+"","The flag is the old westconfedera-  tion banner.","l",0,0,0,""
+"","This other  flag you    have never  seen before.","l",0,0,0,""
+"","The desk is a thick darkgrey marble.","l",0,0,0,""
+"","Halogen     lights      require no  shades. Pluslampshades  are very    scarce      nowadays. ","l",0,0,0,""
+"","A fine      checkered   wood chair  is placed   meticulouslybehind the  desk. ","l",0,0,0,""
+"","The west    governmentalseal is     displayed   proudly on  the         certificate of          governmentallegislation.","l",0,0,0,""
+"","Out the     window you  can once    again see   the effects of the      flood. ","l",0,0,0,""
+"","The waste   paper basketis empty.","l",0,0,0,""
+"","The welcome mat         displays:   Bow to thosewho watch   you. ","l",0,0,0,""
+"","The only    item on the desk is a   very        professionalfingerprint kit. ","l",0,0,0,""
+"","The books onthe top     shelves     contain     rules and   regulations of governingbodies. ","l",0,0,0,""
+"","The book is entitled:   The New     Order. It   contains a  new form of government  drastically different   from the onenow. ","l",0,0,0,""
+"","It has an   eye engravedon the firstinside page.","g",0,0,0,""
+"","There is    somekind of switch      behind the  book on thisshelf. ","l",0,0,0,""
+"","You rotate  the switch  until it    lights up.","p",0,135,135,"s3"
+"","The cabinetsare locked.","op",0,0,0,""
+"","You don't   want to     fingerprint yourself..","pg",0,0,0,""
+"l","You use the finger to   make a      fingerprint that is     useable for identification.","u",62,136,136,"i20invenc"
+"","You don't   want any of these books.","gp",0,0,0,"y"
+"","The words   talk about  the         survivors ofa plague    forming a   new world.","l",0,0,0,""
+"","A hologram  of sorts    Perhaps?","l",0,0,0,""
+"","Shadows are all over therug. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

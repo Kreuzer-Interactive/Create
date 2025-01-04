@@ -1,0 +1,138 @@
+16
+8.3,11,151,62
+8.8,10.7,151,62
+9.3,10,151,62
+9.7,10.2,151,62
+9,10.5,151,62
+"Your eyes go straightto the arm protrudingfrom the pile of     debris. Your shot    counted. ","2apar1","7apar3","","","",""
+"                            kk                "
+"                            kk                "
+"                           kkk      k         "
+"                           kkk      kk uu     "
+"                                  ulklluu     "
+"               o                  uuuuuuu     "
+"              oo        qq        uuuuu u     "
+"               oo  jjj  qqq jjj   uuu  cu     "
+"        jjjj    o  jjj  qqq       uu  ccc     "
+"       rrrrrr    o  rrr qqq rrr   u  cccc     "
+"       rrrrrr    o  rrr  qq rrr    cccccctttt "
+"       rrrrrr       rrr     rrr    cccccctttt "
+"       rrrrrr       rrr     rrr   ccccccctttt "
+"       rrrrrr       rrr   n rrr   ccccccctttt "
+"       rrrrrr    n  rrr   nbbrr   ccccccctttt "
+"       rrrrrr    n arrr    rrrr   cccccdctttt "
+"    nn rrrrrr    n arrr    rrrr   ccc ggctttt "
+"    nnbbrrrrr      rrrr    rrrr hhccd ggc     "
+"    nn brrrrr      rrrr    rr   ih     gg     "
+"       rrrrrr      rrrr         eeee ee s     "
+"       rrrrrr      rrr           ee           "
+"       rrrrrr                                 "
+"       rrrrrr            mmmmmm               "
+"       rrrr               mmmm                "
+"                                              "
+142,70,4
+146,66,4
+142,66,4
+138,66,4
+138,62,4
+142,62,4
+146,58,4
+142,58,4
+146,54,4
+150,54,4
+154,54,4
+158,58,4
+162,62,4
+154,62,4
+162,50,4
+158,50,4
+134,78,5
+138,78,6
+134,78,6
+130,78,6
+134,82,6
+138,82,6
+134,74,9
+130,70,9
+134,70,9
+110,14,12
+114,14,12
+118,14,12
+118,10,12
+114,10,12
+110,10,12
+146,14,12
+150,14,12
+146,18,12
+70,38,16
+66,34,16
+66,30,16
+62,26,16
+62,22,16
+114,58,18
+162,74,19
+158,74,19
+158,70,19
+154,70,19
+154,66,19
+158,66,19
+142,18,21
+150,18,21
+154,18,21
+106,54,22
+106,58,22
+70,62,22
+22,66,22
+22,70,22
+22,74,22
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"7apar3","Suprisingly this door isunlocked.","o",0,0,114,""
+"","The door is locked. ","o",0,0,0,""
+"","A pile of   rocks has   fallen from the ceiling.","l",0,0,0,""
+"","The rocks   are too     heavy to    move. ","p",0,0,0,""
+"","The rock hasfallen from the pile andfurther intothe hall.","l",0,0,0,""
+"","The rock is too heavy.","g",0,0,0,""
+"","A man's     forearm     sticks out  from under  the pile of debris.","l",0,0,0,""
+"","A card sits on the flooronly a few  inches from the rubble.","l",0,0,0,""
+"","The card    says `Rick  Oslo: Base  security'   and at the  bottom in   bold writingthe name    `Noah       Abrahms' is signed. ","g",0,0,115,""
+"","You are not interested  in the      numbers of  the rooms.","l",0,0,0,""
+"","Two ceiling lamps       provide the hall with   plenty of   light.","l",0,0,0,""
+"","The lights  have no     switches anddo not      respond to  voice       commands.","p",0,0,0,""
+"","The light   reflects of the shiny   floor. ","l",0,0,0,""
+"","Beside the  door is a   security    pad. ","l",0,0,0,""
+"","For a reasonunknown to  you an axe  is embedded in the wall.","l",0,0,0,""
+"","Despite yourbest effortsthe axe     remains     where it is.","pg",0,0,0,""
+"","Whatever wasonce sprayedon the wall it has      dripped intoa mess.","l",0,0,0,""
+"","The door is made of a   strong wood and painted green. ","l",0,0,0,""
+"","You pull on the hand    with all    your might  but nothing much        happens. ","p",0,0,0,"s"
+"","The poster  on the side wall        displays    room        information needless to you.","l",0,0,0,""
+"","The door on the back    wall is now inacessible.","l",0,0,0,""
+"","You fiddle  with the padbut it is nolonger      functional.","p",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

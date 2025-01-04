@@ -1,0 +1,138 @@
+2.4
+.5,1.5,78,9
+.4,.4,100,4
+.8,1.7,78,9
+1.8,1.8,50,36
+1.6,2.1,50,36
+"A large double story roof sets off the    size of this         enourmous room.","3housef2","","","","",""
+"  bbbbb                   ii jjjj          }  "
+"  bbbbbb    yy     dd    iii jjjjj         }  "
+"  bbbbbb    ccc   yddd   iii jjjjj        }}  "
+"  bbbbbb   cccc    d`    iii jjjjj        }   "
+"  bbbbbb    cc      d    ii  jjjjj        }   "
+"  bbbbbb                                  }   "
+"  bbbbbb   ffffff       hhhhhh    k           "
+"  bbbbbb   ffffff       hhhhhh  kkkk        } "
+"        }  fff ff  ee   hhhhhh  kkkkk } mm }  "
+" }     }   ffggff  ee   hhhhhh  kk kk  }mmm}  "
+" }     }   ffg ff       hhhhhh  kk kk  }mmm } "
+"}   npa}   ffgg f }             kklkk   mmm   "
+"} pnn a    fgg    }  rrrrrr     kklkk   mmm   "
+"  n   sss  f      }rr ~~ r rrr   k kk  }      "
+"    sss s    }   rr  ~~~~~~~~~rrrr      }     "
+"  sssstts    } rr~~~~~~~~~~~~~~~~ rrrrrrrr    "
+"  ssssttuu   rr ~~~~~~~~~~~~~~~~~~~~~~~~~~rr  "
+"} sss{uuuu  r~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   "
+"} sssuuuss  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+"} ssssssss ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+"} ssssssss ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+"}rsssssvv  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+"r ssss    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+"rrr ss ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "
+"                                              "
+78,10,4
+66,30,6
+66,34,6
+26,46,15
+26,50,15
+14,50,16
+18,46,16
+18,50,16
+138,46,17
+138,50,17
+90,50,18
+18,62,19
+18,66,19
+18,70,19
+34,82,22
+34,86,23
+30,86,23
+34,82,23
+22,74,24
+26,74,24
+26,70,24
+30,70,24
+30,74,24
+34,70,24
+34,66,24
+50,14,25
+50,10,25
+54,10,25
+54,14,25
+82,18,25
+82,14,25
+78,14,25
+78,10,25
+78,6,25
+82,6,25
+86,10,25
+138,46,26
+138,50,26
+14,62,27
+14,66,27
+14,70,27
+14,74,27
+14,78,27
+14,82,27
+14,86,27
+14,90,27
+18,90,27
+18,86,27
+18,82,27
+18,78,27
+18,74,27
+18,70,27
+18,66,27
+18,62,27
+18,58,27
+22,58,27
+22,62,27
+22,66,27
+22,74,27
+22,78,27
+22,82,27
+22,86,27
+82,38,28
+78,38,28
+78,34,28
+82,34,28
+126,58,30
+122,58,30
+22,62,27
+22,66,27
+22,70,27
+22,74,27
+22,78,27
+0,0,0
+0,0,0
+"","You remove  one of the  feathers    from the    weapon. ","g",0,48,48,"i22invena"
+"","Another     large bannerhangs from  the ceiling.You have no idea what   the symbol  means. ","l",0,0,0,""
+"","A golden    shield hangshigh above  your head.","l",0,0,0,""
+"","It appears  to be a old buffalo     skull. ","l",0,0,0,""
+"","The mask    stares back at you with its piercingeyes. ","l",0,0,0,""
+"","A large     painting    hangs on thewall. ","l",0,0,0,""
+"","Your eyes   must be     playing     tricks on   you it lookslike the    lightning ismoving. ","l",0,0,0,""
+"","The         cityscape   looks       vaguely     familuar to you but you just can't  put you     finger on   where it    was. ","l",0,0,0,""
+"","The banner  correllates with the    buffaloskulland seems   almost to   shake. ","l",0,0,0,""
+"","A large darkred tallion graces this banner.","l",0,0,0,""
+"","Looking     through the doors you   are         surprised tosee it very calm        outside.","l",0,0,0,""
+"","It is a doorhandle and akey hole    made to looklike gold. ","l",0,0,0,""
+"","You can see beams of    light       reflect off the wall    hanging of aman riding  on a        feather. ","l",0,0,0,""
+"","Some sort ofweapon hangsabove the   piano. ","l",0,0,0,""
+"","The featherson the end  of the club are only    loosely tiedon with a   piece of    string. ","l",0,0,0,""
+"","The weapon  is hooked   solidly on  the wall butthe feathersat the end  shake. ","pg",0,0,0,""
+"","The door is locked and  can not be  forced open.","po",0,0,0,""
+"","A fanciful  rug         stretches   almost to   the walls   but falls   short a few inches.      ","l",0,0,0,""
+"","It is prettysafe to say that it is apiano. ","l",0,0,0,""
+"","The stand   for the     music to    rest on is  made from a dull metal  and is      currently   empty.","l",0,0,0,""
+"","You can see black and   white ivory keys that   are in      perfect     condition.","l",0,0,0,""
+"","You never   could do    much with   the peddles when you    tried to    play as a   child.","l",0,0,0,""
+"","As you presson the      peddle you  here        something   crash and   assume you  probably    broke it.","p",0,0,0,"crash"
+"","You play    yourself a  song for oldtimes sake.","p",0,0,0,"music"
+"","It is too   high for youand your twoinch        vertical.","g",0,0,0,""
+"8housef5","You unlock  the door.","u",47,0,43,""
+"","The hell youwill. It is far to heavyfor you to  carry.","g",0,0,0,""
+"","You take themask and putit on your  face but    alas you arenot in movieand all you get is a    dusty face.","gp",0,0,0,""
+"","According tothe game    maker they  are supposedto be cracksin the wall that match  the ones in his head.","l",0,0,0,""
+"","It is a     fanciful    carpet full of pet      stains and  lint. ","l",0,0,0,""
+

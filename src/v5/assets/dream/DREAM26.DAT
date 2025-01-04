@@ -1,0 +1,138 @@
+2.1
+1,1.6,93,68
+1.3,1.9,93,68
+.3,1.2,154,78
+.6,1.4,158,79
+.9,1.7,151,79
+"A quick check of the huts reveals them    empty. You are       strangely drawn      towards the statue.","1dream24","","","","",""
+"ggggggggggggg                                 "
+"ggggggggggggg                                 "
+"ggggggggggggg     o     u u    o              "
+"ggggggggggggg     oo    u u   oo              "
+"ggggggggggggg     oo    n n   oo              "
+"        ggggg     ooo         oo              "
+" gggggggg iiiiiii  ooo  ppp ooo iiiiii     ii "
+"iiiiii   iiiiiiiii  oo  ppp  o iiiiiiii  iiii "
+"iiiiiii               wwwwwww                 "
+"iiiiiiii              wwwwww                  "
+"iiiiiiii              wwwwww                  "
+"                      wwwwww                  "
+"            jjjj      wwwwww     jjjj       j "
+"            jjjj      wwwwww     jjjj       j "
+"            jjjj     wwwwwwww    jjjj       j "
+" feeefj     jjjj    wwwwwwwwww   jjjj       j "
+" ffeefj     jjjj  h  wwww        jjjj       j "
+"  ffffj      jjj  hhhhhaaaahhhhhh jjj       j "
+"    f j           hhhhhaaaahhhhhh           k "
+"      j           hhhhhaaaahhhhhh             "
+"      j           hhhhha              cbbb    "
+"      j            ddddddddddddddd    bbbbb   "
+"      k             ddddddddddddddd   bbbbb   "
+"                     dddddddddddddd  lbbbbbl  "
+"                                      llllll  "
+122,42,10
+122,46,10
+126,46,10
+126,42,10
+126,38,10
+54,70,11
+58,70,11
+62,70,11
+62,70,12
+58,70,12
+54,70,12
+162,82,3
+166,82,3
+170,86,3
+166,86,3
+162,86,3
+158,86,3
+154,90,3
+158,90,3
+162,90,3
+166,90,3
+10,62,6
+14,62,6
+18,62,6
+18,66,6
+14,66,6
+90,86,8
+26,86,11
+26,82,11
+26,78,11
+26,74,11
+26,70,11
+26,66,11
+138,50,11
+138,54,11
+138,58,11
+138,62,11
+138,66,11
+138,70,11
+142,70,11
+142,66,11
+142,62,11
+142,58,11
+142,54,11
+178,70,11
+174,94,13
+170,98,13
+166,98,13
+162,98,13
+158,98,13
+154,98,13
+150,94,13
+98,26,17
+102,26,17
+106,26,17
+106,30,17
+102,30,17
+98,30,17
+98,26,18
+102,26,18
+106,26,18
+106,30,18
+102,30,18
+98,30,18
+74,14,19
+78,14,19
+78,18,10
+122,14,19
+126,14,19
+74,14,20
+78,14,20
+78,18,20
+74,18,20
+106,14,22
+0,0,0
+"","A deep      glowing     vermillion  symbol      adorns the  base of the statue.","l",0,0,30,""
+"","You wonder  why the firestill burns even though the village is          abandoned.","l",0,0,0,""
+"","The water   has no      effect on   the fire.","u",23,0,0,""
+"","The statue  casts a     shadow      across the  ground.","l",0,0,0,""
+"","A purple    flower is   set in the  middle of   the woven   grass       sheild.","l",0,0,0,""
+"","The shield  is not only too bulky   but it is   also        attached to the side of the hut.","g",0,0,0,""
+"","The jungle  to the northis too denseto travel   through.","l",0,0,0,""
+"","The base of the statue  is made of  stone       bricks.","l",0,0,0,""
+"","The top of  the round   hut is made of some kindof leafy    orange      plant. ","l",0,0,0,""
+"","A hide clothhangs in thedoorway of  the hut.","l",0,0,0,""
+"","You have    already     found all   the huts    empty. ","p",0,0,0,""
+"","Stone bricksare set in acircle to   help keep   the fire    from        spreading.   ","l",0,0,0,""
+"","You have a  feeling it  would not bewise to     remove a    brick.  ","g",0,0,0,""
+"","The blue    gemstones   that make upthe eyes    have a      glowing     luminescent quality to  them. ","l",0,0,0,""
+"","The arms of the statue  are in an   outstretchedposition.","l",0,0,0,""
+"","On the back of the neck are TWO     chiseled    snake       patterns.","l",0,0,0,""
+"l","The snake   fits        perfectly   into the    hole. But   one         engravement still       remains.","u",25,31,31,""
+"l","You put the last snake  in its      place. ","u",34,32,32,"j"
+"","The arm willnot move.","p",0,32,0,""
+"","When you    pull on the arm the     symbol      starts to   shine even  more.       (Hit a key)","p",32,0,33,"return"
+"","Two ivory   horns       protrude    from the    statues     head. ","l",0,0,0,""
+"","You can't doanything    with the    horns. ","gp",0,0,0,""
+"","The statue  is made of ahard gray   stone and   looks as if it were madeby an expertcraftsman. ","l",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+

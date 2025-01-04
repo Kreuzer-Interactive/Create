@@ -1,0 +1,138 @@
+1
+.2,.9,116,59
+.4,.7,116,59
+.5,1.1,116,59
+-1,-1,115,57
+-1,-1,115,57
+"The cold chill from  the river surrounds  the back of the dark gazebo. ","2housef5","","","","",""
+" ffffffff  ffffffffffffffffffffff   ffffffff  "
+"ffff   bbee  a bbbbbbbbbbbbbbbbbbbeebfffffff  "
+"ff b bbbbee aaabbbbbbbbbbbbbbbbbbbeeb bbb ff  "
+"  bbbbbbbee aaabbbbbbbbbbbbbbbbbb ee     bbb  "
+"   bb bbbeebbbbbbb     bbbbbbbbb  ee          "
+"         ee bbbb           bbb    ee          "
+"         ee   b                   ee          "
+"         ee                       ee          "
+"         ee                       ee          "
+"         ee                       ee          "
+"         ee                       ee          "
+"         ee                       ee          "
+" nnnnnnnneennnnnnnnnnnnnnnnnnnnnn eennnnnnnn  "
+" nnnnnnnneennnnnnnnnnnnnnnnnnnnnnneennnnnnnn  "
+" nnnnnnnneennnnnnnnnnnnnnnnnnnmnnneennnnnnn   "
+" nnnnnn  eeccccccccccccccccc  m ccee      d   "
+" ddddddd e hhhhhhhhhhhhhhhhhgglggge  ddddddd  "
+"  ddd  hh  hhhhhhhhhhhhhhhh gglggghhhh        "
+"     hh    jjj  iiiiiiiiiii gkkkgii   h       "
+"   hh     jjjjiiiiiiiiiiiii gkkggii     hh    "
+" hh      i iiiiiiiiiiiiiiiiiiiiiiii       hh  "
+"h        i i  www   ooo          ii         h "
+"         i i  www   oo           ii           "
+"         i i  www   o            ii           "
+"0"
+126,70,7
+138,98,9
+134,78,9
+122,74,12
+122,54,14
+54,78,16
+50,78,16
+46,78,16
+46,74,16
+50,74,16
+54,74,16
+122,66,17
+122,62,17
+122,58,17
+122,58,18
+122,62,18
+122,66,18
+122,66,19
+122,62,19
+122,58,19
+122,70,19
+82,86,20
+82,90,20
+82,94,20
+86,90,20
+86,86,20
+90,86,20
+54,14,21
+50,10,21
+54,10,21
+58,10,21
+54,6,21
+94,6,21
+110,18,21
+22,10,21
+122,62,22
+122,58,22
+118,58,22
+126,58,22
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","You can     bearly make out the     craters on  the moon.","l",0,0,0,""
+"","A few stars are now     visible in  the clear   sky. ","l",0,0,0,""
+"","You can feelthe cool    breeze      coming off  the river.","l",0,0,0,""
+"","Lumps of    tall grass  cover the   banks of theriver. ","l",0,0,0,""
+"","The roof    supports forthe gazebo  are long andsmooth. ","l",0,0,0,""
+"","You can see the edge of roof hang   down on the back of the gazebo. ","l",0,0,0,""
+"","The candle  casts       shadows on  bench and   gazebo wall. ","l",0,0,0,""
+"","The wood    trim is a   deep        mahogany.    ","l",0,0,0,""
+"","The bench   provides a  rest for a  persons legsas they     enjoy a     view.","l",0,0,0,""
+"","A fine whitepowder      covers the  end of the  bench. ","",0,0,0,""
+"","The base of the candle  is covered  with gold.","l",0,0,0,""
+"","The candle  is of a finewax and     shows no    signs of    dripping.","l",0,0,0,""
+"","Breeze from the river   makes the   flame dance and quiver.","l",0,52,0,""
+"","The surface of the riveris smooth   and         unbroken.","l",0,52,0,""
+"","You see a   rune carved into the    back of the gazebo. It  doesn't seemto match    with the    rest of the gazebo. ","l",0,0,50,""
+"","You scrape  off some of the powder  into your   hand.","",0,51,51,"i31invena"
+"l","You shake a few drops ofoil onto thecandle and  the flame   immediatly  swells.","u",49,52,52,"i22invenas4"
+"l","You sprinklethe powder  onto the    flame and   the fire    bursts out  in a white  smoke that  soon fills  everything. (Hit a key)","u",52,53,53,"return"
+"","You don't   want to     touch the   flame. ","pg",0,0,0,""
+"","The rune    does not    budge. ","pg",0,0,0,""
+"","How?","pg",0,0,0,""
+"","The flame isnow swelled to twice itssize. ","l",52,0,0,""
+"","You push thethird board and remove afine white  powder whichwas behind  it.","pg",0,51,51,"i31invena"
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+

@@ -1,0 +1,137 @@
+1.6
+.4,1,64,69
+.6,1.2,136,67
+.8,1.4,129,76
+-1,-1,91,14
+-1,-1,92,27
+"Before you stands an imposing chasm       spanned by a thin    stone brigde.","8spike","1dremdrk","","","",""
+"                hnh          hh         aaaaa "
+"                hh          hhh         aaaaa "
+"                hh     l a  hhh         aaaaa "
+"             aaahhaaaa l a  hhh   a     a a   "
+"           aaaaahh aa  l    hhh a  a          "
+"          aaaaa  h  a  l         a  a         "
+"          aaa                     a  a        "
+"         aaa      fff             aa          "
+"                    d             aaa         "
+"                     d             aaa        "
+"                       d            aaa       "
+"                         d          aa        "
+"                                     aa       "
+"                          dd                  "
+"                             p    e           "
+"                e        d       eee          "
+"               eee          p     e    i      "
+"     kcc        e      d   pp         iii     "
+"      c    gggggggg        pp gggggggg i      "
+"   c  c     g  g     d     pppgggggggg        "
+"    c c      gg      d      p ggggggggbb      "
+"     c       g                gg  bb bb       "
+"     bb bbbb        d            bbbbbbb      "
+"     bbbb           d              bbbbb      "
+"       j bj                        bb bb      "
+134,62,5
+78,30,6
+66,74,7
+70,74,7
+158,70,9
+158,94,10
+154,94,10
+150,90,10
+154,86,10
+158,82,0
+154,86,0
+154,82,10
+150,86,10
+142,90,10
+138,90,10
+142,94,10
+46,90,10
+42,90,10
+38,90,10
+34,90,10
+34,94,10
+26,94,10
+26,90,10
+22,90,10
+22,94,10
+26,82,11
+26,78,11
+26,74,11
+26,70,11
+14,78,11
+18,82,11
+22,86,11
+158,70,13
+158,66,13
+158,74,1
+158,74,13
+118,18,14
+118,14,14
+118,10,14
+118,6,14
+118,2,14
+70,6,14
+70,10,14
+70,14,14
+158,70,15
+158,66,15
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","You are     looking at  one of many cobwebs in  this cave   passage. ","l",0,0,0,""
+"","A few bones lie in the  corner. ","l",0,0,0,""
+"","A couple legbones are   leaning     against the wall. ","l",0,0,0,""
+"","Bloody      footprints  lead across the thin    bridge. ","l",0,0,0,""
+"","Two ghastly heads spew  lava into   the river.","l",0,0,0,""
+"","An opening  is clearly  visible at  the other   end of the  cavern. ","l",0,0,0,""
+"","The lava    flows       swiftly     across the  bottom of   the chasm.","l",0,0,0,""
+"","A couple of stalactites hang down ofthe ceiling.","l",0,0,0,""
+"","Is that a   key hole?","l",0,0,0,""
+"","You do not  want the    broken skullor any of   those other bones. ","g",0,0,0,""
+"","You grab oneof the      femurs that leans       against the wall. ","g",0,5,5,"i30invenw"
+"","As you push on the      hidden spikeit crashes  down upon   your head.","p",0,0,0,""
+"8dremdrk4","You hear a  soft click  when you    turn the keyin the lock.","u",7,0,6,"1"
+"","You can't   get the     stalactite!  you","g",0,0,0,""
+"","You need a  key to open the lock.","o",0,0,0,""
+"","The support looks liableto give at  the worst oftimes. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""

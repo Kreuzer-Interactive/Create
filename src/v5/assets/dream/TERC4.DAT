@@ -1,0 +1,138 @@
+1.9
+2,2,62,55
+2.2,2.6,62,55
+2.4,2.8,62,55
+3,3,62,55
+3.2,3.2,62,55
+"This is the mixing   table that is used tocreate advanced      chemical agents.","3terc2","","","","",""
+"  mmmmmmmmmmmmmmmmmmmmmmmmmmmmmm              "
+"   mmmmmmmmmmmmmmmmmmmmmmmmmmmmm              "
+"   mmmmmmmmmmmmmmmmmmmmmmmmmmmmm            j "
+"    mmmmmmmmmmmmmmmmmmmmmmmmmmmm          jjj "
+"     mmmmmmmmmmmmmmmmmmmmmmmmm          jjj   "
+"      mmmmmmmmmmmmmmmmmmmmmmm         jjj     "
+"                                     jj       "
+"                                  jjjj        "
+"                                 jj           "
+"                            a    j            "
+"   c   c  cc  c  hh bb  c   a  c              "
+"   cc  c  cc  c  hh bb  c   a  c     ii       "
+"   cc  c  cc  c  hh bb  c            ii       "
+"   cc  ss cc     hh        nnnnooo   ii       "
+"      ssss       hh        nnnnnoo            "
+"      ssss      dddd       nnnnnoo            "
+"      ssss      eeee       nnnnnoo            "
+"      ssss    kkeeee       nnnnnop            "
+"      ssss   lkkeeee           qq             "
+"      ssss                     qq             "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+114,42,3
+114,46,3
+82,42,3
+82,46,3
+82,50,3
+86,50,3
+86,46,3
+86,42,3
+66,62,7
+70,62,7
+74,62,7
+78,62,7
+78,62,6
+74,62,6
+70,62,6
+66,62,6
+62,74,12
+58,74,12
+58,70,12
+62,70,12
+110,54,15
+110,58,15
+110,62,15
+110,66,15
+110,70,15
+114,70,15
+114,66,15
+114,62,15
+114,58,15
+114,54,15
+118,54,15
+118,58,15
+118,62,15
+118,66,15
+118,70,15
+122,70,15
+122,66,15
+122,62,15
+122,58,15
+122,54,15
+126,58,15
+126,62,15
+126,66,15
+126,70,15
+130,66,16
+130,62,16
+130,58,16
+130,54,16
+134,62,16
+134,66,16
+38,78,20
+38,74,20
+38,70,20
+38,66,20
+38,62,20
+34,58,20
+34,62,20
+34,66,20
+34,70,20
+34,74,20
+34,78,20
+30,78,20
+30,74,20
+30,70,20
+30,66,20
+30,62,20
+30,58,20
+30,54,20
+26,58,20
+26,62,20
+26,66,20
+26,70,20
+26,74,20
+26,78,20
+0,0,0
+"","You apply   pressure to the button  and what    seems like  way too muchchemical    comes       rushing out.","p",134,142,142,"tercb"
+"","When you    push the    button a    stream of   chemical    flows into  the         container.","p",142,143,143,"tercb"
+"","You push on the button  and a streamof chemical comes       rushing out and into thecontainer. ","p",134,0,0,"tercb"
+"l","You add the red liquid  into the    container   completing  the mixture.","u",143,141,141,""
+"","The green   conainer    under the   faucet has  merged with the table   making it   impossible  to seperate the two.","g",0,0,0,""
+"l","You use the syringe to  obtain the  part of the antidote    mixture.    Hopefully   you got it  right. ","u",106,144,144,"i31invend"
+"","You have a  feeling     whatever    there is in the bowl it won't cure  anything. ","u",106,141,0,""
+"","A faucet    drips out   whatever    substance itis          programmed  to. ","l",0,0,0,""
+"","The dent in the wall is filled with water. ","l",0,0,0,""
+"","Luckily for you this    pipe is     still intactand in      working     order. ","l",0,0,0,""
+"","Some unknownliquid was  spilled ontothe table   and is      eating away on its      protective  coating.     ","l",0,0,0,""
+"","It's alreadydangerous   enough just to stand so close to thespill. ","g",0,0,0,""
+"","The 3D modelis          interesting but is not  relevent to your quest.","l",0,0,0,""
+"","The vials   are each    pre-equippedwith a Self Stand       bottom. ","l",0,0,0,""
+"","You have no need to takeTERC's      vials.","g",0,0,0,""
+"","The vial is polluted    with some   kind of     green       substance.","l",0,0,0,""
+"","A small     amount of   the same    green       substance inone of the  vials drips over the    edge of the table. ","l",0,0,0,""
+"","The vial is empty.","l",0,0,0,""
+"","On one side of the desk sits the    cleanser    unit. ","l",0,0,0,""
+"","Embarrass-  ingly you   have no ideawhat to do  with that   item. ","op",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

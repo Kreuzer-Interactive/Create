@@ -1,0 +1,138 @@
+2
+.8,.8,92,80
+.6,4.5,68,59
+2.2,3,68,59
+2.5,3.8,68,59
+3.4,4.1,68,59
+"It looks to you as ifthe man in the chair isn't in full        possession of his    marbles.","3apar2","","","","",""
+"                                              "
+"          rr                                  "
+"        rrrrrrr vvvvvv                        "
+"   p p  rrrrr   vvvvvvv                       "
+"   ppp  rrrrr   vvvvvvv                       "
+" ttpp ttrrrrr   vvvvvvv                       "
+" ttpp ttrrrrr   vvvvvvv         iiiiiiii    { "
+" tttttttrrrrr                   iiiiiiii  {{{ "
+" tttttttrrrrr ~~~   ~~       zz iiiiiiii  {{{ "
+" tttttttrrrrr ~~~   ~~~~    zzz iiiiiiii      "
+" tttttttrrrrr ~~~~nn~~~~    zzz iiiiiiii      "
+" tttttttrrrrr    u ul u     zzz iiiiiiii      "
+" tttttttrrrrr    uul            iiiiiiii   j  "
+" tttttss rr                     iiiiiiii   jj "
+" tttt ss          www           iiiiiiii   j  "
+" ttttttt         ccc            iiiiiiii   jj "
+" ttttttt         cccuu    lkk      iiiii      "
+" ttttttt     b   ccc      kkkl         i |||  "
+" ttttttt     bbbbbbbbbb                  |||| "
+" ttttttt     bbbbbbbbbbmmm               |||| "
+" ttttt t     bbbbbbbbbb                  |||| "
+"  gfffg      bbbbbbbbbb         dedddd   |||| "
+"   g f       bbbbbbbbbbaaa       ddddd   |||| "
+"             bbbbbbbbbbaaa                ||| "
+"             bbbbbbbbbba                    | "
+142,86,5
+146,86,5
+146,90,5
+142,90,5
+138,90,5
+22,90,7
+18,86,7
+14,86,7
+70,70,8
+74,70,8
+78,70,8
+78,66,8
+74,66,8
+70,66,8
+74,62,8
+78,62,8
+114,66,12
+110,66,12
+106,70,12
+110,70,12
+114,70,12
+94,78,14
+98,78,14
+74,62,15
+74,66,15
+74,70,15
+78,70,15
+78,66,15
+78,62,15
+18,22,17
+18,26,17
+14,22,17
+14,18,17
+82,58,24
+78,58,24
+74,58,24
+74,58,25
+78,58,25
+82,58,25
+174,86,29
+174,82,29
+170,86,29
+170,82,29
+74,42,30
+78,42,30
+122,46,5
+122,42,5
+122,38,5
+122,34,5
+118,34,5
+118,38,5
+118,42,5
+118,46,5
+114,46,5
+114,42,5
+114,38,5
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The man     rests his   hand on the arm of the  chair. ","l",0,0,0,""
+"","A man is    lounging in the chair   not paying  you much    attention.","l",0,0,0,""
+"","You strike  up a        conversation. ","l",0,119,119,"talk2"
+"","A couple of magazines   rest on the floor.","l",0,0,0,""
+"","`Don't try  'en take    them mag's  from me.'","g",0,0,0,"talk"
+"","A gun rests on an       endtable    only a      little more than a foot away from   the chair.","l",0,0,0,""
+"","`Don't you  go'en make  me shoot youwith ol' Mr.Gun there.'","g",0,0,0,"talk"
+"","The keeps   his eyes on the screen  in the wall.","l",119,0,0,""
+"","The in-wall TV screen   looks to    have been onpause for a day or more.","l",0,0,0,""
+"","The bulb    brightly    lights the  small       apartment   room. ","l",0,0,0,""
+"","A couple of shoes are   stashed in  the corner.","l",0,0,0,""
+"","There is    nothing in  the shoes   and you     don't want  to take     them. ","pg",0,0,0,""
+"","A green socklays on the carpet. ","l",0,0,0,""
+"","`I ha' enufftrouble     finding a   pair as it  is.' ","g",0,0,0,"talk"
+"l","`My leaf!   You found   it! I'll    keep that inmind.' ","u",105,120,120,"talk"
+"","An amulet ofsome kind   hangs above the door.","l",0,0,0,""
+"","`I be a     needing thatone.' ","g",0,0,0,"talk"
+"","Several     coats or    robes hang  from the    bar. ","l",0,0,0,""
+"","The door is locked.     `Caant get  it open     miself.'     ","o",0,0,0,"talk"
+"","A blue door allows      travel      between the two         apartment   rooms. ","l",0,0,0,""
+"","There is    nothing but dirty       clothes in  the drawer.","o",0,0,0,""
+"","The paintingdepicts a   dark bridge over a riverof lava. It is signed   `Johnson'.","l",0,0,0,""
+"","The drawer  contains    eight or    nine amuletslike the onehanging     above the   door.","o",0,0,0,""
+"","`Those      aren't free ya' know.'","g",0,120,0,"talk"
+"","`You given  me that leafso ya' can  tack one of those.' ","g",120,117,117,"i32invenw"
+"","A few       magazines   share the   holder. ","l",0,0,0,""
+"","Various     types of    books occupythe case.","l",0,0,0,""
+"","A stylish   wooden      cabinet     supports thelamp. ","l",0,0,0,""
+"","It contains several     types of    knick knacksbut none    that are of any interestto you.","o",0,0,0,""
+"","An empty    box. A used sock. A     glass of    water. A    neon purple tie. Some   pretty wierdobjects. ","l",0,0,0,""
+

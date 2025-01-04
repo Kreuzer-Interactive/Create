@@ -1,0 +1,137 @@
+1
+.5,-1,116,34
+.4,-1,49,34
+.3,-1,160,49
+.6,-1,4,49
+.7,-1,154,17
+"You are standing     before a magnificent stone altar in a     small alcove at the  back of the cavern.","2dremdrk4","","","","",""
+"                                              "
+"                                              "
+"                    aaaaaa                    "
+"           rrrrrrrr aaaaaa rrrrrrr            "
+"           rrrrrrrr aaaaaa rrrrrrr            "
+"      b    rrrrrrrr aaaaaa rrrrrrr     b      "
+"      b    rrrrrrrr aaaaaa  rrrrrr     b      "
+"      b   r ooooo  aaaaaaaa  qnnn      b      "
+"     bc   rooooo   aaaaaaaa  nnnn       c     "
+"     c    r         aaaaaa              c     "
+"          rrr e rrrrrrrrrrrrrree              "
+"            r e rr rrrrrrrrrrree              "
+"            r e rrrr    rr    ee              "
+"dddd         iii    fffff     ii        dddd  "
+"dddd                kffff               dddd  "
+"dddd      hhhhhhhhhhhhhhhhhhhhhhhhh      ddd  "
+"  d       hhhhhhhhhhhhhhhhhhhhhhhhh       d   "
+"  d       hhhhhhhhhhhhhhhhhhhhhhhhh     jjdjj "
+"jjjjj     hhhhhhhhhhhhhhhhhhhhhhhhh     jjjjj "
+"jjjjj    hhhhhhhhhhhhhhhhhhhhhhhhhh     jjjjj "
+"jjjjj                                   jjjjj "
+"jjjjj   llllllllllllllllllllllllllllll  jjjjj "
+"jjjjj lllllllllllllllllllllllllllllllll jjjjj "
+"jjjjj lllllllllllllllllllllllllllllllll jjjjj "
+"jjjj   llllllllllllllllllllllllllllllll  jjjj "
+58,30,19
+62,30,19
+54,30,19
+54,34,19
+58,34,19
+62,34,19
+158,26,3
+158,30,3
+26,30,3
+26,26,3
+26,22,3
+98,54,7
+94,54,7
+90,54,7
+86,54,7
+86,58,7
+90,58,7
+94,58,7
+98,58,7
+126,50,9
+126,46,9
+122,50,9
+58,50,9
+170,70,10
+2,74,10
+98,54,11
+94,54,11
+90,54,11
+86,54,11
+86,58,11
+90,58,11
+94,58,11
+82,54,11
+98,54,13
+94,54,13
+90,54,13
+86,54,13
+82,54,13
+82,58,13
+86,58,13
+90,58,13
+130,34,14
+122,30,17
+126,30,17
+126,34,17
+122,34,17
+118,34,17
+130,34,17
+62,34,16
+58,34,16
+54,34,16
+54,30,16
+58,30,16
+62,30,16
+70,50,18
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","A rune is   dislpayed onthe blue    cloth that  hangs down  from the    ceiling.","l",0,0,12,""
+"","The flame onthe torch   flickers.","l",0,0,0,""
+"","You try to  pull on the torch but   nothing     happens.","p",0,0,0,""
+"","Your are    looking at alit         candleabra.","l",0,0,0,""
+"","The flames  on the      candles     writhe and  twirl in a  hypnotic    dance. ","l",0,0,0,""
+"","An unholy   curved      sacrificial dagger lays in the      middle of   the altar.","l",0,0,0,""
+"","An unseen   force stops you from    taking the  dagger from the room.","g",0,0,0,""
+"","The altar isengraved    with two    serpents anda twisted   dagger.      ","l",0,0,0,""
+"","There is    enough lightalready     without     carrying    around a    candle.","g",0,0,0,""
+"","Two         pedestals   are on      either side of the room.","l",0,0,0,""
+"","You have a  feeling you have to do  something   else first.","u",11,14,0,""
+"","The floor ismade up of  green tile.","l",0,0,0,""
+"","When you    raise the   dagger into the air and stab it downon the      fungus the  altar glows with energy.(Hit a key)","u",11,0,15,"return"
+"","The bowl of blood is    only half   full. Maybe if you      filled it?","l",0,13,0,""
+"","The bowl of blood is    only half   full. Maybe if you      filled it?","l",0,14,0,""
+"","You         carefully   pour the    blood from  the skull   into the    bowl. ","u",10,14,14,""
+"","You fill thebowl to the brim with   the blood   from the    skull. ","u",4,14,13,""
+"","The back    wall is madeof a        greenish    scaly       substance   unknown to  you. ","l",0,0,0,""
+"","Perhaps it  would be    better to   fill the    other bowl  first.","u",10,13,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""

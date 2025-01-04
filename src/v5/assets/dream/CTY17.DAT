@@ -1,0 +1,138 @@
+3.2
+4.2,5,47,74
+2.9,6,47,75
+3.3,5.7,47,75
+3.6,5.4,47,75
+3.9,4.6,47,74
+"The first sign of    order you have seen  so far stands as a   large building with apolice sign on it.","1cty15","3cty5","","","",""
+"cccccbbbbbbbbbbbbbbbbbbbbbbbpppppppqbbbbbbbbb "
+"cccccbbbbbbbbbbbbbbbbbbbbbbbpppppppqbbbbbbbbb "
+"cccccbbbbbbbbbbbbbbbbbbbbbbbpppppppqrrrrrrrrr "
+"cccccbbbbbbbbbbbbbbbbbbbbbbbpppppppqrrrrrrrrr "
+"cccccbbbbbbbbbbbbbbbbbbbbbbbppppppprrrrrrrrrr "
+"cccccbbbbbbbbbbbbbbbbbbbbbbblrrrrrrrrrrrrrrrr "
+"cccccbb  jjjjjj jj  bbbbbbbllrrrrrrrrrrrrrrrr "
+"cccccbb jjjjjjjjjj  mmmmmmlllrrrrrrrrrrrrrrrr "
+"cccccbb jjjjjjjjjj  mmmnnnlllrrrrrrrrrrrrrrrr "
+"cccccbbiii  jiiiii  mmmnnnlllrrrrrrrrrrrrrrrr "
+"cccccbbiiiijjiiiii  mmmnnnlllrrrrrrrrrrrrrrrr "
+"cccccbbiiiijjiiii   mmmooolllrrrrrrssssrrrrrr "
+"cccccbb hhhh ||      moooolllrrrrrrkkk|rrrrrr "
+"cccccaa hhhh ||     aeddddellrrrrrrkkkkrrrrrr "
+"cccccaa hhh  |      eddddddelrrrrrrkkkkrrrrrr "
+"cccceeeeeeeeeeeeeeeedddddddeeeeeeeeeeeeeeeee{ "
+"cceeddddddddddddddddddddddddddddddddddddddd{{ "
+"eedddddddddddddddddddddddddddddddddddddddttgg "
+"ddddddddddddvwddddddddddtdddddddddddddddtt{gg "
+"dddddddddtttvvddddddddtttddddddddddddttttz{{{ "
+"dddddddd{{uuuuuv{{{{ff{{{{{{{{{ff{{{{{zzzzz{{ "
+"ddddddd{{{uuuuuu{{{{f{{{{{{{{{{f}{{{{{{zzzzzz "
+"dddddd{{{{uuvvvu{{{{ff{{{{{{{gg{g{{{{{{zzzzzz "
+"ddddd{ff{{u{{{{{{{{{{{{{{{{{ggg{{gg{{gg{zzzzz "
+"ddddd{{}f{{{{{{{{{{{{{{{{{{{{{gy{g{{{gg{{zzzz "
+90,66,4
+94,66,4
+98,66,4
+106,66,4
+110,66,4
+14,62,5
+22,58,5
+106,34,14
+106,38,14
+154,22,18
+154,26,18
+154,30,18
+46,78,22
+58,82,22
+58,82,23
+54,78,23
+50,78,23
+46,78,23
+50,74,23
+54,74,24
+50,74,24
+50,78,24
+54,78,24
+58,82,24
+50,90,24
+54,90,24
+58,90,24
+118,90,25
+122,90,25
+122,94,25
+118,94,25
+122,98,25
+134,94,25
+138,94,25
+150,94,25
+150,98,25
+154,98,25
+154,94,25
+174,74,25
+178,74,25
+178,70,25
+174,70,25
+142,58,28
+142,54,28
+142,50,28
+146,50,28
+146,54,28
+146,58,28
+150,58,28
+150,54,28
+150,50,28
+154,54,28
+126,82,29
+130,82,29
+86,82,29
+82,82,29
+82,86,29
+86,90,29
+34,98,29
+30,94,29
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The corner  of the oceanis barely   visible. ","l",0,0,0,""
+"","The sky is  caught in aneternal     sunset. ","l",0,0,0,""
+"","The buildingis          completely  surrounded  by glass.","l",0,0,0,""
+"","The road    circles     around the  beach.","l",0,0,0,""
+"","The sidewalkis only on  one side of the street.","l",0,0,0,""
+"","A few       scattered   plants seep through the sand.","l",0,0,0,""
+"","Litter      aligns the  beach. ","l",0,0,0,""
+"","The store   window has aaquarium    pressed to  the glass.","l",0,0,0,""
+"","Two large   fish garner the small   shop.","l",0,0,0,""
+"","A worm      dangles fromthe edge of the f in    Seafood.","l",0,0,0,""
+"","The heavy   doors have  been pelted by stray    bullets.","l",0,0,0,""
+"","`Die Pigs'  is spray    painted on  the side of the police  building.","l",0,0,0,""
+"","An alcove inthe side of the buildingleads to thepolice      garage.","l",0,0,0,""
+"","The sign    clearly     states      parking and has an arrowpointing    behind the  building.","l",0,0,0,""
+"","Some tire   marks lay   across the  garage      floor. ","l",0,0,0,""
+"","The back    section of  the police  station     towers high above the   rest of the police      complex.","l",0,0,0,""
+"","A glass     elevator    runs up the side of the tower. ","l",0,0,0,""
+"","A large     formal      looking     police      building    stands at   the end of  the road.","l",0,0,0,""
+"","The sign    reads: We   will serve  and protect when it is  most        convenient.","l",0,0,0,""
+"","Some of the sand covers the edges ofthe road.","l",0,0,0,""
+"","A man sits  in the      bench. ","l",0,0,0,""
+"","You walk    over and    address the man. ","l",0,116,116,"pot"
+"l","You hand theofficer the scarab and  he returns  to you as   promised a  shield.","u",117,118,118,"shield"
+"","You don't   want to     upset the   officer. ","pg",0,0,0,""
+"","You don't   want any of the beach   trash.","g",0,0,0,""
+"","A path leadsto the      southeast.","l",0,0,0,""
+"","It is sand. Plain       ordinary    sand. ","l",0,0,0,""
+"","The door    resists yourall you     efforts to  open it.","po",0,0,0,""
+"","The plants  would be of no use to   you.","gp",0,0,0,""
+"","","",0,0,0,""
+

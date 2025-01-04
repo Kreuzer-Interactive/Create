@@ -1,0 +1,137 @@
+1.8
+.2,.2,13,2
+.6,.6,23,23
+1,1,157,2
+1.2,1.2,152,14
+1.4,1.4,14,34
+"The full moon cast   ghastly shadows      across the rustling  leaves. ","8housef6","2housef4","","","",""
+"   c aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac    "
+"    c  aaaabbaaaaaaaaaaaaaaaaaaaaaaaaaaa c    "
+"     ccaaaabbaaaa       aa aaaaaaaaaaaa ccc   "
+"     c    aaaaaa         aaa  aa      cccc    "
+"      c     aaa           aaaaa      cccccc   "
+"       c                              cccccc  "
+"       c                           j cccccc   "
+"    cc c                          jjj cccccc  "
+"   c  c                             h    ccc  "
+"  c   eeeeeeeeeeeeeeeeeeeeeeeeeee hhhheee  cc "
+"   cceeeeeeeeeeeeeeeeeeeeeeeeeeeehhhhhheeee   "
+"     eeeeeeeeeeeeeeeeeeeeeeeeeee       eeeee  "
+" ddddddddddddddddddddddddddddddd  iiii dddd   "
+"            rrrr                 iii iir      "
+"        rrrr    r                  ii   rrr   "
+"             nnn r           qmmmgggf   rrr   "
+"             nnn  rrrrrrrr ffmqmmfff   r      "
+"             nnn          fggqmmpf     rrr    "
+"llllll  lllll   l   `   ffggllqll  llll  lll  "
+"ll lll  lll  llll     ffgggf  lll  llll  lll  "
+"ll lll  lll  llll    f ggggff lll  llll  lll  "
+"ll lll  lll  llll fffgggggff  lll  llll  lll  "
+"ll llllllll lllllf gggggggff  llllllllllllll  "
+"kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk "
+"kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk "
+46,14,1
+50,14,1
+54,10,1
+58,10,1
+62,10,1
+66,10,1
+114,18,1
+82,86,7
+110,78,7
+134,66,7
+122,62,15
+126,62,15
+130,62,15
+130,62,16
+126,62,16
+122,62,16
+122,70,17
+122,62,17
+126,62,17
+126,66,17
+126,70,17
+130,66,17
+62,62,17
+62,66,17
+62,70,17
+58,70,17
+58,66,17
+58,62,17
+54,62,17
+54,66,17
+54,70,17
+126,62,16
+122,62,16
+118,62,16
+118,66,16
+122,66,16
+126,66,16
+130,66,16
+126,70,16
+122,70,16
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The sky is  now clear   and placid.","l",0,0,0,""
+"","A bright    moon hangs  in the sky.","l",0,0,0,""
+"","The trees   sway in the brisk       breeze.","l",0,0,0,""
+"","You can     bearly here the lapping of the wateragainst the banks. ","l",0,0,0,""
+"","The river isdeep and    smooth. ","l",0,0,0,""
+"","Small bushesalign the   rocky path.","l",0,0,0,""
+"","The path    leads to a  small       gazebo. ","l",0,0,0,""
+"","A wicker    roof covers the small   gazebo. ","l",0,0,0,""
+"","The gazebo  almost      stretches tothe river.","l",0,0,0,""
+"","A weather   vain rests  on the      gazebo's    roof. ","l",0,0,0,""
+"","The moon    casts       shadows on  the stone   deck. ","l",0,0,0,""
+"","It appears  to be a     rough marblefinish.","l",0,0,0,""
+"","A large vasesets upon   the railing.You can see a small     amount of   stolid      liquid.","l",0,0,0,""
+"","The large   vase rests  on the      railing. ","l",0,0,0,""
+"","You need    something tocollect the fluid. ","g",0,49,0,""
+"l","You reach   down and dipthe feather in the vase removing a  few dabs of fluid. ","u",48,49,49,"i30invena"
+"","You wouldn'twant to     break vase.","p",0,0,0,""
+"","You can see a few hills amongsts theeven grass.","l",0,0,0,""
+"","","",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""

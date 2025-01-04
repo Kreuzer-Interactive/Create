@@ -1,0 +1,138 @@
+.8
+.6,.6,115,81
+.6,.6,68,80
+-1,-1,89,47
+.3,.3,103,82
+.3,.3,75,79
+"You are in a fairly  large cavern. Your   senses tell you that there may be traps!","8trap","1dremdrk2","3dremdrk5","","",""
+"      lllllllllllllllllllllllllllllllllll     "
+"       lllllllllllllllllllllllllllllllll      "
+"            lllllllllllllllllllllllllll       "
+"             lllllllllllllllllllllll          "
+"                lllllllllllllllllll           "
+"                                              "
+"                                              "
+"                                              "
+"     e                  hh               e    "
+"     e                  hh               e    "
+"     e                  hh                e   "
+"                     ggggggg     c            "
+"                    ggggggggg   dc            "
+"                     gggggggg   dc            "
+"                                 c            "
+"                    b ooooo      c            "
+"                    b            c            "
+"                                 c            "
+"                                  i       ii  "
+"      b                         ii        i i "
+"      b       fff               ff b   b      "
+"  aa  b       fff             m ff b   b      "
+"aaaaaabaaj    fffffmmnnnnnnnmmffff b  bb      "
+"aaaaaabaaaa   fffm            m ff b  bb      "
+"  aa   aaa    ff                f  b  bb      "
+134,50,4
+134,54,4
+86,50,7
+30,90,10
+34,90,10
+42,94,10
+38,94,10
+34,98,10
+14,94,10
+10,94,10
+10,98,10
+14,98,10
+14,86,10
+14,90,10
+6,90,10
+2,90,10
+2,94,10
+22,94,10
+66,82,11
+66,86,11
+62,86,11
+62,90,11
+66,90,11
+66,94,11
+130,86,11
+134,86,11
+134,90,11
+130,90,11
+130,94,11
+66,90,13
+70,90,13
+74,90,13
+122,90,13
+126,90,13
+114,90,13
+70,90,14
+74,90,14
+78,90,14
+82,90,14
+114,90,14
+118,90,14
+122,90,14
+122,94,14
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","A shattered skeleton    lies on the tiled floor.","l",0,0,0,""
+"","This bloody spike shot  up from the ground when someone     ventured offthe middle  path. ","l",0,0,0,""
+"","A decayed   head adorns this        particular  spike.","l",0,0,0,""
+"","Plucking thehead off thespike would be no use.  It's alreadydead. ","g",0,0,0,""
+"","These       torches givelight to thecavern. ","l",0,0,0,""
+"","Flame shootsfrom the twopurple      blocks that mark the    path.","l",0,0,0,""
+"","You can see an altar offin the      distance.","l",0,0,0,""
+"","You can makeout a blue  tapestry in the alcove  at the far  end of the  cavern. ","l",0,0,0,""
+"","A few spots of blood dotthe floor.","l",0,0,0,""
+"","You'd be    liable to   get spiked  if you try  to go off   the middle  two tiles.","g",0,0,0,""
+"","Pushing the purple      blocks woulddo no good  for you or  anyone else.","p",0,0,0,""
+"","There is    nothing     special     about the   ceiling.","l",0,0,0,""
+"","You try to  smother the flames with the skull   but it does not work.","u",8,0,0,""
+"l","You toss thedust on the fire and it dies down.","u",3,16,16,""
+"8dremdrk3","You lay the leg bone on the ground  to use to   walk over   the pit.","u",5,0,17,"1"
+"","You are not too fond of walking     through thatfire!","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

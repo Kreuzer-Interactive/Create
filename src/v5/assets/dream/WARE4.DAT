@@ -1,0 +1,138 @@
+-1
+-1,-1,48,63
+-1,-1,109,35
+-1,-1,9,72
+-1,-1,48,65
+-1,-1,47,64
+"An imposing metal    crane dominates this part of the          warehouse. ","2ware1","4ware3","","","",""
+"bbbbbbbbbcccccbbbbbccccbbbbbcccbbbbbccbbbbbcc "
+"dddbbbbbb ccccccccbbbccc bbbbbccbbbbccbbbbccc "
+"dddddddddddcdddqrrrrrrrrrrrrrrrrddddddddddddd "
+"daaaaddaadddddqqrrrrrrrrrrrrrrraddaaadddaaddd "
+"daaadddaaaddddppqprrrrrdrrrrrraadddaaddaaaddd "
+"ddddddddddddddppppddddddddddsssdddddddddddddd "
+"ddddddddddddddppppddddddddddssddddddddddddddd "
+"ddddddddddddddppppddddddddddssddddddddddddddd "
+"ddddddddddddddppppdddddddddtsatdddddddddddddd "
+"ddddddddddddddppppdddddddddtttttddddddddddddd "
+"ddeeeeeeddddddppppdddddddddttttdddddddddddddd "
+"deffffeeddddddppppddddddddduuuuuddddddddddddd "
+"deffffeeddddddppppdddddddddzzzzdddddddddddhhh "
+"deffffeeddddddpppphhhhhddddkkkkddhhhddddddhhh "
+"deffffeeddddddpppphhhhhddddkkkkddhhhhddddhhhh "
+"deffffeeddddddpppphhhhhddddkkkkddhhhhhhhhhhhh "
+"deffffeeddddvvpppphhhhhmmmmmmmmmmhhhhhhhhhiii "
+"deffffeemmmmvmpppphhhhmmmmmmmmmmmmmmmmmmmmiii "
+"deffff mmmmoooopppmmmmmmmmmmmmmmmmmmmmmmmmiii "
+"defmmmmmmmmoooooppmmmmmmmmmmmmmmmmmmmmmmiiiii "
+"jjjjmmmmmmmooooonnnnmmmmmmggggggmmmmmmiiiiiii "
+"jjjjjjjmmnnnnnnnnnnmgggggggggggmmmmmmmiiiiiii "
+"jjjjjjjjmmmnnnnnnmmggggggggggmmmmmmmmmiiiiiii "
+"jjjjjjjjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmiiiiiii "
+"jjjjjjjjmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmiiiiii "
+166,6,3
+170,2,3
+58,6,3
+58,2,3
+46,10,4
+14,6,4
+18,6,4
+22,6,4
+122,26,0
+130,46,4
+158,18,4
+26,38,5
+26,70,6
+110,58,12
+110,54,12
+162,78,13
+42,82,1
+58,86,14
+46,86,15
+50,86,15
+54,86,15
+58,86,15
+62,86,15
+66,86,15
+58,10,17
+54,14,17
+58,18,17
+62,10,18
+74,10,18
+70,18,18
+94,18,18
+118,34,19
+54,66,23
+50,66,23
+50,70,23
+50,70,24
+50,66,24
+54,66,24
+54,66,25
+50,66,25
+50,70,25
+110,50,26
+114,50,26
+118,50,26
+126,50,26
+110,54,27
+110,58,27
+110,54,28
+110,58,29
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","Carbon copy windows     line the    top of the  warehouse.  They are to high to see out of.","l",0,0,0,""
+"","A bland     concrete    roof covers the         warehouse.","l",0,0,0,""
+"","The lights avery low    because the warehouse   was supposedto be empty.","l",0,0,0,""
+"","A symetricalbrick wall  surrounds   you. ","l",0,0,0,""
+"","A large     doorway is  cut into thewall. ","l",0,0,0,""
+"","You can see a dock      through the cutout. ","l",0,0,0,""
+"","The crate   casts a     shadow on   the floor.","l",0,0,0,""
+"","A few woodencrates rest against the back wall.","l",0,0,0,""
+"","The large   boxes are   covered withstrange     symbols.","l",0,0,0,""
+"","The crates  seem        identical toall the     other       crates. You wonder how  the tell    them apart.","l",0,0,0,""
+"","It is       another doormuch like   the first   one you saw.","l",0,72,0,""
+"","The door is locked. ","op",0,72,0,""
+"","The floor isuninterest- ing.","l",0,0,0,""
+"","Metal rivetshold the    base of the crane to thefloor. ","l",0,0,0,""
+"","It is the   side panel  of the cranemotor. ","l",0,0,0,""
+"","The crane   almost      extends to  the roof.","l",0,0,0,""
+"","You can see the pivotingarm to move the crates  from the    side to     side. ","l",0,0,0,""
+"","The arm of  the crane isseveral     meters long.","l",0,0,0,""
+"","The metal   links of thechain are   stressed    under the   weight of   the crate.","l",0,0,0,""
+"","A crate is  suspended a few meters  in the air.","l",0,0,0,""
+"","You can't   quite make  out the     address on  the bottom  of the cratemaybe if it were a      little      lower. ","l",0,74,0,""
+"","Two levers  are used to control the crane. ","l",0,0,0,""
+"","You move oneof the      levers but  nothing     happens.","p",0,73,73,"s1"
+"","You move thesecond leverand the     crate shiftsslightly    downward.","p",73,74,74,"s42"
+"","You move thelever once  more but thechain is    stuck. ","p",74,0,0,"s5"
+"","The address on the cratereads:      Century lane666 MountainCrest Area.","l",74,0,75,""
+"l","You unlock  the door. ","u",60,0,72,""
+"8ware5","The door    hesitantly  opens.","o",72,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

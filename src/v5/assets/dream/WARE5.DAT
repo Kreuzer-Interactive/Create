@@ -1,0 +1,138 @@
+8
+1.2,1.2,86,26
+1.6,1.6,86,26
+1.6,1.6,74,81
+1.6,1.6,92,81
+7.6,7.6,84,31
+"The stuffy back room in the warehouse is  packed full of boxes and packages.","2ware4","","","","",""
+"bbcccccccccccccccccccccccccccccccccccccccc bb "
+"bbbb ccccccccccccccccccccccccccccccccccccbbbb "
+"aaaaa cccccccccccccccddccccccccccccccggaaaaaa "
+"aaaaaagggccccccccccccecccccccccccccccggaaaaaa "
+"aaaaaaggggccccccccccceccccccccccccgggggaaaaaa "
+"aaaaaagggggggcccccccceeccccccccccggggggaaaaaa "
+"aaaaaamggggssccccccceffeccccccgggggggggaaaaaa "
+"aaaaaammzggssscccccccffcccccccggggggssgaaaaaa "
+"aaaaaammnmgsssssbbbbbtbbbllbgggggsssssgaaaaaa "
+"aaaaaammnmggggs kkkk tkkkkkkggllgsssssgaaaaaa "
+"aaaaaaggnmgggggggjjjjjjjjjjjjgllgggggggaaaaaa "
+"aaaaaagggggg{{{gjjjjjjjjjjjjjglgvvvggggaaaaaa "
+"aaaaaagggggg{{{gjjjjjjjjjjjjjgvvvvvxxxxaaaaaa "
+"aaaaaavvvvvvv{ggkkkkkkkkkkkkgggvvxxxxxxaaaaaa "
+"aaaaaavvvvvvvvggkkkkkkkkkkkkkgggggxxxxxaaaaaa "
+"aaaaaavvvvvvvvggkkkkkkkkkkkkkwwwwwgggggaaaaaa "
+"aaaaaavvgggggggggjjjjjjjjjjjjwwwwwxgg{gaaaaaa "
+"aaaaaaggggggggggjjjjjjjjjjjjjwwwwwwgg{{aaaaaa "
+"aaaaaagggggggggghhhhhhhhhhhggggssswgg{{aaaaaa "
+"aaaaaaggwwwgggpghhhhhhhhhhhhgggssssgg{{aaaaaa "
+"aaaaaawwwwwpppphhhhhhhhhhhhhhgggvvssgggaaaaaa "
+"aaaaaawwwwwpaphhhhiiiiiiiihhhhhgvvvvgggaaaaaa "
+"aaaaaagwwghhhhhhhiiiiiiiiihhhhhhvvvvvvvaaaaaa "
+"aaaaaaggghhhhhhhhhhiiiiihhhhhhhhhhvvvvvaaaaaa "
+"aaaaaagghhhhhhhhhhhhhhhhhhhhhhhhhhvvvvvaaaaaa "
+106,82,8
+110,82,8
+114,82,8
+34,34,15
+34,38,15
+34,42,15
+54,82,17
+50,82,17
+50,86,17
+54,82,18
+50,82,18
+50,86,18
+130,74,19
+130,74,19
+54,26,19
+86,42,20
+86,30,21
+86,34,21
+86,38,21
+134,74,23
+102,34,25
+106,34,25
+122,38,25
+122,42,25
+126,42,25
+38,42,26
+38,38,26
+38,34,26
+34,34,26
+34,38,26
+34,42,26
+30,38,26
+30,34,26
+30,30,26
+26,26,26
+26,30,26
+26,34,26
+50,54,27
+114,62,24
+118,62,24
+118,66,24
+118,70,24
+122,70,24
+122,66,24
+122,62,24
+126,62,24
+126,66,24
+126,70,24
+130,70,24
+130,66,24
+134,66,24
+138,70,24
+26,54,24
+26,58,24
+26,62,24
+26,66,24
+30,66,24
+30,62,24
+30,58,24
+30,54,24
+34,54,24
+34,58,24
+34,62,24
+38,62,24
+38,58,24
+38,54,24
+42,54,24
+42,58,24
+42,62,24
+46,62,24
+46,58,24
+50,58,24
+54,58,24
+0,0,0
+0,0,0
+"","Large wood  shelves holdan          assortment  of smaller  boxes. ","l",0,0,0,""
+"","The brick   wall is all but totally covered by  the shelves.","l",0,0,0,""
+"","The roof in this room isquite       noticeably  lower and   slants      downward    towards the far wall.","l",0,0,0,""
+"","The lamp is welded into the ceiling.","l",0,0,0,""
+"","A large     hanging lampis the only light sourcefor the     room.","l",0,0,0,""
+"","The bulb    flickers on and off.","l",0,0,0,""
+"","It is empty shelf space.","l",0,0,0,""
+"","The concretefloor       extends to  the far     wall. ","l",0,0,0,""
+"","Light from  the lamp    reflects offthe floor.","l",0,0,0,""
+"","Boxes and   boxes cover this shelf  but none    stand out.","l",0,0,0,""
+"","A few sealedpackages    line this   shelf. ","l",0,0,0,""
+"","Strange     floating    objects swimaround in   the         distorted   jar. ","l",0,0,0,""
+"","A box of oldcd-roms     rests on theshelf. ","l",0,0,0,""
+"","This cd-rom is labeled: Shipping    Records. ","l",0,0,0,""
+"","You remove  the cd-rom  from the    case        entitled:   Shipping    Records. ","g",0,58,58,"i02invenb"
+"","A strange   shoebox     hides on thebottom      shelf.","l",0,0,0,""
+"","The shoebox is full of  bullets and bullet      casings.     ","op",0,0,0,""
+"","You remove  some of the bullets. ","g",0,76,76,"i30invend"
+"","The box is  labeled: Notfor resale.","l",0,0,0,""
+"","A long cord hangs down  from the    light.","l",0,0,0,""
+"","You pull thecord and thelight       switches on.","p",0,0,0,"s5"
+"","The box is  covered withtechnical   jargon that you cannot  understand.","l",0,0,0,""
+"","From the K21company.    They have   been defunctfor years   now. How oldis this     stuff. ","l",0,0,0,""
+"","The box     would be to burdensome  to carry    around.","l",0,0,0,""
+"","If you don'tknow what itis don't    touch it.","pg",0,0,0,""
+"","You open thecd-rom casesto find... acd-rom. ","o",0,0,0,""
+"","The square  box is      completely  covered withpacking     tape. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

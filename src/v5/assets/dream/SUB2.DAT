@@ -1,0 +1,138 @@
+1.8
+.3,1.4,2,77
+.6,1.2,2,77
+.9,.9,2,77
+.5,.5,38,37
+1,1,39,45
+"A long corridor      stands before you.   Sludge lines the walland you can smell a  putrid stench.","6sub1","9sub3","","","",""
+"ccccccccoooooooooooooooooooooooooooooccccccc  "
+"cccccccoooooooooooooooooooooooooooooooccccccc "
+"cccccccoooooooooooooooooooooooooooooonccccccc "
+"cccccccnnoooooooooooooooooooooooooonnnccccccc "
+"cccccccccnnnoooooooooooooooooooonnnnnnccccfff "
+"aaaaannnggnnnnooooooooooooooooonnnngnncccffff "
+"aaaaancngggnnnnnooooommmoooooonnnggggncccffcc "
+"aaaaaacnggggngggnnooomllmoonnpgggggggncccfffc "
+"aaaaaacnngggngggngnnmmknmmnnppgggggggncccfffc "
+"aaaaaacnnnwnngggnggnnnkknnggppgggggnwncccfffc "
+"aaaaaacnnnbnnnnnnggnnnkknngnppwggnnnnncccfffc "
+"aaaaaacnnnwnnnnnnwnnnnkknnnnppnnnnnnnncccfffc "
+"aaeaaannnnnnddddddddnnkkndddddddndnnnncccfefc "
+"d eedddddddddddddddnnnkknndddddddddddddddeeed "
+"deeeddddddddddndnnnnnmmmmnhnppnddddddddddeeed "
+"deeeddddddddnnnnnnnn       hppnnnndddddddeeed "
+"deeeddddddnnnhnnnn          iinnnnnndddddeend "
+"cfefcccnnnnnnhhwn          iiinnnnnnnncccfefn "
+"qqqqqccnnnnnnnhn           iii  hnnnnncccfffc "
+"qqqqqccnnnnnnh             iij  hnnnnncccfffc "
+"qqqqqccnnnnnnh             jj   hnnnnncccfffc "
+"qqqqqccnnnnnnw             jjjnnhnnnnncccfffc "
+"qqqqqccnnnnnw               j     nnnncccfffc "
+"rrrrrccnnnn                jjj     nnncccfffc "
+"qqqqqccnnn                   j      nncccfffc "
+102,34,14
+106,58,14
+110,62,14
+130,82,14
+150,2,15
+38,6,15
+46,18,15
+110,30,15
+70,30,15
+114,30,16
+14,94,19
+10,94,19
+6,94,19
+2,94,19
+2,94,20
+6,94,20
+10,94,20
+14,94,20
+18,94,20
+2,74,21
+6,74,21
+10,74,21
+14,74,21
+18,74,21
+18,78,21
+14,78,21
+10,78,21
+6,78,21
+2,78,21
+2,82,21
+6,82,21
+10,82,21
+14,82,21
+18,82,21
+18,86,21
+14,86,21
+10,86,21
+6,86,21
+2,86,21
+2,90,21
+6,90,21
+10,90,21
+14,90,21
+118,66,22
+118,70,22
+118,74,22
+114,78,22
+114,74,22
+114,70,22
+110,74,22
+142,54,23
+146,34,23
+142,34,23
+138,38,23
+126,38,2
+130,38,23
+106,42,23
+74,42,23
+70,42,23
+74,50,23
+42,54,23
+46,54,23
+42,34,23
+38,34,23
+34,30,23
+74,50,23
+18,98,21
+14,98,21
+10,98,21
+6,98,21
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The poster  identifies  this as     service     tunnel 7.","l",0,0,0,""
+"","It is a     company logoof sorts.","l",0,0,0,""
+"","The bricks  give forth  to the      smooth      concrete of the tunnel.","l",0,0,0,""
+"","A large piperuns the    length of   the wall.","l",0,0,0,""
+"","The two     pipes are   connected   with this   piece of    curved      metal. ","l",0,0,0,""
+"","The pipe    leads down  into the    floor. ","l",0,0,0,""
+"","Large       ceiling     grates leak disgusting  green       substances.","l",0,0,0,""
+"","A large     crack runs  up the wall.","l",0,0,0,""
+"","It appears  to be a     person's    legs. ","l",0,0,0,""
+"","Footprints  lead to an  indentation in the wall.","l",0,0,0,""
+"","You can see a ladder at the end of  the         corridor. ","l",0,0,0,""
+"","Daylight    filters     through the large bars  across the  manhole.","l",0,82,0,""
+"","You can see light at theend of the  tunnel.","l",0,0,0,""
+"","The walls   are smooth  except for  the         occasional  crack.","l",0,0,0,""
+"","A large     rounding    ceiling     hovers over you head.","l",0,0,0,""
+"","You can see an          indentation in the wall a bit       further downthe tunnel.","l",0,0,0,""
+"","The small   glass plate checks for  ID and      security    clearance   cards.","l",0,0,0,""
+"","You are     supposed to run the     cards       through thispart of the apparatus.","l",0,0,0,""
+"l","You run the name card   through the machine. Themachine now displays:   Security    clearance   needed.","u",70,83,83,""
+"8cty1","You now run the securitycard        through. Themachine     displays:   Clearance   granted. ","u",61,0,82,""
+"","The machine is securely fastened to the floor.","pg",0,0,0,""
+"","You have to go there    first. ","pg",0,0,0,""
+"","Don't play  with sewage.Its not justthe law its also a good idea.","pg",0,0,0,""
+"","The pipes   are made    from a high grade alloy and are     resistant toall your    efforts.","pg",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

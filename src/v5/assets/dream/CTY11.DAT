@@ -1,0 +1,138 @@
+2
+.4,1,69,77
+.6,1.3,69,77
+.8,1.6,69,77
+1.6,1.6,93,33
+1.8,1.8,92,32
+"The valley surroundedby mountains is just on the outskirts of  the city.","4cty6","8droid","","","",""
+"aaaaaaaaaaaaaaaaaaaaaaaaabbbbaaaaaaaaaabbbbbb "
+"bbbbaaaaaaaaaaaaaaaaaaaabbbbbbbbbaaaaabbbbbbb "
+"bbbbbbbbbbbaaaaaaaaaaabbbbbbbbbbbbaabbbbbbbbb "
+"bbbbbbbbbbbbbbbaaaaaabbbbbbbbbbbbbbbbbbbbbbbb "
+"bbbbbbbbbbbbbbbbaaaabbbbbbbbbbbbbbbbbbbbbbbbb "
+"bbbbbbbbbbbbbbbbbaabbbbbbbbbbbbbbbbbbbbbbbbbb "
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb "
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb "
+"bbbbbbbbbbbbbbbbbbbbbbbeeeeebbbbbbbbbbbbbbbbb "
+"iiiiiiiiiiibbbbbbbbbbbbeeeeebbbbbbbbbbbbbbbbb "
+"hhhhhhhhhhhhibbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb "
+"hhhhhhhhhhhhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb "
+"hhhhhhhhhhhhbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb "
+"hhhhhhhhhhhhbbbbbbbbbbbbbbbbbbbbbbbbjjjjbbbbb "
+"hhhhhhhhhhhhbbbbbbbbbbbbbbbbbbbbjjjjjbjjbbbbb "
+"hhhhhhhhhhhhddddddddddfffffddddddjjddjjdddjjj "
+"hhhhhhhhhhhhddddddddddfffffdddddddjddjjjjjddd "
+"hhhhhhhhhhhhddddddddddfffffdddddddjddjjjdjjdd "
+"hhhhhhhhhhhhddddddddddffffdddddddddjddjjddddd "
+"hhhhhhhhhhhhkkkkkkllkgggggggkkkkkjkkkkjjjkkkk "
+"hhhhhhhhhhhhkkkkklllgggggggggkkkkkkkkjjjjkkkk "
+"hhhhhhhhhhhhkkkkkkkggggggggggggkkkkkkjjjjkkkk "
+"hhhhhhhhhhhkkkkkkkggggggggggggggkkkkkjjjjkkkk "
+"hhhhhhhhhhkcckkkkggggggggggggggggkkkkkkkkkkkk "
+"cccccccccccccccgggggggggggggggggggkkkkkkkkkkk "
+50,10,2
+114,58,2
+46,38,9
+134,74,10
+134,70,10
+134,66,10
+126,58,10
+126,54,10
+130,54,10
+134,58,10
+166,66,10
+162,66,10
+158,62,10
+50,94,11
+54,98,11
+70,82,13
+74,82,13
+78,82,13
+78,78,13
+74,78,13
+70,82,14
+74,82,14
+78,82,14
+78,78,14
+74,78,14
+70,82,15
+74,82,15
+78,82,15
+78,78,15
+74,78,15
+70,82,16
+74,82,16
+78,82,16
+78,78,16
+74,78,16
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The red sky glows above the         mountains.","l",0,0,0,""
+"","Large woodedmountains   with juttingrocks       surround    the valley. ","l",0,0,0,""
+"","The road    ends at a   long dirt   path. ","l",0,0,0,""
+"","A large     stone wall  stands to   the north.","l",0,0,0,""
+"","Some kind ofbuilding    seems to be built into  the         mountain.","l",0,0,0,""
+"","You can     barely make out a       doorway at  the end of  the path.","l",0,0,0,""
+"","The path is finely      covered withan even     spread of   sand. ","l",0,0,0,""
+"","A split     level       building    stands at   the end of  the road.","l",0,0,0,""
+"","There is a  railing     around the  top of the  building.","l",0,0,0,""
+"","Two small   trees grow  out of the  grass       courtyard.","l",0,0,0,""
+"","The grass   shows signs of recent   cutting.","l",0,0,0,""
+"","A guard     spider-droidagitates on the path    just north  of you.     Don't get   near it or  you might bein for some pain. ","l",0,129,0,""
+"l","You quickly swing the   pipe at the droid       smashing in one of the  side panels.The lights  go off and  it stops    moving. ","u",68,129,129,"pid"
+"","The         spider-droidnow lays    motionless. If you couldrepair and  reprogram ityou could   use it to   guard your  back. ","l",129,130,0,""
+"l","Using the   manual and  spare parts you restore the         spider-droidto function reprogrammedto protect  your back.","u",98,130,130,"msp"
+"","You         shouldn't   get that    close to thespider-droid.","pg",0,0,0,""
+"","It's a fatalmistake.    Never try topass a      moving      spiderdroid.","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

@@ -1,0 +1,138 @@
+2.9
+.6,.6,57,82
+1.8,1.8,129,80
+1.7,1.7,109,81
+2.3,2.7,161,77
+2.1,2.5,160,76
+"You are standing     before a tall cliff. The jungle that you  were in before still surrounds you.","2dream22","1dream27","","","",""
+"    x          mmmmmmmmmmmm   ttt     t       "
+"    x           mmmmmmmmmmmm ttttt            "
+"    x           mmmmmmmmmmmm  tttt   tt t     "
+"    x qp         mmmmmmmmmmm         tt t     "
+"    x ppp              mmmm                   "
+"    x   x             m                       "
+"       x       n    mm                        "
+"        x       nn  mm     s                  "
+"        x         nomm    sss            sss  "
+"                    mm    ss    t       ssss  "
+"                    mm     ss    t      ssss  "
+"                    mm                   sss  "
+"                    mm                        "
+"                    mm                        "
+"                    mm                        "
+"                    mm     gg                 "
+"                    mm    hhg                 "
+"          rrr       mm    ggg                 "
+"         rrr        m              ff      jv "
+"                                           jj "
+"       ccc                      aaa   kkkkkwj "
+"      ccccc  eeeee           a  aaaaa         "
+"     ccccccc                aaa  a aa         "
+"                            aaa  a ba         "
+"                             a      a         "
+134,90,2
+134,86,2
+134,82,2
+142,90,2
+146,90,2
+146,94,2
+122,94,2
+118,94,2
+118,90,2
+118,86,2
+38,82,4
+34,82,4
+30,82,4
+34,86,4
+38,86,4
+42,86,4
+46,90,4
+42,90,4
+38,90,4
+34,90,4
+30,90,4
+114,62,8
+110,62,8
+114,66,8
+114,70,8
+110,70,8
+106,70,8
+142,74,9
+146,74,9
+170,82,12
+166,82,12
+162,82,12
+158,82,12
+74,34,15
+70,30,15
+66,30,15
+30,14,17
+34,18,17
+30,18,17
+174,74,21
+174,78,21
+178,78,21
+178,82,21
+178,82,22
+174,78,22
+174,74,22
+178,82,23
+174,78,23
+178,78,23
+174,78,23
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","Three       brillaint   purple      flowers are growing fromthe ground  here. ","l",0,0,0,""
+"","The flowers are of no   special use to you.","",0,0,0,""
+"","A rock is   imbedded in the ground.","l",0,0,0,""
+"","It is far   too big to  move. ","p",0,0,0,""
+"","The remains of a fire   sit on the  forest      floor. ","l",0,0,0,""
+"","The small   rock is     balancing onsomething.","l",0,0,0,""
+"","An brightly colored     plant is    growing     nexto the   cliff. ","l",0,0,0,""
+"","You grab a  small leaf  of the      plant. ","g",0,37,37,"i12invenw"
+"","You push therock a few  inches and  find a stonecup hidden  underneath  it.","p",0,36,36,"i00invenw"
+"","A snake     scurries in and out of  the bushes.","l",0,35,0,""
+"","A stick lieson the      ground. ","l",0,0,0,""
+"","The stick istoo flimsy  to be of anyuse to you.","g",0,0,0,""
+"","A tree growsbeside the  cliff. ","l",0,0,0,""
+"","That branch is low      enough for  you to      reach. ","l",0,0,0,""
+"","You pull    yourself up on the      branch and  grab the cupfrom the    ledge. ","p",0,36,36,"i00invenw"
+"","It looks    like there  is somethingon the      ledge. ","l",0,36,0,""
+"","You can't   reach it    from here.","g",0,36,0,""
+"","There is    nothing in  the hole in the ground.","l",0,0,0,""
+"","A branch    grows from  the side of the cliff.","l",0,0,0,""
+"","A few       useless     plants live on the      cliff's     face.","l",0,0,0,""
+"","You         carefully   snare the   snake so    that it     cannot move.","u",21,34,35,"s5"
+"","You still donot want to handle a    viscious    snake. ","g",35,34,0,""
+"","When you    pour the    water on thesnake it    turns to    stone and   you retreiveit. ","u",35,34,34,"i02invena"
+"","It is just avine- only  that and    nothing     more. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

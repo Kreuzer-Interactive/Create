@@ -1,0 +1,138 @@
+-1
+5.3,5.3,108,32
+5.5,5.5,108,31
+5.9,5.9,117,31
+6.1,6.1,124,31
+5.7,5.7,108,31
+"You are standing in  the middle of the    deserted subway      loading station.","4sub2","2sub4","","","",""
+" yy                                       yy  "
+"yyy                                       yyy "
+"yyyyy                                   yyyyy "
+"yyyyy                                   yyyyy "
+"yyyyy  zzzzz             zzz            yyyyy "
+"yyyyy zzzzzzzzzvvvvvv  zzzzzzgg vvvvvv zyyyyy "
+"yyyyy zzzzzzzzzvvvvvv zzzzzzzgh vvvvvvzzyyyyy "
+"yyyyy zzzzzz zz vvvvvzzzzz iii   vvvvvzzyyyyy "
+"yyyyyzzzzzzzzsszvvvv zzzzz iii   vvvvzzzyyyyy "
+"yyyyyzzzzzzzzsszvvvv zzzzz iiijj vvvvzzzyyyyy "
+"yyyyy zzzzzzzzzzvvvv zzzzz iiijj vvvvzzzyyyyy "
+"yyyyy zzzzzzzzzzvvvv zz zz iiijj vvvvzzzyyyyy "
+"yyyyy zzzzzzzzzzvvvv  nnz  o wwwwvvvv zzyyyyy "
+"yyyyy rrrrrrrrrrtxxv nn  oo wwwwwvvvvrrryyyyy "
+"yyyyy rrrrrrrrrrxxxv n   o wwwwwwvvvv   yyyyy "
+"yyyyyuuu        xxxv n  o wwwwwwwvvvv   yyyyy "
+"yyyyy           vvvv n o  wwwwwwwvvvv   yyyyy "
+"yyyyy        dddvvvvv  o wwwwwwwwvvvv   yyyyy "
+"yyyyy         ffvvvvvoo      ppp vvvvv  yyyyy "
+"yyyyy           vvvvvo           vvvv   yyyyy "
+"yyyyyoo o oo  o      o                  yyyyy "
+"yyyyy oo o  oo oooooo              aa   yyyyy "
+"yyyyy                              aa   yyyyy "
+"yyyyy                                   yyyyy "
+"yyyyyy                                  yyyyy "
+146,86,2
+146,90,2
+142,90,2
+142,86,3
+146,86,3
+146,90,3
+142,90,3
+62,70,5
+58,70,5
+54,70,5
+54,70,6
+58,70,6
+62,70,6
+122,22,8
+118,22,8
+118,26,8
+122,26,7
+118,46,11
+118,42,11
+118,38,11
+118,34,11
+118,30,11
+114,30,11
+114,34,11
+114,38,11
+114,42,11
+114,46,11
+110,46,11
+110,42,11
+110,38,11
+110,34,11
+122,38,12
+122,42,12
+122,46,12
+126,46,12
+126,42,12
+126,38,12
+122,38,13
+122,42,13
+122,46,13
+126,46,13
+126,42,13
+126,38,13
+118,74,17
+122,74,17
+126,74,17
+54,38,20
+58,38,20
+58,34,20
+54,34,20
+78,66,22
+78,62,24
+62,26,26
+150,30,26
+70,54,20
+74,54,20
+78,54,20
+78,58,20
+74,58,20
+70,58,20
+66,58,20
+66,62,20
+70,62,20
+74,62,20
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","You grab theidentifica- tion card   from the    subway      floor. ","g",0,70,70,"i22invenb"
+"","These are   all         identifica- tion cards  and you onlyneed one of them.","g",70,0,0,""
+"","A pile of a few cards   sits on the subway      floor. ","l",0,0,0,""
+"","You fish    around and  find a note that says `Ifear our    code symbolsare         appearing inthe dreams. M.S.'        ","pg",0,71,71,""
+"","You fish    around in   the garbage somemore butfind nothingelse. ","pg",71,0,0,""
+"","The garbage is a clutterof papers   and rotting food. ","l",0,0,0,""
+"","The light   turns on    when it     senses      motion.","l",0,0,0,""
+"","The light istoo high to reach.","p",0,0,0,""
+"","You can see the city of Topeka      outside the glass doors.","l",0,0,0,""
+"","A lock is   prominently displayed onthe inside  of the door.","l",0,0,0,""
+"","You pound onthe doors   but nothing happens. ","p",0,0,0,""
+"","The doors   are locked  and will NOTopen! ","o",0,0,0,""
+"","You smack   the lock a  couple timesbut nothing happens.","p",0,0,0,""
+"","A small     railing     stands      beside the  stairs. ","l",0,0,0,""
+"","Dirty       footprints  lead from   the doors toan area     further     west. ","l",0,0,0,""
+"","Somehow a   large hole  has came    into being  on the      stairs. ","l",0,0,0,""
+"","You reach   into the    hole and    feel around but find    nothing. ","p",0,0,0,""
+"","The bench iscovered witha gooey     slime. ","l",0,0,0,""
+"","The poster  is too      tattered andslime       covered for you to able to read whatit once     said. ","l",0,0,0,""
+"","Carrying a  poster      around with you would beuseless. ","g",0,0,0,""
+"","The small   pipe        probably    contains    sewage.","l",0,0,0,""
+"","The brick   columns helpsupport the subway's    roof.        ","l",0,0,0,""
+"","The stairs  lead up to adoor. ","l",0,0,0,""
+"","The poster  says `use   back exit incase of     emergency'","l",0,0,0,""
+"","The columns mark the    entrance to the subway  loading     station. ","l",0,0,0,""
+"","You stare atthe dark    bricks that make up the subway's    walls. ","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

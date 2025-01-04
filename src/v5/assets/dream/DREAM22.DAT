@@ -1,0 +1,138 @@
+6.6
+4.5,6.3,151,26
+4.9,5.7,150,25
+5.3,6,150,25
+6,6.5,39,82
+6.2,-1,39,82
+"You're in a light    forest. Further aheadis a denser more     jungle-like          environment. ","6dream21","8dream25","7dream27","2blood","",""
+" rrrrrrrrrrrrrrrr      rr            rrrrrrrr "
+" rrrrrrrrrrrrrrrr    rrrrrrrr rr   rrrrrrrrrr "
+"    rrrrrrrrrrrrr  r rrrrrrrr rr  rrrrrrrrrrr "
+"            rrrrr r rrrrrrrrr rr rrrrrrrrrrrr "
+"            rrrr r  rrrrrrrrr rrrrrrrrrrrrrrr "
+"               rr   rrrrrrrrr rr         rrrr "
+"               r    rrrrrrrrr r       qqrrrrr "
+"                    rrrrrrrrrr     r  qqrrrrr "
+"                    rrrr                      "
+"                    rr                        "
+"                                              "
+"                                              "
+"                                              "
+"                                              "
+"                                       p    p "
+"       kk                            pppp   p "
+"       kk                            pppp   p "
+"                                  p  pppp   p "
+"                                  p  pppp   p "
+"                                  p  p  p   p "
+"                                  p  ooo      "
+"         ie                            oo     "
+"         ee         aaac             oo mmm   "
+"nnnnn    e      mm c            mmmm   mmm    "
+"0"
+86,90,2
+82,90,2
+86,90,3
+90,90,3
+42,86,6
+42,90,6
+38,90,6
+38,94,6
+38,94,7
+38,90,7
+42,90,7
+42,86,7
+42,86,8
+42,90,8
+38,90,8
+38,94,8
+38,90,9
+42,86,9
+38,94,9
+38,94,10
+38,90,10
+42,90,10
+42,86,10
+30,66,12
+30,62,12
+34,62,12
+34,66,12
+130,98,13
+134,98,13
+138,98,13
+142,98,13
+2,98,14
+6,98,14
+10,98,14
+14,98,13
+10,98,13
+6,98,13
+2,98,13
+2,94,13
+6,94,13
+10,94,13
+14,94,13
+42,86,14
+70,94,14
+66,94,14
+142,98,14
+138,98,14
+134,98,14
+162,94,14
+158,94,14
+62,14,18
+62,18,18
+90,90,2
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"l","You pry awaythe rock    then attach the spear   head under  it to your  spear. ","u",28,27,27,"i01invena"
+"","There looks to be       something   under the   rock. ","l",0,27,0,""
+"","You try to  pry the rockup but your hands cannotget a good  hold. ","p",0,27,0,""
+"","","",28,27,27,""
+"","A snake     slithers    quickly in  and out of  view. ","l",0,25,0,""
+"","It would be stupid to   get the     snake with  your bare   hands. ","g",0,26,0,""
+"","After a few tries you   manage to   snare the   snake so    that it is  somewhat    immobile. ","u",21,25,26,"s5"
+"","Even snared the snake isstill       dangerous.","gl",26,25,0,""
+"","You pour thewater on thesnake and   take it whenit turns to stone.       ","u",26,25,25,"i02invena"
+"","The snake istoo fast!","u",24,26,0,""
+"","A dark hole is in the   trunk of thetree. ","l",0,0,0,""
+"","It is empty.","pg",0,0,0,""
+"","Orange and  cyan leafy  plants grow here. ","l",0,0,0,""
+"","The plants  would be of no use to   you. ","g",0,0,0,""
+"","A normal    bush sits   next to the tree. ","l",0,0,0,""
+"","A large rockformation   bars travel northeast.   ","l",0,0,0,""
+"","A bird peaksits head outof the tree from time totime. ","l",0,0,0,""
+"","A few small birds and   other       creatures   are hiding  in the tops of the      trees.       ","l",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+"","","0",0,0,0,""
+

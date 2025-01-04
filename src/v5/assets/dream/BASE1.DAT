@@ -1,0 +1,137 @@
+9
+8,-1,38,16
+8.2,-1,36,32
+8.4,-1,36,50
+8.6,-1,33,59
+8.8,-1,33,59
+"You are at the       hi-tech entryway to  some kind of advancedstructure not on any maps. ","2cty11","","","","",""
+"ggggggggggggggggggggggggggggggggggggggggggggg "
+"gggghhh                             hhh ggggg "
+"gggghhhh                            hhhhggggg "
+"gggghhhh                       l    hhhhggggg "
+"gggghhhh   ii                  lll  hhhhggggg "
+"gggghhhh  ii         bbb         ll hhhhggggg "
+"gggghhhh ii          bbb          l hhhhggggg "
+"gggghhhh i                        l hhhhggggg "
+"gggghhhh i                        l hhhhggggg "
+"gggghhhh i         fffffff        l hhhhggggg "
+"gggghhhh i  eeeeee fffffff ccccc  l hhhhggggg "
+"gggghhhh i dddaaaddfffffffdddddd  l hhhhggggg "
+"gggghhhh i dddaaaddfffffffdddddd  l hhhhggggg "
+"gggghhhh i  oooooo fffffff oooop  l hhhhggggg "
+"gggghhhh i         fffffff        l hhhhggggg "
+"gggghhhh i         fffffff        l hhhhggggg "
+"gggghhhh s         fffffff        l hhhhggggg "
+"gggghhhh j         fffffff        l hhhhggggg "
+"gggghhhh           fffffff        l hhhhggggg "
+"gggghhhh           fffffff        l hhhhggggg "
+"gggghhhh                          l hhhhggggg "
+"gggghhhh   mmmmmmmmmmmmmmmmmmmmm  l hhhhggggg "
+"gggghhhh  mmmmmmmmmmmmmmmmmmmmmmmmm hhhhggggg "
+"gggghhhhmmmmmmmmmmmmmmmmmmmmmmmmmmm hhh ggggg "
+"gggg                                    ggggg "
+82,74,6
+94,74,6
+94,66,6
+38,66,10
+38,70,11
+38,66,11
+138,26,14
+138,30,14
+138,34,14
+138,38,14
+138,42,14
+138,46,14
+138,50,14
+138,54,14
+138,58,14
+138,62,14
+138,66,14
+138,70,14
+138,74,14
+138,78,14
+138,82,14
+138,86,14
+38,62,14
+38,58,14
+38,54,14
+38,50,14
+38,46,14
+38,42,14
+38,38,14
+38,34,14
+38,30,14
+38,26,14
+42,26,14
+42,22,14
+46,22,14
+46,18,14
+50,18,14
+50,54,16
+54,54,16
+58,54,16
+62,54,16
+66,54,16
+70,54,16
+110,54,16
+114,54,16
+118,54,16
+122,54,16
+62,46,17
+66,46,17
+66,50,17
+62,50,17
+58,50,17
+58,46,17
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","You decide  to take a   closer look at the panelof buttons.","l",132,0,0,"button"
+"","A strong    light shinesoutward intoyour eyes.","l",0,0,0,""
+"","One of the  eight blue  buttons     appears to  be lighter  than the    others. ","l",0,0,131,""
+"","A pipe runs from one    side wall tothe other.","l",0,0,0,""
+"","All of the  blue lights on this sideof the door shine with  the same    amount of   brightness. ","l",0,0,0,""
+"","The door hasno knob or  security    box. ","l",0,0,0,""
+"","The outside of the      mountain is highlighted by          occasional  rocks and   depressions.","l",0,0,0,""
+"","Two tall    columns thatlook to be  made of     marble flankyou. ","l",0,0,0,""
+"","Bursts of   energy      occasionaly shoot       through the wire. ","l",0,0,0,""
+"","The wire    flows into asmall plain panel. ","l",0,0,0,""
+"","Ouch! The   panel has a signifacent amount of   electricity flowing     through it.","p",0,0,0,""
+"","A long      purple wire transports  electricity from the    floor to theceiling.","l",0,0,0,""
+"","The blue    floor adds  to the glareby          reflecting  some of the light into  your eyes.","l",0,0,0,""
+"","The outer   encasing of the wire is too strong  to cut      through.","u",92,0,0,""
+"l","You run the card across the scanner. You now    have clear- ance to     enter the   security    code.","u",109,0,132,""
+"","The scanner reads id    cards. ","l",0,0,0,""
+"","You cannot  access the  buttons     until you   run base id card throughthe scanner.","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""

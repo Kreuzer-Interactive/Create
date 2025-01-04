@@ -1,0 +1,138 @@
+2
+1,1.7,154,27
+-1,-1,2,29
+-1,-1,2,29
+1.4,-1,151,26
+.7,1.4,98,41
+"You have a feeling   that this isn't a    travel agency. Two   dead bodies jump out at you. ","2cty9","","","","",""
+"wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww  "
+"                                              "
+"       oo                                     "
+"      ooo                        sssssssss    "
+"      ooo  }}}}}}}}}}}}}}        sssssssss    "
+"       o   }}}}}}}}}}}}}}        sssssssss    "
+"       o   }}}}}}}}}}}}}}     v  sssssssss    "
+"cccc   o   }}}}}}}}}}}}}}     v  sssssssss    "
+"cccc   o   }}}}}}}}}}}}}}     v  sssssssss    "
+"cf c   o   }}}}  uuuuu    ||      ssssssss    "
+"cfgc   o   }}}}}uuuuuu    ||                  "
+"  qrr  o     v  uuuuuu    ||                  "
+"  qrr        vv   z{z     ||                  "
+"qqqrr             z{z     ||                  "
+"  rrr   ~~~aaaa   zzzzz~~~~~~~     mmmmmmmmmm "
+"  rrr   ~~~ ~  ~~~zzzzz~~~~~~~     mmmmmmmmmm "
+"  rrr   ~~~~~~~~~~zz  z ~~~~~~ j   mmmmmmmmmm "
+"  rrr   ~~~~~~~~~~zz  z ~~~~~~jj   mmmmmmmmmm "
+"  rrr   ~~~~~~~~  zz  z  ~~~~~     mmmmmmmmmm "
+"  rrr   ~~~~~~~~                   mmmmmmmmmm "
+"  qq       ~                       mmmmmmmmmm "
+" qqqq                       ttttttt   mmmmmmm "
+"                        ttttxxxxtttt    mmmm  "
+"               ttttttttttxxxxxxxttttttt       "
+"           tttttttxxxxxxxxxxxxxxxttttttt      "
+54,58,2
+50,58,2
+46,58,2
+14,42,4
+14,38,4
+14,34,4
+14,30,4
+10,30,4
+6,30,4
+2,30,4
+2,34,4
+2,38,4
+14,42,5
+14,38,5
+14,34,5
+14,30,5
+10,30,5
+10,34,5
+6,34,5
+6,30,5
+2,42,6
+6,42,7
+2,42,7
+6,38,7
+14,42,8
+14,38,8
+14,34,8
+14,30,8
+10,30,8
+6,30,8
+2,30,8
+6,34,9
+6,38,9
+126,66,11
+126,70,11
+122,70,11
+122,70,12
+126,70,12
+126,66,12
+162,86,14
+162,78,14
+162,70,14
+162,66,14
+150,66,14
+146,66,14
+146,74,14
+150,82,14
+150,74,14
+30,14,16
+30,18,16
+30,22,16
+30,26,16
+30,30,16
+30,34,16
+30,38,16
+30,42,16
+30,46,16
+10,42,17
+162,98,20
+62,98,20
+58,98,20
+54,98,20
+50,98,20
+106,90,24
+110,90,24
+126,94,25
+122,94,25
+118,94,25
+114,94,25
+110,94,25
+106,94,25
+110,90,25
+114,90,25
+6,34,4
+0,0,0
+"","The clippingsays        `Scientist  Jim RichardsMissing' He was a       resident of Topeka and  one of the  West's top  scientists.  ","g",0,0,87,""
+"","A few papersand         clippings   sit on the  desk. ","l",0,0,0,""
+"","The frame ofthe mirror  protrudes   from the    wall. ","l",0,88,0,""
+"","The mirror  has opened  up to reveala safe      behind it.","l",88,89,0,""
+"","You use the driver to   pry open themirror. ","u",54,90,88,"s2"
+"","You take theremote and  read the    note. `I've hidden the  information at the      tunnel. Use the remote  on its      ceiling.' ","g",89,90,90,"i11invenb"
+"","There is a  note and a  remote      stashed in  the safe.","l",89,90,0,""
+"","You cannot  pry open themirror with just your   bare hands.","op",0,88,0,""
+"l","You enter   the         combination on the slip of paper andthe safe    swings open.","u",93,90,89,"s3"
+"","A standard  type KL wireruns from   the wall    into the    desk.","l",0,91,0,""
+"","The is      firmly      embedded in the wall.","g",0,0,0,""
+"","You         carefully   cut of a    section of  the wire    with the    sharp glass shard.","u",92,91,91,"i21invenc"
+"","A file      cabinet     rests       against the wall. ","l",0,0,0,""
+"","There is    nothing in  the drawer  but papers  that you    don't have  the time to read. ","o",0,0,0,""
+"","An antique  gun hangs onthe wall.","l",0,0,0,""
+"","The gun is  for show    only. Plus  it is       strapped    securely to the wall.","g",0,0,0,""
+"","An old coat stand       sporting a  coat stands in the      corner. ","l",0,0,0,""
+"","The smooth  coat has    nothing in  its pockets.","lg",0,0,0,""
+"","The paintingseems to    move by     itself.      ","l",0,0,0,""
+"","A large bluerug covers  the middle  of the      floor.       ","l",0,0,0,""
+"","The high    back chair  is currentlyoccupied. ","l",0,0,0,""
+"","A blotch of blood is on the wall.","l",0,0,0,""
+"","The plain   trim covers all the     walls just  below the   ceiling. ","l",0,0,0,""
+"","A dead man  lies on the floor of theroom.        ","l",0,0,0,""
+"","There is    nothing on  the body.","pg",0,0,0,""
+"","A dead man  is slumped  over the    desk        apparently  shot in the back. ","l",0,0,0,""
+"","The bullet  must have   gone        straight    through the man and intothe back    wall. ","lp",0,0,0,""
+"","A lamp is   resting on  the desk.","l",0,0,0,""
+"","The window  on the back of the      building is intact      meaning thatthey were   shot from   inside.","l",0,0,0,""
+"","The desk is has been    cleaned out hastily. ","l",0,0,0,""
+

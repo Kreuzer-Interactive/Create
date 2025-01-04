@@ -1,0 +1,138 @@
+-1
+.1,0,135,28
+.1,0,136,46
+2,-1,135,28
+1,-1,135,28
+.1,0,32,81
+"You are in the       entrance hall to an  apartment building   that like most of    Topeka is unattended.","2cty15","6shot","8shot","","",""
+" }}}}bbbbbbbbb }}}}}}}}}}}}}}}}}}}}}}}}}}}}}} "
+"|||}}}}}}}}}}}}}}}}bbbbbbbb}}}}bbbbbbbb}}}}}  "
+"||||||||||||||||||||||||| s             ||||| "
+"|||      |||||||||  ||||| ssssssss  ||||||||| "
+"||| aaaaaaaaaaa|||||||||| ssssssss  ||||||||| "
+"||| aaaaaaaaaaa|||||||||| ssssssssssss||||||| "
+"||| aaaaaaaaaaa||||||||||          w||||||||| "
+"||| aaaaaaaaaaa||||||||||   x      w||||||||| "
+"||| aaaaaaaaaaa||||||||||   x      v||||||||| "
+"||| aaaaaaaaaaa||||||||||   x      u||||||||| "
+"|||||||||||||  |||||||||| tt ttttt uoo||||||  "
+"||||||||||||||rrrrrrrrrr| tttttttt uoo  ||| q "
+"||||||||||||||rrrrrrrrrr| tttttttt uoomm || q "
+"||||||||||||||rrrrrrrrrr  tttttttt u| mmm|| q "
+"||||||||||||rrrrrrrrrrrry tttttttt u| mmm|| q "
+"||||||||k|||yyyyyyyyyyyyy t t       | mmmqqqq "
+"||||||  k f|yyyyyyyyyyyyy             mmmqqqq "
+"| ee {zz ff  yyyyyyyyyyyy c    cccccc mm qqqq "
+"|eeee f fffcccc     cccccc     cccccc    qqqq "
+"|fffeffffff                                   "
+" ffffffffff                                   "
+" fffffffff  gggg                              "
+" ffffffff        ccccccccpdddd  ccccc         "
+" fffffff  i   ggg       ddpddd                "
+" fff  f iiii            dddd                  "
+62,94,8
+66,94,8
+58,86,8
+54,86,8
+50,86,8
+42,94,10
+46,98,10
+42,98,10
+38,98,10
+34,98,10
+34,62,12
+34,66,12
+158,54,14
+154,54,14
+106,90,16
+102,94,16
+102,98,16
+106,98,16
+110,94,16
+114,94,16
+118,90,16
+142,58,22
+142,54,22
+142,50,22
+142,46,22
+142,42,22
+142,38,22
+142,34,23
+142,38,23
+142,42,23
+142,46,23
+142,50,23
+142,54,23
+142,58,23
+54,58,25
+50,58,25
+30,70,27
+26,70,27
+22,70,25
+94,46,28
+42,66,28
+10,66,28
+146,22,28
+150,22,28
+174,10,29
+170,10,29
+106,94,4
+114,94,4
+106,90,4
+106,98,4
+102,98,4
+98,90,4
+102,90,4
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","A rather    large       abstract    painting    hangs on theback wall.","l",0,0,0,""
+"","Bright      overhead    lights      illuminate  the  entry  lounge. ","l",0,0,0,""
+"","The light   reflects offof the      smooth floorand back    into your   eyes. ","l",0,0,0,""
+"","You examine the stem andleaves of   the plant   and find    that it is  not real.","l",0,0,0,""
+"","A chunk of  the ceiling has         collapsed   onto the    desk. ","l",0,0,0,""
+"","The desk hasno drawers  or          indentationsand         resembles a large wood  block. ","l",0,0,0,""
+"","The paper   tells you   the names ofthe people  at the      apartment   complex.    Unfortunate-ly it is toolong to     read. ","g",0,0,0,""
+"","A couple of papers are  on the      floor.","l",0,0,0,""
+"","An average  everyday    phone seems to have     fallen off  the desk.","l",0,122,0,""
+"","You retrievethe cordlessphone from  its resting place on thefloor.","g",0,122,122,"i32invenc"
+"","A pencil    holder      sporting twogreen       pencils sitson the side of the desk.","l",0,0,0,""
+"","The green   pencils do  not interestyou in the  least. ","g",0,0,0,""
+"","At the back of the      lounge is a conviently  placed trashcan. ","l",0,0,0,""
+"","You push    your hand   inside but  find it is anew model   that ingeststhe trash iteats. ","op",0,0,0,""
+"","A tattered  sheet of    paper       displaying  room        information and         regulations is plasteredonto the    back wall.","l",0,0,0,""
+"","A fake plantleaf would  only be a   bother to   carry aroundwith you.","g",0,0,0,""
+"","A blocky    chair with acushioned   back looks  comfortable enough to   sit in if   you had the time to.","l",0,0,0,""
+"","There is a  two person  couch at theback of the room so     people can  wait while  others checkout a room.","l",0,0,0,""
+"","The sign    displays    directions  to those whoare new to  the         appartment.","l",0,0,0,""
+"","Three green doors mark  the first   wing of the apartment   complex.","l",0,0,0,""
+"","Did you see something   disappear   behind the  wall? Nah.  Probably    your        imagination.","l",0,123,0,""
+"","Your shot   has caused  the ceiling to cave in  at the back of the firsthall. ","l",123,0,0,""
+"","You hold    your gun    out.. aim.. and fire!   Your shot   misses and  barrels intothe fragile ceiling.","u",112,123,123,"shot"
+"","It looks    like an axe embedded in the wall butyou really  can't tell  from here.","l",0,0,0,""
+"","The metal   base of the couch is    somewhat    reflective  but really  has nothing unusual     about it.","l",0,0,0,""
+"","Its some    kind of     device to   keep track  of who's    where and   which       apartments  are vacant.","l",0,0,0,""
+"","You push a  couple of   buttons and the machine whirs for   awhile then the screen  goes black. Oh well.","p",0,0,0,""
+"","The walls   have got to be the worstdesign      possible    especialy   for a       apartment asreputable asthis one.","l",0,0,0,""
+"","The ceiling looks as if it has had  almost all  it can take.","l",0,0,0,""
+"","","0",0,0,0,""
+

@@ -1,0 +1,138 @@
+9.9
+9,9,151,2
+9.2,9.2,144,2
+9.4,9.4,137,2
+9.6,9.6,130,2
+9.8,9.8,129,2
+"You are standing atopa large hill looking down on the landscapein front of you.","9dream26","2dream27","","","",""
+"     mmmmmm                      ppppppmmmmmm "
+"    mmmmmmmmmm                     ppppmmmmmm "
+"   mmmmmmmmmmmm                      qpmmmmmm "
+" e mmmmmmmmmmmmm                       mmmmmm "
+"e   mmmmmmmmmmmm                       mmmmmm "
+"e   mmmmmmmmmmmm                       mmmmmm "
+"e       mm   mmm                           mm "
+"e       mm  mmm                            mm "
+"e       mm mmm                             mm "
+"e e     mm                                 mm "
+"eee     mm                                 mm "
+"e e     mm                                 mm "
+"e       mm                                 mm "
+"e       mm                                 mm "
+"e       mmn                                mm "
+"e       mmn                                mm "
+"e       mmn                                mm "
+"e       mmn              ffffffffffffffffffmm "
+"e       mmn              fffffffffffffffffffm "
+"e       mmo                fffffffffffffffffm "
+"e       mm                         bbbbbbb mm "
+"        mm                 ccc    bbbbbbbb mm "
+"        mm    gg  iiiiik         aaaaaaaa   m "
+"        m         iiiiii       aaaaaaaaaa     "
+"                 iiiiiiii     aaaaaaaaaaaa    "
+114,86,4
+110,86,4
+62,90,8
+58,90,8
+74,90,10
+78,90,10
+82,90,10
+86,90,10
+90,90,10
+90,90,11
+86,90,11
+82,90,11
+78,90,11
+74,90,12
+78,90,12
+82,90,12
+86,90,12
+90,90,12
+174,74,13
+174,78,13
+38,22,13
+34,22,13
+34,18,13
+38,18,13
+42,62,15
+42,66,15
+42,70,15
+42,74,15
+138,2,17
+142,2,17
+146,2,17
+150,2,17
+154,2,17
+154,6,17
+150,6,17
+146,6,17
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","A path leadsfurther     north. ","l",0,0,0,""
+"","The dirt    path ends atwhat looks  to be a     small       circular    village     composed of huts. ","l",0,0,0,""
+"","A small     leafy plant sprouts fromthe ground.","l",0,0,0,""
+"","The plant isof no use toyou. ","g",0,0,0,""
+"","A dead tree sits on the hill. ","l",0,0,0,""
+"","You can see the jungle  get denser  around the  huts. ","l",0,0,0,""
+"","A hole has  been dug    into the    ground. ","l",0,0,0,""
+"","You reach   into the    hole and    pull the    wooden leveryou find    inside of   it. ","p",0,29,29,""
+"","A hollowed  out stump   sits beside the pathway.Its lid     opens and   closes.","l",0,0,0,""
+"","When you    open the    stump you   see a metal shaft       inside. ","o",29,28,0,""
+"","There is    nothing in  the hollow  stump. ","o",0,29,0,""
+"","You grab theshaft from  inside the  stump. ","g",29,0,28,"i02invenw"
+"","You are     looking at atree that   stands      rather closeto you.","l",0,0,0,""
+"","A green vinehangs down  from the    tree. ","l",0,0,0,""
+"","The vine is flimsy. You do not want it. ","gp",0,0,0,""
+"","Occasionallya bird fliesthrough the sky in frontof you.","l",0,0,0,""
+"","The bird is to high up  and too fastto spear.","u",27,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+

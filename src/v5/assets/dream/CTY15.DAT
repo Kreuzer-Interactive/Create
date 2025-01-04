@@ -1,0 +1,137 @@
+1
+.7,.7,75,32
+.5,.5,84,23
+.7,.7,137,51
+.5,.9,74,33
+.5,.5,34,80
+"You have entered the edge of the downtown district where there are many shops and   company buildings.","2cty12","8cty16","9cty17","","",""
+"bbbbbbaabbbbbbjjjjjjiiiiiiiiiiiiiiiilllllllll "
+"bbbbbbaabbbbbjjjjjjjiiiiiiiiiikkkkkkkllllllll "
+"aaaaaaaaaaaaajjjjjjjiiiiiiiiikkkkkkkkllllllll "
+"bbbbbbaabbbbbjjjjjjjkkiiiiiiikkkkkkkkllllllll "
+"bbbbbbaabbbaajjjjjjkkkkiiiiiikkkkkkkkllllllll "
+"aaaaaaaaaaaaajjjjttttttkimmmmmmkkkkkkllllllll "
+"bbbbbbaaabbbbppppppptttkimmmmmmkkkkkkllllllll "
+"bbbbbbaabbbbbpppppppttthhmmmmmmkkkkkkllllllll "
+"bbbbbaaaaaaaappppppptthhhmmmm    qqqqqqqqqqqq "
+"aaaaaaaaaabbbppppppppthhhhmmmo ooqqqqqqqqqqqq "
+"bbbbbbaaabbbbppppppppffffffnno ooqqqqqqqqqqqq "
+"bbbbbaaabaaaapppppnnfffffffffo ooqqqqqqqqqqqq "
+"aaaaaaaaaaaaappppnnnffffffffggooorrrrqqqqnnnq "
+"aaaaaaaaaabbbppppnffffffffffg ooorrrrqqqqnnnq "
+"bbbbbbaabbbaappppddffffffffff n orrrrqqqssssq "
+"bbbbbaaabaaaapppdffffffffffffdnnoqqqqqqqqqssq "
+"aaaaaaaaaabab||ddfffffffffffffdnoqqqqqqqqqssq "
+"aaaaaaaaabbba|ddffffffffffffffd onqqqqqqqqssq "
+"bbbbbbaabbacaddffffffffffffffffd nnqqqqqqsssq "
+"bbbbbaaaacacddffffffffffffffffffdnnnqqqqqqsss "
+"aaaaaaaaucacddffffffffffffffffffddnnnqqqqqqqq "
+"aaaaaaaaccaddffffffffffffffffffffddnnqqqqqqqq "
+"bbbbbbaaccddeeeffffffffffffffffffddnnqqqqqqqq "
+"bbbbbaaacddeeeffffffffffffffffffffddnqqqqqqqq "
+"aaaaaaaadddeefffffffffffffffffffffdddqqqqqqqq "
+74,58,6
+102,34,14
+106,34,14
+114,38,14
+110,38,14
+46,74,14
+46,78,14
+46,82,14
+90,34,14
+122,58,15
+126,66,15
+74,46,16
+162,66,17
+162,62,17
+158,62,17
+154,62,17
+150,62,17
+150,66,17
+154,66,17
+146,94,17
+146,90,17
+146,86,17
+146,82,17
+138,74,17
+134,70,17
+174,62,19
+90,34,20
+38,78,21
+38,82,21
+38,86,21
+38,90,21
+34,90,21
+34,86,21
+86,38,22
+86,34,22
+90,34,22
+90,30,22
+86,30,22
+82,30,22
+82,26,22
+86,26,22
+90,26,22
+90,22,22
+86,22,22
+82,30,23
+86,30,23
+90,30,23
+90,34,23
+86,34,23
+82,34,23
+86,38,23
+90,34,23
+86,38,24
+86,38,25
+90,34,25
+90,30,25
+86,30,25
+86,38,26
+90,34,26
+90,30,26
+86,30,26
+38,78,27
+38,82,27
+38,86,27
+38,90,27
+34,90,27
+34,86,27
+34,82,27
+58,70,28
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","It is the   skyview     apartment   building.    ","l",0,0,0,""
+"","The blank   wall is     broken up   bythe       windows. ","l",0,0,0,""
+"","Two doors   are used to enter the   apartment   building. ","l",0,0,0,""
+"","The         sidewalks   end at the  intersectingstreet to   the         northwest.","l",0,0,0,""
+"","A large     drainage    grate       coversthe   edge of the street. ","l",0,0,0,""
+"","The road    continues   north by    northwest.","l",0,0,0,""
+"","A sign      stands at   the corner  of the      street. ","l",0,0,0,""
+"","You can see a slight    elevation   further up  the road.","l",0,0,0,""
+"","A           Rockwellian sky covers  the city.","l",0,0,0,""
+"","A large     skyscraper  stands in   the         distance. ","l",0,0,0,""
+"","Another     crumbled    building.   They are a  common      sight in    Topeka. ","l",0,0,0,""
+"","Another     engineering marvel. A   building    completely  covered in  glass.","l",0,0,0,""
+"","A small     office      building is on the      corner of   the street.","l",0,0,0,""
+"","The door is locked. ","l",0,0,0,""
+"","The sign    identifies  this as a   typing      school. ","l",0,0,0,""
+"","It is Mr.   Wans        chinese     cookery.    The         animated    dragon is a fine touch.","l",0,0,0,""
+"","It is the   X-co        building.   They are    responsible for all the water       purifiers   in the city.","l",0,0,0,""
+"","The screen  usually     displays    product     endorsments but the     shop must beclosed.","l",0,0,0,""
+"","One of the  few         remaining   fire        escapes.    Except this one doesn't seem to     lead to the ground. ","l",0,0,0,""
+"","It is a     machine     shop. A     largevendingmachine     stands next to the door selling     boxes of    spider-droidparts. ","l",0,0,0,""
+"4apar1","Hoping this is the rightbuilding youforce open  the heavy   door. ","op",96,0,97,""
+"","You can't   get         anything themachine is  selling     unless you  buy it.","g",0,0,0,""
+"","It looks to strong to   break. ","p",0,0,0,""
+"","You don't   need to     openthe     door.   The machine is  already     standing    next to it. ","o",0,0,0,""
+"l","You insert  all your    money into  the vending machine.    After a few clanks a    large       paper box   falls out ofthe bottom. ","u",79,98,98,"i11invend"
+"","Everything  in the      machine costmore than   you have so inserting   yourmoney   would do    nothing. ","u",65,0,0,""
+"","You have no reason to   enter the   apartment   building    right now.","op",0,96,0,""
+"","The alley   way is far  to dark for you to even think of    entering.","l",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""

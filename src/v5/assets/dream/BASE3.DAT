@@ -1,0 +1,138 @@
+1
+.5,.5,149,42
+.6,.6,27,17
+.3,.3,27,41
+.7,.7,114,17
+.8,.8,85,30
+"An immense metallic  podium holds a       strange glowing      object.","3base2","","","","",""
+"aaabkkkkkkkkkkkklkkkkkkkkkkkkkkkkkkkkkkkkbaa  "
+"aaabbkkkkkkkkkkkkjjjjjjjjjjjillkkkkkkkkkbbaaa "
+"aaabbbbbbbbbb   ii  jjffjjjjil  bbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbb ifrrffff ib bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbbiffffffribb bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbbbirffffib b bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbbbfifffrfb b bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbbbfgggggfb b bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbbbfghhhgrb b bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbb gffhhfgb b bbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbbb    h  dd  bbbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbddddnddmdddddbbbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbddddmddndddddbbbbbbbbbbbbbaaa "
+"aaabbbbbbbbbbbbbddddeddedddddbbbbbbbbbbbbbaaa "
+"aaabbbbbddddddddddddeddedddddddddddddddbb aaa "
+"aaa c  dddddddddddddeddeddddddddddddddd c aaa "
+"aa  cdddddddddddddddeddeedddddddddddddddc   a "
+"   c dddddddddddddddddddddddddddddddddd  c  a "
+"  c    dddddddddddddddddddddddddddddddcc  c   "
+" c   c   cddddddddddddddddddddddddd    cc  c  "
+"    c   c  ddddddddddddddddddddddd cc   cc    "
+"   c   c     dddddddddddddddddddcc  cc   cc   "
+"   c   c   c cccccc ccc  c   c   c   c    cc  "
+" cc   c   ccc ccccc cccccc ccc cccc  cc    c  "
+" c    c   cc  c c ccccc cc ccc  c     c       "
+98,34,8
+90,30,8
+86,30,8
+94,30,8
+94,10,10
+90,10,10
+94,46,14
+94,46,15
+94,50,15
+82,50,15
+82,46,15
+86,30,16
+90,30,16
+94,30,16
+98,30,16
+98,34,16
+94,34,16
+90,34,16
+86,34,16
+86,38,16
+90,38,16
+86,30,17
+90,30,17
+94,30,17
+98,30,17
+98,34,17
+94,34,17
+90,34,17
+86,34,17
+82,34,17
+78,38,17
+82,38,17
+86,38,17
+90,38,17
+94,38,17
+98,38,17
+82,18,18
+82,26,18
+78,30,18
+78,34,18
+86,18,18
+86,22,18
+86,26,18
+90,26,18
+90,22,18
+90,18,18
+90,14,18
+90,10,18
+94,10,18
+94,14,18
+94,18,18
+94,22,18
+94,26,18
+98,22,18
+98,18,18
+98,14,18
+102,14,18
+102,22,18
+102,26,18
+102,30,18
+94,46,19
+94,50,19
+82,50,19
+82,46,19
+62,54,4
+38,78,4
+22,70,4
+22,66,4
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+0,0,0
+"","The walls   are         luminescent.","l",0,0,0,""
+"","The dark    shadows of  the         instruments adjust      periodical- ly.","l",0,0,0,""
+"","Large       colored     wires run   the length  of the      floor. ","l",0,0,0,""
+"","A large dullmetallic    podium      stands in   front of    you. ","l",0,0,0,""
+"","Two small   conductors  run into a  table. ","l",0,0,0,""
+"","An eerie    blue light  emenates    down on the glass case.","l",0,0,0,""
+"","In the case rests a     human brain.","l",0,0,0,""
+"","What? How?  Why? a humanbrain runs  through withelectricity.","l",0,0,0,""
+"","Two strange cords       connect the brain and   the         mechanism   above. ","",0,0,0,""
+"","You assume  this is     producing   the blue    light.","l",0,0,0,""
+"","A large     metallic    machine     hangs from  the ceiling.","l",0,0,0,""
+"","A small     switch is   next to the cord.","l",0,0,0,""
+"","It appears  to be some  kind of     socket. ","l",0,0,0,""
+"","You put     something   into the    socket not  push the    socket. ","l",0,0,0,""
+"","You slide   the saving  stick       electronic  plate into  the socket. A voice     echoes      `Shield     deactivated'","u",83,153,153,""
+"","You can't   destroy the brain       through the energy      shield.","pg",0,0,0,""
+"end","As you      prepare to  fire a      large energyblast Noah  comes       running intothe room.","u",138,154,154,""
+"","You cannot  do anything to the      energy      shield. The magnetic    field is    just to     strong.","pg",0,0,0,""
+"","The sockets glow with   electricity after using the saving  stick. ","l",153,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+"","","",0,0,0,""
+
