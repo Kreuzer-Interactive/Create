@@ -23,6 +23,9 @@ SUB LoadPalette ()
   ' Reset palette to default values
   FOR i = 1 TO 255
     PALETTE i, basicPal(i)
+    if basicPal(i) <> 0 then
+      'print basicPal(i)
+    end if
   NEXT i
   
   IF activeGame < 1 OR activeGame > UBOUND(games) THEN
@@ -75,6 +78,10 @@ SUB LoadPalette ()
   
   CLOSE #1
   
+  CALL DrawPaletteDisplay
+END SUB
+
+SUB DrawPaletteDisplay ()
   ' Clear the palette display area first (black box over old palette)
   LINE (0, 1)-(360, 6), 0, BF
   

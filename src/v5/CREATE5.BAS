@@ -35,9 +35,6 @@ CONST ax = 0     ' Register indices for INT86
 CONST bx = 1
 CONST cx = 2
 CONST dx = 3
-CONST PALV1 = 1 ' Dream Giver
-CONST PALV2 = 2 ' Space 2
-CONST PALV3 = 3 ' Dark visions 2
 
 SCREEN 13, 0
 REDIM c(1 TO g) AS INTEGER
@@ -623,7 +620,12 @@ GOTO 235
 
 260
   CLS
-  FILES "*.pic"        ' Shows available .pic files
+  gamePath$ = RTRIM$(games(activeGame).path) + "\"
+  picExt$ = RTRIM$(games(activeGame).files.picExt)
+  IF LEFT$(picExt$, 1) <> "." THEN
+    picExt$ = "." + picExt$
+  END IF
+  FILES gamePath$ + "*" + picExt$        ' Shows available .pic files
   CLOSE : INPUT q$     ' Get filename from user
   IF a$ = "r" THEN
     GOTO LoadPictureFullscreen
