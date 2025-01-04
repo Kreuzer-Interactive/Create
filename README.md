@@ -3,9 +3,9 @@ Graphic creation tool for Kreuzer interactive games
 
 Here's an improved documentation for CREATE4, formatted as a user guide:
 
-# CREATE4 User Guide
+# CREATE User Guide
 
-CREATE4 is a pixel art and game screen editor with special interaction points ("specials") for game development.
+CREATE is a pixel art and game screen editor with special interaction points ("specials") for game development.
 
 ## Basic Controls
 
@@ -28,11 +28,11 @@ CREATE4 is a pixel art and game screen editor with special interaction points ("
 - **f**: Toggle color replace mode
     - Use **t** to sample color to replace
     - Use **y** to sample replacement color
-    - When active, replaces colors in a 5x5 area around cursor
+    - When active, replace colors in a 5x5 area around cthe ursor
 - **l**: Draw line between two points (use z/x to set points)
 - **o**: Select new color
 - **c**: Toggle canvas clear
-- **\***: Flood fill from cursor position with current color
+- **\***: Flood fill from cursor position with the current color
 
 ### File Operations
 - **s/S**: Save current work
