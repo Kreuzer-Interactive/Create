@@ -108,18 +108,11 @@ REDIM stampBuffer(1 TO g) AS INTEGER
     IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
   END IF
   ' Handle keyboard input if any
-  IF a$ <> "" THEN GOTO 16
-  GOTO 10
-16
-  ' Process keyboard/mouse input
-  IF a$ = "[" THEN
-    d = d - 1
-    IF f <> 0 THEN f = d
-    DRAW "c0"
-  END IF
+  IF a$ = "" THEN GOTO 10
 
-  IF a$ = "]" THEN
-    d = d + 1
+  ' Process keyboard/mouse input
+  IF a$ = "[" OR a$ = "]" THEN
+    d = d + (SGN(ASC(a$) - ASC("["))) ' -1 for [, +1 for ]
     IF f <> 0 THEN f = d
     DRAW "c0"
   END IF
@@ -127,16 +120,15 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
-  IF a$ <> "" THEN  'Process keyboard input
-    IF ASC(a$) = 0 THEN  'Extended key (arrow keys)
-      ' Always erase cursor before moving
-      SELECT CASE ASC(RIGHT$(a$, 1))
-        CASE 72: a$ = "8"  'Up arrow
-        CASE 80: a$ = "2"  'Down arrow
-        CASE 75: a$ = "4"  'Left arrow
-        CASE 77: a$ = "6"  'Right arrow
-      END SELECT
-    END IF
+  
+  IF ASC(a$) = 0 THEN  'Extended key (arrow keys)
+    ' Always erase cursor before moving
+    SELECT CASE ASC(RIGHT$(a$, 1))
+      CASE 72: a$ = "8"  'Up arrow
+      CASE 80: a$ = "2"  'Down arrow
+      CASE 75: a$ = "4"  'Left arrow
+      CASE 77: a$ = "6"  'Right arrow
+    END SELECT
   END IF
 
   ' Process numpad movement
@@ -164,7 +156,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   END IF
 
   IF a$ = "-" THEN DrawCanvasBorder
-  If a$ = "'" THEN changeActiveGame
+  If a$ = "'" THEN GOSUB ChangeActiveGame
 
   IF a$ = "i" THEN
     PUT (B, a), a, XOR
@@ -313,8 +305,7 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   ' Handle image restore functionality ("<" key)
   IF a$ = "<" THEN
     ' Prompt user to restore image
-    LOCATE 25, 1
-    PRINT "Restore image?";
+    LOCATE 25, 1: PRINT "Restore image?";
     
     ' Wait for Y/N response
     cc$ = INKEY$
@@ -325,24 +316,20 @@ REDIM stampBuffer(1 TO g) AS INTEGER
       PUT (1, 10), c, PSET
     ELSE
       ' Clear prompt if not restoring
-      LOCATE 25, 1
-      PRINT "                    "
+      LOCATE 25, 1: PRINT "                    "
     END IF
   END IF
 
   IF a$ = "g" THEN GOSUB CaptureStampData
   IF a$ = "d" THEN GOSUB PasteStampWithOR
   IF a$ = "e" THEN GOSUB ScaleAndDrawRegion
-  
   IF a$ = "%" THEN LOCATE 15, 1: INPUT gk: LOCATE 15, 1: PRINT "             ";
-  
   IF a$ = "s" OR a$ = "S" THEN SavePicture q$
-  
   IF a$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
   
   IF isBigCurMode = 1 THEN 70
   
-  IF a$ = "5" THEN toggleDrawMode ' Handle toggling drawing mode with '5' key
+  IF a$ = "5" THEN GOSUB ToggleDrawMode ' Handle toggling drawing mode with '5' key
     
 
 70
@@ -442,7 +429,7 @@ IF a$ = "s" GOTO 778 ELSE GOTO 777
 175 CLOSE
 180 END
 
-toggleDrawMode:
+ToggleDrawMode:
   IF f <> 0 THEN
     ' Turn off drawing mode
     DRAW "c0"
@@ -462,7 +449,7 @@ toggleDrawMode:
   END IF
 RETURN
 
-changeActiveGame:
+ChangeActiveGame:
   ' change active game
   activeGame = activeGame + 1
   IF activeGame > gameCount THEN activeGame = 1
