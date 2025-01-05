@@ -1122,6 +1122,17 @@ SUB DrawCanvasBorder ()
   midX = (left + right) \ 2
   midY = (top + bottom) \ 2
   
+  ' Clear top line
+  LINE (0, top - 1)-(right + 1, top - 1), 0, BF
+  
+  ' Clear sides
+  LINE (0, top)-(left - 1, bottom + 1), 0 , BF ' Left side
+  LINE (right + 1, top)-(320, bottom + 1), 0, BF  ' Right side
+  
+  ' Clear bottom
+  LINE (0, bottom + 1)-(320, bottom + 1), 0, BF
+
+  
   ' Draw corner registration marks
   ' Top Left
   LINE (left - 1, top - 1)-(left + markLength, top - 1), grayColor  ' Horizontal
