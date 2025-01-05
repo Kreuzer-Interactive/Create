@@ -149,7 +149,12 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 
 
 
-  IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
+  IF a$ = " " THEN 
+    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+    CALL SaveUndoState(c())
+    PSET (B, a), d  'Draw point at current position (B,a) using current color f
+    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+  END IF
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   
