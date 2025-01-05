@@ -129,14 +129,16 @@ FUNCTION GetPaletteFile$(list$, index%)
     GetPaletteFile$ = LEFT$(list$, commaPos% - 1)
 END FUNCTION
 
-SUB FindNeutralGray (closestColor AS INTEGER)
-  SHARED pl() AS LONG ' Assuming pl() contains the palette data as RGB longs
+FUNCTION FindNeutralGray% ()
+  SHARED pl() AS LONG ' Palette data as RGB longs
+  SHARED games() AS GAMECONFIG
+  SHARED activeGame AS INTEGER
   
   ' Target values for 50% gray (all RGB components = 32)
   targetGray = 32
   
   closestDiff = 999  ' Start with large number
-  closestColor = 0   ' Default to black
+  result = 0        ' Default to black
   
   ' Loop through palette colors 1-255 (skip 0 which is usually black)
   FOR I = 1 TO 255
@@ -159,12 +161,14 @@ SUB FindNeutralGray (closestColor AS INTEGER)
     ' If this is closest match so far, save it
     IF colorDiff < closestDiff THEN
       closestDiff = colorDiff
-      closestColor = I
+      result = I
     END IF
   NEXT I
 
   ' If active palette type is 1, add 16 to closest color
   IF games(activeGame).palette.ptype = PAL_TYPE_1 THEN
-    closestColor = closestColor + 16
+    result = result + 16
   END IF
-END SUB
+  
+  FindNeutralGray = result
+END FUNCTION
