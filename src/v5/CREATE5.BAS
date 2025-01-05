@@ -17,7 +17,7 @@ DIM SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
 
 DIM SHARED inary(7) AS INTEGER, outary(7) AS INTEGER
 
-g = 32000
+g = 32300
 DIM SHARED stampBuffer() AS INTEGER  ' New array for stamp data
 DIM SHARED c() AS INTEGER
 DIM SHARED fca AS STRING
