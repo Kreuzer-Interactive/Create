@@ -1,5 +1,6 @@
 '$INCLUDE: 'modules\CONFIG.BI'
 '$INCLUDE: 'modules\PAL.BI'
+'$INCLUDE: 'modules\UNDO.BI'
 DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB DrawCanvasBorder ()
@@ -35,7 +36,7 @@ CONST dx = 3
 SCREEN 13, 0
 REDIM c(1 TO g) AS INTEGER
 REDIM stampBuffer(1 TO g) AS INTEGER
-0 ' Must include this to load
+0 PRINT "Starting...":' Must include this to load
   
   SCREEN 13
   ' End of including
@@ -59,6 +60,8 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   DIM CS(31): DIM bs(31): DIM mess$(31)
   DIM ky$(31): DIM df$(31)
   DIM st(31): DIM vh$(50)
+  CALL CleanupUndo
+  CALL InitializeUndo
   LoadGameINI "CFG.INI"
   InitPalettes
   
@@ -70,11 +73,19 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   DEF SEG = 0        ' Set the current segment to the BIOS data area
   POKE 1047, 32      ' Turns CAPS LOCK ON
   
-  inary(ax) = 2  ' Initialize mouse
-  CALL INT86OLD(BOUSE, inary(), outary())
+  ' Try to initialize mouse multiple times
+  FOR mouseRetry = 1 TO 3
+    inary(ax) = 2  ' Initialize mouse
+    CALL INT86OLD(BOUSE, inary(), outary())
+    IF outary(ax) <> 0 THEN EXIT FOR  ' Mouse initialized successfully
+    ' Small delay between retries
+    FOR delay = 1 TO 1000: NEXT delay
+  NEXT mouseRetry
+
   IF outary(ax) = 0 THEN
-    LOCATE 25, 1: PRINT "Mouse not available";
-    END
+    LOCATE 25, 1: PRINT "Mouse not available - Press any key to continue anyway";
+    WHILE INKEY$ = "": WEND  ' Wait for keypress
+    ' Continue without mouse
   END IF
 
 3
@@ -116,6 +127,20 @@ REDIM stampBuffer(1 TO g) AS INTEGER
     IF f <> 0 THEN f = d
     DRAW "c0"
   END IF
+
+  ' Handle Ctrl+Z for undo
+  IF a$ = CHR$(26) THEN  ' Ctrl+Z
+    ' Erase cursor before undo
+    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+    
+    ' Restore previous state
+    CALL RestoreUndoState(c())
+    
+    ' Redraw cursor after undo
+    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+  END IF
+
+
 
   IF a$ = " " THEN PSET (B, a), d  'Draw point at current position (B,a) using current color f
 
@@ -348,13 +373,13 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   IF a$ = ")" THEN GOSUB 242
   IF a$ = "k" THEN GOSUB 800
   IF a$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
-  IF a$ = "*" THEN GET (1, 10)-(319, 199), c: LINE (0, 9)-(321, 9), d: GOTO 140
+  IF a$ = CHR$(6) THEN GOTO FillWithColor  ' Ctrl+F (ASCII 6)
 96
   IF a$ = "q" THEN
     LOCATE 25, 1
     PRINT "Really quit?";
     ad$ = INKEY$
-    IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
+    IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN CALL CleanupUndo: SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
   END IF
   IF f = 0 AND e$ = "n" AND isBigCurMode = 0 THEN PUT (B, a), a, XOR
   IF a$ = "/" AND isBigCurMode = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
@@ -399,7 +424,11 @@ RETURN
 115 LOCATE 15, 1: INPUT q
 125 CIRCLE (B, a), q, f
 130 GOTO 100
-140
+
+FillWithColor:
+  CALL SaveUndoState(c())
+  GET (1, 10)-(319, 199), c
+  LINE (0, 9)-(321, 9), d
   LINE (B, a)-(B, a), 0
   PAINT (B, a), d, d
   LINE (0, 9)-(321, 9), 0, BF
@@ -1124,6 +1153,7 @@ SUB Mouse ()
   SHARED inary() AS INTEGER, outary() AS INTEGER
   SHARED B, a, f, e$, a() ' Add cursor array and drawing flags
   STATIC cursorVisible AS INTEGER  ' Track cursor visibility state
+  STATIC lastButtons AS INTEGER    ' Track previous button state
   
   ' Get current mouse position
   inary(ax) = 3
@@ -1132,10 +1162,25 @@ SUB Mouse ()
   ' Button handling
   newButtons = outary(bx)
 
+  ' Create undo point when mouse button is first pressed
+  IF newButtons = 1 AND lastButtons = 0 THEN
+    PUT (B, a), a, XOR
+    ' Save current screen state before drawing
+    GET (2, 10)-(310, 198), c
+    CALL SaveUndoState(c())
+  END IF
+  lastButtons = newButtons  ' Remember button state for next time
+
   ' Calculate new position
   newB = outary(cx) \ 2
   newA = outary(dx)
   
+  ' Handle mouse movement and buttons
+  IF buttons <> 0 THEN  ' Mouse button pressed
+    xb = oldB: ya = oldA
+    IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
+  END IF
+
   ' Only update position if mouse has moved
   IF newB <> lastB OR newA <> lastA THEN
 
