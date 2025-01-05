@@ -646,12 +646,15 @@ GOTO 235
 '-------------END OF TEXTINPUTMODE-------------
 
 LoadPictureMenu:
+  ' swich to a high resolution screen
+  SCREEN 12
   CLS
   gamePath$ = RTRIM$(games(activeGame).path) + "\"
   picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
 
   FILES gamePath$ + "*" + picExt$        ' Shows available .pic files
   CLOSE : INPUT q$     ' Get filename from user
+  SCREEN 13
   IF a$ = "r" THEN
     GOTO LoadPictureFullscreen
   ELSE
@@ -887,7 +890,9 @@ LoadPicturePositioned:
     'IF fca <> "c" THEN GOSUB 709
 884
   LoadPalette
+  COLOR FindNeutralGray%()
   ON ERROR GOTO 200
+  DrawCanvasBorder
 RETURN
 
 900 RESUME 884
@@ -1112,7 +1117,7 @@ SUB DrawCanvasBorder ()
   
   ' Get the neutral gray color
   DIM grayColor AS INTEGER
-  FindNeutralGray grayColor
+  grayColor = FindNeutralGray%()
   
   ' Canvas coordinates
   left = 2
