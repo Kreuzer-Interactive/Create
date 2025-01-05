@@ -123,7 +123,15 @@ REDIM stampBuffer(1 TO g) AS INTEGER
 
   ' Process keyboard/mouse input
   IF a$ = "[" OR a$ = "]" THEN
-    d = d + (SGN(ASC(a$) - ASC("["))) ' -1 for [, +1 for ]
+    IF a$ = "[" THEN
+      d = d - 1  ' Decrease color
+    ELSE
+      d = d + 1  ' Increase color
+    END IF
+    
+    IF d < 0 THEN d = 0
+    IF d > 255 THEN d = 255
+    
     IF f <> 0 THEN f = d
     DRAW "c0"
   END IF
