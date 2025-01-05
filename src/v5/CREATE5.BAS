@@ -17,7 +17,6 @@ DIM SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
 
 DIM SHARED inary(7) AS INTEGER, outary(7) AS INTEGER
 
-g = 32300
 DIM SHARED stampBuffer() AS INTEGER  ' New array for stamp data
 DIM SHARED c() AS INTEGER
 DIM SHARED fca AS STRING
@@ -34,8 +33,8 @@ CONST cx = 2
 CONST dx = 3
 
 SCREEN 13, 0
-REDIM c(1 TO g) AS INTEGER
-REDIM stampBuffer(1 TO g) AS INTEGER
+REDIM c(1 TO bufferSize) AS INTEGER
+REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 0 PRINT "Starting...":' Must include this to load
   
   SCREEN 13
@@ -325,9 +324,9 @@ REDIM stampBuffer(1 TO g) AS INTEGER
   ' Replaces any pixels that match source color (ft) with target color (fy)
   IF fe$ = "y" THEN
     FOR gf = 0 TO 4
-      FOR g = 0 TO 4
-        IF POINT(B + gf, a + g) = ft THEN PSET (B + gf, a + g), fy
-      NEXT g
+      FOR gi = 0 TO 4
+        IF POINT(B + gf, a + gi) = ft THEN PSET (B + gf, a + gi), fy
+      NEXT gi
     NEXT gf
   END IF
 
@@ -890,20 +889,20 @@ RETURN
 
 '----------------------All about guy------------------------
 2
-  x = 165: y = 145: g = 178: f = 167: j = -120: fh = 3: bob = 0
+  x = 165: y = 145: gg = 178: f = 167: j = -120: fh = 3: bob = 0
   CS = 180: CS = 33: cp = 32: cp = 204: ch = 175: ch = 24: cf = 120: cf = 150
   WINDOW SCREEN (1 + j * 3, 1 + j * 2)-(320 - j * 3, 200 - j * 2)
   vg = 0
 310
-  GET (x - 22, y - 36)-(x + 11, g + 10), c
+  GET (x - 22, y - 36)-(x + 11, gg + 10), c
   bob = bob + fh: IF bob = 6 THEN fh = -3 ELSE IF bob < -5 THEN fh = 3
   FOR I = 0 TO 5
-    LINE (x + I, y)-(f + I - 1, g + bob), cp - I * 1.5
-    LINE (x - I, y)-(f - I + 1, g + bob), cp - I * 1.5
+    LINE (x + I, y)-(f + I - 1, gg + bob), cp - I * 1.5
+    LINE (x - I, y)-(f - I + 1, gg + bob), cp - I * 1.5
   NEXT I
   FOR I = 0 TO 4
-    LINE (x + I - 9, y)-(f + I - 1 - 9, g - bob), cp - I * 1.5
-    LINE (x - I - 9, y)-(f - I + 1 - 9, g - bob), cp - I * 1.5
+    LINE (x + I - 9, y)-(f + I - 1 - 9, gg - bob), cp - I * 1.5
+    LINE (x - I - 9, y)-(f - I + 1 - 9, gg - bob), cp - I * 1.5
   NEXT I
   IF vg = 0 THEN GOSUB 420
 GOTO 421
@@ -929,8 +928,8 @@ RETURN
   FOR I = 0 TO 2
     LINE (x + 9, y + 6 + I - bob / 1.5)-(x + 5 + I, y + 6 + I - bob / 1.5), cf
     LINE (x - 17 - I, y + 6 + I + bob / 1.5)-(x - 20, y + 6 + I + bob / 1.5), cf
-    LINE (f + 4 + I, g + 1 + I + bob)-(f - 1, g + 1 + I + bob), cf - I * 2
-    LINE (f - 12 - I, g + 1 + I - bob)-(f - 8, g + 1 + I - bob), cf - I * 2
+    LINE (f + 4 + I, gg + 1 + I + bob)-(f - 1, gg + 1 + I + bob), cf - I * 2
+    LINE (f - 12 - I, gg + 1 + I - bob)-(f - 8, gg + 1 + I - bob), cf - I * 2
   NEXT I
   IF vg = 1 THEN GOSUB 420
   IF vg = 0 THEN 415
@@ -961,13 +960,13 @@ GOTO 310
 
 '-------------------Sideways guy----------------------
 14
-  x = 165: y = 145: g = 178: f = 167: j = 0: fh = 4: dg = 0: bob = 0
+  x = 165: y = 145: gg = 178: f = 167: j = 0: fh = 4: dg = 0: bob = 0
   CS = 180: CS = 33: cp = 32: cp = 204: ch = 175: ch = 24: cf = 120: cf = 150
   IF dg = 1 THEN lk = 1: pk = 0 ELSE pk = 1: lk = 0
   WINDOW SCREEN (1 + j * 3, 1 + j * 2)-(320 - j * 3, 200 - j * 2)
   vg = 0
 510
-  GET (x - 30, y - 36)-(x + 18, g + 10), c
+  GET (x - 30, y - 36)-(x + 18, gg + 10), c
   bob = bob + fh: IF bob > 7 THEN fh = -4 ELSE IF bob < -5 THEN fh = 4
   FOR I = 0 TO 3
     LINE (x - 13 + I, y - 17 + I)-(x - 18 + I + bob, y + 5), CS - I
@@ -975,15 +974,15 @@ GOTO 310
   NEXT I
   FOR I = 0 TO 2
     LINE (x - 15 - I + bob, y + 6 + I)-(x - 18 + bob, y + 6 + I), cf
-    LINE (f - 12 - I * pk - bob, g + 1 + I)-(f - 8 - bob + I * lk, g + 1 + I), cf - I * 2
+    LINE (f - 12 - I * pk - bob, gg + 1 + I)-(f - 8 - bob + I * lk, gg + 1 + I), cf - I * 2
   NEXT I
   FOR I = 0 TO 4
-    LINE (x + I - 9, y)-(f + I - 1 - 9 - bob, g), cp - I * 1.5
-    LINE (x - I - 9, y)-(f - I + 1 - 9 - bob, g), cp - I * 1.5
+    LINE (x + I - 9, y)-(f + I - 1 - 9 - bob, gg), cp - I * 1.5
+    LINE (x - I - 9, y)-(f - I + 1 - 9 - bob, gg), cp - I * 1.5
   NEXT I
   FOR I = 0 TO 5
-    LINE (x - 8 + I, y)-(f - 8 + I - 1 + bob, g + 2), cp - I * 1.5
-    LINE (x - 8 - I, y)-(f - 8 - I + 1 + bob, g + 2), cp - I * 1.5
+    LINE (x - 8 + I, y)-(f - 8 + I - 1 + bob, gg + 2), cp - I * 1.5
+    LINE (x - 8 - I, y)-(f - 8 - I + 1 + bob, gg + 2), cp - I * 1.5
   NEXT I
   IF vg = 0 THEN GOSUB 520
 GOTO 521
@@ -1006,7 +1005,7 @@ RETURN
   NEXT I
   FOR I = 0 TO 2
     LINE (x - 3 - bob, y + 6 + I)-(x - 6 + I - bob, y + 6 + I), cf
-    LINE (f - 11 - I * pk + bob, g + 3 + I)-(f - 6 + bob + I * lk, g + 3 + I), cf - I * 2
+    LINE (f - 11 - I * pk + bob, gg + 3 + I)-(f - 6 + bob + I * lk, gg + 3 + I), cf - I * 2
   NEXT I
   IF vg = 1 THEN GOSUB 520
   IF dg = 0 THEN 515

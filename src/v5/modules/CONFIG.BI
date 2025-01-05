@@ -29,3 +29,5 @@ COMMON SHARED games() AS GAMECONFIG    ' Array of games
 COMMON SHARED gameCount AS INTEGER     ' Number of games loaded
 COMMON SHARED activeGame AS INTEGER    ' Currently selected game
 COMMON SHARED palType AS INTEGER       ' Palette type
+
+CONST bufferSize = 32300
