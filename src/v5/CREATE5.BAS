@@ -6,6 +6,7 @@ DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB Mouse ()
 DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
+DECLARE SUB LoadPCX (filename$)
 
 DEFINT B-C
 DIM SHARED palettes$(10, 1)  ' Up to 10 palettes, with name and type
@@ -648,6 +649,7 @@ GOTO 235
 LoadPictureMenu:
   ' swich to a high resolution screen
   SCREEN 12
+  LOCATE 1, 1: PRINT games(activeGame).name
   CLS
   gamePath$ = RTRIM$(games(activeGame).path) + "\"
   picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
@@ -853,38 +855,62 @@ GOTO 621
   RETURN
 
 LoadPictureFullscreen:
-    CLS
-    gamePath$ = RTRIM$(games(activeGame).path) + "\"
-    picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
-    '------- LOADING OF THE PICTURE -------
-    GET (2, 10)-(310, 199), c
-    DEF SEG = VARSEG(c(1))
-    BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))    ' Actually loads the file
+  CLS
+  gamePath$ = RTRIM$(games(activeGame).path) + "\"
+  picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
+
+  ' Check if this is a PCX file for palette type 3
+  IF games(activeGame).palette.ptype = PAL_TYPE_3 THEN
+    ' Try to open as PCX and verify header
+    ON ERROR GOTO PcxCheckFailed
+    OPEN gamePath$ + q$ + picExt$ FOR BINARY AS #1
+    DIM headerByte AS STRING * 1
+    GET #1, 1, headerByte
     
-    DEF SEG = 0
-    c = 0
-    PUT (2, 10), c, PSET         ' Displays the loaded image
-    'PUT (62 + 40 * 0, 173), c(1 + 510 * 2), PSET
-    ' Only call DisplayImageArray for non-type 3 palettes
-    IF VAL(palettes$(activePalette, 1)) = PAL_TYPE_3 THEN
-      DisplayImageArray c(), 2, 10
+    ' Convert to integer and reverse bits if needed
+    headerValue = ASC(headerByte)
+    ' Try both normal and reversed comparisons
+    IF headerValue = &HA0 OR _
+       (headerValue AND &HF0) \ 16 + (headerValue AND &H0F) * 16 = &HA0 THEN
+      CALL LoadPCX(gamePath$ + q$ + picExt$)
+      GOTO 100
     END IF
-    GOTO 883
+    
+    CLOSE #1
+  END IF
+  
+PcxCheckFailed:
+  RESUME NEXT
+
+  '------- LOADING OF THE PICTURE -------
+  GET (2, 10)-(310, 199), c
+  DEF SEG = VARSEG(c(1))
+  BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))    ' Actually loads the file
+  
+  DEF SEG = 0
+  c = 0
+  PUT (2, 10), c, PSET         ' Displays the loaded image
+  'PUT (62 + 40 * 0, 173), c(1 + 510 * 2), PSET
+  ' Only call DisplayImageArray for non-type 3 palettes
+  IF VAL(palettes$(activePalette, 1)) = PAL_TYPE_3 THEN
+    DisplayImageArray c(), 2, 10
+  END IF
+  GOTO 883
 RETURN
 
 LoadPicturePositioned:
-    PRINT "LoadPicturePositioned"
-    CLS
-    gamePath$ = RTRIM$(games(activeGame).path) + "\"
-    picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
-    '------- LOADING OF THE PICTURE -------
-    GET (2, 10)-(310, 199), c
-    DEF SEG = VARSEG(c(1))
-    BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))
-    DEF SEG = 0
-    c = 0
-    PUT (c(1), c(2)), c(3), PSET 'places picture in certain position
-    '-------- END OF LOAD -------------
+  PRINT "LoadPicturePositioned"
+  CLS
+  gamePath$ = RTRIM$(games(activeGame).path) + "\"
+  picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
+  '------- LOADING OF THE PICTURE -------
+  GET (2, 10)-(310, 199), c
+  DEF SEG = VARSEG(c(1))
+  BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))
+  DEF SEG = 0
+  c = 0
+  PUT (c(1), c(2)), c(3), PSET 'places picture in certain position
+  '-------- END OF LOAD -------------
 883
   ON ERROR GOTO 900
     'IF fca <> "c" THEN GOSUB 709
@@ -1050,8 +1076,8 @@ SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INT
   ' Constants for screen dimensions and layout
   '=============================================================================
   CONST SPACING = 4        ' Pixels between displayed images
-  CONST SCREEN_WIDTH = 320 ' Mode 13h screen width in pixels
-  CONST SCREEN_HEIGHT = 200 ' Mode 13h screen height in pixels
+  CONST SCREEN_WIDTH = 320 ' Mode 13h screen pcxWidth in pixels
+  CONST SCREEN_HEIGHT = 200 ' Mode 13h screen pcxHeight in pixels
   
   '=============================================================================
   ' Initialize position tracking variables
@@ -1065,7 +1091,7 @@ SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INT
   ' Main image display loop
   '=============================================================================
   DO WHILE imageIndex < UBOUND(imageArray)
-    ' Get image width from header (stored as bytes, convert to pixels)
+    ' Get image pcxWidth from header (stored as bytes, convert to pixels)
     pixelWidth = imageArray(imageIndex) \ 8
     
     ' Skip invalid images
@@ -1075,7 +1101,7 @@ SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INT
     END IF
     
     ' Read remaining header info
-    height = imageArray(imageIndex + 1)     ' Image height in pixels
+    pcxHeight = imageArray(imageIndex + 1)     ' Image pcxHeight in pixels
     dataStart = imageArray(imageIndex + 3)   ' Offset to image data
     
     ' Move to next row if current image won't fit
@@ -1086,24 +1112,24 @@ SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INT
     END IF
     
     ' Stop if we've run out of vertical space
-    IF currentY + height > SCREEN_HEIGHT THEN EXIT DO
+    IF currentY + pcxHeight > SCREEN_HEIGHT THEN EXIT DO
     
     ' Display the image and draw border
     PUT (currentX, currentY), imageArray(imageIndex), PSET
-    LINE (currentX - 1, currentY - 1)-(currentX + pixelWidth, currentY + height), 15, B
+    LINE (currentX - 1, currentY - 1)-(currentX + pixelWidth, currentY + pcxHeight), 15, B
     
-    ' Update position and row height tracking
+    ' Update position and row pcxHeight tracking
     currentX = currentX + pixelWidth + SPACING
-    IF height > maxHeightInRow THEN maxHeightInRow = height
+    IF pcxHeight > maxHeightInRow THEN maxHeightInRow = pcxHeight
     
     ' Calculate next image position in array:
     ' Skip header (3 words) plus image data size in words
-    imageSize = 3 + ((pixelWidth * height + 1) \ 2)
+    imageSize = 3 + ((pixelWidth * pcxHeight + 1) \ 2)
     imageIndex = imageIndex + imageSize
     
     ' Position debug output
     LOCATE 10, 1
-      'PRINT "Found image: "; pixelWidth; "x"; height; " at index "; imageIndex; "   "
+      'PRINT "Found image: "; pixelWidth; "x"; pcxHeight; " at index "; imageIndex; "   "
 LoopEnd:
   LOOP
   
@@ -1303,4 +1329,102 @@ SUB SaveSpecialData (filename$)
         WRITE #1, mess$(I), ky$(I), bs(I), CS(I), st(I), df$(I)
     NEXT I
     CLOSE
+END SUB
+
+
+SUB LoadPCX (filename$)
+  CONST mask = &H3C5
+  CONST reg = &H3C8
+  CONST dat = &H3C9
+  CONST BUFFER_SIZE = 1024
+  
+  DIM buffer AS STRING * 1024
+  DIM char AS STRING * 1
+  DIM red AS STRING * 1, green AS STRING * 1, blue AS STRING * 1
+  DIM bytepos AS LONG
+  DIM header AS STRING * 128  ' PCX header is 128 bytes
+  
+  ' Load PCX file
+  OPEN filename$ FOR BINARY AS #2
+  
+  ' Read PCX header
+  GET #2, 1, header
+  
+  ' Get image dimensions from header
+  xMin = ASC(MID$(header, 5, 1)) + 256 * ASC(MID$(header, 6, 1))
+  yMin = ASC(MID$(header, 7, 1)) + 256 * ASC(MID$(header, 8, 1))
+  xMax = ASC(MID$(header, 9, 1)) + 256 * ASC(MID$(header, 10, 1))
+  yMax = ASC(MID$(header, 11, 1)) + 256 * ASC(MID$(header, 12, 1))
+  
+  pcxWidth = xMax - xMin + 1
+  pcxHeight = yMax - yMin + 1
+  
+  ' Debug output
+  LOCATE 25, 1
+  PRINT "PCX dimensions:"; pcxWidth; "x"; pcxHeight;
+  
+  'LOAD PALETTE (at end of file)
+  SEEK #2, LOF(2) - 767
+  FOR i = 0 TO 255
+    GET #2, , red
+    GET #2, , green
+    GET #2, , blue
+    OUT dat, ASC(red) \ 4
+    OUT dat, ASC(green) \ 4
+    OUT dat, ASC(blue) \ 4
+  NEXT i
+  
+  'LOAD PICTURE
+  SEEK #2, 129  ' Skip header
+  bytepos = 0
+  screenWidth = 320  ' Mode 13h pcxWidth
+  DEF SEG = &HA000
+  
+  DO
+    GET #2, , buffer
+    
+    FOR i = 1 TO LEN(buffer)
+      char = MID$(buffer, i, 1)
+      value = ASC(char)
+      
+      IF bytepos >= (screenWidth * pcxHeight) THEN EXIT DO
+      
+      IF value > 192 THEN  ' Run-length encoded
+        count = value - 192
+        i = i + 1
+        IF i <= LEN(buffer) THEN
+          char = MID$(buffer, i, 1)
+        ELSE
+          GET #2, , char
+        END IF
+        
+        value = ASC(char)
+        FOR j = 1 TO count
+          ' Calculate screen position
+          x = bytepos MOD screenWidth
+          y = bytepos \ screenWidth
+          
+          ' Only draw if within bounds
+          IF x < pcxWidth AND y < pcxHeight THEN
+            POKE bytepos, value
+          END IF
+          bytepos = bytepos + 1
+          IF bytepos >= (screenWidth * pcxHeight) THEN EXIT DO
+        NEXT j
+      ELSE  ' Regular byte
+        x = bytepos MOD screenWidth
+        y = bytepos \ screenWidth
+        
+        ' Only draw if within bounds
+        IF x < pcxWidth AND y < pcxHeight THEN
+          POKE bytepos, value
+        END IF
+        bytepos = bytepos + 1
+      END IF
+    NEXT i
+    
+  LOOP UNTIL EOF(2) OR bytepos >= (screenWidth * pcxHeight)
+  
+  DEF SEG
+  CLOSE #2
 END SUB
