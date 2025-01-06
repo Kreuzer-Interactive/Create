@@ -1,0 +1,41 @@
+Kreuzer Industries is moving up to C++, and leaving Quickbasic, the slowest
+language known to man, behind. Because we no longer us Qbasic, we feel we
+should divulge a few small secrets to help the sagging quality of Q-basic
+games on AOL. Included are only a demo palette, a palette creator and loader,
+and a program that loads and saves VGA images nearly instantly. A program
+that finds the codes for keys, and 27 PC-speaker souds. Also included is a
+program that changes the palette nearly instantly, and a mouse utility for
+Quick Basic (Not Qbasic). You can use code from any of these files in
+your program as long as you give me, Jon Kreuzer, some credit. Not found in
+this .ZIP are our PCX=>our Qbasic image format converter, or our draw program
+and its texture mapping engine(it's for drawing scenes. It doesn't function
+in realtime) or our point&click game devolopment system. Sounds like you're
+getting the low end of the bargain doesn't it? Oh, well. What do you expect
+for free?
+
+Here is a general hint: Use Integers as often as possible, as they are from
+around 4 to 10 times faster than floating point numbers. At the beginning
+of your program you might want to have a line
+DEFINT A-Q, S-Z
+then begin any decimal numbers you need with r (for real #)
+
+
+If you find these utilities helpful, you may wish to contribute
+$10 to $25(or more) dollars to:
+                Kreuzer Industries
+                72 Hale Road
+                Canton, NY 13617
+Please state that the money is for the programming kit.
+For this donation:
+You will recieve the PCX=>Qbasic image converter (It will convert a standard
+320x200 256color pcx file). You will also recieve the Qbasic code for 
+distorting images
+Note: It is unlikely that for this contribution you will recieve anything
+more, but I will try to find something for you if I actually get a
+donation.
+
+Also remember it is even more unlikely that you will recieve any money
+for your games, no matter how small a price you ask. That is why
+when we come out with our next game (Using C++) after Dark Visions II, we
+will start charging!
+
