@@ -40,7 +40,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   
   SCREEN 13
   ' End of including
-  fe$ = "n"
+  eraserMode$ = "n"
   fr$ = "n"       ' Flag to track if stamp tool is active
   stampSet = 0    ' Flag to track if stamp data exists
   activeGame = 1
@@ -109,35 +109,35 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 10
   oldB = B: oldA = a
 
-  a$ = INKEY$
+  key$ = INKEY$
   ' Get mouse state first
   CALL Mouse
   
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
     xb = oldB: ya = oldA
-    IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
+    IF activeColor <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), activeColor
   END IF
   ' Handle keyboard input if any
-  IF a$ = "" THEN GOTO 10
+  IF key$ = "" THEN GOTO 10
 
   ' Process keyboard/mouse input
-  IF a$ = "[" OR a$ = "]" THEN
-    IF a$ = "[" THEN
-      d = d - 1  ' Decrease color
+  IF key$ = "[" OR key$ = "]" THEN
+    IF key$ = "[" THEN
+      activeColor = activeColor - 1  ' Decrease color
     ELSE
-      d = d + 1  ' Increase color
+      activeColor = activeColor + 1  ' Increase color
     END IF
     
-    IF d < 0 THEN d = 0
-    IF d > 255 THEN d = 255
+    IF activeColor < 0 THEN activeColor = 0
+    IF activeColor > 255 THEN activeColor = 255
     
-    IF f <> 0 THEN f = d
+    IF f <> 0 THEN f = activeColor
     DRAW "c0"
   END IF
 
   ' Handle Ctrl+Z for undo
-  IF a$ = CHR$(26) THEN  ' Ctrl+Z
+  IF key$ = CHR$(26) THEN  ' Ctrl+Z
     ' Erase cursor before undo
     IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
     
@@ -148,36 +148,34 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
   END IF
 
-
-
-  IF a$ = " " THEN 
+  IF key$ = " " THEN 
     IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
     CALL SaveUndoState(c())
-    PSET (B, a), d  'Draw point at current position (B,a) using current color f
+    PSET (B, a), activeColor  'Draw point at current position (B,a) using current color f
     IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
   END IF
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   
-  IF ASC(a$) = 0 THEN  'Extended key (arrow keys)
+  IF ASC(key$) = 0 THEN  'Extended key (arrow keys)
     ' Always erase cursor before moving
-    SELECT CASE ASC(RIGHT$(a$, 1))
-      CASE 72: a$ = "8"  'Up arrow
-      CASE 80: a$ = "2"  'Down arrow
-      CASE 75: a$ = "4"  'Left arrow
-      CASE 77: a$ = "6"  'Right arrow
+    SELECT CASE ASC(RIGHT$(key$, 1))
+      CASE 72: key$ = "8"  'Up arrow
+      CASE 80: key$ = "2"  'Down arrow
+      CASE 75: key$ = "4"  'Left arrow
+      CASE 77: key$ = "6"  'Right arrow
     END SELECT
   END IF
 
   ' Process numpad movement
-  IF a$ = "8" THEN a = a - s  ' Up
-  IF a$ = "2" THEN a = a + s  ' Down
-  IF a$ = "4" THEN B = B - s  ' Left
-  IF a$ = "6" THEN B = B + s  ' Right
+  IF key$ = "8" THEN a = a - s  ' Up
+  IF key$ = "2" THEN a = a + s  ' Down
+  IF key$ = "4" THEN B = B - s  ' Left
+  IF key$ = "6" THEN B = B + s  ' Right
 
   ' Draw lines if in drawing mode
-  IF (f <> 0 OR e$ = "y") AND (a$ = "8" OR a$ = "2" OR a$ = "4" OR a$ = "6") THEN
-    SELECT CASE a$
+  IF (f <> 0 OR e$ = "y") AND (key$ = "8" OR key$ = "2" OR key$ = "4" OR key$ = "6") THEN
+    SELECT CASE key$
       CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
       CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
       CASE "4": DRAW "l=" + VARPTR$(s)  ' Left
@@ -193,30 +191,30 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     END IF
   END IF
 
-  IF a$ = "-" THEN DrawCanvasBorder
-  If a$ = "'" THEN GOSUB ChangeActiveGame
+  IF key$ = "-" THEN DrawCanvasBorder
+  If key$ = "'" THEN GOSUB ChangeActiveGame
 
-  IF a$ = "i" THEN
+  IF key$ = "i" THEN
     PUT (B, a), a, XOR
-    d = POINT(B, a)
+    activeColor = POINT(B, a)
     PUT (B, a), a, XOR
   END IF
 
   ' Update currenet color display box
   ' Update the color preview box when current color changes
-  IF fd <> d THEN
+  IF previousColor <> activeColor THEN
     ' Draw filled box showing current color in top-left corner
-    LINE (310, 1)-(315, 6), d, BF
+    LINE (310, 1)-(315, 6), activeColor, BF
     
     ' Store current color to detect changes
-    fd = d
+    previousColor = activeColor
     ' Draw single point at cursor position to set current position
     LINE (B, a)-(B, a), POINT(B, a)
 
-    DRAW "c=" + VARPTR$(d)
+    DRAW "c=" + VARPTR$(activeColor)
   END IF
 
-  IF a$ = ";" THEN
+  IF key$ = ";" THEN
     PUT (B, a), a, XOR
     ' Get color at current cursor position
     colorAtCursor = POINT(B, a)
@@ -234,18 +232,18 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     PUT (B, a), a, XOR
   END IF
 
-  IF a$ = "." THEN
+  IF key$ = "." THEN
     IF isBigCurMode = 0 THEN
       GOTO EnterLargeCursorMode
     ELSE
       isBigCurMode = 0
-      f = d: DRAW "c=" + VARPTR$(f)
-      a$ = "5"
+      f = activeColor: DRAW "c=" + VARPTR$(f)
+      key$ = "5"
       GOTO toggleDrawMode
     END IF
   END IF
 
-  IF a$ = "c" THEN
+  IF key$ = "c" THEN
     IF c = 0 THEN
       c = 1
       GET (2, 10)-(310, 199), c
@@ -255,11 +253,11 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     END IF
   END IF
 
-  IF a$ = "C" THEN
+  IF key$ = "C" THEN
     GOTO click
   END IF
 
-  IF a$ = "1" THEN
+  IF key$ = "1" THEN
     IF f <> 0 OR e$ = "y" THEN
       DRAW "g=" + VARPTR$(s)
       a = a + s
@@ -269,10 +267,10 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
       B = B - s
     END IF
   END IF
-  IF a$ = "v" THEN GOSUB 2
-  IF a$ = "j" THEN GOSUB 14
+  IF key$ = "v" THEN GOSUB 2
+  IF key$ = "j" THEN GOSUB 14
 
-  IF a$ = "n" THEN
+  IF key$ = "n" THEN
     LOCATE 25, 1
     PRINT "New?";
     DO
@@ -286,9 +284,9 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     END IF
   END IF
 
-  IF a$ = "\" THEN GOSUB FillWithColorPattern
+  IF key$ = "\" THEN GOSUB FillWithColorPattern
 
-  IF a$ = "9" THEN
+  IF key$ = "9" THEN
     IF f <> 0 OR e$ = "y" THEN
       DRAW "e=" + VARPTR$(s)
       a = a - s
@@ -299,25 +297,25 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     END IF
   END IF
 
-  IF a$ = "`" THEN GOSUB TextInputMode
+  IF key$ = "`" THEN GOSUB TextInputMode
   
-  IF a$ = "p" OR a$ = "P" THEN
+  IF key$ = "p" THEN
     activePalette = (activePalette + 1) MOD 4  ' Cycles through palettes 0-3
     LoadPalette
     DrawCanvasBorder
   END IF
 
-  IF a$ = "f" THEN IF fe$ = "y" THEN fe$ = "n" ELSE fe$ = "y"
+  IF key$ = CHR$(5) THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
   
-  IF a$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
+  IF key$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
   
-  IF a$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
+  IF key$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
 
-  IF a$ = "t" THEN ft = POINT(B, a)
+  IF key$ = "t" THEN ft = POINT(B, a)
   
-  IF a$ = "y" THEN fy = POINT(B, a)
+  IF key$ = "y" THEN fy = POINT(B, a)
   
-  IF a$ = "=" THEN
+  IF key$ = "=" THEN
     IF stampSet = 0 THEN
       LOCATE 25, 1
       PRINT "Capture stamp first with 'g' key";
@@ -328,7 +326,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 
   ' Fill effect: Replace colors in a 5x5 grid around cursor
   ' Replaces any pixels that match source color (ft) with target color (fy)
-  IF fe$ = "y" THEN
+  IF eraserMode$ = "y" THEN
     FOR gf = 0 TO 4
       FOR gi = 0 TO 4
         IF POINT(B + gf, a + gi) = ft THEN PSET (B + gf, a + gi), fy
@@ -338,7 +336,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 
 57
   ' Handle image restore functionality ("<" key)
-  IF a$ = "<" THEN
+  IF key$ = "<" THEN
     ' Prompt user to restore image
     LOCATE 25, 1: PRINT "Restore image?";
     
@@ -355,62 +353,62 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     END IF
   END IF
 
-  IF a$ = "g" THEN GOSUB CaptureStampData
-  IF a$ = "d" THEN GOSUB PasteStampWithOR
-  IF a$ = "e" THEN GOSUB ScaleAndDrawRegion
-  IF a$ = "%" THEN LOCATE 15, 1: INPUT gk: LOCATE 15, 1: PRINT "             ";
-  IF a$ = "s" OR a$ = "S" THEN SavePicture q$
-  IF a$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
+  IF key$ = "g" THEN GOSUB CaptureStampData
+  IF key$ = "d" THEN GOSUB PasteStampWithOR
+  IF key$ = "e" THEN GOSUB ScaleAndDrawRegion
+  IF key$ = "%" THEN LOCATE 15, 1: INPUT gk: LOCATE 15, 1: PRINT "             ";
+  IF key$ = "s" OR key$ = "S" THEN SavePicture q$
+  IF key$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
   
   IF isBigCurMode = 1 THEN 70
   
-  IF a$ = "5" THEN GOSUB ToggleDrawMode ' Handle toggling drawing mode with '5' key
+  IF key$ = "5" THEN GOSUB ToggleDrawMode ' Handle toggling drawing mode with '5' key
     
 
 70
   ON ERROR GOTO 200
   IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
   IF f = 0 AND e$ = "y" AND isBigCurMode = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
-  IF a$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
-  IF a$ = "$" THEN GOSUB CountUniqueColors
-  IF a$ = "z" THEN mz = B: mx = a
-  IF a$ = "{" THEN GOSUB DrawScaledMirrorImage
-  IF a$ = "x" THEN nz = B: nx = a
-  IF a$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), d
-  IF a$ = "u" THEN DRAW "c1": f = 1
-  IF a$ = "o" THEN GOSUB 101
-  IF a$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
-  IF a$ = CHR$(13) THEN 115
-  IF a$ = "r" OR a$ = "R" THEN GOSUB LoadPictureMenu
-  IF a$ = "(" THEN GOSUB IncrementColors
-  IF a$ = ")" THEN GOSUB 242
-  IF a$ = "k" THEN GOSUB 800
-  IF a$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
-  IF a$ = CHR$(6) THEN GOTO FillWithColor  ' Ctrl+F (ASCII 6)
+  IF key$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
+  IF key$ = "$" THEN GOSUB CountUniqueColors
+  IF key$ = "z" THEN mz = B: mx = a
+  IF key$ = "{" THEN GOSUB DrawScaledMirrorImage
+  IF key$ = "x" THEN nz = B: nx = a
+  IF key$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), activeColor
+  IF key$ = "u" THEN DRAW "c1": f = 1
+  IF key$ = "o" THEN GOSUB 101
+  IF key$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
+  IF key$ = CHR$(13) THEN 115
+  IF key$ = "r" OR key$ = "R" THEN GOSUB LoadPictureMenu
+  IF key$ = "(" THEN GOSUB IncrementColors
+  IF key$ = ")" THEN GOSUB 242
+  IF key$ = "k" THEN GOSUB 800
+  IF key$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
+  IF key$ = CHR$(6) THEN GOTO FillWithColor  ' Ctrl+F (ASCII 6)
 96
-  IF a$ = "q" THEN
+  IF key$ = "q" THEN
     LOCATE 25, 1
     PRINT "Really quit?";
     ad$ = INKEY$
     IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN CALL CleanupUndo: SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
   END IF
   IF f = 0 AND e$ = "n" AND isBigCurMode = 0 THEN PUT (B, a), a, XOR
-  IF a$ = "/" AND isBigCurMode = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
+  IF key$ = "/" AND isBigCurMode = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
 100 GOTO 10
 
 CountUniqueColors:
   ' This subroutine counts the number of unique colors used in the drawing area
   ' Initialize array to track which colors are used
-  FOR I = 1 TO 256
-    col(I) = 0
-  NEXT I
+  FOR i = 1 TO 256
+    col(i) = 0
+  NEXT i
 
   ' Scan the drawing area (301x189 pixels) and mark each color found
-  FOR I = 1 TO 301
+  FOR i = 1 TO 301
     FOR d = 11 TO 199
-      col(POINT(I, d)) = 1  ' Mark color as used
+      col(POINT(i, d)) = 1  ' Mark color as used
     NEXT d
-  NEXT I
+  NEXT i
 
   ' Count total number of unique colors used
   tc = 0
@@ -441,25 +439,25 @@ RETURN
 FillWithColor:
   CALL SaveUndoState(c())
   GET (1, 10)-(319, 199), c
-  LINE (0, 9)-(321, 9), d
+  LINE (0, 9)-(321, 9), activeColor
   LINE (B, a)-(B, a), 0
-  PAINT (B, a), d, d
+  PAINT (B, a), activeColor, activeColor
   LINE (0, 9)-(321, 9), 0, BF
   DrawCanvasBorder
   ' draw cursor and refresh current position
   PUT (B, a), a, XOR
-  DRAW "c=" + VARPTR$(d)
+  DRAW "c=" + VARPTR$(activeColor)
 GOTO 100
 
 150 LOCATE 1, 1: PRINT q$; : INPUT f$
 IF f$ = "a" OR f$ = "A" THEN RETURN
 IF f$ <> "" THEN q$ = f$
-IF a$ = "s" GOTO 778 ELSE GOTO 777
+IF key$ = "s" GOTO 778 ELSE GOTO 777
     ON ERROR GOTO 700
     OPEN q$ + ".pac" FOR INPUT AS #1
     INPUT #1, xzc, zxn
-153 LOCATE 15, 1: PRINT "Save over previous picture?": a$ = INKEY$: IF a$ = "" THEN 153
-    IF a$ = "y" THEN 151 ELSE ON ERROR GOTO 200: GOTO 10
+153 LOCATE 15, 1: PRINT "Save over previous picture?": key$ = INKEY$: IF key$ = "" THEN 153
+    IF key$ = "y" THEN 151 ELSE ON ERROR GOTO 200: GOTO 10
 151 CLOSE : LOCATE 15, 1
 152 PRINT "                                "
 155 DEF SEG = &HB800
@@ -473,17 +471,17 @@ ToggleDrawMode:
     ' Turn off drawing mode
     DRAW "c0"
     IF isBigCurMode = 0 THEN
-      d = f  ' Save current color
+      activeColor = f  ' Save current color
       f = 0  ' Turn off drawing
-      a$ = ""
+      key$ = ""
     ELSE
       f = 0  ' Just turn off drawing
-      a$ = ""
+      key$ = ""
     END IF
   ELSE
     ' Turn on drawing mode
-    DRAW "c=" + VARPTR$(d)  ' Restore saved color
-    f = d                    ' Enable drawing
+    DRAW "c=" + VARPTR$(activeColor)  ' Restore saved color
+    f = activeColor                    ' Enable drawing
     GOTO 100
   END IF
 RETURN
@@ -571,27 +569,27 @@ DrawScaledMirrorImage:
 RETURN
 
 IncrementColors:
-  FOR I = mx TO nx STEP 1
+  FOR i = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
-      IF POINT(d, I) <> 0 THEN PSET (d, I), POINT(d, I) + 1
+      IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) + 1
     NEXT d
-  NEXT I
+  NEXT i
 RETURN
 
 242
-  FOR I = mx TO nx STEP 1
+  FOR i = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
-      IF POINT(d, I) <> 0 THEN PSET (d, I), POINT(d, I) - 1
+      IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) - 1
     NEXT d
-  NEXT I
+  NEXT i
 RETURN
 
 243
-  FOR I = mx TO nx STEP 1
+  FOR i = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
-      IF POINT(d, I) <> 0 THEN PSET (d, I), 15
+      IF POINT(d, i) <> 0 THEN PSET (d, i), 15
     NEXT d
-  NEXT I
+  NEXT i
 RETURN
 
 185
@@ -631,18 +629,18 @@ TextInputMode:
   pb = B \ 8  ' X position in characters
 221
   LOCATE pa, pb: PRINT "."  ' Show cursor
-  a$ = INKEY$               ' Get keypress
-  IF a$ = "" THEN 221       ' Wait for key
+  key$ = INKEY$               ' Get keypress
+  IF key$ = "" THEN 221       ' Wait for key
   LOCATE pa, pb: PRINT " "  ' Clear cursor
-  IF a$ = CHR$(8) THEN a$ = "4"  ' Map backspace to left
-  IF a$ = "8" THEN pa = pa - 1: GOTO 221  ' Up
-  IF a$ = "4" THEN pb = pb - 1: GOTO 221  ' Left
+  IF key$ = CHR$(8) THEN key$ = "4"  ' Map backspace to left
+  IF key$ = "8" THEN pa = pa - 1: GOTO 221  ' Up
+  IF key$ = "4" THEN pb = pb - 1: GOTO 221  ' Left
 235
-  IF a$ = "6" THEN pb = pb + 1: GOTO 221  ' Right
-  IF a$ = "2" THEN pa = pa + 1: GOTO 221  ' Down
-  IF a$ = "`" THEN RETURN                 ' Exit
-  LOCATE pa, pb: PRINT a$   ' Print typed character
-  a$ = "6"                  ' Move right after typing
+  IF key$ = "6" THEN pb = pb + 1: GOTO 221  ' Right
+  IF key$ = "2" THEN pa = pa + 1: GOTO 221  ' Down
+  IF key$ = "`" THEN RETURN                 ' Exit
+  LOCATE pa, pb: PRINT key$   ' Print typed character
+  key$ = "6"                  ' Move right after typing
 GOTO 235
 '-------------END OF TEXTINPUTMODE-------------
 
@@ -657,7 +655,7 @@ LoadPictureMenu:
   FILES gamePath$ + "*" + picExt$        ' Shows available .pic files
   CLOSE : INPUT q$     ' Get filename from user
   SCREEN 13
-  IF a$ = "r" THEN
+  IF key$ = "r" THEN
     GOTO LoadPictureFullscreen
   ELSE
     GOTO LoadPicturePositioned
@@ -671,9 +669,9 @@ EnterLargeCursorMode:
   isBigCurMode = 1 ' Set isBigCurMode flag to 1 to indicate we're in "large cursor" mode
   DRAW "c0" ' Set drawing color to black (0) to erase previous cursor
   
-  IF f <> 0 THEN d = f  ' Save current color if drawing was active
+  IF f <> 0 THEN activeColor = f  ' Save current color if drawing was active
   f = 4                 ' Set new color to 4
-  a$ = ""              ' Clear key input
+  key$ = ""              ' Clear key input
 GOTO 10
 
 CaptureStampData:
@@ -727,8 +725,8 @@ RETURN
 500 ON ERROR GOTO 820
 CQ = CQ + 1
 502 IF CQ > 30 THEN 525
-503 INPUT "More"; a$
-504 IF a$ = "n" OR a$ = "no" OR a$ = "N" OR a$ = "NO" THEN 525 ELSE GOSUB 455
+503 INPUT "More"; key$
+504 IF key$ = "n" OR key$ = "no" OR key$ = "N" OR key$ = "NO" THEN 525 ELSE GOSUB 455
 LOCATE 1, 1: PRINT "Special #"; CQ
 508 GOSUB 462: LOCATE 2, 1: PRINT "What number can`t be set?"
 LOCATE 3, 1: INPUT CS(CQ)
@@ -746,24 +744,24 @@ GOSUB LoadPicturePositioned
 570 GET (1, 1)-(4, 4), a
 571 DRAW "bm200,6c2r75"
 572 PUT (B, dd), a, XOR
-574 a$ = INKEY$: IF a$ = "" THEN 574
+574 key$ = INKEY$: IF key$ = "" THEN 574
 575 PUT (B, dd), a, XOR
 ON ERROR GOTO 820
-    IF tar$ = "y" AND a$ <> "t" THEN GOSUB 815
-579 IF a$ = "2" THEN dd = dd + 4
-585 IF a$ = "8" THEN dd = dd - 4
-590 IF a$ = "4" THEN B = B - 4
-    IF a$ = "7" THEN B = B - 4: dd = dd - 4
-    IF a$ = "9" THEN B = B + 4: dd = dd - 4
-    IF a$ = "1" THEN B = B - 4: dd = dd + 4
-    IF a$ = "3" THEN B = B + 4: dd = dd + 4
-    IF a$ = "f" THEN GOSUB 810
-    IF a$ = "t" THEN IF tar$ = "n" THEN tar$ = "y": INPUT ap$ ELSE tar$ = "n"
-592 IF a$ = "s" THEN GOSUB 890
-    IF a$ = "d" THEN GOSUB 789: LOCATE 1, 1: ip = 1: INPUT gp$: FOR I = 1 TO 30: GOSUB 790: NEXT I
-593 IF a$ = "e" THEN LOCATE 16, 1: PRINT "Exit click?": a$ = INKEY$: IF a$ = "" THEN a$ = "e": GOTO 593 ELSE IF a$ = "y" THEN RUN
-595 IF a$ = "6" THEN B = B + 4
-596 IF a$ = CHR$(13) THEN IF gs < 75 THEN GOSUB 610 ELSE BEEP
+    IF tar$ = "y" AND key$ <> "t" THEN GOSUB 815
+579 IF key$ = "2" THEN dd = dd + 4
+585 IF key$ = "8" THEN dd = dd - 4
+590 IF key$ = "4" THEN B = B - 4
+    IF key$ = "7" THEN B = B - 4: dd = dd - 4
+    IF key$ = "9" THEN B = B + 4: dd = dd - 4
+    IF key$ = "1" THEN B = B - 4: dd = dd + 4
+    IF key$ = "3" THEN B = B + 4: dd = dd + 4
+    IF key$ = "f" THEN GOSUB 810
+    IF key$ = "t" THEN IF tar$ = "n" THEN tar$ = "y": INPUT ap$ ELSE tar$ = "n"
+592 IF key$ = "s" THEN GOSUB 890
+    IF key$ = "d" THEN GOSUB 789: LOCATE 1, 1: ip = 1: INPUT gp$: FOR I = 1 TO 30: GOSUB 790: NEXT I
+593 IF key$ = "e" THEN LOCATE 16, 1: PRINT "Exit click?": key$ = INKEY$: IF key$ = "" THEN key$ = "e": GOTO 593 ELSE IF key$ = "y" THEN RUN
+595 IF key$ = "6" THEN B = B + 4
+596 IF key$ = CHR$(13) THEN IF gs < 75 THEN GOSUB 610 ELSE BEEP
 600 GOTO 572
 610 LOCATE 1, 1
 614 PRINT "What special?"
@@ -781,9 +779,9 @@ DRAW "bm275,6c0l=" + VARPTR$(gs)
 641 WRITE #1, c, ia, ib, ic
 645 CLOSE : RETURN
 680 PRINT "Edit another file?"
-682 a$ = INKEY$: IF a$ = "" THEN 682
-684 IF a$ = "y" THEN RUN
-685 IF a$ = "n" THEN SYSTEM
+682 key$ = INKEY$: IF key$ = "" THEN 682
+684 IF key$ = "y" THEN RUN
+685 IF key$ = "n" THEN SYSTEM
 687 PRINT "Type y or n": GOTO 682
 709 ' Loads screen's push/open/use/look
 CLOSE
@@ -811,8 +809,8 @@ ip = ip + 1
 700 ON ERROR GOTO 200
     RESUME 151
 800 LOCATE 15, 1: PRINT "Really kill image? Y/n"
-a$ = INKEY$: IF a$ = "" THEN 800
-IF a$ = "Y" THEN KILL q$ + ".pic": CLOSE : KILL q$ + ".dat"
+key$ = INKEY$: IF key$ = "" THEN 800
+IF key$ = "Y" THEN KILL q$ + ".pic": CLOSE : KILL q$ + ".dat"
 LOCATE 15, 1: PRINT "                         "
 RETURN
 810 LOCATE 1, 1: PRINT "      "
@@ -986,7 +984,7 @@ GOTO 405
 GOTO 405
 
 405
-  FOR I = 1 TO 6400: NEXT I: a$ = "8"
+  FOR I = 1 TO 6400: NEXT I: key$ = "8"
   IF vg = 0 THEN j = j + 3 ELSE j = j - 3
   PUT (x - 22, y - 36), c, PSET
   WINDOW SCREEN (1 + j * 3, 1 + j * 2)-(320 - j * 3, 200 - j * 2)
@@ -1062,7 +1060,7 @@ GOTO 505
 GOTO 505
 
 505
-  FOR I = 1 TO 6200: NEXT I: a$ = "8"
+  FOR I = 1 TO 6200: NEXT I: key$ = "8"
   PUT (x - 30, y - 36), c, PSET
   IF dg = 1 THEN x = x + 4: f = f + 4 ELSE x = x - 4: f = f - 4
   IF vg = 0 THEN j = j + 0 ELSE j = j - 0
@@ -1232,7 +1230,7 @@ SUB Mouse ()
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
     xb = oldB: ya = oldA
-    IF d <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), d
+    IF activeColor <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), activeColor
   END IF
 
   ' Only update position if mouse has moved
