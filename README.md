@@ -247,3 +247,41 @@ Note: On Mac/Linux systems, you may need to make the script executable first:
 ```
 chmod +x copy.sh
 ```
+
+## Fixing Text Files
+
+Use the included `fix_text_files.sh` script to fix text files in a directory:
+
+```
+./fix_text_files.sh <directory>
+```
+
+## Fixing Endings
+
+## Why Fix Files?
+
+When working across different operating systems (Windows, Mac, Linux), text files can end up with inconsistent line endings:
+
+- Windows uses CRLF (`\r\n`)
+- Mac/Linux use LF (`\n`)
+- Legacy Mac systems used CR (`\r`)
+
+This can cause issues when:
+
+1. Running BASIC programs in DOSBox - DOS expects CRLF line endings
+2. Editing files across different systems
+3. Using version control systems like Git
+
+The fix scripts (`fix_text_files.sh`)ensure consistent line endings by:
+
+- Converting text files to use DOS/Windows-style CRLF endings
+- Processing common file types (.pal, .dat, .DVT, .INI, etc.)
+- Preserving file content while standardizing line endings
+
+This helps avoid compatibility problems when running the programs in DOSBox or sharing files between systems.
+
+Use the included `fix_text_files.sh` script to fix text files in a directory:
+
+```
+./fix_text_files.sh <directory>
+```

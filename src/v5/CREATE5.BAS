@@ -194,11 +194,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   IF key$ = "-" THEN DrawCanvasBorder
   If key$ = "'" THEN GOSUB ChangeActiveGame
 
-  IF key$ = "i" THEN
-    PUT (B, a), a, XOR
-    activeColor = POINT(B, a)
-    PUT (B, a), a, XOR
-  END IF
+  IF key$ = "i" THEN GOSUB GetColorAtCursor
 
   ' Update currenet color display box
   ' Update the color preview box when current color changes
@@ -214,23 +210,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     DRAW "c=" + VARPTR$(activeColor)
   END IF
 
-  IF key$ = ";" THEN
-    PUT (B, a), a, XOR
-    ' Get color at current cursor position
-    colorAtCursor = POINT(B, a)
-    ' Calculate palette position (row and column)
-    IF colorAtCursor <= 120 THEN
-      row = 1
-      column = colorAtCursor
-    ELSE
-      row = 2
-      column = colorAtCursor - 120
-    END IF
-    ' Display color information
-    LOCATE 25, 1
-    PRINT USING "Color ###/255 (Row #, Column ##)"; colorAtCursor; row; column; 
-    PUT (B, a), a, XOR
-  END IF
+  IF key$ = ";" THEN GOSUB GetColorAtCursorPalletInfo
 
   IF key$ = "." THEN
     IF isBigCurMode = 0 THEN
@@ -419,6 +399,30 @@ CountUniqueColors:
   ' Display count at line 17
   LOCATE 25, 1: PRINT tc;
 RETURN
+
+GetColorAtCursor:
+  PUT (B, a), a, XOR
+  activeColor = POINT(B, a)
+  PUT (B, a), a, XOR
+RETURN
+
+GetColorAtCursorPalletInfo:
+  PUT (B, a), a, XOR
+  ' Get color at current cursor position
+  colorAtCursor = POINT(B, a)
+  ' Calculate palette position (row and column)
+  IF colorAtCursor <= 120 THEN
+    row = 1
+    column = colorAtCursor
+  ELSE
+    row = 2
+    column = colorAtCursor - 120
+  END IF
+  ' Display color information
+  LOCATE 25, 1
+  PRINT USING "Color ###/255 (Row #, Column ##)"; colorAtCursor; row; column; 
+  PUT (B, a), a, XOR
+return 
 
 101 RETURN: LOCATE 1, 1: PRINT "What color   "
 INPUT cl
