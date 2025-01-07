@@ -219,3 +219,31 @@ modules/
 ├── CFG.INI
 └── CREATE5.BAS
 ```
+
+## Copying Files
+
+### Windows
+Use the included `copy.bat` script to copy files to your destination:
+
+```
+copy.bat <source_dir> <dest_dir>
+```
+
+### Mac/Linux
+Use the included `copy.sh` script to copy files to your destination:
+
+```
+./copy.sh <source_dir> <dest_dir>
+```
+
+### Example
+
+```
+./copy.sh . "/Users/joshhess/Developer/dosbox/HD/SPACE2/V5/CREATE/"
+```
+
+Note: On Mac/Linux systems, you may need to make the script executable first:
+
+```
+chmod +x copy.sh
+```
