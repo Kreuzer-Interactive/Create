@@ -3,10 +3,10 @@
 ## Features
 
 ### UNDO System
-- [ ] Implement array to store previous screen states
-- [ ] Add memory management for undo buffer
-- [ ] Create UNDO key handler
-- [ ] Consider limiting undo steps to preserve memory
+- [x] Implement array to store previous screen states
+- [x] Add memory management for undo buffer
+- [x] Create UNDO key handler
+- [x] Consider limiting undo steps to preserve memory
 
 ### Small Fonts
 - [ ] Create/load small font bitmap data
@@ -23,8 +23,8 @@
 - [ ] Implement quick frame access function
 
 ### Load config from ini file
-- [ ] Load config from ini file
-- [ ] Load palette config
+- [x] Load config from ini file
+- [x] Load palette config
 - [ ] Load avalible games list
 
 ## Bugs
@@ -41,4 +41,4 @@
   - [ ] Clean text area coverage
 
 ### Spacebar put xor color not selected color
-- [ ] Add spacebar put xor color not selected color
+- [x] Add spacebar put xor color not selected color
