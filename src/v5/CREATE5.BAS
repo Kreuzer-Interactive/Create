@@ -456,7 +456,13 @@ GOTO 100
 150 LOCATE 1, 1: PRINT q$; : INPUT f$
 IF f$ = "a" OR f$ = "A" THEN RETURN
 IF f$ <> "" THEN q$ = f$
-IF key$ = "s" GOTO 778 ELSE GOTO 777
+IF key$ = "s" THEN 
+    GOSUB 778 
+    RETURN
+ELSE 
+    GOSUB 777
+    RETURN
+END IF
     ON ERROR GOTO 700
     OPEN q$ + ".pac" FOR INPUT AS #1
     INPUT #1, xzc, zxn
@@ -601,13 +607,78 @@ RETURN
   x(I) = B: y(I) = a
 RETURN
 
-200
+200  ' Main error handler
+  ' Log error to file
+  OPEN "error.log" FOR APPEND AS #1
+  PRINT #1, "=== Error Report ==="
+  PRINT #1, "Time: "; TIME$; " Date: "; DATE$
+  PRINT #1, "Error #"; ERR; " at line"; ERL
+  
+  ' Add error description based on error number
+  SELECT CASE ERR
+    CASE 1: PRINT #1, "Description: NEXT without FOR"
+    CASE 2: PRINT #1, "Description: Syntax error"
+    CASE 3: PRINT #1, "Description: RETURN without GOSUB"
+    CASE 4: PRINT #1, "Description: Out of DATA"
+    CASE 5: PRINT #1, "Description: Illegal function call"
+    CASE 6: PRINT #1, "Description: Overflow"
+    CASE 7: PRINT #1, "Description: Out of memory"
+    CASE 8: PRINT #1, "Description: Label not defined"
+    CASE 9: PRINT #1, "Description: Subscript out of range"
+    CASE 10: PRINT #1, "Description: Duplicate definition"
+    CASE 11: PRINT #1, "Description: Division by zero"
+    CASE 12: PRINT #1, "Description: Illegal in direct mode"
+    CASE 13: PRINT #1, "Description: Type mismatch"
+    CASE 14: PRINT #1, "Description: Out of string space"
+    CASE 15: PRINT #1, "Description: String too long"
+    CASE 16: PRINT #1, "Description: String formula too complex"
+    CASE 17: PRINT #1, "Description: Cannot continue"
+    CASE 18: PRINT #1, "Description: Function not defined"
+    CASE 19: PRINT #1, "Description: No RESUME"
+    CASE 20: PRINT #1, "Description: RESUME without error"
+    CASE 50: PRINT #1, "Description: FIELD overflow"
+    CASE 51: PRINT #1, "Description: Internal error"
+    CASE 52: PRINT #1, "Description: Bad file number"
+    CASE 53: PRINT #1, "Description: File not found"
+    CASE 54: PRINT #1, "Description: Bad file mode"
+    CASE 55: PRINT #1, "Description: File already open"
+    CASE 56: PRINT #1, "Description: FIELD statement active"
+    CASE 57: PRINT #1, "Description: Device I/O error"
+    CASE 58: PRINT #1, "Description: File already exists"
+    CASE 59: PRINT #1, "Description: Bad record length"
+    CASE 61: PRINT #1, "Description: Disk full"
+    CASE 62: PRINT #1, "Description: Input past end of file"
+    CASE 63: PRINT #1, "Description: Bad record number"
+    CASE 64: PRINT #1, "Description: Bad filename"
+    CASE 67: PRINT #1, "Description: Too many files"
+    CASE 68: PRINT #1, "Description: Device unavailable"
+    CASE 69: PRINT #1, "Description: Communication buffer overflow"
+    CASE 70: PRINT #1, "Description: Permission denied"
+    CASE 71: PRINT #1, "Description: Disk not ready"
+    CASE ELSE: PRINT #1, "Description: Unknown error"
+  END SELECT
+
+  ' Program state
+  PRINT #1, "Program State:"
+  PRINT #1, "  Cursor position: "; B; ","; a
+  PRINT #1, "  Active color: "; activeColor
+  PRINT #1, "  Draw mode: "; f
+  PRINT #1, "  Eraser mode: "; eraserMode$
+  PRINT #1, "  Big cursor mode: "; isBigCurMode
+  PRINT #1, "  Active palette: "; activePalette
+  PRINT #1, "  Step size: "; 
+  ' Handle boundary errors
   IF B > 319 THEN B = 319
   IF B < 1 THEN B = 1
   IF a < 1 THEN a = 1
   IF a > 199 THEN a = 199
   SOUND 400, 1: SOUND 200, .5
-RESUME 10
+
+  ' Only use RESUME if we're handling an error
+  IF ERR > 0 THEN 
+    RESUME 10
+  END IF
+  RETURN
 
 TextInputMode:
   ' This subroutine implements a text input mode where the user can:
@@ -847,13 +918,11 @@ GOTO 621
   c(1) = mz: c(2) = mx
   BSAVE q$ + ".pic", VARPTR(c(1)), (mz - nz) * (mx - nx)
   DEF SEG
-  'GOSUB 895
   RETURN
 778 GET (2, 10)-(310, 198), c
   DEF SEG = VARSEG(c(1))
   BSAVE q$ + ".pic", VARPTR(c(1)), 57000
   DEF SEG
-  'GOSUB 895
   RETURN
 
 LoadPictureFullscreen:
@@ -882,18 +951,18 @@ LoadPictureFullscreen:
   END IF
   
 PcxCheckFailed:
-  RESUME NEXT
+  IF ERR > 0 THEN
+    RESUME NEXT
+  END IF
 
-  '------- LOADING OF THE PICTURE -------
+PcxLoadFailed:
+  ' Regular picture loading code
   GET (2, 10)-(310, 199), c
   DEF SEG = VARSEG(c(1))
-  BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))    ' Actually loads the file
-  
+  BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))
   DEF SEG = 0
   c = 0
-  PUT (2, 10), c, PSET         ' Displays the loaded image
-  'PUT (62 + 40 * 0, 173), c(1 + 510 * 2), PSET
-  ' Only call DisplayImageArray for non-type 3 palettes
+  PUT (2, 10), c, PSET
   IF VAL(palettes$(activePalette, 1)) = PAL_TYPE_3 THEN
     DisplayImageArray c(), 2, 10
   END IF
