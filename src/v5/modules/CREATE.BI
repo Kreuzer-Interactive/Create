@@ -15,7 +15,7 @@ DIM SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
 DIM SHARED inary(7) AS INTEGER, outary(7) AS INTEGER
 
 DIM SHARED stampBuffer() AS INTEGER  ' New array for stamp data
-DIM SHARED c() AS INTEGER
+DIM SHARED screenBuffer() AS INTEGER
 DIM SHARED fca AS STRING
 DIM SHARED fit AS INTEGER
 DIM SHARED qa() AS INTEGER, qb() AS INTEGER

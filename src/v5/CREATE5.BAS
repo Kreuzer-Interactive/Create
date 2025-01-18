@@ -4,25 +4,26 @@
 '$INCLUDE: 'modules\CREATE.BI'
 
 SCREEN 13, 0
-REDIM c(1 TO bufferSize) AS INTEGER
+REDIM screenBuffer(1 TO bufferSize) AS INTEGER
 REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 0 PRINT "Starting...":' Must include this to load
   
   SCREEN 13
   ' End of including
   eraserMode$ = "n"
-  fr$ = "n"       ' Flag to track if stamp tool is active
-  stampSet = 0    ' Flag to track if stamp data exists
+  stampMode$ = "n"       ' Was fr$
+  stampSet = 0    
   activeGame = 1
   activePalette = 1
   DIM basicPal(255) AS LONG
   DIM pl(255) AS LONG
-  DIM games(10) AS GAMECONFIG   ' Allow for up to 10 games
-  gameCount = 0                 ' No games loaded yet
-  activeGame = 1               ' Start with first game
+  DIM games(10) AS GAMECONFIG   
+  gameCount = 0         
+  activeGame = 1               
   CLS
 1
-  DIM h(500): DIM I(500)
+  DIM cursorSprite(10)         ' Was 500 - reduced to 10 for 1x1 cursor
+  DIM I(500)
   DIM su(100): DIM sm(100)
   DIM si(100): DIM col(300)
   DIM cl(5): DIM a(15)
@@ -30,6 +31,12 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   DIM CS(31): DIM bs(31): DIM mess$(31)
   DIM ky$(31): DIM df$(31)
   DIM st(31): DIM vh$(50)
+  
+  ' Initialize cursor position
+  cursorX = 160    ' Starting X position (was B)
+  cursorY = 100    ' Starting Y position (was a)
+  moveSize = 1     ' Starting movement increment (was s)
+  isDrawing = 0    ' Drawing mode flag (was f)
   CALL CleanupUndo
   CALL InitializeUndo
   LoadGameINI "CFG.INI"
@@ -60,24 +67,23 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 
 3
   DRAW "bm1,1c50r1"
-  GET (1, 1)-(1, 1), a
+  GET (1, 1)-(1, 1), cursorSprite   ' Was a()
 
 5
   CLS
-  a = 100
-  B = 160
+  cursorY = 100                      ' Was a
+  cursorX = 160                      ' Was B
   gk = 1: fca = "z"
   q$ = "Type in name"
-  f = 0
-  e$ = "n"
-  s = 1: c = 0
+  isDrawing = 0                      ' Was f
+  eraserMode$ = "n"                  ' Was e$
+  moveSize = 1: c = 0                ' Was s
   COLOR 42
   LoadPalette
   DrawCanvasBorder
-  'PALETTE 15, 50 + 50 * 65536 + 50 * 256
 
 10
-  oldB = B: oldA = a
+  oldCursorX = cursorX: oldCursorY = cursorY   ' Was oldB/oldA
 
   key$ = INKEY$
   ' Get mouse state first
@@ -85,8 +91,8 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
-    xb = oldB: ya = oldA
-    IF activeColor <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), activeColor
+    xb = oldCursorX: ya = oldCursorY ' TODO: Check if this is correct
+    IF activeColor <> 0 AND buttons = 1 THEN LINE (xb, ya)-(cursorX, cursorY), activeColor
   END IF
   ' Handle keyboard input if any
   IF key$ = "" THEN GOTO 10
@@ -102,27 +108,27 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     IF activeColor < 0 THEN activeColor = 0
     IF activeColor > 255 THEN activeColor = 255
     
-    IF f <> 0 THEN f = activeColor
+    IF isDrawing <> 0 THEN isDrawing = activeColor
     DRAW "c0"
   END IF
 
   ' Handle Ctrl+Z for undo
   IF key$ = CHR$(26) THEN  ' Ctrl+Z
     ' Erase cursor before undo
-    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+    IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
     
     ' Restore previous state
-    CALL RestoreUndoState(c())
+    CALL RestoreUndoState(screenBuffer())
     
     ' Redraw cursor after undo
-    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+    IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
   END IF
 
   IF key$ = " " THEN 
-    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
-    CALL SaveUndoState(c())
-    PSET (B, a), activeColor  'Draw point at current position (B,a) using current color f
-    IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
+    IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
+    CALL SaveUndoState(screenBuffer())
+    PSET (cursorX, cursorY), activeColor  'Draw point at current position using current color
+    IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
   END IF
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
@@ -138,26 +144,26 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   END IF
 
   ' Process numpad movement
-  IF key$ = "8" THEN a = a - s  ' Up
-  IF key$ = "2" THEN a = a + s  ' Down
-  IF key$ = "4" THEN B = B - s  ' Left
-  IF key$ = "6" THEN B = B + s  ' Right
+  IF key$ = "8" THEN cursorY = cursorY - moveSize  ' Up
+  IF key$ = "2" THEN cursorY = cursorY + moveSize  ' Down
+  IF key$ = "4" THEN cursorX = cursorX - moveSize  ' Left
+  IF key$ = "6" THEN cursorX = cursorX + moveSize  ' Right
 
   ' Draw lines if in drawing mode
-  IF (f <> 0 OR e$ = "y") AND (key$ = "8" OR key$ = "2" OR key$ = "4" OR key$ = "6") THEN
+  IF (isDrawing <> 0 OR eraserMode$ = "y") AND (key$ = "8" OR key$ = "2" OR key$ = "4" OR key$ = "6") THEN
     SELECT CASE key$
-      CASE "8": DRAW "u=" + VARPTR$(s)  ' Up
-      CASE "2": DRAW "d=" + VARPTR$(s)  ' Down
-      CASE "4": DRAW "l=" + VARPTR$(s)  ' Left
-      CASE "6": DRAW "r=" + VARPTR$(s)  ' Right
+      CASE "8": DRAW "u=" + VARPTR$(moveSize)  ' Up
+      CASE "2": DRAW "d=" + VARPTR$(moveSize)  ' Down
+      CASE "4": DRAW "l=" + VARPTR$(moveSize)  ' Left
+      CASE "6": DRAW "r=" + VARPTR$(moveSize)  ' Right
     END SELECT
   END IF
 
-  IF oldB <> B OR oldA <> a THEN
-    IF f = 0 AND e$ = "n" THEN
-      PUT (oldB, oldA), a, XOR
+  IF oldCursorX <> cursorX OR oldCursorY <> cursorY THEN
+    IF isDrawing = 0 AND eraserMode$ = "n" THEN
+      PUT (oldCursorX, oldCursorY), cursorSprite, XOR
       ' Always draw cursor after moving
-      PUT (B, a), a, XOR
+      PUT (cursorX, cursorY), cursorSprite, XOR
     END IF
   END IF
 
@@ -175,7 +181,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     ' Store current color to detect changes
     previousColor = activeColor
     ' Draw single point at cursor position to set current position
-    LINE (B, a)-(B, a), POINT(B, a)
+    LINE (cursorX, cursorY)-(cursorX, cursorY), POINT(cursorX, cursorY)
 
     DRAW "c=" + VARPTR$(activeColor)
   END IF
@@ -183,11 +189,11 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   IF key$ = ";" THEN GOSUB GetColorAtCursorPalletInfo
 
   IF key$ = "." THEN
-    IF isBigCurMode = 0 THEN
+    IF isLargeCursorMode = 0 THEN
       GOTO EnterLargeCursorMode
     ELSE
-      isBigCurMode = 0
-      f = activeColor: DRAW "c=" + VARPTR$(f)
+      isLargeCursorMode = 0
+      isDrawing = activeColor: DRAW "c=" + VARPTR$(isDrawing)
       key$ = "5"
       GOTO toggleDrawMode
     END IF
@@ -196,10 +202,10 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   IF key$ = "c" THEN
     IF c = 0 THEN
       c = 1
-      GET (2, 10)-(310, 199), c
+      GET (2, 10)-(310, 199), screenBuffer
       LINE (2, 10)-(310, 199), 0, BF
     ELSE c = 0
-      PUT (2, 10), c, PSET
+      PUT (2, 10), screenBuffer, PSET
     END IF
   END IF
 
@@ -208,13 +214,13 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   END IF
 
   IF key$ = "1" THEN
-    IF f <> 0 OR e$ = "y" THEN
-      DRAW "g=" + VARPTR$(s)
-      a = a + s
-      B = B - s
+    IF isDrawing <> 0 OR eraserMode$ = "y" THEN
+      DRAW "g=" + VARPTR$(moveSize)
+      cursorY = cursorY + moveSize
+      cursorX = cursorX - moveSize
     ELSE
-      a = a + s
-      B = B - s
+      cursorY = cursorY + moveSize
+      cursorX = cursorX - moveSize
     END IF
   END IF
 
@@ -235,13 +241,13 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   IF key$ = "\" THEN GOSUB FillWithColorPattern
 
   IF key$ = "9" THEN
-    IF f <> 0 OR e$ = "y" THEN
-      DRAW "e=" + VARPTR$(s)
-      a = a - s
-      B = B + s
+    IF isDrawing <> 0 OR eraserMode$ = "y" THEN
+      DRAW "e=" + VARPTR$(moveSize)
+      cursorY = cursorY - moveSize
+      cursorX = cursorX + moveSize
     ELSE
-      a = a - s
-      B = B + s
+      cursorY = cursorY - moveSize
+      cursorX = cursorX + moveSize
     END IF
   END IF
 
@@ -255,29 +261,48 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
 
   IF key$ = CHR$(5) THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
   
-  IF key$ = "7" THEN IF f <> 0 OR e$ = "y" THEN DRAW "h=" + VARPTR$(s): a = a - s: B = B - s ELSE a = a - s: B = B - s
-  
-  IF key$ = "3" THEN IF f <> 0 OR e$ = "y" THEN DRAW "f=" + VARPTR$(s): a = a + s: B = B + s ELSE a = a + s: B = B + s
+  IF key$ = "7" THEN 
+    IF isDrawing <> 0 OR eraserMode$ = "y" THEN 
+      DRAW "h=" + VARPTR$(moveSize)
+      cursorY = cursorY - moveSize
+      cursorX = cursorX - moveSize
+    ELSE 
+      cursorY = cursorY - moveSize
+      cursorX = cursorX - moveSize
+    END IF
+  END IF
+  IF key$ = "3" THEN 
+    IF isDrawing <> 0 OR eraserMode$ = "y" THEN 
+      DRAW "f=" + VARPTR$(moveSize)
+      cursorY = cursorY + moveSize
+      cursorX = cursorX + moveSize
+    ELSE 
+      cursorY = cursorY + moveSize
+      cursorX = cursorX + moveSize
+    END IF
+  END IF
 
-  IF key$ = "t" THEN ft = POINT(B, a)
+  IF key$ = "t" THEN fillSourceColor = POINT(cursorX, cursorY)  ' Was ft
   
-  IF key$ = "y" THEN fy = POINT(B, a)
+  IF key$ = "y" THEN fillTargetColor = POINT(cursorX, cursorY)  ' Was fy
   
   IF key$ = "=" THEN
     IF stampSet = 0 THEN
       LOCATE 25, 1
       PRINT "Capture stamp first with 'g' key";
     ELSE
-      PUT (B, a), stampBuffer, PSET
+      PUT (cursorX, cursorY), stampBuffer, PSET
     END IF
   END IF
 
   ' Fill effect: Replace colors in a 5x5 grid around cursor
-  ' Replaces any pixels that match source color (ft) with target color (fy)
+  ' Replaces any pixels that match source color (fillSourceColor) with target color (fillTargetColor)
   IF eraserMode$ = "y" THEN
     FOR gf = 0 TO 4
       FOR gi = 0 TO 4
-        IF POINT(B + gf, a + gi) = ft THEN PSET (B + gf, a + gi), fy
+        IF POINT(cursorX + gf, cursorY + gi) = fillSourceColor THEN 
+          PSET (cursorX + gf, cursorY + gi), fillTargetColor
+        END IF
       NEXT gi
     NEXT gf
   END IF
@@ -294,7 +319,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     
     IF cc$ = "y" THEN
       ' Restore saved image from buffer
-      PUT (1, 10), c, PSET
+      PUT (1, 10), screenBuffer, PSET
     ELSE
       ' Clear prompt if not restoring
       LOCATE 25, 1: PRINT "                    "
@@ -308,30 +333,30 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   IF key$ = "s" OR key$ = "S" THEN SavePicture q$
   IF key$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
   
-  IF isBigCurMode = 1 THEN 70
+  IF isLargeCursorMode = 1 THEN 70
   
   IF key$ = "5" THEN GOSUB ToggleDrawMode ' Handle toggling drawing mode with '5' key
     
 
 70
   ON ERROR GOTO 200
-  IF f = 0 AND e$ = "n" THEN PUT (B, a), a, XOR
-  IF f = 0 AND e$ = "y" AND isBigCurMode = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
-  IF key$ = "0" THEN s = s + 2: IF s = 5 OR s = 8 THEN s = 1
+  IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
+  IF isDrawing = 0 AND eraserMode$ = "y" AND isLargeCursorMode = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
+  IF key$ = "0" THEN moveSize = moveSize + 2: IF moveSize = 5 OR moveSize = 8 THEN moveSize = 1
   IF key$ = "$" THEN GOSUB CountUniqueColors
-  IF key$ = "z" THEN mz = B: mx = a
+  IF key$ = "z" THEN mz = cursorX: mx = cursorY
   IF key$ = "{" THEN GOSUB DrawScaledMirrorImage
-  IF key$ = "x" THEN nz = B: nx = a
-  IF key$ = "l" THEN IF f <> 0 THEN LINE (mz, mx)-(nz, nx), f ELSE LINE (mz, mx)-(nz, nx), activeColor
-  IF key$ = "u" THEN DRAW "c1": f = 1
+  IF key$ = "x" THEN nz = cursorX: nx = cursorY
+  IF key$ = "l" THEN IF isDrawing <> 0 THEN LINE (mz, mx)-(nz, nx), isDrawing ELSE LINE (mz, mx)-(nz, nx), activeColor
+  IF key$ = "u" THEN DRAW "c1": isDrawing = 1
   IF key$ = "o" THEN GOSUB 101
-  IF key$ = "a" THEN GOSUB 185: GET (B, a)-(B + 18, a + 18), stampBuffer
+  IF key$ = "a" THEN GOSUB 185: GET (cursorX, cursorY)-(cursorX + 18, cursorY + 18), stampBuffer
   IF key$ = CHR$(13) THEN 115
   IF key$ = "r" OR key$ = "R" THEN GOSUB LoadPictureMenu
   IF key$ = "(" THEN GOSUB IncrementColors
   IF key$ = ")" THEN GOSUB 242
   IF key$ = "k" THEN GOSUB 800
-  IF key$ = "+" THEN IF s <> 6 THEN s = 6 ELSE s = 1
+  IF key$ = "+" THEN IF moveSize <> 6 THEN moveSize = 6 ELSE moveSize = 1
   IF key$ = CHR$(6) THEN GOTO FillWithColor  ' Ctrl+F (ASCII 6)
 96
   IF key$ = "q" THEN
@@ -340,8 +365,8 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     ad$ = INKEY$
     IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN CALL CleanupUndo: SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
   END IF
-  IF f = 0 AND e$ = "n" AND isBigCurMode = 0 THEN PUT (B, a), a, XOR
-  IF key$ = "/" AND isBigCurMode = 0 THEN IF e$ = "y" THEN e$ = "n" ELSE e$ = "y"
+  IF isDrawing = 0 AND eraserMode$ = "n" AND isLargeCursorMode = 0 THEN PUT (cursorX, cursorY), cursorSprite, XOR
+  IF key$ = "/" AND isLargeCursorMode = 0 THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
 100 GOTO 10
 
 CountUniqueColors:
@@ -369,15 +394,15 @@ CountUniqueColors:
 RETURN
 
 GetColorAtCursor:
-  PUT (B, a), a, XOR
-  activeColor = POINT(B, a)
-  PUT (B, a), a, XOR
+  PUT (cursorX, cursorY), cursorSprite, XOR
+  activeColor = POINT(cursorX, cursorY)
+  PUT (cursorX, cursorY), cursorSprite, XOR
 RETURN
 
 GetColorAtCursorPalletInfo:
-  PUT (B, a), a, XOR
+  PUT (cursorX, cursorY), cursorSprite, XOR
   ' Get color at current cursor position
-  colorAtCursor = POINT(B, a)
+  colorAtCursor = POINT(cursorX, cursorY)
   ' Calculate palette position (row and column)
   IF colorAtCursor <= 120 THEN
     row = 1
@@ -389,35 +414,35 @@ GetColorAtCursorPalletInfo:
   ' Display color information
   LOCATE 25, 1
   PRINT USING "Color ###/255 (Row #, Column ##)"; colorAtCursor; row; column; 
-  PUT (B, a), a, XOR
-return 
+  PUT (cursorX, cursorY), cursorSprite, XOR
+RETURN 
 
 101 RETURN: LOCATE 1, 1: PRINT "What color   "
 INPUT cl
 
 204
-  DRAW "c=" + VARPTR$(cl): f = cl
+  DRAW "c=" + VARPTR$(cl): isDrawing = cl
   LOCATE 15, 1: PRINT "             ": LOCATE 16, 1: PRINT "      "
 RETURN
 
-102 LOCATE 15, 1: INPUT f
-105 IF f > 250 THEN 102
-108 DRAW "c=" + VARPTR$(f)
+102 LOCATE 15, 1: INPUT isDrawing
+105 IF isDrawing > 250 THEN 102
+108 DRAW "c=" + VARPTR$(isDrawing)
 110 GOTO 10
 115 LOCATE 15, 1: INPUT q
-125 CIRCLE (B, a), q, f
+125 CIRCLE (cursorX, cursorY), q, isDrawing
 130 GOTO 100
 
 FillWithColor:
-  CALL SaveUndoState(c())
-  GET (1, 10)-(319, 199), c
+  CALL SaveUndoState(screenBuffer())
+  GET (1, 10)-(319, 199), screenBuffer
   LINE (0, 9)-(321, 9), activeColor
-  LINE (B, a)-(B, a), 0
-  PAINT (B, a), activeColor, activeColor
+  LINE (cursorX, cursorY)-(cursorX, cursorY), 0
+  PAINT (cursorX, cursorY), activeColor, activeColor
   LINE (0, 9)-(321, 9), 0, BF
   DrawCanvasBorder
   ' draw cursor and refresh current position
-  PUT (B, a), a, XOR
+  PUT (cursorX, cursorY), cursorSprite, XOR
   DRAW "c=" + VARPTR$(activeColor)
 GOTO 100
 
@@ -445,21 +470,21 @@ END IF
 180 END
 
 ToggleDrawMode:
-  IF f <> 0 THEN
+  IF isDrawing <> 0 THEN
     ' Turn off drawing mode
     DRAW "c0"
-    IF isBigCurMode = 0 THEN
-      activeColor = f  ' Save current color
-      f = 0  ' Turn off drawing
+    IF isLargeCursorMode = 0 THEN
+      activeColor = isDrawing  ' Save current color
+      isDrawing = 0  ' Turn off drawing
       key$ = ""
     ELSE
-      f = 0  ' Just turn off drawing
+      isDrawing = 0  ' Just turn off drawing
       key$ = ""
     END IF
   ELSE
     ' Turn on drawing mode
     DRAW "c=" + VARPTR$(activeColor)  ' Restore saved color
-    f = activeColor                    ' Enable drawing
+    isDrawing = activeColor           ' Enable drawing
     GOTO 100
   END IF
 RETURN
@@ -572,16 +597,16 @@ RETURN
 
 185
   LOCATE 15, 1: PRINT "Which box?": INPUT I
-  x(I) = B: y(I) = a
+  x(I) = cursorX: y(I) = cursorY
 RETURN
 
 200  ' Main error handler
   CALL LogError
   ' Handle boundary errors
-  IF B > 319 THEN B = 319
-  IF B < 1 THEN B = 1
-  IF a < 1 THEN a = 1
-  IF a > 199 THEN a = 199
+  IF cursorX > 319 THEN cursorX = 319
+  IF cursorX < 1 THEN cursorX = 1
+  IF cursorY < 1 THEN cursorY = 1
+  IF cursorY > 199 THEN cursorY = 199
   SOUND 400, 1: SOUND 200, .5
 
   ' Only use RESUME if we're handling an error
@@ -596,7 +621,7 @@ TextInputMode:
   ' - Type characters at the cursor position
   ' - Exit with the ` key
   '
-  ' The cursor position is converted from pixel coordinates (a,B)
+  ' The cursor position is converted from pixel coordinates (cursorX,cursorY)
   ' to character coordinates by dividing by 8 since each character
   ' cell is 8x8 pixels. The cursor is shown as a "." that gets
   ' replaced by typed characters.
@@ -610,8 +635,8 @@ TextInputMode:
   ' Any other key - Print that character at cursor
   
   ' Convert pixel coords to character coords
-  pa = a \ 8  ' Y position in characters
-  pb = B \ 8  ' X position in characters
+  pa = cursorY \ 8  ' Y position in characters
+  pb = cursorX \ 8  ' X position in characters
 221
   LOCATE pa, pb: PRINT "."  ' Show cursor
   key$ = INKEY$               ' Get keypress
@@ -651,11 +676,11 @@ LoadPictureMenu:
 RETURN
 
 EnterLargeCursorMode:
-  isBigCurMode = 1 ' Set isBigCurMode flag to 1 to indicate we're in "large cursor" mode
+  isLargeCursorMode = 1 ' Set isLargeCursorMode flag to 1 to indicate we're in "large cursor" mode
   DRAW "c0" ' Set drawing color to black (0) to erase previous cursor
   
-  IF f <> 0 THEN activeColor = f  ' Save current color if drawing was active
-  f = 4                 ' Set new color to 4
+  IF isDrawing <> 0 THEN activeColor = isDrawing  ' Save current color if drawing was active
+  isDrawing = 4                 ' Set new color to 4
   key$ = ""              ' Clear key input
 GOTO 10
 
@@ -666,20 +691,20 @@ CaptureStampData:
 RETURN
 
 PasteStampWithOR:
-  ' Paste the stamp buffer at current cursor position (B,a) using OR mode
+  ' Paste the stamp buffer at current cursor position using OR mode
   ' OR mode combines the stamp with existing pixels rather than overwriting
-  PUT (B, a), stampBuffer, OR
+  PUT (cursorX, cursorY), stampBuffer, OR
 RETURN
 
 FillWithColorPattern:
-  GET (2, 2)-(200, 100), c
+  GET (2, 2)-(200, 100), screenBuffer
   tile$ = ""
-  FOR I = ft TO fy
+  FOR I = fillSourceColor TO fillTargetColor  ' Was ft/fy
     tile$ = tile$ + CHR$(I)
   NEXT I
 
-  LINE (0, 10)-(321, 10), f, B
-  PAINT (B, a), tile$, f
+  LINE (0, 10)-(321, 10), isDrawing, B  ' Was f
+  PAINT (cursorX, cursorY), tile$, isDrawing  ' Was B,a
   tile$ = ""
 RETURN
 
@@ -690,6 +715,7 @@ FOR I = 121 TO 255
 LINE (I - 95, 3)-(I - 95, 4), I
 NEXT I
 RETURN
+
 400 '-------------Click starts----------------
 click:
 401 tr$ = "n"
@@ -699,14 +725,16 @@ click:
 450 INPUT q$
   REM  GOSUB 709 'load specials
 453 CLOSE
-454 CLS : B = 50: dd = 50: GOTO 500
+454 CLS : cursorX = 50: dd = 50: GOTO 500  ' Was B
 455 GOSUB LoadPicturePositioned
 RETURN
+
 462 LOCATE 1, 1: PRINT "                                       "
 464 LOCATE 2, 1: PRINT "                                       "
 465 LOCATE 3, 1: PRINT "                                       "
 466 LOCATE 4, 1: PRINT "                                       "
 470 RETURN
+
 500 ON ERROR GOTO 820
 CQ = CQ + 1
 502 IF CQ > 30 THEN 525
@@ -829,9 +857,9 @@ GOTO 621
   BSAVE q$ + ".pic", VARPTR(c(1)), (mz - nz) * (mx - nx)
   DEF SEG
   RETURN
-778 GET (2, 10)-(310, 198), c
-  DEF SEG = VARSEG(c(1))
-  BSAVE q$ + ".pic", VARPTR(c(1)), 57000
+778 GET (2, 10)-(310, 198), screenBuffer
+  DEF SEG = VARSEG(screenBuffer(1))
+  BSAVE q$ + ".pic", VARPTR(screenBuffer(1)), 57000
   DEF SEG
   RETURN
 
@@ -867,15 +895,12 @@ PcxCheckFailed:
 
 PcxLoadFailed:
   ' Regular picture loading code
-  GET (2, 10)-(310, 199), c
-  DEF SEG = VARSEG(c(1))
-  BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))
+  GET (2, 10)-(310, 199), screenBuffer
+  DEF SEG = VARSEG(screenBuffer(1))
+  BLOAD gamePath$ + q$ + picExt$, VARPTR(screenBuffer(1))
   DEF SEG = 0
-  c = 0
-  PUT (2, 10), c, PSET
-  IF VAL(palettes$(activePalette, 1)) = PAL_TYPE_3 THEN
-    DisplayImageArray c(), 2, 10
-  END IF
+  screenBuffer = 0
+  PUT (2, 10), screenBuffer, PSET
   GOTO 883
 RETURN
 
@@ -885,12 +910,12 @@ LoadPicturePositioned:
   gamePath$ = RTRIM$(games(activeGame).path) + "\"
   picExt$ = NormalizeExtension$(games(activeGame).files.picExt)
   '------- LOADING OF THE PICTURE -------
-  GET (2, 10)-(310, 199), c
-  DEF SEG = VARSEG(c(1))
-  BLOAD gamePath$ + q$ + picExt$, VARPTR(c(1))
+  GET (2, 10)-(310, 199), screenBuffer
+  DEF SEG = VARSEG(screenBuffer(1))
+  BLOAD gamePath$ + q$ + picExt$, VARPTR(screenBuffer(1))
   DEF SEG = 0
-  c = 0
-  PUT (c(1), c(2)), c(3), PSET 'places picture in certain position
+  screenBuffer = 0
+  PUT (2, 10), screenBuffer, PSET 'places picture in certain position
   '-------- END OF LOAD -------------
 883
   ON ERROR GOTO 900
@@ -904,7 +929,7 @@ RETURN
 
 900 RESUME 884
 
-SUB DrawCanvasBorder ()
+SUB DrawCanvasBorder
   SHARED pl() AS LONG
   
   ' Get the neutral gray color
@@ -966,12 +991,12 @@ SUB DrawCanvasBorder ()
   LINE (right + 1, midY - markLength)-(right + 1, midY + markLength), grayColor
 END SUB
 
-SUB Mouse ()
-  SHARED lastB, lastA   ' Previous mouse X,Y coordinates
-  SHARED buttons AS INTEGER  ' Current mouse button state
-  SHARED blt AS INTEGER     ' Button state for debouncing (1=ready, 0=pressed)
+SUB Mouse
+  SHARED lastMouseX, lastMouseY   ' Previous mouse X,Y coordinates (was lastB, lastA)
+  SHARED buttons AS INTEGER       ' Current mouse button state
+  SHARED buttonState AS INTEGER   ' Button state for debouncing (1=ready, 0=pressed) (was blt)
   SHARED inary() AS INTEGER, outary() AS INTEGER
-  SHARED B, a, f, e$, a() ' Add cursor array and drawing flags
+  SHARED cursorX, cursorY, isDrawing, eraserMode$, cursorSprite() ' Add cursor array and drawing flags (was B, a, f, e$, a())
   STATIC cursorVisible AS INTEGER  ' Track cursor visibility state
   STATIC lastButtons AS INTEGER    ' Track previous button state
   
@@ -984,66 +1009,65 @@ SUB Mouse ()
 
   ' Create undo point when mouse button is first pressed
   IF newButtons = 1 AND lastButtons = 0 THEN
-    PUT (B, a), a, XOR
+    PUT (cursorX, cursorY), cursorSprite, XOR  ' Was PUT (B, a), a, XOR
     ' Save current screen state before drawing
-    GET (2, 10)-(310, 198), c
-    CALL SaveUndoState(c())
+    GET (2, 10)-(310, 198), screenBuffer       ' Was GET (2, 10)-(310, 198), c
+    CALL SaveUndoState(screenBuffer())         ' Was CALL SaveUndoState(c())
   END IF
   lastButtons = newButtons  ' Remember button state for next time
 
   ' Calculate new position
-  newB = outary(cx) \ 2
-  newA = outary(dx)
+  newX = outary(cx) \ 2    ' Was newB
+  newY = outary(dx)        ' Was newA
   
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
-    xb = oldB: ya = oldA
-    IF activeColor <> 0 AND buttons = 1 THEN LINE (xb, ya)-(B, a), activeColor
+    oldX = oldCursorX: oldY = oldCursorY    ' Was xb = oldB: ya = oldA
+    IF activeColor <> 0 AND buttons = 1 THEN LINE (oldX, oldY)-(cursorX, cursorY), activeColor  ' Was LINE (xb, ya)-(B, a), activeColor
   END IF
 
   ' Only update position if mouse has moved
-  IF newB <> lastB OR newA <> lastA THEN
+  IF newX <> lastMouseX OR newY <> lastMouseY THEN    ' Was IF newB <> lastB OR newA <> lastA
 
     ' Turn off draw mode in case it's on
-    f = 0
+    isDrawing = 0    ' Was f = 0
 
     ' Always erase cursor at OLD position if it was visible
-    IF buttons <> 1 AND f = 0 AND e$ = "n" AND cursorVisible THEN
-      PUT (B, a), a, XOR
+    IF buttons <> 1 AND isDrawing = 0 AND eraserMode$ = "n" AND cursorVisible THEN    ' Was IF buttons <> 1 AND f = 0 AND e$ = "n" AND cursorVisible
+      PUT (cursorX, cursorY), cursorSprite, XOR    ' Was PUT (B, a), a, XOR
       cursorVisible = 0
     END IF
     
     ' Update to new position
-    B = newB
-    a = newA
+    cursorX = newX    ' Was B = newB
+    cursorY = newY    ' Was a = newA
     
     ' Constrain to screen boundaries
-    IF B < 1 THEN B = 1
-    IF B > 319 THEN B = 319
-    IF a < 1 THEN a = 1
-    IF a > 199 THEN a = 199
+    IF cursorX < 1 THEN cursorX = 1       ' Was IF B < 1 THEN B = 1
+    IF cursorX > 319 THEN cursorX = 319   ' Was IF B > 319 THEN B = 319
+    IF cursorY < 1 THEN cursorY = 1       ' Was IF a < 1 THEN a = 1
+    IF cursorY > 199 THEN cursorY = 199   ' Was IF a > 199 THEN a = 199
     
     ' Draw cursor at new position
-    IF buttons <> 1 AND f = 0 AND e$ = "n" THEN
-      PUT (B, a), a, XOR
+    IF buttons <> 1 AND isDrawing = 0 AND eraserMode$ = "n" THEN    ' Was IF buttons <> 1 AND f = 0 AND e$ = "n"
+      PUT (cursorX, cursorY), cursorSprite, XOR    ' Was PUT (B, a), a, XOR
       cursorVisible = -1
     END IF
     
     ' Save position for next time
-    lastB = B
-    lastA = a
+    lastMouseX = cursorX    ' Was lastB = B
+    lastMouseY = cursorY    ' Was lastA = a
   END IF
 
   IF buttons = 1 AND newButtons <> 1 THEN
-    PUT (B, a), a, XOR
+    PUT (cursorX, cursorY), cursorSprite, XOR    ' Was PUT (B, a), a, XOR
   END IF
 
   buttons = newButtons
-  
 END SUB
 
 SUB SavePicture (filename$)
-    SHARED c() AS INTEGER, fca AS STRING, fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
+    SHARED screenBuffer() AS INTEGER, fca AS STRING, fit AS INTEGER, qa() AS INTEGER, qb() AS INTEGER, x() AS INTEGER, y() AS INTEGER
     SHARED gen$, da$(), vh$(), mess$(), ky$(), bs(), CS(), st(), df$()
     
     ' Calculate image size
@@ -1066,9 +1090,9 @@ SUB SavePicture (filename$)
     END IF
     
     'Save screen data
-    GET (2, 10)-(310, 198), c
-    DEF SEG = VARSEG(c(1))
-    BSAVE filename$ + ".pic", VARPTR(c(1)), imageBytes
+    GET (2, 10)-(310, 198), screenBuffer
+    DEF SEG = VARSEG(screenBuffer(1))
+    BSAVE filename$ + ".pic", VARPTR(screenBuffer(1)), imageBytes
     DEF SEG
     
     'Save special data if needed
@@ -1096,4 +1120,3 @@ SUB SaveSpecialData (filename$)
     NEXT I
     CLOSE
 END SUB
-
