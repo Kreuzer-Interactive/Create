@@ -2,7 +2,6 @@ DECLARE SUB SavePicture (filename$)
 DECLARE SUB SaveSpecialData (filename$)
 DECLARE SUB DrawCanvasBorder ()
 DECLARE SUB Mouse ()
-DECLARE SUB DisplayImageArray (imageArray() AS INTEGER, startX AS INTEGER, startY AS INTEGER)
 DECLARE SUB LoadPCX (filename$)
 
 DEFINT B-C
