@@ -123,12 +123,12 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
 
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   
-  IF ASC(key$) = 0 THEN  'Extended key (arrow keys)
+  IF ASC(key$) = 0 THEN
     SELECT CASE ASC(RIGHT$(key$, 1))
-      CASE 72: key$ = "8"  'Up arrow
-      CASE 80: key$ = "2"  'Down arrow
-      CASE 75: key$ = "4"  'Left arrow
-      CASE 77: key$ = "6"  'Right arrow
+      CASE 72: key$ = "8"  ' Up arrow
+      CASE 80: key$ = "2"  ' Down arrow
+      CASE 75: key$ = "4"  ' Left arrow
+      CASE 77: key$ = "6"  ' Right arrow
     END SELECT
   END IF
 
@@ -319,7 +319,8 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
     IF key$ = CHR$(KEY_ENTER) THEN 115
     IF key$ = "r" OR key$ = "R" THEN GOSUB LoadPictureMenu
     IF key$ = "(" THEN GOSUB IncrementColors
-    IF key$ = ")" THEN GOSUB 242
+    IF key$ = ")" THEN GOSUB DecrementColors
+    IF key$ = "~" THEN GOSUB ClearArea ' lets see what this does
     IF key$ = "k" THEN GOSUB 800
     IF key$ = "+" THEN IF moveSize <> 6 THEN moveSize = 6 ELSE moveSize = 1
     IF key$ = CHR$(KEY_CTRL_F) THEN GOTO FillWithColor
@@ -554,7 +555,7 @@ IncrementColors:
   NEXT i
 RETURN
 
-242
+DecrementColors:
   FOR i = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
       IF POINT(d, i) <> 0 THEN PSET (d, i), POINT(d, i) - 1
@@ -562,7 +563,7 @@ RETURN
   NEXT i
 RETURN
 
-243
+ClearArea:
   FOR i = mx TO nx STEP 1
     FOR d = mz TO nz STEP 1
       IF POINT(d, i) <> 0 THEN PSET (d, i), 15
@@ -571,8 +572,8 @@ RETURN
 RETURN
 
 185
-  LOCATE 15, 1: PRINT "Which box?": INPUT I
-  x(I) = cursorX: y(I) = cursorY
+  LOCATE 15, 1: PRINT "Which box?": INPUT i
+  x(i) = cursorX: y(i) = cursorY
 RETURN
 
 200  ' Main error handler
@@ -612,21 +613,65 @@ TextInputMode:
   ' Convert pixel coords to character coords
   pa = cursorY \ 8  ' Y position in characters
   pb = cursorX \ 8  ' X position in characters
-221
-  LOCATE pa, pb: PRINT "."  ' Show cursor
-  key$ = INKEY$               ' Get keypress
-  IF key$ = "" THEN 221       ' Wait for key
-  LOCATE pa, pb: PRINT " "  ' Clear cursor
-  IF key$ = CHR$(8) THEN key$ = "4"  ' Map backspace to left
-  IF key$ = "8" THEN pa = pa - 1: GOTO 221  ' Up
-  IF key$ = "4" THEN pb = pb - 1: GOTO 221  ' Left
-235
-  IF key$ = "6" THEN pb = pb + 1: GOTO 221  ' Right
-  IF key$ = "2" THEN pa = pa + 1: GOTO 221  ' Down
-  IF key$ = "`" THEN RETURN                 ' Exit
-  LOCATE pa, pb: PRINT key$   ' Print typed character
-  key$ = "6"                  ' Move right after typing
-GOTO 235
+TextInputLoop:
+  DO
+    ' Show cursor and wait for keypress
+    LOCATE pa, pb: PRINT "."
+    DO
+      key$ = INKEY$
+    LOOP WHILE key$ = ""
+    
+    ' Clear cursor
+    LOCATE pa, pb: PRINT " "
+    
+    ' Handle movement and special keys
+    IF ASC(key$) = 0 THEN
+      SELECT CASE ASC(RIGHT$(key$, 1))
+        CASE 72: key$ = "8"  ' Up arrow
+        CASE 80: key$ = "2"  ' Down arrow
+        CASE 75: key$ = "4"  ' Left arrow
+        CASE 77: key$ = "6"  ' Right arrow
+      END SELECT
+    ELSEIF key$ = CHR$(8) THEN  ' Backspace
+      ' Move left and erase character
+      pb = pb - 1
+      LOCATE pa, pb: PRINT " "
+      GOTO TextInputLoop
+    END IF
+    
+    SELECT CASE key$
+      CASE "8"  ' Up arrow or 8
+        pa = pa - 1       
+      CASE "4"  ' Left arrow or 4
+        pb = pb - 1
+      CASE "6"  ' Right arrow or 6
+        pb = pb + 1
+      CASE "2"  ' Down arrow or 2
+        pa = pa + 1
+      CASE "`"  ' Exit
+        RETURN
+      CASE ELSE ' Type character and move right
+        LOCATE pa, pb: PRINT key$
+        key$ = "6"  ' Move right after typing
+        pb = pb + 1
+    END SELECT
+  LOOP
+
+'221
+'  LOCATE pa, pb: PRINT "."  ' Show cursor
+'  key$ = INKEY$               ' Get keypress
+'  IF key$ = "" THEN 221       ' Wait for key
+'  LOCATE pa, pb: PRINT " "  ' Clear cursor
+'  IF key$ = CHR$(8) THEN key$ = "4"  ' Map backspace to left
+'  IF key$ = "8" THEN pa = pa - 1: GOTO 221  ' Up
+'  IF key$ = "4" THEN pb = pb - 1: GOTO 221  ' Left
+'235
+'  IF key$ = "6" THEN pb = pb + 1: GOTO 221  ' Right
+'  IF key$ = "2" THEN pa = pa + 1: GOTO 221  ' Down
+'  IF key$ = "`" THEN RETURN                 ' Exit
+'  LOCATE pa, pb: PRINT key$   ' Print typed character
+'  key$ = "6"                  ' Move right after typing
+'GOTO 235
 '-------------END OF TEXTINPUTMODE-------------
 
 LoadPictureMenu:
@@ -870,7 +915,7 @@ PcxLoadFailed:
   DEF SEG = VARSEG(screenBuffer(1))
   BLOAD gamePath$ + q$ + picExt$, VARPTR(screenBuffer(1))
   DEF SEG = 0
-  screenBuffer = 0
+  c = 0
   PUT (2, 10), screenBuffer, PSET
   GOTO 883
 RETURN
