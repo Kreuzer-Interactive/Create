@@ -103,7 +103,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
   END IF
 
   ' Handle Ctrl+Z for undo
-  IF key$ = CHR$(26) THEN  ' Ctrl+Z
+  IF key$ = CHR$(KEY_CTRL_Z) THEN
     ' Erase cursor before undo
     IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
     
@@ -158,7 +158,6 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
 
   IF key$ = "-" THEN CALL DrawCanvasBorder
   If key$ = "'" THEN GOSUB ChangeActiveGame
-
   IF key$ = "i" THEN GOSUB GetColorAtCursor
 
   ' Update currenet color display box
@@ -188,30 +187,22 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
     END IF
   END IF
 
+  ' Toggle screen clear/restore functionality
+  ' When 'c' is pressed:
+  '   - First press: Saves current screen to buffer and clears drawing area
+  '   - Second press: Restores the saved screen from buffer
   IF key$ = "c" THEN
     IF c = 0 THEN
-      c = 1
-      GET (2, 10)-(310, 199), screenBuffer
-      LINE (2, 10)-(310, 199), 0, BF
-    ELSE c = 0
-      PUT (2, 10), screenBuffer, PSET
+      c = 1                                    ' Set toggle flag to "cleared" state
+      GET (2, 10)-(310, 199), screenBuffer     ' Save current screen to buffer
+      LINE (2, 10)-(310, 199), 0, BF          ' Clear drawing area (black filled box)
+    ELSE 
+      c = 0                                    ' Set toggle flag to "normal" state
+      PUT (2, 10), screenBuffer, PSET          ' Restore saved screen from buffer
     END IF
   END IF
 
-  IF key$ = "C" THEN
-    GOTO click
-  END IF
-
-  IF key$ = "1" THEN
-    IF isDrawing <> 0 OR eraserMode$ = "y" THEN
-      DRAW "g=" + VARPTR$(moveSize)
-      cursorY = cursorY + moveSize
-      cursorX = cursorX - moveSize
-    ELSE
-      cursorY = cursorY + moveSize
-      cursorX = cursorX - moveSize
-    END IF
-  END IF
+  IF key$ = "C" THEN GOTO click
 
   IF key$ = "n" THEN
     LOCATE 25, 1
@@ -229,16 +220,35 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
 
   IF key$ = "\" THEN GOSUB FillWithColorPattern
 
-  IF key$ = "9" THEN
-    IF isDrawing <> 0 OR eraserMode$ = "y" THEN
-      DRAW "e=" + VARPTR$(moveSize)
-      cursorY = cursorY - moveSize
-      cursorX = cursorX + moveSize
-    ELSE
-      cursorY = cursorY - moveSize
-      cursorX = cursorX + moveSize
-    END IF
-  END IF
+  ' Handle diagonal movement using numpad corners (1,3,7,9)
+  SELECT CASE key$
+    CASE "1", "3", "7", "9"
+      ' Determine movement direction
+      IF key$ = "1" OR key$ = "3" THEN
+        deltaY = moveSize    ' Down
+      ELSE
+        deltaY = -moveSize   ' Up
+      END IF
+      
+      IF key$ = "1" OR key$ = "7" THEN
+        deltaX = -moveSize   ' Left
+      ELSE
+        deltaX = moveSize    ' Right
+      END IF
+      
+      ' Move cursor
+      cursorY = cursorY + deltaY
+      cursorX = cursorX + deltaX
+      
+      ' Draw line if in drawing or eraser mode
+      IF isDrawing <> 0 OR eraserMode$ = "y" THEN
+        ' Map keys to DRAW directions:
+        ' 1=g (down-left),  3=f (down-right)
+        ' 7=h (up-left),    9=e (up-right)
+        drawDir$ = MID$("gfhe", INSTR("1379", key$), 1)
+        DRAW drawDir$ + "=" + VARPTR$(moveSize)
+      END IF
+  END SELECT
 
   IF key$ = "`" THEN GOSUB TextInputMode
   
@@ -250,27 +260,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers 
 
   IF key$ = CHR$(KEY_CTRL_E) THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
   
-  IF key$ = "7" THEN 
-    IF isDrawing <> 0 OR eraserMode$ = "y" THEN 
-      DRAW "h=" + VARPTR$(moveSize)
-      cursorY = cursorY - moveSize
-      cursorX = cursorX - moveSize
-    ELSE 
-      cursorY = cursorY - moveSize
-      cursorX = cursorX - moveSize
-    END IF
-  END IF
-  IF key$ = "3" THEN 
-    IF isDrawing <> 0 OR eraserMode$ = "y" THEN 
-      DRAW "f=" + VARPTR$(moveSize)
-      cursorY = cursorY + moveSize
-      cursorX = cursorX + moveSize
-    ELSE 
-      cursorY = cursorY + moveSize
-      cursorX = cursorX + moveSize
-    END IF
-  END IF
-
+  
   IF key$ = "t" THEN fillSourceColor = POINT(cursorX, cursorY)  ' Was ft
   
   IF key$ = "y" THEN fillTargetColor = POINT(cursorX, cursorY)  ' Was fy
@@ -589,7 +579,7 @@ RETURN
   IF ERR > 0 THEN 
     RESUME 10
   END IF
-  RETURN
+RETURN
 
 TextInputMode:
   ' This subroutine implements a text input mode where the user can:
@@ -656,23 +646,7 @@ TextInputLoop:
         pb = pb + 1
     END SELECT
   LOOP
-
-'221
-'  LOCATE pa, pb: PRINT "."  ' Show cursor
-'  key$ = INKEY$               ' Get keypress
-'  IF key$ = "" THEN 221       ' Wait for key
-'  LOCATE pa, pb: PRINT " "  ' Clear cursor
-'  IF key$ = CHR$(8) THEN key$ = "4"  ' Map backspace to left
-'  IF key$ = "8" THEN pa = pa - 1: GOTO 221  ' Up
-'  IF key$ = "4" THEN pb = pb - 1: GOTO 221  ' Left
-'235
-'  IF key$ = "6" THEN pb = pb + 1: GOTO 221  ' Right
-'  IF key$ = "2" THEN pa = pa + 1: GOTO 221  ' Down
-'  IF key$ = "`" THEN RETURN                 ' Exit
-'  LOCATE pa, pb: PRINT key$   ' Print typed character
-'  key$ = "6"                  ' Move right after typing
-'GOTO 235
-'-------------END OF TEXTINPUTMODE-------------
+RETURN
 
 LoadPictureMenu:
   ' swich to a high resolution screen
@@ -728,7 +702,7 @@ FillWithColorPattern:
   tile$ = ""
 RETURN
 
-400 '-------------Click starts----------------
+'-------------Click starts----------------
 click:
   tr$ = "n"
   fca = "c"
@@ -740,100 +714,136 @@ click:
   CLS
   cursorX = 50
   dd = 50
-  GOTO 500  ' Was B
+  GOTO 500
 455
   GOSUB LoadPicturePositioned
 RETURN
 
-462 LOCATE 1, 1: PRINT "                                       "
-464 LOCATE 2, 1: PRINT "                                       "
-465 LOCATE 3, 1: PRINT "                                       "
-466 LOCATE 4, 1: PRINT "                                       "
-470 RETURN
+462
+  LOCATE 1, 1: PRINT "                                       "
+  LOCATE 2, 1: PRINT "                                       "
+  LOCATE 3, 1: PRINT "                                       "
+  LOCATE 4, 1: PRINT "                                       "
+RETURN
 
 500 ON ERROR GOTO 820
-CQ = CQ + 1
-502 IF CQ > 30 THEN 525
-503 INPUT "More"; key$
-504 IF key$ = "n" OR key$ = "no" OR key$ = "N" OR key$ = "NO" THEN 525 ELSE GOSUB 455
-LOCATE 1, 1: PRINT "Special #"; CQ
-508 GOSUB 462: LOCATE 2, 1: PRINT "What number can`t be set?"
-LOCATE 3, 1: INPUT CS(CQ)
-512 GOSUB 462: LOCATE 2, 1: PRINT "What # must be set?"
-514 INPUT bs(CQ)
-516 GOSUB 462: LOCATE 2, 1: PRINT "What gets set?"
-518 INPUT st(CQ)
-GOSUB 462: LOCATE 2, 1: PRINT "What is displayed?"
-522 INPUT mess$(CQ)
-523 GOSUB 462: LOCATE 2, 1: PRINT "What key activates?": INPUT ky$(CQ)
-524 GOSUB 462: LOCATE 2, 1: PRINT "Extra info?/Transfer": INPUT df$(CQ): GOTO 500
-525 CLS
-GOSUB LoadPicturePositioned
-565 DRAW "c51bm1,1r3d3l3u2r1d1r1u1"
-570 GET (1, 1)-(4, 4), cursorSprite
-571 DRAW "bm200,6c2r75"
-572 PUT (B, dd), cursorSprite, XOR
+  CQ = CQ + 1
+  IF CQ > 30 THEN 525
+  INPUT "More"; key$
+  IF key$ = "n" OR key$ = "no" OR key$ = "N" OR key$ = "NO" THEN 525 ELSE GOSUB 455
+  LOCATE 1, 1: PRINT "Special #"; CQ
+  GOSUB 462: LOCATE 2, 1: PRINT "What number can`t be set?"
+  LOCATE 3, 1: INPUT CS(CQ)
+  GOSUB 462: LOCATE 2, 1: PRINT "What # must be set?"
+  INPUT bs(CQ)
+  GOSUB 462: LOCATE 2, 1: PRINT "What gets set?"
+  INPUT st(CQ)
+  GOSUB 462: LOCATE 2, 1: PRINT "What is displayed?"
+  INPUT mess$(CQ)
+  GOSUB 462: LOCATE 2, 1: PRINT "What key activates?": INPUT ky$(CQ)
+  GOSUB 462: LOCATE 2, 1: PRINT "Extra info?/Transfer": INPUT df$(CQ): GOTO 500
+525
+  CLS
+  GOSUB LoadPicturePositioned
+  DRAW "c51bm1,1r3d3l3u2r1d1r1u1"
+  GET (1, 1)-(4, 4), cursorSprite
+  DRAW "bm200,6c2r75"
+572
+  PUT (B, dd), cursorSprite, XOR
 574 key$ = INKEY$: IF key$ = "" THEN 574
-575 PUT (B, dd), cursorSprite, XOR
+  PUT (B, dd), cursorSprite, XOR
 ON ERROR GOTO 820
-    IF tar$ = "y" AND key$ <> "t" THEN GOSUB 815
-579 IF key$ = "2" THEN dd = dd + 4
-585 IF key$ = "8" THEN dd = dd - 4
-590 IF key$ = "4" THEN B = B - 4
-    IF key$ = "7" THEN B = B - 4: dd = dd - 4
-    IF key$ = "9" THEN B = B + 4: dd = dd - 4
-    IF key$ = "1" THEN B = B - 4: dd = dd + 4
-    IF key$ = "3" THEN B = B + 4: dd = dd + 4
-    IF key$ = "f" THEN GOSUB 810
-    IF key$ = "t" THEN IF tar$ = "n" THEN tar$ = "y": INPUT ap$ ELSE tar$ = "n"
-592 IF key$ = "s" THEN GOSUB 890
-    IF key$ = "d" THEN GOSUB 789: LOCATE 1, 1: ip = 1: INPUT gp$: FOR I = 1 TO 30: GOSUB 790: NEXT I
-593 IF key$ = "e" THEN LOCATE 16, 1: PRINT "Exit click?": key$ = INKEY$: IF key$ = "" THEN key$ = "e": GOTO 593 ELSE IF key$ = "y" THEN RUN
-595 IF key$ = "6" THEN B = B + 4
-596 IF key$ = CHR$(13) THEN IF gs < 75 THEN GOSUB 610 ELSE BEEP
-600 GOTO 572
-610 LOCATE 1, 1
-614 PRINT "What special?"
-615 INPUT ap$
-621 MID$(vh$(dd \ 4 + 1), B \ 4 + 1, 1) = ap$: GOTO 625
-635 IF si(gs) <> 0 THEN GOTO 635
-622 si(gs) = B: su(gs) = dd
-624 sm(gs) = I: gs = gs + 1
-625 LOCATE 1, 1: PRINT "       "
-DRAW "bm275,6c0l=" + VARPTR$(gs)
-630 RETURN
+  IF tar$ = "y" AND key$ <> "t" THEN GOSUB 815
+  
+  IF key$ = "1" THEN B = B - 4: dd = dd + 4
+  IF key$ = "2" THEN dd = dd + 4
+  IF key$ = "3" THEN B = B + 4: dd = dd + 4
+  IF key$ = "4" THEN B = B - 4
+  IF key$ = "6" THEN B = B + 4
+  IF key$ = "7" THEN B = B - 4: dd = dd - 4
+  IF key$ = "8" THEN dd = dd - 4
+  IF key$ = "9" THEN B = B + 4: dd = dd - 4
+
+  IF key$ = "f" THEN GOSUB 810
+  IF key$ = "t" THEN IF tar$ = "n" THEN tar$ = "y": INPUT ap$ ELSE tar$ = "n"
+  IF key$ = "s" THEN GOSUB 890
+  IF key$ = "d" THEN GOSUB 789: LOCATE 1, 1: ip = 1: INPUT gp$: FOR I = 1 TO 30: GOSUB 790: NEXT I
+  IF key$ = "e" THEN
+    LOCATE 16, 1
+    PRINT "Exit click?"
+    DO
+      key$ = INKEY$
+    LOOP UNTIL key$ <> ""
+    
+    IF key$ = "y" THEN 
+      RUN  ' TODO: Consider replacing with proper cleanup and reset
+    ELSE
+      LOCATE 16, 1
+      PRINT "          "  ' Clear the prompt
+    END IF
+  END IF
+  IF key$ = CHR$(KEY_ENTER) THEN
+    IF gs < 75 THEN
+      GOSUB 610
+    ELSE
+      BEEP
+    END IF
+  END IF
+  GOTO 572
+610
+  LOCATE 1, 1
+  PRINT "What special?"
+  INPUT ap$
+621
+  MID$(vh$(dd \ 4 + 1), B \ 4 + 1, 1) = ap$
+  si(gs) = B
+  su(gs) = dd
+  sm(gs) = I
+  gs = gs + 1
+  LOCATE 1, 1: PRINT "       "
+  DRAW "bm275,6c0l=" + VARPTR$(gs)
+RETURN
+
 640 OPEN q$ + ".pac" FOR OUTPUT AS #1
     GOSUB 641
     GOTO 680
-641 WRITE #1, c, ia, ib, ic
-645 CLOSE : RETURN
-680 PRINT "Edit another file?"
-682 key$ = INKEY$: IF key$ = "" THEN 682
-684 IF key$ = "y" THEN RUN
-685 IF key$ = "n" THEN SYSTEM
-687 PRINT "Type y or n": GOTO 682
+641
+  WRITE #1, c, ia, ib, ic
+  CLOSE : RETURN
+680
+  PRINT "Edit another file?"
+682
+  key$ = INKEY$: IF key$ = "" THEN 682
+  IF key$ = "y" THEN RUN
+  IF key$ = "n" THEN SYSTEM
+  PRINT "Type y or n": GOTO 682
 709 ' Loads screen's push/open/use/look
-CLOSE
-OPEN q$ + ".dat" FOR INPUT AS #1
-INPUT #1, fit
-FOR I = 1 TO 5
-INPUT #1, qa(I), qb(I), x(I), y(I)
-NEXT I
-INPUT #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
-FOR I = 1 TO 50
-INPUT #1, vh$(I)
-NEXT I
-FOR I = 1 TO 30
- INPUT #1, mess$(I), ky$(I), bs(I), CS(I), st(I), df$(I)
- NEXT I
+  CLOSE
+  OPEN q$ + ".dat" FOR INPUT AS #1
+  INPUT #1, fit
+
+  FOR i = 1 TO 5
+    INPUT #1, qa(i), qb(i), x(i), y(i)
+  NEXT i
+  INPUT #1, gen$, da$(1), da$(2), da$(3), da$(4), da$(5), da$(6)
+  FOR i = 1 TO 50
+    INPUT #1, vh$(i)
+  NEXT i
+  FOR i = 1 TO 30
+    INPUT #1, mess$(i), ky$(i), bs(i), CS(i), st(i), df$(i)
+  NEXT i
 RETURN
-789 LOCATE 1, 1: PRINT "                                                                "
-LOCATE 2, 1: PRINT "                                                                "
+
+789
+  LOCATE 1, 1: PRINT "                                                                "
+  LOCATE 2, 1: PRINT "                                                                "
 RETURN
-790 IF LEFT$(df$(I), 1) <> gp$ THEN RETURN
-ip = ip + 1
-    LOCATE ip, 1: PRINT mess$(I)
-    RETURN
+
+790
+  IF LEFT$(df$(i), 1) <> gp$ THEN RETURN
+  ip = ip + 1
+  LOCATE ip, 1: PRINT mess$(i)
+RETURN
 
 700 ON ERROR GOTO 200
     RESUME 151
@@ -846,8 +856,8 @@ RETURN
     PRINT MID$(vh$(dd \ 4 + 1), B \ 4 + 1, 1)
     RETURN
 820 B = 50: dd = 50: BEEP
-    'LOCATE 20, 1: PRINT ERL, ERR
-    RESUME 572
+  'LOCATE 20, 1: PRINT ERL, ERR
+  RESUME 572
 890 CLOSE : GOSUB 891
 895 LOCATE 16, 1: PRINT "Saving specials"
 CLOSE
