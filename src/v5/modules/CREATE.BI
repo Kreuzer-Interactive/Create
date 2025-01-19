@@ -28,3 +28,13 @@ CONST ax = 0     ' Register indices for INT86
 CONST bx = 1
 CONST cx = 2
 CONST dx = 3
+CONST bufferSize = 32300
+CONST KEY_ENTER = 13        ' Enter/Return key
+CONST KEY_CTRL_F = 6        ' Ctrl+F key
+CONST KEY_CTRL_E = 5  ' Ctrl+E - Toggle eraser mode
+
+DIM cursorSprite(10)            ' Reserves 22 bytes (11 integers × 2 bytes each)
+DIM vh$(50)                     ' Reserves ~2.6KB (51 strings × default 1 string descriptor (4 bytes) + variable string data)
+DIM basicPal(255) AS LONG       ' Reserves 1024 bytes (256 longs × 4 bytes each)
+DIM pl(255) AS LONG             ' Reserves 1024 bytes (256 longs × 4 bytes each)
+DIM games(10) AS GAMECONFIG     ' Depends on size of GAMECONFIG type structure

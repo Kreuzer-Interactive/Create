@@ -4,8 +4,8 @@
 '$INCLUDE: 'modules\CREATE.BI'
 
 SCREEN 13, 0
-REDIM screenBuffer(1 TO bufferSize) AS INTEGER
-REDIM stampBuffer(1 TO bufferSize) AS INTEGER
+REDIM screenBuffer(1 TO bufferSize) AS INTEGER  ' 64,600 bytes (32,300 integers × 2 bytes each)
+REDIM stampBuffer(1 TO bufferSize) AS INTEGER   ' 64,600 bytes (32,300 integers × 2 bytes each)
 0 PRINT "Starting...":' Must include this to load
   
   SCREEN 13
@@ -14,24 +14,11 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   stampMode$ = "n"       ' Was fr$
   stampSet = 0    
   activeGame = 1
-  activePalette = 1
-  DIM basicPal(255) AS LONG
-  DIM pl(255) AS LONG
-  DIM games(10) AS GAMECONFIG   
+  activePalette = 1 
   gameCount = 0         
   activeGame = 1               
   CLS
-1
-  DIM cursorSprite(10)         ' Was 500 - reduced to 10 for 1x1 cursor
-  DIM I(500)
-  DIM su(100): DIM sm(100)
-  DIM si(100): DIM col(300)
-  DIM cl(5): DIM a(15)
-  DIM word$(50): DIM low(50)
-  DIM CS(31): DIM bs(31): DIM mess$(31)
-  DIM ky$(31): DIM df$(31)
-  DIM st(31): DIM vh$(50)
-  
+1 
   ' Initialize cursor position
   cursorX = 160    ' Starting X position (was B)
   cursorY = 100    ' Starting Y position (was a)
@@ -89,6 +76,9 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   ' Get mouse state first
   CALL Mouse
   
+
+  IF key$ = "m" THEN CALL DisplayMemoryUsage
+
   ' Handle mouse movement and buttons
   IF buttons <> 0 THEN  ' Mouse button pressed
     xb = oldCursorX: ya = oldCursorY ' TODO: Check if this is correct
@@ -134,7 +124,6 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   'Add arrow key support (ASCII codes: up=0+72, down=0+80, left=0+75, right=0+77)
   
   IF ASC(key$) = 0 THEN  'Extended key (arrow keys)
-    ' Always erase cursor before moving
     SELECT CASE ASC(RIGHT$(key$, 1))
       CASE 72: key$ = "8"  'Up arrow
       CASE 80: key$ = "2"  'Down arrow
@@ -167,7 +156,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     END IF
   END IF
 
-  IF key$ = "-" THEN DrawCanvasBorder
+  IF key$ = "-" THEN CALL DrawCanvasBorder
   If key$ = "'" THEN GOSUB ChangeActiveGame
 
   IF key$ = "i" THEN GOSUB GetColorAtCursor
@@ -259,7 +248,7 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     DrawCanvasBorder
   END IF
 
-  IF key$ = CHR$(5) THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
+  IF key$ = CHR$(KEY_CTRL_E) THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
   
   IF key$ = "7" THEN 
     IF isDrawing <> 0 OR eraserMode$ = "y" THEN 
@@ -307,25 +296,6 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
     NEXT gf
   END IF
 
-57
-  ' Handle image restore functionality ("<" key)
-  IF key$ = "<" THEN
-    ' Prompt user to restore image
-    LOCATE 25, 1: PRINT "Restore image?";
-    
-    ' Wait for Y/N response
-    cc$ = INKEY$
-    IF cc$ = "" THEN 57
-    
-    IF cc$ = "y" THEN
-      ' Restore saved image from buffer
-      PUT (1, 10), screenBuffer, PSET
-    ELSE
-      ' Clear prompt if not restoring
-      LOCATE 25, 1: PRINT "                    "
-    END IF
-  END IF
-
   IF key$ = "g" THEN GOSUB CaptureStampData
   IF key$ = "d" THEN GOSUB PasteStampWithOR
   IF key$ = "e" THEN GOSUB ScaleAndDrawRegion
@@ -333,40 +303,45 @@ REDIM stampBuffer(1 TO bufferSize) AS INTEGER
   IF key$ = "s" OR key$ = "S" THEN SavePicture q$
   IF key$ = "b" THEN LOCATE 15, 1: INPUT c: COLOR c
   
-  IF isLargeCursorMode = 1 THEN 70
-  
-  IF key$ = "5" THEN GOSUB ToggleDrawMode ' Handle toggling drawing mode with '5' key
-    
+  IF key$ = "5" THEN 
+    GOSUB ToggleDrawMode ' Handle toggling drawing mode with '5' key
+  ELSEIF NOT isLargeCursorMode THEN
+    ' Only process remaining key handlers if not in large cursor mode
+    IF key$ = "0" THEN moveSize = moveSize + 2: IF moveSize = 5 OR moveSize = 8 THEN moveSize = 1
+    IF key$ = "$" THEN GOSUB CountUniqueColors
+    IF key$ = "z" THEN mz = cursorX: mx = cursorY
+    IF key$ = "{" THEN GOSUB DrawScaledMirrorImage
+    IF key$ = "x" THEN nz = cursorX: nx = cursorY
+    IF key$ = "l" THEN IF isDrawing <> 0 THEN LINE (mz, mx)-(nz, nx), isDrawing ELSE LINE (mz, mx)-(nz, nx), activeColor
+    IF key$ = "u" THEN DRAW "c1": isDrawing = 1
+    IF key$ = "o" THEN GOSUB 101
+    IF key$ = "a" THEN GOSUB 185: GET (cursorX, cursorY)-(cursorX + 18, cursorY + 18), stampBuffer
+    IF key$ = CHR$(KEY_ENTER) THEN 115
+    IF key$ = "r" OR key$ = "R" THEN GOSUB LoadPictureMenu
+    IF key$ = "(" THEN GOSUB IncrementColors
+    IF key$ = ")" THEN GOSUB 242
+    IF key$ = "k" THEN GOSUB 800
+    IF key$ = "+" THEN IF moveSize <> 6 THEN moveSize = 6 ELSE moveSize = 1
+    IF key$ = CHR$(KEY_CTRL_F) THEN GOTO FillWithColor
 
-70
-  ON ERROR GOTO 200
-  IF isDrawing = 0 AND eraserMode$ = "n" THEN PUT (cursorX, cursorY), cursorSprite, XOR
-  IF isDrawing = 0 AND eraserMode$ = "y" AND isLargeCursorMode = 0 THEN DRAW "c43u2r2d2l2c0u2r2d2l1u1bg1"
-  IF key$ = "0" THEN moveSize = moveSize + 2: IF moveSize = 5 OR moveSize = 8 THEN moveSize = 1
-  IF key$ = "$" THEN GOSUB CountUniqueColors
-  IF key$ = "z" THEN mz = cursorX: mx = cursorY
-  IF key$ = "{" THEN GOSUB DrawScaledMirrorImage
-  IF key$ = "x" THEN nz = cursorX: nx = cursorY
-  IF key$ = "l" THEN IF isDrawing <> 0 THEN LINE (mz, mx)-(nz, nx), isDrawing ELSE LINE (mz, mx)-(nz, nx), activeColor
-  IF key$ = "u" THEN DRAW "c1": isDrawing = 1
-  IF key$ = "o" THEN GOSUB 101
-  IF key$ = "a" THEN GOSUB 185: GET (cursorX, cursorY)-(cursorX + 18, cursorY + 18), stampBuffer
-  IF key$ = CHR$(13) THEN 115
-  IF key$ = "r" OR key$ = "R" THEN GOSUB LoadPictureMenu
-  IF key$ = "(" THEN GOSUB IncrementColors
-  IF key$ = ")" THEN GOSUB 242
-  IF key$ = "k" THEN GOSUB 800
-  IF key$ = "+" THEN IF moveSize <> 6 THEN moveSize = 6 ELSE moveSize = 1
-  IF key$ = CHR$(6) THEN GOTO FillWithColor  ' Ctrl+F (ASCII 6)
-96
-  IF key$ = "q" THEN
-    LOCATE 25, 1
-    PRINT "Really quit?";
-    ad$ = INKEY$
-    IF ad$ = "" THEN 96 ELSE IF ad$ = "y" THEN CALL CleanupUndo: SYSTEM ELSE LOCATE 25, 1: PRINT "                 ";
+    IF key$ = "q" THEN
+      LOCATE 25, 1
+      PRINT "Really quit?";
+      DO
+        ad$ = INKEY$
+      LOOP UNTIL ad$ <> ""
+      
+      IF ad$ = "y" THEN 
+        CALL CleanupUndo
+        SYSTEM 
+      ELSE 
+        LOCATE 25, 1
+        PRINT "                 ";
+      END IF
+    END IF
+    IF isDrawing = 0 AND eraserMode$ = "n" AND isLargeCursorMode = 0 THEN PUT (cursorX, cursorY), cursorSprite, XOR
+    IF key$ = "/" AND isLargeCursorMode = 0 THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
   END IF
-  IF isDrawing = 0 AND eraserMode$ = "n" AND isLargeCursorMode = 0 THEN PUT (cursorX, cursorY), cursorSprite, XOR
-  IF key$ = "/" AND isLargeCursorMode = 0 THEN IF eraserMode$ = "y" THEN eraserMode$ = "n" ELSE eraserMode$ = "y"
 100 GOTO 10
 
 CountUniqueColors:
@@ -708,25 +683,21 @@ FillWithColorPattern:
   tile$ = ""
 RETURN
 
-FOR I = 1 TO 120
-LINE (I + 30, 1)-(I + 30, 2), I
-NEXT I
-FOR I = 121 TO 255
-LINE (I - 95, 3)-(I - 95, 4), I
-NEXT I
-RETURN
-
 400 '-------------Click starts----------------
 click:
-401 tr$ = "n"
-    fca = "c"
-440 SCREEN 13
-    FILES "*.pic"
-450 INPUT q$
+  tr$ = "n"
+  fca = "c"
+  SCREEN 13
+  FILES "*.pic"
+  INPUT q$
   REM  GOSUB 709 'load specials
-453 CLOSE
-454 CLS : cursorX = 50: dd = 50: GOTO 500  ' Was B
-455 GOSUB LoadPicturePositioned
+  CLOSE
+  CLS
+  cursorX = 50
+  dd = 50
+  GOTO 500  ' Was B
+455
+  GOSUB LoadPicturePositioned
 RETURN
 
 462 LOCATE 1, 1: PRINT "                                       "
@@ -754,11 +725,11 @@ GOSUB 462: LOCATE 2, 1: PRINT "What is displayed?"
 525 CLS
 GOSUB LoadPicturePositioned
 565 DRAW "c51bm1,1r3d3l3u2r1d1r1u1"
-570 GET (1, 1)-(4, 4), a
+570 GET (1, 1)-(4, 4), cursorSprite
 571 DRAW "bm200,6c2r75"
-572 PUT (B, dd), a, XOR
+572 PUT (B, dd), cursorSprite, XOR
 574 key$ = INKEY$: IF key$ = "" THEN 574
-575 PUT (B, dd), a, XOR
+575 PUT (B, dd), cursorSprite, XOR
 ON ERROR GOTO 820
     IF tar$ = "y" AND key$ <> "t" THEN GOSUB 815
 579 IF key$ = "2" THEN dd = dd + 4
@@ -1119,4 +1090,22 @@ SUB SaveSpecialData (filename$)
         WRITE #1, mess$(I), ky$(I), bs(I), CS(I), st(I), df$(I)
     NEXT I
     CLOSE
+END SUB
+
+SUB DisplayMemoryUsage
+    ' Get total memory
+    DEF SEG = 0
+    totalMem& = CLNG(PEEK(&H413)) * 1024  ' BIOS reports memory in KB at 0:413h, convert to LONG
+
+    ' Get free memory - need to do both string and numeric
+    dummy$ = ""  ' Force string space compaction
+    freeMem& = FRE("")  ' Get string memory
+    IF freeMem& < 0 THEN freeMem& = freeMem& + 65536 ' Adjust for integer overflow
+    
+    ' Calculate used memory
+    usedMem& = totalMem& - freeMem&
+
+    ' Display at bottom of screen
+    LOCATE 25, 1
+    PRINT USING "Used:###.#K Free:###.#K Total:###.#K"; usedMem&/1024; freeMem&/1024; totalMem&/1024;
 END SUB
